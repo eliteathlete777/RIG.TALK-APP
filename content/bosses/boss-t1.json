@@ -1,0 +1,37 @@
+{
+  "id": "boss-t1",
+  "track": "T",
+  "module": "T1",
+  "name": "The Passer-By",
+  "intro_pl": "Chce przejść obok stoiska bez zatrzymywania się. Zatrzymaj go i zdobądź kontakt.",
+  "patience": 50,
+  "rounds": [
+    {
+      "other_en": "Sorry, I'm in a hurry.",
+      "other_pl": "Przepraszam, spieszę się.",
+      "answers": [
+        { "en": "Hi! Are you planning an event?", "effect": -15, "best": true, "why_pl": "Krótkie, konkretne pytanie zatrzymuje uwagę." },
+        { "en": "Wait! Please look at this!", "effect": 20, "why_pl": "Zbyt nachalne, klient przyspiesza kroku." },
+        { "en": "Okay, bye.", "effect": 15, "why_pl": "Poddajesz się od razu — stracony kontakt." }
+      ]
+    },
+    {
+      "other_en": "Actually, yes, I organise conferences.",
+      "other_pl": "Właściwie tak, organizuję konferencje.",
+      "answers": [
+        { "en": "We make LED screens and rigging.", "effect": -20, "best": true, "why_pl": "Krótkie przedstawienie, trafia w potrzebę." },
+        { "en": "Do you want to buy something?", "effect": 25, "why_pl": "Zbyt sprzedażowo i wprost, odstrasza." },
+        { "en": "That's nice.", "effect": 10, "why_pl": "Zbyt ogólnikowo, rozmowa gaśnie." }
+      ]
+    },
+    {
+      "other_en": "Interesting. But I really need to go now.",
+      "other_pl": "Ciekawe. Ale naprawdę muszę już iść.",
+      "answers": [
+        { "en": "Can I have your email? I'll send you an offer today.", "effect": -25, "best": true, "why_pl": "Zamykasz kontakt konkretną, szybką prośbą." },
+        { "en": "Please, just five more minutes.", "effect": 20, "why_pl": "Naciskasz mimo jasnego sygnału — źle to przyjmie." },
+        { "en": "Thanks for stopping by!", "effect": -5, "why_pl": "Miłe, ale nie zdobywasz kontaktu." }
+      ]
+    }
+  ]
+}

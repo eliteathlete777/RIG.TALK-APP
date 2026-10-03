@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nauka Angielskiego</title>
+<meta name="description" content="Nauka angielskiego dla kierownika stoiska i realizacji: technika i codzienny język.">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/rigtalk-icon-180.png">
+<link rel="icon" type="image/png" href="assets/rigtalk-icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">RIG <span class="accent">TALK</span></div>
+      <button class="icon-box" data-nav-to="ustawienia" aria-label="Ustawienia" id="settingsBtn"></button>
+    </header>
+
+    <main id="screens">
+
+      <section data-screen="baza" class="active">
+
+        <div class="rank-card">
+          <div class="level-badge" id="levelBadge">LEVEL 1</div>
+          <div class="brush-under">
+            <div class="rank-name" id="rankName">GROUND HAND</div>
+          </div>
+          <div class="rank-days">DNI DO STOISKA: <b id="daysLeft">108</b></div>
+        </div>
+
+        <div class="xp-row">
+          <div class="xp-bar"><div class="xp-bar-fill" id="xpFill" style="width:35%"></div></div>
+          <span style="font-size:12px;color:var(--dim)" id="xpLabel">35/100 XP</span>
+        </div>
+
+        <button class="mission-hero" data-nav-to="stoisko" id="stoiskoHero">
+          <span class="eyebrow">MISJA · PARYŻ</span>
+          <span class="mission-hero-title">PIERWSZE STOISKO</span>
+          <span class="mission-hero-sub" id="stoiskoHeroSub">10 etapów montażu · zwroty do klienta i stagehanda</span>
+          <span class="mini-bar"><span id="stoiskoHeroBar" style="width:0%"></span></span>
+        </button>
+
+        <div class="section-label">Codzienna sesja</div>
+        <div class="track-switch" id="trackSwitch">
+          <button data-track="T" class="active">TECH</button>
+          <button data-track="MIX">MIX</button>
+          <button data-track="D">CODZIENNY</button>
+        </div>
+
+        <div class="session-row">
+          <button class="session-btn" data-session="5" id="btn5min">
+            <span class="big">5</span>
+            <span class="small">MIN · RIG CHECK</span>
+          </button>
+          <button class="session-btn" data-session="10" id="btn10min">
+            <span class="big">10</span>
+            <span class="small">MIN · RIG CHECK</span>
+          </button>
+        </div>
+
+        <div class="mini-progress-row">
+          <div class="mini-progress">
+            <div class="label">Tech</div>
+            <div class="bar"><div class="fill" id="progressT" style="width:0%"></div></div>
+          </div>
+          <div class="mini-progress">
+            <div class="label">Codzienny</div>
+            <div class="bar"><div class="fill" id="progressD" style="width:0%"></div></div>
+          </div>
+        </div>
+
+        <div class="mission-strip" id="dailyMissionStrip">
+          <span class="plus" id="dailyMissionXp">+30</span>
+          <span class="txt" id="dailyMissionTxt">Misja dnia: zrób RIG CHECK</span>
+        </div>
+        <div class="mission-strip" id="weeklyMissionStrip" style="background:var(--bg-2); border:1px solid var(--line)">
+          <span class="plus" id="weeklyMissionXp" style="color:var(--red)">+150</span>
+          <span class="txt" id="weeklyMissionTxt" style="color:var(--white)">Misja tygodnia: 5 sesji w tygodniu</span>
+        </div>
+
+      </section>
+
+      <section data-screen="stoisko">
+        <div id="stoiskoRoot"></div>
+      </section>
+
+      <section data-screen="kurs">
+        <h2>PLAN PRZED WYLOTEM</h2>
+        <div id="kursRoot"></div>
+      </section>
+
+      <section data-screen="czerwone">
+        <h2 style="color:var(--red)">🟥 CZERWONE</h2>
+        <div id="czerwoneRoot"></div>
+      </section>
+
+      <section data-screen="biblioteka">
+        <h2>BIBLIOTEKA</h2>
+        <div class="track-switch" id="libTabs">
+          <button data-value="zwroty">ZWROTY</button>
+          <button data-value="ulubione">★ ULUBIONE</button>
+          <button data-value="slownik">SŁOWNIK</button>
+        </div>
+        <div id="bibliotekaRoot"></div>
+      </section>
+
+      <section data-screen="session" class="session-screen">
+        <div class="session-top">
+          <button class="icon-box" id="sessionExit" aria-label="Zamknij sesję">✕</button>
+          <div class="session-timer" id="sessionTimer">5:00</div>
+          <div class="session-progress" id="sessionProgress">1/1</div>
+        </div>
+        <div id="sessionBody"></div>
+      </section>
+
+      <section data-screen="ustawienia">
+        <h2>USTAWIENIA</h2>
+
+        <div class="card">
+          <h3>Wariant angielskiego</h3>
+          <div class="track-switch" id="settingVariant">
+            <button data-value="uk">UK</button>
+            <button data-value="us">US</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Domyślna długość sesji</h3>
+          <div class="track-switch" id="settingSessionLength">
+            <button data-value="5">5 MIN</button>
+            <button data-value="10">10 MIN</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Domyślny tor</h3>
+          <div class="track-switch" id="settingTrackMix">
+            <button data-value="T">TECH</button>
+            <button data-value="MIX">MIX</button>
+            <button data-value="D">CODZIENNY</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>L1 fade (polski w interfejsie)</h3>
+          <div class="track-switch" id="settingL1">
+            <button data-value="auto">Auto (wg poziomu)</button>
+            <button data-value="full">Zawsze PL</button>
+            <button data-value="en">Zawsze EN</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Dzienny limit nowych zwrotów</h3>
+          <div class="track-switch" id="settingNewPerDay">
+            <button data-value="3">3</button>
+            <button data-value="5">5</button>
+            <button data-value="8">8</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Kopia zapasowa postępu</h3>
+          <div style="display:flex; gap:8px; margin-bottom:10px;">
+            <button class="btn" id="exportBtn">Eksportuj JSON</button>
+            <button class="btn" id="importBtn">Importuj JSON</button>
+            <button class="btn btn-ghost" id="resetBtn">Reset</button>
+          </div>
+          <textarea id="stateArea" rows="8" style="width:100%; background:var(--bg); color:var(--white); border:1px solid var(--line); border-radius:8px; padding:8px; font-family:monospace; font-size:11px;"></textarea>
+        </div>
+      </section>
+
+    </main>
+
+    <nav class="bottom-nav" id="bottomNav">
+      <button class="nav-item active" data-nav="baza"><span class="icon-box" id="navIcon-baza"></span>BAZA</button>
+      <button class="nav-item" data-nav="stoisko"><span class="icon-box" id="navIcon-stoisko"></span>STOISKO</button>
+      <button class="nav-item" data-nav="kurs"><span class="icon-box" id="navIcon-kurs"></span>55H</button>
+      <button class="nav-item" data-nav="czerwone"><span class="icon-box" id="navIcon-czerwone"></span>CZERWONE</button>
+      <button class="nav-item" data-nav="biblioteka"><span class="icon-box" id="navIcon-biblioteka"></span>BIBLIOTEKA</button>
+    </nav>
+  </div>
+
+  <script src="vendor/ts-fsrs.umd.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

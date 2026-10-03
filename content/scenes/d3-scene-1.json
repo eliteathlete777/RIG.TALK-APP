@@ -1,0 +1,18 @@
+{
+  "id": "d3-scene-1",
+  "track": "D",
+  "module": "D3",
+  "title": "W sklepie",
+  "lines": [
+    { "who": "other", "en": "Hi, can I help you?", "pl": "Cześć, mogę pomóc?" },
+    { "who": "me", "en": "Hi, do you have this in black?", "pl": "Cześć, macie to w czarnym kolorze?" },
+    { "who": "other", "en": "Let me check. Yes, we do.", "pl": "Sprawdzę. Tak, mamy." },
+    { "who": "me", "en": "Great, can I try it on?", "pl": "Super, mogę przymierzyć?" },
+    { "who": "other", "en": "Sure, the fitting room is over there.", "pl": "Jasne, przymierzalnia jest tam." },
+    { "who": "me", "en": "I'll take it.", "pl": "Biorę to." },
+    { "who": "other", "en": "Card or cash?", "pl": "Karta czy gotówka?" },
+    { "who": "me", "en": "Card, please.", "pl": "Kartą, proszę." },
+    { "who": "other", "en": "Do you need a bag?", "pl": "Potrzebujesz reklamówki?" },
+    { "who": "me", "en": "No, I'm good, thanks.", "pl": "Nie, dziękuję." }
+  ]
+}

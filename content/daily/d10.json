@@ -1,0 +1,446 @@
+[
+  {
+    "id": "d10u1-01",
+    "track": "D",
+    "module": "D10",
+    "unit": 1,
+    "type": "SAY",
+    "en": "Sorry!",
+    "pl": "Przepraszam!",
+    "hint_pl": "Krótkie, natychmiastowe przeprosiny.",
+    "variants": {
+      "alt": [
+        "My bad."
+      ]
+    },
+    "register": "casual",
+    "red": true,
+    "tags": [
+      "apology",
+      "short"
+    ]
+  },
+  {
+    "id": "d10u1-02",
+    "track": "D",
+    "module": "D10",
+    "unit": 1,
+    "type": "SAY",
+    "en": "I'm so sorry.",
+    "pl": "Bardzo przepraszam.",
+    "hint_pl": "Mocniejsza forma przeprosin.",
+    "variants": {
+      "alt": []
+    },
+    "register": "polite",
+    "red": true,
+    "tags": [
+      "apology"
+    ]
+  },
+  {
+    "id": "d10u1-03",
+    "track": "D",
+    "module": "D10",
+    "unit": 1,
+    "type": "SAY",
+    "en": "Excuse me, can you help me?",
+    "pl": "Przepraszam, może mi Pan pomóc?",
+    "hint_pl": "Grzeczne zaczepienie kogoś obcego o pomoc.",
+    "variants": {
+      "alt": []
+    },
+    "register": "polite",
+    "red": true,
+    "tags": [
+      "help"
+    ]
+  },
+  {
+    "id": "d10u1-04",
+    "track": "D",
+    "module": "D10",
+    "unit": 1,
+    "type": "SAY",
+    "en": "I don't understand.",
+    "pl": "Nie rozumiem.",
+    "hint_pl": "Podstawowe zdanie, gdy coś Ci umyka.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": true,
+    "tags": [
+      "understanding"
+    ]
+  },
+  {
+    "id": "d10u1-05",
+    "track": "D",
+    "module": "D10",
+    "unit": 1,
+    "type": "SAY",
+    "en": "Can you say that again, please?",
+    "pl": "Może Pan to powtórzyć?",
+    "hint_pl": "Prośba o powtórzenie.",
+    "variants": {
+      "alt": []
+    },
+    "register": "polite",
+    "red": true,
+    "tags": [
+      "understanding"
+    ]
+  },
+  {
+    "id": "d10u1-06",
+    "track": "D",
+    "module": "D10",
+    "unit": 1,
+    "type": "SAY",
+    "en": "Can you speak slowly, please?",
+    "pl": "Może Pan mówić wolniej?",
+    "hint_pl": "Prośba o wolniejsze tempo mowy.",
+    "variants": {
+      "alt": []
+    },
+    "register": "polite",
+    "red": true,
+    "tags": [
+      "understanding"
+    ]
+  },
+  {
+    "id": "d10u1-07",
+    "track": "D",
+    "module": "D10",
+    "unit": 1,
+    "type": "SAY",
+    "en": "What does that mean?",
+    "pl": "Co to znaczy?",
+    "hint_pl": "Pytanie o znaczenie słowa lub zwrotu.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": true,
+    "tags": [
+      "understanding"
+    ]
+  },
+  {
+    "id": "d10u1-08",
+    "track": "D",
+    "module": "D10",
+    "unit": 1,
+    "type": "SAY",
+    "en": "How do you say this in English?",
+    "pl": "Jak to się mówi po angielsku?",
+    "hint_pl": "Gdy szukasz brakującego słowa.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": true,
+    "tags": [
+      "understanding"
+    ]
+  },
+  {
+    "id": "d10u1-09",
+    "track": "D",
+    "module": "D10",
+    "unit": 1,
+    "type": "SAY",
+    "en": "Can you write it down, please?",
+    "pl": "Może Pan to zapisać?",
+    "hint_pl": "Poproś o zapis, gdy słowo jest trudne do usłyszenia.",
+    "variants": {
+      "alt": []
+    },
+    "register": "polite",
+    "red": true,
+    "tags": [
+      "understanding"
+    ]
+  },
+  {
+    "id": "d10u1-10",
+    "track": "D",
+    "module": "D10",
+    "unit": 1,
+    "type": "HEAR",
+    "en": "Are you okay?",
+    "pl": "Wszystko w porządku?",
+    "reply": "Yes, I'm fine, thanks.",
+    "hint_pl": "Ktoś pyta, czy nic Ci nie jest.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": false,
+    "tags": [
+      "understanding"
+    ]
+  },
+  {
+    "id": "d10u1-11",
+    "track": "D",
+    "module": "D10",
+    "unit": 1,
+    "type": "HEAR",
+    "en": "Don't worry about it.",
+    "pl": "Nie martw się tym.",
+    "reply": "Thanks, that's kind of you.",
+    "hint_pl": "Ktoś uspokaja Cię po drobnym błędzie.",
+    "variants": {
+      "alt": []
+    },
+    "register": "casual",
+    "red": false,
+    "tags": [
+      "understanding"
+    ]
+  },
+  {
+    "id": "d10u2-01",
+    "track": "D",
+    "module": "D10",
+    "unit": 2,
+    "type": "SAY",
+    "en": "I need a doctor.",
+    "pl": "Potrzebuję lekarza.",
+    "hint_pl": "Pilna prośba w razie problemu zdrowotnego.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": true,
+    "tags": [
+      "health"
+    ]
+  },
+  {
+    "id": "d10u2-02",
+    "track": "D",
+    "module": "D10",
+    "unit": 2,
+    "type": "SAY",
+    "en": "Call an ambulance!",
+    "pl": "Wezwij karetkę!",
+    "hint_pl": "Zwrot alarmowy w nagłej sytuacji.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": true,
+    "tags": [
+      "health",
+      "emergency"
+    ]
+  },
+  {
+    "id": "d10u2-03",
+    "track": "D",
+    "module": "D10",
+    "unit": 2,
+    "type": "SAY",
+    "en": "I feel sick.",
+    "pl": "Źle się czuję.",
+    "hint_pl": "Zgłoszenie złego samopoczucia.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": true,
+    "tags": [
+      "health"
+    ]
+  },
+  {
+    "id": "d10u2-04",
+    "track": "D",
+    "module": "D10",
+    "unit": 2,
+    "type": "SAY",
+    "en": "I have a headache.",
+    "pl": "Boli mnie głowa.",
+    "hint_pl": "Konkretny opis dolegliwości.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": true,
+    "tags": [
+      "health"
+    ]
+  },
+  {
+    "id": "d10u2-05",
+    "track": "D",
+    "module": "D10",
+    "unit": 2,
+    "type": "SAY",
+    "en": "Where is the pharmacy?",
+    "pl": "Gdzie jest apteka?",
+    "hint_pl": "Pytanie o najbliższą aptekę.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": true,
+    "tags": [
+      "health"
+    ]
+  },
+  {
+    "id": "d10u2-06",
+    "track": "D",
+    "module": "D10",
+    "unit": 2,
+    "type": "SAY",
+    "en": "Help!",
+    "pl": "Pomocy!",
+    "hint_pl": "Najkrótszy możliwy alarm.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": true,
+    "tags": [
+      "emergency",
+      "short"
+    ]
+  },
+  {
+    "id": "d10u2-07",
+    "track": "D",
+    "module": "D10",
+    "unit": 2,
+    "type": "HEAR",
+    "en": "Take this twice a day.",
+    "pl": "Bierz to dwa razy dziennie.",
+    "reply": "Okay, twice a day, got it.",
+    "hint_pl": "Instrukcja od farmaceuty lub lekarza.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": false,
+    "tags": [
+      "health"
+    ]
+  },
+  {
+    "id": "d10u3-01",
+    "track": "D",
+    "module": "D10",
+    "unit": 3,
+    "type": "SAY",
+    "en": "That's not what I ordered.",
+    "pl": "To nie to, co zamówiłem.",
+    "hint_pl": "Zgłoszenie pomyłki w restauracji lub sklepie.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": true,
+    "tags": [
+      "mistake"
+    ]
+  },
+  {
+    "id": "d10u3-02",
+    "track": "D",
+    "module": "D10",
+    "unit": 3,
+    "type": "SAY",
+    "en": "I think there's a mistake.",
+    "pl": "Chyba jest jakaś pomyłka.",
+    "hint_pl": "Uprzejme zgłoszenie błędu, np. na rachunku.",
+    "variants": {
+      "alt": []
+    },
+    "register": "polite",
+    "red": true,
+    "tags": [
+      "mistake"
+    ]
+  },
+  {
+    "id": "d10u3-03",
+    "track": "D",
+    "module": "D10",
+    "unit": 3,
+    "type": "SAY",
+    "en": "Never mind.",
+    "pl": "Nieważne.",
+    "hint_pl": "Zamykasz temat, żeby nie robić problemu.",
+    "variants": {
+      "alt": []
+    },
+    "register": "casual",
+    "red": false,
+    "tags": [
+      "mistake",
+      "short"
+    ]
+  },
+  {
+    "id": "d10u3-04",
+    "track": "D",
+    "module": "D10",
+    "unit": 3,
+    "type": "SAY",
+    "en": "I lost my phone.",
+    "pl": "Zgubiłem telefon.",
+    "hint_pl": "Zgłoszenie zguby.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": false,
+    "tags": [
+      "mistake"
+    ]
+  },
+  {
+    "id": "d10u3-05",
+    "track": "D",
+    "module": "D10",
+    "unit": 3,
+    "type": "HEAR",
+    "en": "What happened?",
+    "pl": "Co się stało?",
+    "reply": "I think there's a mistake.",
+    "hint_pl": "Pytanie po zauważeniu problemu.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": false,
+    "tags": [
+      "mistake",
+      "short"
+    ]
+  },
+  {
+    "id": "d10u3-06",
+    "track": "D",
+    "module": "D10",
+    "unit": 3,
+    "type": "HEAR",
+    "en": "No harm done.",
+    "pl": "Nic się nie stało.",
+    "reply": "Thanks for understanding.",
+    "hint_pl": "Ktoś macha ręką na drobny błąd.",
+    "variants": {
+      "alt": []
+    },
+    "register": "casual",
+    "red": false,
+    "tags": [
+      "mistake"
+    ]
+  }
+]

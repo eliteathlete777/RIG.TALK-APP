@@ -1,0 +1,23 @@
+{
+  "files": {
+    "T7": "tech/t7.json",
+    "T0": "tech/t0.json",
+    "T1": "tech/t1.json",
+    "T2": "tech/t2.json",
+    "T3": "tech/t3.json",
+    "T4": "tech/t4.json",
+    "T5": "tech/t5.json",
+    "T6": "tech/t6.json",
+    "D1": "daily/d1.json",
+    "D2": "daily/d2.json",
+    "D3": "daily/d3.json",
+    "D4": "daily/d4.json",
+    "D5": "daily/d5.json",
+    "D6": "daily/d6.json",
+    "D7": "daily/d7.json",
+    "D8": "daily/d8.json",
+    "D9": "daily/d9.json",
+    "D10": "daily/d10.json",
+    "T9": "tech/t9.json"
+  }
+}

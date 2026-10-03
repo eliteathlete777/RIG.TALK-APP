@@ -1,0 +1,331 @@
+[
+  {
+    "id": "t9u1-01",
+    "track": "T",
+    "module": "T9",
+    "unit": 1,
+    "type": "SAY",
+    "en": "One moment, please.",
+    "pl": "Chwileczkę.",
+    "hint_pl": "Uniwersalne zdanie na start, gdy potrzebujesz czasu.",
+    "variants": {
+      "alt": []
+    },
+    "register": "polite",
+    "red": true,
+    "tags": [
+      "work",
+      "time"
+    ]
+  },
+  {
+    "id": "t9u1-02",
+    "track": "T",
+    "module": "T9",
+    "unit": 1,
+    "type": "SAY",
+    "en": "Let me check.",
+    "pl": "Sprawdzę.",
+    "hint_pl": "Kupujesz czas, pokazujesz działanie.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": true,
+    "tags": [
+      "work",
+      "time"
+    ]
+  },
+  {
+    "id": "t9u1-03",
+    "track": "T",
+    "module": "T9",
+    "unit": 1,
+    "type": "SAY",
+    "en": "Let me call my colleague.",
+    "pl": "Zadzwonię do kolegi.",
+    "hint_pl": "Delegowanie problemu, gdy sam nie wiesz.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": true,
+    "tags": [
+      "work",
+      "help"
+    ]
+  },
+  {
+    "id": "t9u1-04",
+    "track": "T",
+    "module": "T9",
+    "unit": 1,
+    "type": "SAY",
+    "en": "I'll get back to you.",
+    "pl": "Wrócę do tego tematu.",
+    "hint_pl": "Obietnica kontaktu bez podawania od razu odpowiedzi.",
+    "variants": {
+      "alt": []
+    },
+    "register": "polite",
+    "red": true,
+    "tags": [
+      "work",
+      "time"
+    ]
+  },
+  {
+    "id": "t9u1-05",
+    "track": "T",
+    "module": "T9",
+    "unit": 1,
+    "type": "SAY",
+    "en": "Can you show me?",
+    "pl": "Może mi Pan pokazać?",
+    "hint_pl": "Prośba o pokazanie problemu zamiast opisu słownego.",
+    "variants": {
+      "alt": []
+    },
+    "register": "polite",
+    "red": true,
+    "tags": [
+      "work",
+      "help"
+    ]
+  },
+  {
+    "id": "t9u2-01",
+    "track": "T",
+    "module": "T9",
+    "unit": 2,
+    "type": "SAY",
+    "en": "Please write your email here.",
+    "pl": "Proszę wpisać tu maila.",
+    "hint_pl": "Do pokazania ekranem klientowi (karta w ściądze).",
+    "variants": {
+      "alt": []
+    },
+    "register": "polite",
+    "red": true,
+    "tags": [
+      "work",
+      "contact",
+      "show-client"
+    ]
+  },
+  {
+    "id": "t9u2-02",
+    "track": "T",
+    "module": "T9",
+    "unit": 2,
+    "type": "SAY",
+    "en": "Send me an email, please.",
+    "pl": "Proszę wysłać maila.",
+    "hint_pl": "Prośba o kontakt na piśmie.",
+    "variants": {
+      "alt": []
+    },
+    "register": "polite",
+    "red": true,
+    "tags": [
+      "work",
+      "contact"
+    ]
+  },
+  {
+    "id": "t9u2-03",
+    "track": "T",
+    "module": "T9",
+    "unit": 2,
+    "type": "SAY",
+    "en": "Is this okay for you?",
+    "pl": "Czy to Panu odpowiada?",
+    "hint_pl": "Sprawdzenie akceptacji propozycji.",
+    "variants": {
+      "alt": []
+    },
+    "register": "polite",
+    "red": true,
+    "tags": [
+      "work",
+      "client"
+    ]
+  },
+  {
+    "id": "t9u2-04",
+    "track": "T",
+    "module": "T9",
+    "unit": 2,
+    "type": "SAY",
+    "en": "We'll fix it.",
+    "pl": "Naprawimy to.",
+    "hint_pl": "Krótka, pewna obietnica naprawy.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": true,
+    "tags": [
+      "work",
+      "fix"
+    ]
+  },
+  {
+    "id": "t9u2-05",
+    "track": "T",
+    "module": "T9",
+    "unit": 2,
+    "type": "SAY",
+    "en": "Give me five minutes.",
+    "pl": "Daj mi pięć minut.",
+    "hint_pl": "Konkretny, krótki czas na reakcję.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": true,
+    "tags": [
+      "work",
+      "time"
+    ]
+  },
+  {
+    "id": "t9u3-01",
+    "track": "T",
+    "module": "T9",
+    "unit": 3,
+    "type": "SAY",
+    "en": "It's safe.",
+    "pl": "Jest bezpiecznie.",
+    "hint_pl": "Krótkie zapewnienie o bezpieczeństwie.",
+    "variants": {
+      "alt": [
+        "It's not safe."
+      ]
+    },
+    "register": "neutral",
+    "red": true,
+    "tags": [
+      "work",
+      "safety",
+      "short"
+    ]
+  },
+  {
+    "id": "t9u3-02",
+    "track": "T",
+    "module": "T9",
+    "unit": 3,
+    "type": "SAY",
+    "en": "Stop!",
+    "pl": "Stop!",
+    "hint_pl": "Natychmiastowa komenda bezpieczeństwa.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": true,
+    "tags": [
+      "work",
+      "safety",
+      "short"
+    ]
+  },
+  {
+    "id": "t9u3-03",
+    "track": "T",
+    "module": "T9",
+    "unit": 3,
+    "type": "SAY",
+    "en": "Stand clear!",
+    "pl": "Odsunąć się!",
+    "hint_pl": "Komenda BHP przy podnoszeniu ładunku.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": true,
+    "tags": [
+      "work",
+      "safety",
+      "short"
+    ]
+  },
+  {
+    "id": "t9u3-04",
+    "track": "T",
+    "module": "T9",
+    "unit": 3,
+    "type": "SAY",
+    "en": "Where is the power?",
+    "pl": "Gdzie jest zasilanie?",
+    "hint_pl": "Pytanie na obiekcie, często pilne.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": true,
+    "tags": [
+      "work",
+      "power"
+    ]
+  },
+  {
+    "id": "t9u3-05",
+    "track": "T",
+    "module": "T9",
+    "unit": 3,
+    "type": "SAY",
+    "en": "Who is in charge here?",
+    "pl": "Kto tu odpowiada?",
+    "hint_pl": "Szukasz osoby decyzyjnej na miejscu.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": true,
+    "tags": [
+      "work",
+      "logistics"
+    ]
+  },
+  {
+    "id": "t9u3-06",
+    "track": "T",
+    "module": "T9",
+    "unit": 3,
+    "type": "SAY",
+    "en": "I'm the project manager.",
+    "pl": "Jestem kierownikiem projektu.",
+    "hint_pl": "Przedstawienie swojej roli decyzyjnej.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": true,
+    "tags": [
+      "work",
+      "logistics"
+    ]
+  },
+  {
+    "id": "t9u3-07",
+    "track": "T",
+    "module": "T9",
+    "unit": 3,
+    "type": "SAY",
+    "en": "Please sign here.",
+    "pl": "Proszę podpisać tutaj.",
+    "hint_pl": "Do pokazania ekranem przy odbiorze/potwierdzeniu.",
+    "variants": {
+      "alt": []
+    },
+    "register": "polite",
+    "red": true,
+    "tags": [
+      "work",
+      "show-client"
+    ]
+  }
+]

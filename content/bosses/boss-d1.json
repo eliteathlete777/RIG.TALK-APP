@@ -1,0 +1,37 @@
+{
+  "id": "boss-d1",
+  "track": "D",
+  "module": "D1",
+  "name": "The Chatty Neighbour",
+  "intro_pl": "Zagaduje Cię i czeka na naturalne reakcje w rozmowie.",
+  "patience": 50,
+  "rounds": [
+    {
+      "other_en": "Hi! How are you doing?",
+      "other_pl": "Cześć! Jak leci?",
+      "answers": [
+        { "en": "Good, thanks. You?", "effect": -20, "best": true, "why_pl": "Naturalna, żywa odpowiedź — dokładnie tego się oczekuje." },
+        { "en": "I am fine, thank you, and you?", "effect": 10, "why_pl": "Poprawnie, ale brzmi sztywno jak z podręcznika." },
+        { "en": "…", "effect": 25, "why_pl": "Brak odpowiedzi — niezręczna cisza." }
+      ]
+    },
+    {
+      "other_en": "I just got some great news!",
+      "other_pl": "Właśnie dostałem świetne wieści!",
+      "answers": [
+        { "en": "No way! That's great!", "effect": -20, "best": true, "why_pl": "Żywa reakcja pasuje do entuzjazmu rozmówcy." },
+        { "en": "Okay.", "effect": 20, "why_pl": "Zbyt oschle jak na taką wiadomość." },
+        { "en": "That's too bad.", "effect": 25, "why_pl": "Zła reakcja — to dobra wiadomość, nie zła!" }
+      ]
+    },
+    {
+      "other_en": "Anyway, nice talking to you!",
+      "other_pl": "W każdym razie, miło było pogadać!",
+      "answers": [
+        { "en": "You too! See you later!", "effect": -15, "best": true, "why_pl": "Ciepłe, naturalne zakończenie rozmowy." },
+        { "en": "Sorry, what's your name again?", "effect": -5, "why_pl": "OK, ale trochę nie na temat w tym momencie." },
+        { "en": "Bye.", "effect": 10, "why_pl": "Bardzo oschłe zakończenie." }
+      ]
+    }
+  ]
+}

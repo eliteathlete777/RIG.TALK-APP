@@ -1,0 +1,97 @@
+{
+  "name": "RIG TALK: AI Check",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "rig-talk-check",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "id": "webhook-node",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [200, 300],
+      "webhookId": "rig-talk-check"
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $input.item.json.body || $input.item.json;\nconst task_pl = body.task_pl || '';\nconst context = body.context || '';\nconst expected_intent = body.expected_intent || '';\nconst user_text = (body.user_text || '').slice(0, 500);\nconst level = body.level || 1;\n\nconst system = `You are a friendly English coach for a Polish A1-A2 event-tech project manager (LED screens, rigging, trade fair stands). Judge whether the learner's message would work in a real conversation with a client at a trade fair. Be strict on meaning (does it actually answer the task?), lenient on grammar (small mistakes are fine if understandable). Reply with ONLY a single JSON object, no markdown, no code fences, matching exactly this shape: {\\\"ok\\\":true,\\\"score\\\":0-100,\\\"corrected\\\":\\\"the learner's sentence, lightly corrected\\\",\\\"natural\\\":\\\"how a native speaker would naturally say it in this situation\\\",\\\"tip_pl\\\":\\\"one short tip in Polish\\\",\\\"new_chunk\\\":\\\"optional: one extra useful short phrase for this situation, or empty string\\\"}. Never include anything outside the JSON object.`;\n\nconst userMessage = `Task (in Polish, what the learner was asked to do): ${task_pl}\\nContext: ${context}\\nExpected intent: ${expected_intent}\\nLearner level: A${level <= 5 ? '1' : '2'}\\nLearner's message: \"${user_text}\"`;\n\nreturn [{ json: { system, userMessage, task_pl, user_text } }];"
+      },
+      "id": "build-prompt",
+      "name": "Build prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [420, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "anthropic-version", "value": "2023-06-01" },
+            { "name": "content-type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { \"model\": \"claude-haiku-4-5-20251001\", \"max_tokens\": 400, \"system\": $json.system, \"messages\": [ { \"role\": \"user\", \"content\": $json.userMessage } ] } }}",
+        "options": {}
+      },
+      "id": "call-claude",
+      "name": "Call Claude Haiku",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [640, 300],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "PASTE_YOUR_CREDENTIAL_ID_HERE",
+          "name": "Anthropic API key (x-api-key header)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "let out;\ntry {\n  const text = $input.item.json.content?.[0]?.text || '{}';\n  const cleaned = text.trim().replace(/^```json\\n?/, '').replace(/```$/, '');\n  const parsed = JSON.parse(cleaned);\n  out = {\n    ok: true,\n    score: Math.max(0, Math.min(100, Number(parsed.score) || 0)),\n    corrected: String(parsed.corrected || ''),\n    natural: String(parsed.natural || ''),\n    tip_pl: String(parsed.tip_pl || ''),\n    new_chunk: parsed.new_chunk ? String(parsed.new_chunk) : undefined,\n  };\n} catch (e) {\n  out = { ok: false, score: 0, corrected: '', natural: '', tip_pl: 'Błąd po stronie AI, spróbuj ponownie.' };\n}\nreturn [{ json: out }];"
+      },
+      "id": "parse-response",
+      "name": "Parse Claude response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [860, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              { "name": "Access-Control-Allow-Origin", "value": "*" }
+            ]
+          }
+        }
+      },
+      "id": "respond",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1080, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": { "main": [[{ "node": "Build prompt", "type": "main", "index": 0 }]] },
+    "Build prompt": { "main": [[{ "node": "Call Claude Haiku", "type": "main", "index": 0 }]] },
+    "Call Claude Haiku": { "main": [[{ "node": "Parse Claude response", "type": "main", "index": 0 }]] },
+    "Parse Claude response": { "main": [[{ "node": "Respond to Webhook", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" }
+}

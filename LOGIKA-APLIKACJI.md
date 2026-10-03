@@ -1,0 +1,282 @@
+# RIG TALK — logika aplikacji
+
+> Ten dokument wyjaśnia sens produktu, zależności między elementami i powody decyzji. Nie jest listą plików ani changelogiem. Po każdej zmianie wpływającej na zachowanie aplikacji, dane, naukę lub nawigację należy zaktualizować odpowiednią sekcję oraz rejestr decyzji na końcu.
+
+## 1. Po co istnieje aplikacja
+
+RIG TALK nie jest ogólnym kursem angielskiego. To narzędzie operacyjne dla Damiana, który technicznie potrafi samodzielnie zbudować stoisko i ekran LED, ale musi przeprowadzić realizację po angielsku: wejść na halę, ustalić warunki z klientem, kierować anglojęzycznym stagehandem, rozwiązać problemy i przekazać instalację.
+
+Najważniejszy rezultat brzmi: **realizacja ma zostać bezpiecznie i poprawnie wykonana mimo ograniczonego angielskiego**. Poprawność gramatyczna jest podporządkowana zrozumiałości, kontroli sytuacji i bezpieczeństwu.
+
+Z tego wynikają cztery zasady nadrzędne:
+
+1. Uczymy gotowych zwrotów, które można powiedzieć bez konstruowania zdania.
+2. Najpierw TECH i konkretna misja, dopiero później angielski codzienny.
+3. Użytkownik ma mówić na głos i podejmować decyzje, nie tylko czytać.
+4. Aplikacja ma pozostać użyteczna offline jako trening i ściąga na obiekcie.
+
+## 2. Aktualny kontekst operacyjny
+
+- Wylot: 6 października 2026, godz. 06:00.
+- Misja: pierwsze samodzielne stoisko, transparentny LED zawieszany na belkach.
+- Zakres: przyjazd, rozpoznanie, ustalenia z klientem, koordynacja stagehanda, montaż, zasilanie i sygnał, opinanie, procesory, test na własnym komputerze oraz przekazanie klientowi.
+- Ograniczenie: bardzo mało czasu na naukę, dlatego domyślnym widokiem kursu jest obecnie `PLAN 55H`, a nie pełny program.
+
+Termin w planie 55H jest celowo zapisany w danych (`content/bootcamp.json`), a licznik w interfejsie oblicza pozostały czas. Dzięki temu presja czasu jest widoczna, ale harmonogram i materiał można zmienić bez przebudowy kodu.
+
+## 3. Model produktu: dwie warstwy
+
+### 3.1 Warstwa operacyjna
+
+Ekran **STOISKO** odwzorowuje faktyczny przebieg pracy w dziesięciu etapach. To źródło odpowiedzi na pytanie: „Co robię teraz na miejscu?”. Każdy etap łączy:
+
+- cel operacyjny;
+- osobne zwroty do klienta, stagehanda i obsługi hali;
+- rzeczy, które użytkownik może usłyszeć;
+- checklistę wykonania;
+- słownictwo techniczne;
+- trening tylko tego etapu.
+
+Checklista nie mierzy znajomości angielskiego. Mierzy wykonanie pracy. Pozwala używać aplikacji podczas realizacji, a nie tylko przed nią.
+
+### 3.2 Warstwa treningowa
+
+Ekran **55H / KURS** odpowiada na pytanie: „Czego mam się nauczyć teraz?”. Obecnie ma dwa tryby:
+
+- `PLAN 55H` — krótka, liniowa ścieżka przed najbliższym wylotem;
+- `PEŁNY KURS` — cały materiał TECH i CODZIENNY, przeznaczony do długofalowej nauki.
+
+Rozdzielenie tych warstw jest celowe. Przebieg pracy na stoisku jest stały, ale plan nauki zmienia się zależnie od czasu i najbliższej misji.
+
+## 4. Logika planu 55H
+
+Plan 55H redukuje bazę 536 zwrotów do 59 unikalnych zwrotów o największej wartości operacyjnej. Materiał jest podzielony na dziewięć bloków:
+
+1. Koło ratunkowe — odzyskanie kontroli, gdy użytkownik nie rozumie.
+2. Pierwsze 10 minut z klientem — kontakt, osoba decyzyjna, plan i zmiany.
+3. Ekran, belki i liczby — pozycja, wysokość, obciążenie i odpowiedzialność.
+4. Stagehand — krótkie komendy montażowe i bezpieczeństwo.
+5. Prąd i sygnał — elektryk, połączenia, kierunek danych i zakaz włączania.
+6. Wykończenie i test — wygląd instalacji, usterka, korekta i zapis konfiguracji.
+7. Przekazanie klientowi — laptop, HDMI, Extend, pełny ekran i zakaz zmian procesora.
+8. Próba całej realizacji — rozumienie problemów oraz symulacja od początku do końca.
+9. Ostatnie 15 minut — powtórka bez nowego materiału przed wyjazdem.
+
+Kolejność wynika z ryzyka, nie z gramatyki. Najpierw użytkownik uczy się zatrzymać i uprościć rozmowę. Następnie zabezpiecza ustalenia, bezpieczeństwo oraz komendy. Dopiero później dochodzi programowanie i przekazanie.
+
+### Status bloku
+
+Blok jest uznawany za uruchomiony, gdy wszystkie jego zwroty istnieją już w stanie kart SRS użytkownika. Pierwszy nieukończony blok jest automatycznie oznaczony jako aktywny. Nie przechowujemy drugiego, ręcznego systemu zaliczeń, ponieważ prowadziłby do sprzeczności między kursem i rzeczywistymi kartami.
+
+### Trening bloku
+
+Przycisk „Ćwicz teraz” wywołuje `startFocusedSession(ids)`. Sesja skupiona:
+
+- korzysta wyłącznie z identyfikatorów wskazanego bloku;
+- najpierw pokazuje zaległe karty, potem nowe, a na końcu pozostałe;
+- nie stosuje dziennego limitu nowych zwrotów;
+- nie dodaje ogólnej misji niezwiązanej z blokiem;
+- po zakończeniu wraca do ekranu źródłowego.
+
+To odstępstwo od zwykłego SRS jest świadome: krótki termin wymaga uczenia sytuacyjnego, a nie idealnego rozłożenia materiału w czasie.
+
+## 5. Logika językowa
+
+### 5.1 Jednostką jest zwrot
+
+Każdy zwrot ma reprezentować jedną intencję: zapytać, potwierdzić, wydać komendę, nazwać problem albo zakończyć etap. Użytkownik A1 nie powinien budować wypowiedzi z reguł gramatycznych podczas pracy.
+
+### 5.2 Naturalność
+
+„Naturalnie” nie oznacza używania idiomów native speakera. Na międzynarodowych targach naturalne jest mówienie krótko i jasno. Dlatego preferujemy:
+
+- „One moment.” zamiast rozbudowanych przeprosin;
+- „Can we go through the plan?” zamiast formalnego języka biznesowego;
+- „Hold it there. Don't move.” zamiast długiego opisu czynności;
+- status + działanie: „One panel is dark. I'll check it.”;
+- potwierdzanie liczb: „So, three metres?”.
+
+Tekst ma brzmieć jak realna mowa na hali, ale pozostać zrozumiały dla osób, dla których angielski także nie jest językiem ojczystym.
+
+### 5.3 SAY i HEAR
+
+- `SAY` — użytkownik musi umieć samodzielnie wypowiedzieć zwrot.
+- `HEAR` — użytkownik ma rozpoznać znaczenie wypowiedzi drugiej osoby i znać krótką odpowiedź `reply`.
+
+Rozróżnienie jest konieczne, ponieważ repertuar rozumiany jest szerszy od repertuaru aktywnie używanego. Nie każemy użytkownikowi produkować wszystkich zdań, które może usłyszeć.
+
+### 5.4 Ocena wymowy
+
+Rozpoznawanie mowy porównuje transkrypcję z oczekiwanym zwrotem po normalizacji kontrakcji, wielkości liter i interpunkcji. Wynik mapuje się na:
+
+- co najmniej 85% — Umiem;
+- 60–84% — Trudne;
+- poniżej 60% — Nie wiem.
+
+To ocena zrozumiałości, nie akcentu. Użytkownik zawsze może ocenić się ręcznie, ponieważ Web Speech API nie jest niezawodne i może być niedostępne offline.
+
+## 6. Nawigacja i sens ekranów
+
+### BAZA
+
+Centrum postępu: poziom, XP, misje, wybór długości codziennej sesji oraz wejście do misji stoiskowej. To ekran powrotu po zwykłym treningu.
+
+### STOISKO
+
+Instrukcja operacyjna i ściąga podczas montażu. Układ etapów jest ważniejszy niż kolejność nauki. Zwrot można odsłuchać, pokazać rozmówcy w dużym rozmiarze albo dodać do ulubionych.
+
+### 55H
+
+Domyślny plan szkolenia przed obecnym wylotem. Nazwa w dolnej nawigacji ma świadomie przypominać o ograniczonym czasie. Wewnątrz można przełączyć się na pełny kurs.
+
+### CZERWONE
+
+Tryb ratunkowy. Zawiera krótkie komunikaty potrzebne wtedy, gdy rozmowa lub realizacja zaczyna się sypać. To nie jest „kolejny moduł”, tylko szybki dostęp bez szukania.
+
+### BIBLIOTEKA
+
+Pełny katalog zwrotów, ulubione i słownik. Biblioteka służy do wyszukiwania oraz organizowania materiału, a nie do prowadzenia użytkownika przez kurs.
+
+## 7. Ulubione i fiszki
+
+Ulubione korzystają z istniejącej tablicy `state.starred`. Nie ma osobnego pola `favorites`, ponieważ dwa systemy zaznaczeń szybko przestałyby się zgadzać.
+
+Dodanie ★ w Bibliotece, Stoisku lub Czerwonych natychmiast wpływa na:
+
+- talię „Ulubione”;
+- „Moją ściągę” w Czerwonych;
+- priorytet kart w zwykłych powtórkach.
+
+Ulubione mają dwa zapamiętywane tryby:
+
+- **Lista** — szybki przegląd EN/PL, odsłuch oraz usuwanie pojedynczych zwrotów;
+- **Fiszki** — jedna duża karta do aktywnego przypominania i obsługi gestami.
+
+Tryb fiszek jest liniowy:
+
+- dotknięcie karty przełącza angielski i polski;
+- przesunięcie w lewo albo „Następna” idzie dalej;
+- przesunięcie w prawo albo „Poprzednia” cofa;
+- na początku „Poprzednia” jest nieaktywna;
+- na końcu „Następna” jest nieaktywna;
+- talia nie zapętla się, ponieważ użytkownik musi widzieć, że doszedł do końca.
+
+Usunięcie zwrotu w którymkolwiek trybie usuwa jego identyfikator z `state.starred`. Nie usuwa samego zwrotu z kursu ani historii SRS — znika tylko z ulubionych, ściągi i priorytetu gwiazdki.
+
+## 8. Dane i źródła prawdy
+
+### Treść
+
+- `content/tech/*.json` — materiał techniczny.
+- `content/daily/*.json` — materiał codzienny.
+- `content/tech/t7.json` — zwroty konkretnej misji stoiskowej.
+- `content/stoisko.json` — etapy, cele, checklisty i terminy.
+- `content/bootcamp.json` — harmonogram oraz dobór zwrotów planu 55H.
+- `content/glossary.json` — słownik techniczny z uproszczoną wymową.
+
+Identyfikator zwrotu jest kluczem łączącym treść, SRS, ulubione, plan 55H i widoki. Zmiana ID istniejącego zwrotu może utracić powiązanie z zapisanym postępem użytkownika.
+
+### Stan użytkownika
+
+Stan jest przechowywany w `localStorage` pod kluczem `rigtalk.v1`. Obejmuje karty SRS, XP, sesje, ustawienia, ulubione, checklisty stoiska, bossów i stan interfejsu.
+
+`deepMerge` scala wyłącznie zwykłe obiekty. Tablice, daty i obiekty klas są zastępowane w całości. Ta zasada chroni daty kart FSRS przed zamianą na puste obiekty.
+
+### Migracje
+
+`schemaVersion` pozwala dodawać pola i zmieniać domyślne zachowanie bez kasowania postępu. Każda zmiana struktury trwałego stanu wymaga migracji oraz opisania jej w tym dokumencie.
+
+## 9. Sesje i SRS
+
+Zwykła sesja 5 lub 10 minut łączy:
+
+1. zaległe powtórki;
+2. ograniczoną liczbę nowych zwrotów;
+3. zadanie praktyczne;
+4. podsumowanie i nagrody.
+
+FSRS planuje kolejne powtórki, a ulubione mają pierwszeństwo w kolejce. Gdy zaległości przekroczą limit, nowe zwroty są blokowane. Logika chroni przed dokładaniem materiału, którego użytkownik nie utrzyma.
+
+Sesje planu 55H i etapów Stoiska są skupione. Mogą ominąć dzienny limit, ponieważ użytkownik świadomie wybiera konkretny materiał potrzebny do najbliższego zadania.
+
+## 10. Gamifikacja
+
+XP, poziomy, rangi riggerskie, misje i bossowie mają zwiększać regularność, ale nie mogą zasłaniać pracy. Nagrody są naliczane centralnie po zakończeniu sesji. Przerwanie sesji nie daje nagrody.
+
+W trybie 55H najważniejszy jest postęp zwrotów i kolejne bloki. Gamifikacja pozostaje w tle, ponieważ krótkoterminowy cel jest wystarczająco konkretny.
+
+## 11. Offline i service worker
+
+Aplikacja jest PWA i używa strategii cache-first dla własnych zasobów. Każda zmiana plików aplikacji lub treści wymaga:
+
+1. dodania nowego pliku do `PRECACHE_URLS`, jeśli jeszcze go tam nie ma;
+2. podbicia `CACHE_NAME` w `sw.js`;
+3. sprawdzenia, że service worker przejął nową wersję;
+4. przy wdrożeniu na Hostingerze — wyczyszczenia cache CDN.
+
+Webhook AI jest na obcym originie i zawsze korzysta z sieci. Klucz API nigdy nie trafia do frontendu.
+
+### Instalacja na telefonie
+
+PWA korzysta z `manifest.webmanifest`, trybu `standalone` oraz ikon 192 i 512 px. Ikona ma czarne tło i dwie masywne linie tekstu: białe `RIG` oraz czerwone `TALK`. Celowo nie zawiera dodatkowego symbolu — nazwa ma pozostać jednoznaczna i czytelna w małym rozmiarze na ekranie telefonu. Wersja 180 px jest używana przez `apple-touch-icon` na iOS.
+
+Publiczny `start_url` i `scope` pozostają względne, dopóki nie zostanie potwierdzony docelowy adres domeny i podfolder. Dzięki temu lokalny podgląd działa bez dodatkowej konfiguracji, a aplikacja może zostać przeniesiona jako komplet do wybranego katalogu hostingu.
+
+## 12. Zasady interfejsu
+
+- Obsługa jedną ręką i minimalny cel dotykowy 48 px.
+- Najważniejsza czynność na ekranie ma jeden czerwony przycisk.
+- Czerwień oznacza działanie lub element krytyczny, nie dekorację.
+- Tryb ciemny jest jedynym trybem, zgodnym z marką i warunkami pracy.
+- Tekst użytkownika jest wstawiany przez `textContent`, nie przez `innerHTML`.
+- Ruch służy pokazaniu reakcji na gest lub zmianę stanu; nie jest ozdobą.
+- Widok mobilny 375 px jest minimalnym punktem odbioru.
+
+## 13. Kryteria każdej przyszłej zmiany
+
+Zmiana jest zakończona dopiero wtedy, gdy:
+
+1. zachowanie jest zgodne z misją produktu;
+2. nowe dane przechodzą `node tools/validate.js`;
+3. JavaScript przechodzi kontrolę składni;
+4. najważniejszy przepływ został wykonany w przeglądarce;
+5. konsola nie zawiera błędów aplikacji;
+6. widok 375×812 nie ma poziomego scrolla;
+7. w razie zmiany zasobów podbito cache service workera;
+8. zaktualizowano `PROGRESS.md`;
+9. zaktualizowano ten plik, jeśli zmienił się sens, dane albo zależności.
+
+## 14. Jak aktualizować ten dokument
+
+Nie dopisujemy tu opisu każdej kosmetycznej poprawki. Aktualizacja jest obowiązkowa, gdy zmienia się:
+
+- cel lub priorytet produktu;
+- ekran, jego odpowiedzialność albo miejsce w nawigacji;
+- przepływ użytkownika;
+- schemat danych lub trwały stan;
+- algorytm nauki, oceny, kolejki lub nagród;
+- znaczenie ulubionych, checklist, trybów albo postępu;
+- logika offline, wdrożenia lub bezpieczeństwa;
+- powód istotnej decyzji projektowej.
+
+## 15. Rejestr decyzji
+
+### 2026-10-03 — jedna lista dla gwiazdek i ulubionych
+
+Wykorzystano `state.starred` zamiast tworzyć nowe `favorites`. Jedna decyzja użytkownika zasila talię ulubionych, ściągę i priorytet SRS.
+
+### 2026-10-03 — talia ulubionych jest liniowa
+
+Usunięto zapętlanie. Na pierwszej i ostatniej karcie odpowiedni przycisk jest nieaktywny. Powód: użytkownik musi rozumieć kierunek i widzieć zakończenie talii.
+
+### 2026-10-03 — ulubione mają listę i fiszki
+
+Lista służy do zarządzania zbiorem oraz szybkiego odsłuchu, a fiszki do aktywnego utrwalania pojedynczych zwrotów. Wybrany tryb jest zapisany w `ui.favoritesMode`, żeby aplikacja wracała do sposobu pracy wybranego przez użytkownika.
+
+### 2026-10-03 — plan 55H przed pełnym kursem
+
+Ze względu na wylot 06.10 o 06:00 pełny kurs został ukryty za drugim trybem. Domyślny plan obejmuje 59 zwrotów o największej wartości operacyjnej i dziewięć bloków zakończonych próbą całej realizacji.
+
+### 2026-10-03 — własna ikona instalacyjna PWA
+
+Dodano komplet ikon 180/192/512/1024 px. Ostateczny znak to `RIG` nad `TALK` na czarnym tle: prosty, jednoznaczny i czytelny w małym rozmiarze. Manifest używa ikon 192 i 512 jako `any maskable`, a iOS osobnej ikony 180 px.

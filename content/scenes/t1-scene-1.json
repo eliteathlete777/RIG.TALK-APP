@@ -1,0 +1,16 @@
+{
+  "id": "t1-scene-1",
+  "track": "T",
+  "module": "T1",
+  "title": "Pierwszy klient",
+  "lines": [
+    { "who": "other", "en": "Hi, what do you do here?", "pl": "Cześć, czym się tu zajmujecie?" },
+    { "who": "me", "en": "We make LED screens and rigging.", "pl": "Robimy ekrany LED i rigging.", "chunk": "t1u1-02" },
+    { "who": "other", "en": "Nice. Are you planning an event too?", "pl": "Fajnie. A czy Wy też planujecie eventy?" },
+    { "who": "me", "en": "No, we work with event organisers.", "pl": "Nie, współpracujemy z organizatorami eventów." },
+    { "who": "other", "en": "Okay, I'm actually organising a conference.", "pl": "Okej, właśnie organizuję konferencję." },
+    { "who": "me", "en": "When and where is your event?", "pl": "Kiedy i gdzie jest Wasz event?", "chunk": "t1u2-01" },
+    { "who": "other", "en": "In March, in Warsaw. About 300 guests.", "pl": "W marcu, w Warszawie. Około 300 osób." },
+    { "who": "me", "en": "Can I have your email? I'll send you an offer today.", "pl": "Mogę prosić o maila? Wyślę ofertę dzisiaj.", "chunk": "t1u4-01" }
+  ]
+}
