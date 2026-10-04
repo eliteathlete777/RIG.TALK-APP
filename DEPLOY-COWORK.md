@@ -23,6 +23,7 @@ Damian zlecił **aktualizację istniejącej wersji** RIG TALK w `public_html/rig
 - Pobierz: https://github.com/eliteathlete777/RIG.TALK-APP/archive/refs/heads/claude/dreamy-shannon-vzsoj4.zip i rozpakuj lokalnie (Windows: prawy klik → Wyodrębnij wszystko), albo `git pull origin claude/dreamy-shannon-vzsoj4` w `C:\Users\DELL\Documents\ChatGPT\RIG.TALK APP`.
 - Do wgrania TYLKO te elementy (z korzenia projektu): `index.html`, `manifest.webmanifest`, `sw.js`, foldery `assets/`, `css/`, `js/`, `content/`, `vendor/`.
 - NIE wgrywaj: `.git`, `docs/`, `tools/`, `n8n/`, `source-material/`, `*.md`, `*.zip`, `_hostinger_v20`, `*.png` z korzenia (podglądy), `node_modules`.
+- Gotowa paczka (zip zrobiony na Linuxie, poprawne foldery, pliki od korzenia, bez folderu nadrzędnego): `rig-talk-v32-hostinger.zip` w repo: https://github.com/eliteathlete777/RIG.TALK-APP/raw/refs/heads/claude/dreamy-shannon-vzsoj4/rig-talk-v32-hostinger.zip . Najprostsza droga: Upload tego zip do `public_html/rig-talk/` → Wyodrębnij tutaj → sprawdź drzewo folderów (pkt 4). Ten zip nie powstał w PowerShellu, więc pułapka ze `\` go nie dotyczy. Ale `sw.js` i tak sprawdź na końcu (data, `rigtalk-v32`).
 - Lista kontrolna: `docs/DEPLOY-SHA256.txt` (plików: 151, sha256).
 
 ## 2. Przed uploadem (kopia zapasowa)
