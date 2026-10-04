@@ -1,6 +1,10 @@
 {
  "groups": [
   [
+   "wlasne",
+   "Nasze schematy: układ 8 × 8"
+  ],
+  [
    "led",
    "Ekran LED i welon"
   ],
@@ -278,6 +282,60 @@
    "full": "assets/plany/power.jpg",
    "thumb": "assets/plany/th-power.jpg",
    "src": "materiały SQM"
+  },
+  {
+   "id": "uklad-sygnal-2",
+   "title": "Sygnał DATA: 2 kol. na linię",
+   "desc": "Wężyk góra–dół, 16 cabinetów na linię",
+   "tag": "wlasne",
+   "full": "assets/plany/uklad-sygnal-2.png",
+   "thumb": "assets/plany/th-uklad-sygnal-2.jpg",
+   "src": "wygenerowane w aplikacji (Układ ekranu)"
+  },
+  {
+   "id": "uklad-sygnal-3",
+   "title": "Sygnał DATA: 3 kol. na linię",
+   "desc": "Wężyk góra–dół, 24 cabinetów na linię",
+   "tag": "wlasne",
+   "full": "assets/plany/uklad-sygnal-3.png",
+   "thumb": "assets/plany/th-uklad-sygnal-3.jpg",
+   "src": "wygenerowane w aplikacji (Układ ekranu)"
+  },
+  {
+   "id": "uklad-sygnal-4",
+   "title": "Sygnał DATA: 4 kol. na linię",
+   "desc": "Wężyk góra–dół, 32 cabinetów na linię",
+   "tag": "wlasne",
+   "full": "assets/plany/uklad-sygnal-4.png",
+   "thumb": "assets/plany/th-uklad-sygnal-4.jpg",
+   "src": "wygenerowane w aplikacji (Układ ekranu)"
+  },
+  {
+   "id": "uklad-zasilanie-2",
+   "title": "Zasilanie: 2 kol. na linię",
+   "desc": "2 kolumny na obwód, 16 cabinetów na linię zasilania",
+   "tag": "wlasne",
+   "full": "assets/plany/uklad-zasilanie-2.png",
+   "thumb": "assets/plany/th-uklad-zasilanie-2.jpg",
+   "src": "wygenerowane w aplikacji (Układ ekranu)"
+  },
+  {
+   "id": "uklad-zasilanie-3",
+   "title": "Zasilanie: 3 kol. na linię",
+   "desc": "3 kolumny na obwód, 24 cabinetów na linię zasilania",
+   "tag": "wlasne",
+   "full": "assets/plany/uklad-zasilanie-3.png",
+   "thumb": "assets/plany/th-uklad-zasilanie-3.jpg",
+   "src": "wygenerowane w aplikacji (Układ ekranu)"
+  },
+  {
+   "id": "uklad-zasilanie-4",
+   "title": "Zasilanie: 4 kol. na linię",
+   "desc": "4 kolumny na obwód, 32 cabinetów na linię zasilania",
+   "tag": "wlasne",
+   "full": "assets/plany/uklad-zasilanie-4.png",
+   "thumb": "assets/plany/th-uklad-zasilanie-4.jpg",
+   "src": "wygenerowane w aplikacji (Układ ekranu)"
   }
  ]
 }

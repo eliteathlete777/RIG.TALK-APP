@@ -326,3 +326,8 @@ Sytuacje, w których użytkownik zaznaczył „Stanąłem”, dodają powiązane
 - Rozdziały MX30, VMP i Resolume mają kroki po angielsku (jak w manualu) i tłumaczenie PL. Każdy blok podaje źródło (manual, sekcja, strona). Status bloku: z oficjalnej instrukcji / wyliczone / ogólne do potwierdzenia.
 - Limit portu w kalkulatorze: wzór z MX30 Manual sekcja 11. Zmiana karty odbiorczej (A10s Pro: × 32 dla 10 bit) zmienia limit 10 bit.
 - Swift Layout w MX30 działa tylko przy równym podziale cabinetów na porty będącym wielokrotnością liczby rzędów lub kolumn. Kalkulator szuka takiego podziału.
+
+## v28 — menu montażu i układ ekranu
+- Menu montażu: każdy rozdział ma `group` (kolor) i `stage` (etap pracy). Widoki Mapa, Kolejność i Tematy korzystają z tych samych danych (`content/montaz.json`). Dolny pasek i pasek szybkiej powtórki są dostępne w każdym rozdziale trybu Montaż.
+- Układ ekranu: linie DATA i zasilania liczone osobno (wężyk góra–dół). Porty główne to nieparzyste, zapasowe parzyste (Sequential Backup). Przy 2 lub 4 kolumnach na linię początek i koniec linii są u góry; przy 3 koniec jest na dole.
+- Moc cabinetu: max 263 W, średnio 88 W (producent INFiLED, do potwierdzenia). Moc max występuje tylko przy pełnej bieli.

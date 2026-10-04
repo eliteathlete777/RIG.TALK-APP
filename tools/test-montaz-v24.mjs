@@ -16,8 +16,18 @@ await page.goto(ROOT, { waitUntil: 'networkidle' });
 await page.evaluate(() => localStorage.clear());
 await page.reload({ waitUntil: 'networkidle' });
 await page.locator('[data-mode-select="assembly"]').click();
+await page.waitForSelector('.mm-chip');
+ok(await page.locator('.mm-chip').count() === 16, 'Mapa: 16 rozdziałów w 6 grupach');
+ok(await page.locator('.mm-branch').count() === 6, 'Mapa: 6 grup');
+ok(await page.locator('.mz-dock-btn').count() === 4, 'Dolny pasek: 4 przyciski');
+await page.locator('[data-view="tematy"]').click();
 await page.waitForSelector('.mz-tile');
-ok(await page.locator('.mz-tile').count() === 16, '16 kafli rozdziałów');
+ok(await page.locator('.mz-tile').count() === 16, 'Tematy: 16 kafli');
+await page.locator('[data-view="kolejnosc"]').click();
+await page.waitForSelector('.mz-step-row');
+ok(await page.locator('.mz-step-row').count() === 16 && await page.locator('.mz-stage').count() === 7, 'Kolejność: 7 etapów, 16 rozdziałów');
+ok((await page.locator('.mz-stage-h b').last().innerText()).toLowerCase().includes('rozładunek'), 'Kompletacja na końcu kolejności');
+await page.locator('[data-view="tematy"]').click();
 ok(!(await page.locator('#bottomNav').isVisible()), 'montaż bez nawigacji angielskiego');
 
 // komplet
@@ -37,9 +47,9 @@ ok(order[0] === 'biało-pomarańczowy' && order[3] === 'niebieski' && order[7] =
 
 // kalkulator
 await page.locator('.mz-back').click();
-await page.locator('[data-chapter="kalkulator"]').click();
+await page.locator('[data-chapter="uklad"]').click();
 await page.waitForSelector('.mz-result');
-let text = await page.locator('.mz-result').innerText();
+let text = await page.locator('.mz-result').last().innerText();
 ok(text.includes('2048 × 512'), 'kalkulator: 2048 × 512 px');
 ok(text.includes('256 × 64'), 'kalkulator: cabinet 256 × 64 px');
 ok(text.includes('64 cabinetów'), 'kalkulator: 64 cabinety');
@@ -47,9 +57,23 @@ ok(text.includes('BRAK DANYCH'), 'kalkulator: brak mocy oznaczony');
 ok(text.replace(/\u00a0|\u202f/g, ' ').includes('659 722'), 'kalkulator: limit portu 659 722 px (wzór z manuala MX30)');
 ok(text.includes('Swift Layout') && text.includes('2 × 32'), 'kalkulator: Swift Layout 2 × 32');
 await page.fill('#calc-watt', '150');
-text = await page.locator('.mz-result').innerText();
+text = await page.locator('.mz-result').last().innerText();
 ok(text.includes('9,60 kW') || text.includes('9.60 kW'), 'kalkulator: 64 × 150 W = 9,6 kW');
 ok(text.includes('3 × 16 A'), 'kalkulator: linie 16 A');
+
+// generator układu
+await page.locator('.mz-back').click();
+await page.locator('[data-chapter="uklad"]').click();
+await page.waitForSelector('.uk-svg');
+ok(await page.locator('.uk-svg').count() === 2, 'Układ: 2 grafiki (sygnał, zasilanie)');
+let uk = await page.locator('.uk-out').innerText();
+ok(uk.includes('P7') && uk.includes('B8'), 'Układ: porty główne 1,3,5,7 i zapasowe 2,4,6,8');
+ok(uk.replace(/\u00a0|\u202f/g, ' ').includes('262 144'), 'Układ: 16 cabinetów = 262 144 px na linię');
+ok(uk.replace(/\u00a0|\u202f/g, ' ').includes('1408 W'), 'Układ: 16 × 88 W = 1408 W na linię zasilania');
+await page.selectOption('#uk-dataK', '4');
+uk = await page.locator('.uk-out').innerText();
+ok(uk.includes('P3') && !uk.includes('P7'), 'Układ: po 4 kolumny to 2 linie, porty 1 i 3');
+await page.selectOption('#uk-dataK', '2');
 
 // niespodzianki + zwroty
 await page.locator('.mz-back').click();
@@ -76,7 +100,7 @@ await page.locator('.mz-back').click();
 // Plany
 await page.locator('[data-chapter="plany"]').click();
 await page.waitForSelector('.plan-card');
-ok(await page.locator('.plan-card').count() === 29, 'Plany: 29 rysunków');
+ok(await page.locator('.plan-card').count() === 35, 'Plany: 35 rysunków (29 z SQM + 6 naszych schematów)');
 await page.locator('[data-plan="tw-12"]').click();
 await page.waitForSelector('.plan-img');
 ok((await page.locator('.plan-title').innerText()).includes('Elewacja A'), 'Plany: podgląd Elewacja A');
@@ -114,7 +138,7 @@ await page.locator('[data-chapter="etapy"]').click();
 await page.waitForSelector('.stage-card');
 ok(await page.locator('.stage-card').count() === 10, 'Etapy: 10 kart');
 await page.locator('.mz-back').click();
-ok(await page.locator('.mz-tile').count() === 16, 'powrót do wyboru rozdziału');
+ok(await page.locator('.mz-tile').count() === 16, 'powrót do menu');
 
 ok(await page.evaluate(() => document.documentElement.scrollWidth === document.documentElement.clientWidth), 'brak poziomego scrolla (375 px)');
 await page.screenshot({ path: 'montaz-v24-preview.png', fullPage: true });

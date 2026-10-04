@@ -7,7 +7,7 @@ import { toggleStar } from './library.js';
 import { loadGlossary, termRow, speakEn } from './glossary.js';
 import * as session from './session.js';
 import { renderMx30Guide } from './mx30-guide.js';
-import { renderMontazHub } from './montaz.js';
+import { renderMontazHub, registerHub } from './montaz.js';
 
 let metaCache = null;
 
@@ -114,9 +114,10 @@ export async function renderStoiskoScreen(container){
   const stored = store.get().ui?.stoiskoMode;
   const mode = stored === 'mx30' ? 'mx30' : stored === 'stages' ? 'stages' : 'hub';
   container.innerHTML = '';
+  registerHub({ rerender: () => renderStoiskoScreen(container) });
   const go = (next) => { store.set({ ui: { stoiskoMode: next, montazChapter: null } }); renderStoiskoScreen(container); window.scrollTo(0, 0); };
   if (mode === 'hub'){
-    await renderMontazHub(container, { openStages: () => go('stages'), openMx30: () => go('mx30') });
+    await renderMontazHub(container, { openStages: () => go('stages'), openMx30: () => go('mx30'), rerender: () => renderStoiskoScreen(container) });
     return;
   }
   const back = document.createElement('button');

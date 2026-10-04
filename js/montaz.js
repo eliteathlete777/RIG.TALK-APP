@@ -6,6 +6,7 @@ import { store } from './state.js';
 import * as speech from './speech.js';
 import { planLinks, renderPlany } from './plany.js';
 import { renderAz, renderWordsChapter, wordList, loadAz } from './az.js';
+import { renderUklad } from './uklad.js';
 
 let cache = null;
 
@@ -310,54 +311,177 @@ function renderNiespodzianki(root, data){
 // ---------- ekran główny montażu ----------
 
 /** Zwraca true, gdy obsłużono (hub albo rozdział własny); false → stoisko.js renderuje etapy/MX30. */
-export async function renderMontazHub(container, { openStages, openMx30 }){
+// ---------- menu montażu: grupy, widoki, pasek na dole ----------
+
+let hubCtx = null;
+
+/** stoisko.js rejestruje tu funkcje przełączania widoków, żeby dolny pasek działał z każdego ekranu. */
+export function registerHub(ctx){
+  hubCtx = ctx;
+  ensureDock();
+}
+
+function openChapter(id){
+  if (!hubCtx) return;
+  const mode = id === 'etapy' ? 'stages' : id === 'mx30' ? 'mx30' : 'hub';
+  const chapter = mode === 'hub' ? id : null;
+  store.set({ ui: { stoiskoMode: mode, montazChapter: chapter } });
+  hubCtx.rerender();
+  window.scrollTo(0, 0);
+}
+
+function ensureDock(){
+  if (document.getElementById('mzDock')) return;
+  const dock = el('nav', 'mz-dock');
+  dock.id = 'mzDock';
+  dock.setAttribute('aria-label', 'Szybki dostęp do montażu');
+  [['☰', 'Menu', null], ['🎬', 'Resolume', 'resolume'], ['🗣', 'Etapy', 'etapy'], ['🗺', 'Plany', 'plany']].forEach(([icon, label, id]) => {
+    const b = el('button', 'mz-dock-btn');
+    b.dataset.dock = id || 'menu';
+    b.append(el('span', 'mz-dock-i', icon), el('span', '', label));
+    b.addEventListener('click', () => openChapter(id));
+    dock.appendChild(b);
+  });
+  document.body.appendChild(dock);
+}
+
+const groupMap = (data) => new Map(data.groups.map(g => [g.id, g]));
+
+function chapterTile(data, chapter, groups){
+  const group = groups.get(chapter.group);
+  const tile = el('button', 'mz-tile' + (chapter.id === 'az' ? ' az' : ''));
+  tile.dataset.chapter = chapter.id;
+  tile.style.setProperty('--gc', group?.color || '#f2b705');
+  tile.appendChild(el('span', 'mz-icon', chapter.icon));
+  tile.appendChild(el('span', 'mz-title', chapter.title));
+  const meta = chapterProgress(data, chapter);
+  tile.appendChild(el('span', 'mz-en-t', chapter.en + (meta ? ' · ' + meta : '')));
+  tile.appendChild(el('span', 'mz-when', chapter.when));
+  tile.addEventListener('click', () => openChapter(chapter.id));
+  return tile;
+}
+
+function viewTematy(data, groups){
+  const wrap = el('div', 'mz-view');
+  data.groups.forEach(group => {
+    const items = data.chapters.filter(c => c.group === group.id);
+    if (!items.length) return;
+    const section = el('section', 'mz-group');
+    section.style.setProperty('--gc', group.color);
+    const h = el('div', 'mz-group-h');
+    h.append(el('b', '', group.title), el('small', '', group.sub));
+    section.appendChild(h);
+    const grid = el('div', 'mz-grid');
+    items.forEach(c => grid.appendChild(chapterTile(data, c, groups)));
+    section.appendChild(grid);
+    wrap.appendChild(section);
+  });
+  return wrap;
+}
+
+function viewKolejnosc(data, groups){
+  const wrap = el('div', 'mz-view mz-timeline');
+  data.stages.forEach((title, stage) => {
+    const items = data.chapters.filter(c => c.stage === stage);
+    if (!items.length) return;
+    const block = el('section', 'mz-stage');
+    const h = el('div', 'mz-stage-h');
+    h.append(el('i', 'mz-stage-n', String(stage + 1)), el('b', '', title));
+    block.appendChild(h);
+    items.forEach(c => {
+      const row = el('button', 'mz-step-row');
+      row.dataset.chapter = c.id;
+      row.style.setProperty('--gc', groups.get(c.group)?.color || '#f2b705');
+      row.append(el('span', 'mz-icon', c.icon), el('span', 'mz-step-t', c.title), el('small', '', c.when));
+      row.addEventListener('click', () => openChapter(c.id));
+      block.appendChild(row);
+    });
+    wrap.appendChild(block);
+  });
+  return wrap;
+}
+
+function viewMapa(data, groups){
+  const wrap = el('div', 'mz-view mz-map');
+  const center = el('div', 'mm-center');
+  center.append(el('b', '', 'EKRAN LED 8 × 4 m'), el('small', '', '64 cabinety · MX30 · Lynk & Co Paris'));
+  wrap.appendChild(center);
+  const rail = el('div', 'mm-rail');
+  data.groups.forEach(group => {
+    const items = data.chapters.filter(c => c.group === group.id);
+    if (!items.length) return;
+    const branch = el('section', 'mm-branch');
+    branch.style.setProperty('--gc', group.color);
+    const title = el('div', 'mm-title');
+    title.append(el('b', '', group.title), el('small', '', group.sub));
+    branch.appendChild(title);
+    const chips = el('div', 'mm-chips');
+    items.forEach(c => {
+      const chip = el('button', 'mm-chip');
+      chip.dataset.chapter = c.id;
+      chip.append(el('span', 'mz-icon', c.icon), el('span', '', c.title));
+      chip.addEventListener('click', () => openChapter(c.id));
+      chips.appendChild(chip);
+    });
+    branch.appendChild(chips);
+    rail.appendChild(branch);
+  });
+  wrap.appendChild(rail);
+  return wrap;
+}
+
+function orderedChapters(data){
+  return data.chapters.map((c, i) => ({ c, i })).sort((a, b) => (a.c.stage - b.c.stage) || (a.i - b.i)).map(x => x.c);
+}
+
+export async function renderMontazHub(container, ctx){
+  registerHub({ rerender: ctx.rerender || (() => renderMontazHub(container, ctx)), ...ctx });
   const data = await loadMontaz();
+  const groups = groupMap(data);
   const current = store.get().ui?.montazChapter || null;
   container.innerHTML = '';
 
+  // pasek szybkiej powtórki u góry
+  const quick = el('button', 'mz-quick');
+  quick.dataset.quick = 'slowka';
+  quick.append(el('span', 'mz-icon', '🔤'), el('b', '', 'SZYBKA POWTÓRKA'), el('small', '', 'słówka PL → EN'));
+  quick.addEventListener('click', () => openChapter('slowka'));
+
   if (!current){
-    const hero = el('div', 'frame hero');
+    const hero = el('div', 'mz-hero');
     hero.appendChild(el('div', 'eyebrow', 'MONTAŻ KROK PO KROKU'));
-    hero.appendChild(el('h2', 'hero-title', 'Który etap robisz teraz?'));
+    hero.appendChild(el('h2', 'hero-title', 'Co robisz teraz?'));
     hero.appendChild(el('div', 'hero-sub', data.subtitle));
     container.appendChild(hero);
-    const grid = el('div', 'mz-grid');
-    data.chapters.forEach(chapter => {
-      const tile = el('button', 'mz-tile' + (chapter.id === 'niespodzianki' ? ' alert' : '') + (chapter.id === 'az' ? ' az' : ''));
-      tile.dataset.chapter = chapter.id;
-      tile.appendChild(el('span', 'mz-n', chapter.n));
-      tile.appendChild(el('span', 'mz-icon', chapter.icon));
-      tile.appendChild(el('span', 'mz-title', chapter.title));
-      const meta = chapterProgress(data, chapter);
-      tile.appendChild(el('span', 'mz-en-t', chapter.en + (meta ? ' · ' + meta : '')));
-      tile.appendChild(el('span', 'mz-when', chapter.when));
-      tile.addEventListener('click', () => {
-        if (chapter.id === 'etapy'){ openStages(); return; }
-        if (chapter.id === 'mx30'){ openMx30(); return; }
-        store.set({ ui: { montazChapter: chapter.id } });
-        renderMontazHub(container, { openStages, openMx30 });
-        window.scrollTo(0, 0);
-      });
-      grid.appendChild(tile);
+    container.appendChild(quick);
+
+    const view = store.get().ui?.montazView || 'mapa';
+    const bar = el('div', 'mz-views');
+    [['mapa', 'Mapa'], ['kolejnosc', 'Kolejność'], ['tematy', 'Tematy']].forEach(([key, label]) => {
+      const b = el('button', view === key ? 'on' : '', label);
+      b.dataset.view = key;
+      b.addEventListener('click', () => { store.set({ ui: { montazView: key } }); renderMontazHub(container, ctx); });
+      bar.appendChild(b);
     });
-    container.appendChild(grid);
+    container.appendChild(bar);
+    container.appendChild(view === 'kolejnosc' ? viewKolejnosc(data, groups) : view === 'tematy' ? viewTematy(data, groups) : viewMapa(data, groups));
     container.appendChild(el('p', 'muted-sm', data.source_note));
     return;
   }
 
   const chapter = data.chapters.find(c => c.id === current);
-  const back = el('button', 'btn mz-back', '← Wybór rozdziału');
-  back.addEventListener('click', () => {
-    store.set({ ui: { montazChapter: null } });
-    renderMontazHub(container, { openStages, openMx30 });
-    window.scrollTo(0, 0);
-  });
-  container.appendChild(back);
+  const group = groups.get(chapter.group);
+  const back = el('button', 'btn mz-back', '← Menu montażu');
+  back.addEventListener('click', () => openChapter(null));
+  const top = el('div', 'mz-topline');
+  top.append(back, quick);
+  container.appendChild(top);
   const head = el('div', 'mz-head');
-  head.appendChild(el('span', 'mz-n', chapter.n));
+  head.style.setProperty('--gc', group?.color || '#f2b705');
+  head.appendChild(el('span', 'mz-icon big', chapter.icon));
   const titles = el('div');
+  titles.appendChild(el('div', 'mz-tag', group?.title || ''));
   titles.appendChild(el('h2', 'mz-title-h', chapter.title));
-  titles.appendChild(el('div', 'mz-en-t', chapter.en));
   head.appendChild(titles);
   container.appendChild(head);
 
@@ -370,7 +494,11 @@ export async function renderMontazHub(container, { openStages, openMx30 }){
     case 'cabinety': renderSteps(body, data.cabinety); break;
     case 'rj45': renderRj45(body, data); break;
     case 'zasilanie': renderSteps(body, data.zasilanie); break;
-    case 'kalkulator': renderKalkulator(body, data); break;
+    case 'uklad':
+      renderUklad(body, data);
+      body.appendChild(el('h3', 'mz-h', 'KALKULATOR PIKSELI I PORTÓW'));
+      renderKalkulator(body, data);
+      break;
     case 'niespodzianki': renderNiespodzianki(body, data); break;
     case 'plany': await renderPlany(body, data.plany?.intro); break;
     case 'az': await renderAz(body); break;
@@ -395,15 +523,13 @@ export async function renderMontazHub(container, { openStages, openMx30 }){
     container.appendChild(more);
   }
 
-  const idx = data.chapters.findIndex(c => c.id === current);
-  const next = data.chapters[idx + 1];
-  if (next && next.id !== 'etapy' && next.id !== 'mx30'){
+  const seq = orderedChapters(data).filter(c => c.id !== 'slowka');
+  const idx = seq.findIndex(c => c.id === current);
+  const next = seq[idx + 1];
+  if (next){
     const nextBtn = el('button', 'btn btn-primary btn-lg', `Dalej: ${next.title} →`);
-    nextBtn.addEventListener('click', () => {
-      store.set({ ui: { montazChapter: next.id } });
-      renderMontazHub(container, { openStages, openMx30 });
-      window.scrollTo(0, 0);
-    });
+    nextBtn.dataset.next = next.id;
+    nextBtn.addEventListener('click', () => openChapter(next.id));
     container.appendChild(nextBtn);
   }
 }

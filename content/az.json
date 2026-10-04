@@ -779,6 +779,58 @@
         "opóźnienie",
         "dylej"
       ]
+    ],
+    "uklad": [
+      [
+        "row",
+        "rząd",
+        "roł"
+      ],
+      [
+        "column",
+        "kolumna",
+        "kolem"
+      ],
+      [
+        "line / string",
+        "linia (łańcuch)",
+        "lajn / string"
+      ],
+      [
+        "serpentine",
+        "wężyk",
+        "serpentajn"
+      ],
+      [
+        "main",
+        "główny",
+        "mejn"
+      ],
+      [
+        "backup",
+        "zapasowy",
+        "bekap"
+      ],
+      [
+        "load",
+        "obciążenie",
+        "lołd"
+      ],
+      [
+        "power draw",
+        "pobór mocy",
+        "pałer dro"
+      ],
+      [
+        "amp",
+        "amper",
+        "emp"
+      ],
+      [
+        "watt",
+        "wat",
+        "łot"
+      ]
     ]
   }
 }

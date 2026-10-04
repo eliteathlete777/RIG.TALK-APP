@@ -1,7 +1,7 @@
 // RIG TALK — service worker: cache-first dla aplikacji, treści i fontów (pełna wersja: etap E12)
 // E9 wymaga, żeby 🟥 CZERWONE działało offline — precache obejmuje więc już teraz cały shell + treść.
 
-const CACHE_NAME = 'rigtalk-v27';
+const CACHE_NAME = 'rigtalk-v28';
 
 const PRECACHE_URLS = [
   './',
@@ -34,6 +34,7 @@ const PRECACHE_URLS = [
   'js/montaz.js',
   'js/plany.js',
   'js/az.js',
+  'js/uklad.js',
   'content/plany.json',
   'content/az.json',
   'js/kurs.js',
@@ -77,6 +78,18 @@ const PRECACHE_URLS = [
   'content/bosses/boss-d1.json',
   'content/bootcamp.json',
   'content/mission-simulation.json',
+  'assets/plany/uklad-sygnal-2.png',
+  'assets/plany/th-uklad-sygnal-2.jpg',
+  'assets/plany/uklad-sygnal-3.png',
+  'assets/plany/th-uklad-sygnal-3.jpg',
+  'assets/plany/uklad-sygnal-4.png',
+  'assets/plany/th-uklad-sygnal-4.jpg',
+  'assets/plany/uklad-zasilanie-2.png',
+  'assets/plany/th-uklad-zasilanie-2.jpg',
+  'assets/plany/uklad-zasilanie-3.png',
+  'assets/plany/th-uklad-zasilanie-3.jpg',
+  'assets/plany/uklad-zasilanie-4.png',
+  'assets/plany/th-uklad-zasilanie-4.jpg',
   'assets/plany/tw-01.jpg',
   'assets/plany/th-tw-01.jpg',
   'assets/plany/tw-02.jpg',

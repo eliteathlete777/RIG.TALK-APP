@@ -5,131 +5,147 @@
   "chapters": [
     {
       "id": "az",
-      "n": "1",
+      "group": "proc",
+      "stage": 3,
       "title": "Od A do Z: uruchomienie ekranu",
       "en": "Step by step",
       "icon": "🧭",
-      "when": "Najpierw tu"
-    },
-    {
-      "id": "fakty",
-      "n": "2",
-      "title": "Fakty z dokumentów",
-      "en": "Job facts",
-      "icon": "📋",
-      "when": "Zanim wyjedziesz"
-    },
-    {
-      "id": "komplet",
-      "n": "3",
-      "title": "Kompletacja sprzętu",
-      "en": "Gear check",
-      "icon": "📦",
-      "when": "Rozładunek"
-    },
-    {
-      "id": "mechanika",
-      "n": "4",
-      "title": "Mechanika i zawieszenie",
-      "en": "Rigging",
-      "icon": "⛓",
-      "when": "Montaż"
-    },
-    {
-      "id": "cabinety",
-      "n": "5",
-      "title": "Montaż cabinetów",
-      "en": "Cabinet build",
-      "icon": "▦",
-      "when": "Montaż"
-    },
-    {
-      "id": "rj45",
-      "n": "6",
-      "title": "RJ45 · układ B",
-      "en": "RJ45 · T568B",
-      "icon": "🔌",
-      "when": "Okablowanie"
-    },
-    {
-      "id": "zasilanie",
-      "n": "7",
-      "title": "Zasilanie",
-      "en": "Power",
-      "icon": "⚡",
-      "when": "Okablowanie"
-    },
-    {
-      "id": "kalkulator",
-      "n": "8",
-      "title": "Kalkulator pikseli i linii",
-      "en": "Pixel calculator",
-      "icon": "🧮",
-      "when": "Przed procesorem"
-    },
-    {
-      "id": "mx30",
-      "n": "9",
-      "title": "MX30 · VMP · test · przekazanie",
-      "en": "Processor and handover",
-      "icon": "🖥",
-      "when": "Programowanie"
+      "when": "Szczegółowa instrukcja"
     },
     {
       "id": "mx30panel",
-      "n": "10",
-      "title": "MX30: panel przedni (z manuala)",
-      "en": "MX30 front panel menus",
+      "group": "proc",
+      "stage": 3,
+      "title": "MX30: panel przedni",
+      "en": "MX30 front panel",
       "icon": "🎛",
-      "when": "Programowanie"
+      "when": "Co ustawić na procesorze"
     },
     {
       "id": "vmp",
-      "n": "11",
-      "title": "VMP (COEX): połączenie i ekran",
-      "en": "VMP: connect and configure",
+      "group": "proc",
+      "stage": 3,
+      "title": "VMP (COEX): ekran i porty",
+      "en": "VMP",
       "icon": "🖥",
-      "when": "Programowanie"
+      "when": "Program na laptopie"
     },
     {
       "id": "resolume",
-      "n": "12",
-      "title": "Resolume: wyjście na ekran LED",
-      "en": "Resolume output to the LED wall",
+      "group": "proc",
+      "stage": 3,
+      "title": "Resolume: wyjście na ekran",
+      "en": "Resolume output",
       "icon": "🎬",
-      "when": "Programowanie"
+      "when": "Obraz z komputera"
+    },
+    {
+      "id": "mx30",
+      "group": "proc",
+      "stage": 4,
+      "title": "Test i przekazanie klientowi",
+      "en": "Test and handover",
+      "icon": "✅",
+      "when": "Na koniec"
+    },
+    {
+      "id": "uklad",
+      "group": "sygnal",
+      "stage": 2,
+      "title": "Układ ekranu: sygnał, prąd, piksele",
+      "en": "Wall layout",
+      "icon": "🧩",
+      "when": "Planuj przed kablami"
+    },
+    {
+      "id": "zasilanie",
+      "group": "sygnal",
+      "stage": 2,
+      "title": "Zasilanie: kable i zasady",
+      "en": "Power",
+      "icon": "⚡",
+      "when": "Kable i obwody"
+    },
+    {
+      "id": "rj45",
+      "group": "sygnal",
+      "stage": 2,
+      "title": "RJ45: ściąga układ B",
+      "en": "RJ45 T568B",
+      "icon": "🔌",
+      "when": "Zaciskanie"
+    },
+    {
+      "id": "fakty",
+      "group": "dok",
+      "stage": 0,
+      "title": "Fakty z dokumentów",
+      "en": "Job facts",
+      "icon": "📋",
+      "when": "Przed wyjazdem"
+    },
+    {
+      "id": "niespodzianki",
+      "group": "dok",
+      "stage": 0,
+      "title": "Co może zaskoczyć",
+      "en": "Risks",
+      "icon": "⚠",
+      "when": "Przed wyjazdem"
+    },
+    {
+      "id": "plany",
+      "group": "dok",
+      "stage": 0,
+      "title": "Plany i rysunki",
+      "en": "Plans",
+      "icon": "🗺",
+      "when": "Zawsze pod ręką"
+    },
+    {
+      "id": "mechanika",
+      "group": "wiem",
+      "stage": 1,
+      "title": "Mechanika i zawieszenie",
+      "en": "Rigging",
+      "icon": "⛓",
+      "when": "Ogarniasz"
+    },
+    {
+      "id": "cabinety",
+      "group": "wiem",
+      "stage": 1,
+      "title": "Montaż cabinetów",
+      "en": "Cabinet build",
+      "icon": "▦",
+      "when": "Ogarniasz"
     },
     {
       "id": "etapy",
-      "n": "13",
+      "group": "dock",
+      "stage": 5,
       "title": "Etapy stoiska i zwroty",
       "en": "Stand stages",
       "icon": "🗣",
       "when": "Cały dzień"
     },
     {
-      "id": "plany",
-      "n": "14",
-      "title": "Plany i rysunki",
-      "en": "Plans and drawings",
-      "icon": "🗺",
-      "when": "Zawsze pod ręką"
-    },
-    {
       "id": "slowka",
-      "n": "15",
-      "title": "Słówka: szybka powtórka",
+      "group": "dock",
+      "stage": 5,
+      "title": "Szybka powtórka: słówka",
       "en": "Word list",
       "icon": "🔤",
       "when": "Powtórka"
     },
     {
-      "id": "niespodzianki",
-      "n": "16",
-      "title": "Co może zaskoczyć",
-      "en": "Risks and unknowns",
-      "icon": "⚠",
-      "when": "Przeczytaj przed wyjazdem"
+      "id": "komplet",
+      "group": "dol",
+      "stage": 6,
+      "title": "Kompletacja sprzętu",
+      "en": "Gear check",
+      "icon": "📦",
+      "when": "Rozładunek i zwrot"
     }
   ],
   "fakty": {
@@ -633,9 +649,7 @@
       "Pitch 3.9 × 7.8 mm wynika z nazwy pliku „(P3.9_7.8) Hoxled Transparent 8x8”. Lista SQM podaje tylko P3.9. Potwierdź na etykiecie cabinetu i w VMP.",
       "Wynik 256 × 64 px na cabinet i 2048 × 512 px na ekran jest warunkowy. Nie wysyłaj konfiguracji, dopóki VMP nie pokaże tej samej rozdzielczości."
     ],
-    "plans": [
-      "tw-12"
-    ]
+    "plans": []
   },
   "niespodzianki": {
     "items": [
@@ -878,7 +892,7 @@
     ],
     "missing": [
       "Konkretny plik .rcfgx / NCP dla cabinetu INFILED HL-3978. Daje go właściciel sprzętu. Bez niego nie wysyłaj konfiguracji.",
-      "Typ karty odbiorczej w cabinetach (np. A10s Pro albo inna). Od niej zależy limit pikseli na port (rozdział „Kalkulator pikseli i linii”)."
+      "Typ karty odbiorczej w cabinetach (np. A10s Pro albo inna). Od niej zależy limit pikseli na port (rozdział „Układ ekranu”)."
     ],
     "sources": [
       {
@@ -932,7 +946,7 @@
         "steps": [
           {
             "en": "The wall is 2048 × 512 px (pixel calculator). That is wider than Full HD (1920 px).",
-            "pl": "Ekran ma 2048 × 512 px (rozdział „Kalkulator pikseli i linii”). To szerzej niż Full HD (1920 px)."
+            "pl": "Ekran ma 2048 × 512 px (rozdział „Układ ekranu”). To szerzej niż Full HD (1920 px)."
           },
           {
             "en": "Per the MX30 manual: HDMI 2.0 input, maximum width 8192 px (8192×1080@60 Hz), minimum resolution 800×600@60 Hz, custom input resolutions are supported through EDID.",
@@ -1212,7 +1226,7 @@
           },
           {
             "en": "For our wall the canvas is 2048 × 512 (pixel calculator). Confirm the cabinet resolution first.",
-            "pl": "Dla naszego ekranu canvas to 2048 × 512 (kalkulator pikseli). Najpierw potwierdź rozdzielczość cabinetu."
+            "pl": "Dla naszego ekranu canvas to 2048 × 512 (Układ ekranu). Najpierw potwierdź rozdzielczość cabinetu."
           }
         ]
       },
@@ -1372,6 +1386,87 @@
     "plans": [
       "tw-12",
       "tw-17"
+    ]
+  },
+  "groups": [
+    {
+      "id": "proc",
+      "title": "PROCESOR I PROGRAM",
+      "sub": "MX30 · VMP · Resolume",
+      "color": "#f2b705"
+    },
+    {
+      "id": "sygnal",
+      "title": "SYGNAŁ I PRĄD",
+      "sub": "układ, zasilanie, RJ45",
+      "color": "#e01e1e"
+    },
+    {
+      "id": "dok",
+      "title": "DOKUMENTY",
+      "sub": "fakty, plany, ryzyka",
+      "color": "#f3f2ef"
+    },
+    {
+      "id": "wiem",
+      "title": "OGARNIASZ",
+      "sub": "mechanika, cabinety",
+      "color": "#8a8d91"
+    },
+    {
+      "id": "dock",
+      "title": "POD RĘKĄ",
+      "sub": "też na dolnym pasku",
+      "color": "#3fb950"
+    },
+    {
+      "id": "dol",
+      "title": "NA DOLE",
+      "sub": "kompletacja",
+      "color": "#5a5d62"
+    }
+  ],
+  "stages": [
+    "Przed wyjazdem",
+    "Hala: mechanika",
+    "Kable i układ",
+    "Procesor",
+    "Test i przekazanie",
+    "Cały dzień",
+    "Rozładunek i zwrot"
+  ],
+  "uklad": {
+    "intro": "Ekran ma 8 kolumn × 8 rzędów (cabinet 1000 × 500 mm). Linie DATA i zasilania biegną wężykiem góra–dół: pierwsza kolumna w dół, druga w górę. Wybierz, ile kolumn ma jedna linia, a generator pokaże porty, grafiki i wytyczne.",
+    "defaults": {
+      "dataK": 2,
+      "powerK": 2,
+      "wMax": 263,
+      "wAvg": 88,
+      "kg": 7.5,
+      "amp": 16
+    },
+    "cabPx": 16384,
+    "portLimit": 659722,
+    "notes": [
+      "Moc i waga cabinetu INFiLED HL-3978 pochodzą ze strony producenta (wynik wyszukiwania): max 263 W, średnio 88 W, 7,5 kg. W dokumentach SQM ich nie ma. Potwierdź na etykiecie cabinetu i w karcie technicznej od SQM.",
+      "Liczba kolumn 2 na linię daje 16 cabinetów na linię, 4 linie, 8 portów (4 główne i 4 zapasowe) z 10 dostępnych w MX30.",
+      "Wężyk po 3 kolumny kończy się na dole ekranu, a po 2 i 4 kolumny kończy się u góry, obok początku.",
+      "Moc maksymalna występuje tylko przy pełnej bieli na całym ekranie. Zwykły materiał zbliża się do średniej."
+    ],
+    "sources": [
+      {
+        "t": "INFiLED HL3978 (strona producenta)",
+        "url": "https://www.infiled.com/series/hl3978/"
+      },
+      {
+        "t": "INFiLED IL-RSS-ORHL3978",
+        "url": "https://www.infiled.com/products-infiled/il-rss-orhl3978/"
+      }
+    ],
+    "plans": [
+      "uklad-sygnal-2",
+      "uklad-zasilanie-2",
+      "tw-12"
     ]
   }
 }
