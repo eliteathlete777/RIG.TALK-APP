@@ -336,3 +336,9 @@ Sytuacje, w których użytkownik zaznaczył „Stanąłem”, dodają powiązane
 - Każdy rozdział: ramka „W skrócie” (`content/montaz.json → summary`), plan rozdziału (z `js/acc.js → outline`, odświeżany przy kliknięciu, bo generator przerysowuje sekcje), potem podrozdziały jako `details`. Podtytuł w stanie zwiniętym to pierwsze zdanie albo lista pozycji.
 - Zasilanie: linie rozkładane zachłannie na fazy (najpierw najliczniejsze linie na najmniej obciążoną fazę). Przy 4 liniach po 16 cabinetów na 3 fazach wychodzi 32/16/16, więc aplikacja podpowiada podział 1 kolumna na linię (24/24/16).
 - Standard faz hali nie jest w dokumentach SQM. 60 kW przy 400 V to około 87 A na fazę (wyliczenie), przy równym obciążeniu.
+
+## v32: parametry z drill-downiem i szukajka
+- `content/montaz.json` → `param.sections[].rows[].d` = `{k: kroki, v: jak sprawdzić, x: uwaga}` albo `{sub:[...]}` (zasilanie). Wiersz bez `d` renderuje się płasko. Powód: użytkownik nie może nic szukać w terenie; każda wartość ma dokładną ścieżkę kliknięć.
+- `param.multi`: wartości występujące w wielu miejscach (rozdzielczość, odświeżanie, skala). Źródło prawdy to EDID w MX30, potem Windows, Resolume, VMP.
+- Zasada: czego nie ma w manualach lub PDF-ach, oznaczamy „BRAK DANYCH / potwierdź”, nie zgadujemy. Ścieżki Windows: Win11 po polsku, wersje mogą się różnić nazwą.
+- Szukajka (`buildIndex` w montaz.js) indeksuje rozdziały, parametry, kroki programów; wynik parametru ustawia `ui.paramFocus`, a rozdział otwiera i przewija do pozycji.

@@ -76,12 +76,33 @@ await page.locator('.mz-back').click();
 
 // parametry gotowce
 await page.locator('[data-chapter="param"]').click();
-await page.waitForSelector('.pr-row');
+await page.waitForSelector('.pr-item');
 ok((await page.locator('#param-text').inputValue()).includes('2048 × 1080'), 'Parametry: wariant A 2048 × 1080');
 await page.locator('[data-variant="b"]').click();
-await page.waitForSelector('.pr-row');
+await page.waitForSelector('.pr-item');
 ok((await page.locator('#param-text').inputValue()).includes('3840 × 2160'), 'Parametry: wariant B 3840 × 2160');
 ok((await page.locator('#param-text').inputValue()).includes('Sequential Backup'), 'Parametry: Sequential Backup w VMP');
+// v32: drill-down ścieżek kliknięć
+const txt = await page.locator('#param-text').inputValue();
+ok(txt.includes('Wybierz częstotliwość odświeżania') && txt.includes('Skala i układ'), 'Parametry: ścieżki Windows (odświeżanie, skala) w tekście');
+ok(await page.locator('.pr-item').count() >= 40, 'Parametry: >= 40 rozwijanych pozycji');
+ok(await page.locator('.pr-sub').count() === 5, 'Parametry: zasilanie rozwinięte na 5 podopcji');
+const rozdz = page.locator('.pr-item', { hasText: 'Rozdzielczość' }).first();
+await rozdz.locator('summary').first().click();
+ok((await rozdz.innerText()).includes('Zachowaj zmiany'), 'Rozdzielczość: otwiera się do kroków (Zachowaj zmiany)');
+ok(await page.locator('.pr-multi .mz-acc').count() >= 5, 'Sekcja: gdzie ustawiasz to samo w kilku miejscach');
+ok((await page.locator('.pr-multi').textContent()).includes('Skala → 100%'), 'Skalowanie: jedno miejsce (Windows)');
+await page.locator('.mz-back').click();
+// v32: szukajka
+await page.waitForSelector('#mzSearch');
+await page.fill('#mzSearch', 'usypianie');
+ok(await page.locator('.mz-search-hit').count() === 0, 'Szukajka: brak wyniku dla bzdury');
+await page.fill('#mzSearch', 'uspienie');
+await page.waitForSelector('.mz-search-hit');
+ok(await page.locator('.mz-search-hit').count() >= 1, 'Szukajka: uspienie (bez polskich znaków) znajduje wynik');
+await page.locator('.mz-search-hit').first().click();
+await page.waitForSelector('.pr-item');
+ok(await page.locator('.pr-item[open]').count() >= 1, 'Szukajka: otwiera parametr w rozdziale Parametry');
 await page.locator('.mz-back').click();
 
 // generator układu

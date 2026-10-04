@@ -761,3 +761,18 @@ body.plan-open .mz-dock{ display:none !important; }
 .uk-row.uk-p{ grid-template-columns:.7fr .7fr .6fr 1.1fr 1.1fr .8fr .8fr; min-width:0; }
 .uk-row.uk-f{ grid-template-columns:.6fr 1.4fr .7fr 1fr 1fr 1fr; min-width:0; }
 .uk-sum{ margin:10px 0; }
+
+/* v32: drill-down parametrów, szukajka */
+.pr-item,.pr-sub{ margin:6px 0; }
+.pr-item .pr-w{ display:block; }
+.pr-item .pr-v{ display:block; margin:2px 0 6px; }
+.pr-steps{ margin:8px 0; }
+.pr-check{ margin:8px 0; padding:8px 10px; border-left:3px solid var(--ok,#3fb950); background:rgba(63,185,80,.08); line-height:1.4; }
+.pr-warn{ margin:8px 0; padding:8px 10px; border-left:3px solid #f2b705; background:rgba(242,183,5,.08); line-height:1.4; color:var(--dim); }
+.pr-multi .pr-row{ border-top:1px solid var(--line); }
+.mz-search{ margin:10px 0; }
+.mz-search-in{ width:100%; min-height:48px; padding:0 14px; font:600 16px var(--font-body); color:var(--white); background:var(--bg-2); border:1px solid var(--line); border-radius:10px; }
+.mz-search-in:focus{ outline:2px solid #f2b705; }
+.mz-search-out{ display:grid; gap:6px; margin-top:6px; }
+.mz-search-hit{ display:flex; flex-direction:column; gap:2px; text-align:left; min-height:48px; padding:9px 12px; background:var(--bg-2); color:var(--white); border:1px solid var(--line); border-left:4px solid #f2b705; border-radius:8px; cursor:pointer; }
+.mz-search-hit small{ color:var(--dim); }

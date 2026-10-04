@@ -1786,49 +1786,154 @@
             "p": "Tryb wyświetlania",
             "a": "Rozszerz",
             "b": "Rozszerz",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Naciśnij klawisz Windows + P.",
+                "Na liście po prawej kliknij „Rozszerz”.",
+                "Drugi sposób: Ustawienia → System → Ekran → Wiele ekranów → „Rozszerz te ekrany”."
+              ],
+              "v": "Przesuń okno myszką za prawą krawędź pulpitu: ma wejść na ekran LED.",
+              "x": "Nie wybieraj „Duplikuj”. Resolume ma dostać osobny ekran."
+            }
           },
           {
             "w": "Ustawienia → Ekran → drugi monitor",
             "p": "Rozdzielczość",
             "a": "2048 × 1080",
             "b": "3840 × 2160",
-            "n": "Musi być taka jak EDID w MX30. Jeśli Windows jej nie pokazuje, najpierw ustaw EDID w MX30."
+            "n": "Musi być taka jak EDID w MX30. Jeśli Windows jej nie pokazuje, najpierw ustaw EDID w MX30.",
+            "d": {
+              "k": [
+                "Prawy klik na pulpicie → „Ustawienia ekranu” (albo Start → Ustawienia → System → Ekran).",
+                "U góry kliknij miniaturę ekranu LED. Nie wiesz który? Kliknij „Identyfikuj” (numer pojawi się na ekranie).",
+                "Przewiń do „Skala i układ” → lista „Rozdzielczość ekranu” → wybierz 2048 × 1080 (wariant A) albo 3840 × 2160 (wariant B).",
+                "Kliknij „Zachowaj zmiany”."
+              ],
+              "v": "Ustawienia → System → Ekran → Zaawansowane ustawienia ekranu: rozdzielczość aktywnego sygnału ma pokazać tę samą wartość.",
+              "x": "Windows pokaże 2048 × 1080 tylko, gdy MX30 ma EDID ustawiony i zatwierdzony (Apply). Brak na liście: najpierw MX30 → Input Settings → HDMI1 → EDID, potem odłącz i podłącz HDMI. Ta wartość jest też w MX30, Resolume i VMP: zobacz „Gdzie ustawiasz to samo w kilku miejscach”."
+            }
           },
           {
             "w": "Ustawienia → Ekran → Zaawansowane",
             "p": "Odświeżanie",
             "a": "60 Hz",
             "b": "60 Hz",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Ustawienia → System → Ekran → kliknij miniaturę ekranu LED.",
+                "Przewiń w dół → „Zaawansowane ustawienia ekranu”.",
+                "Na górze wybierz ekran LED z listy (jeśli jest kilka).",
+                "„Wybierz częstotliwość odświeżania” → 60 Hz."
+              ],
+              "v": "W tym samym oknie widać aktualną częstotliwość odświeżania.",
+              "x": "Lista zawiera tylko to, co MX30 poda w EDID. Brak 60 Hz = popraw EDID w MX30."
+            }
           },
           {
             "w": "Ustawienia → Ekran",
             "p": "Skalowanie",
             "a": "100%",
             "b": "100%",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Ustawienia → System → Ekran → kliknij miniaturę ekranu LED (nie głównego ekranu laptopa).",
+                "Przewiń do „Skala i układ” → „Skala” → 100%."
+              ],
+              "v": "Pole „Skala” pokazuje 100%.",
+              "x": "Skala jest ustawiana osobno dla każdego ekranu. Tylko tu (Windows). W MX30, VMP i Resolume nie ma skalowania Windows."
+            }
           },
           {
             "w": "Panel karty graficznej (potwierdź)",
             "p": "Format i zakres",
             "a": "RGB, 8 bit, pełny zakres (Full)",
             "b": "RGB, 8 bit, pełny zakres (Full)",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Najpierw sprawdź jaką kartę ma laptop klienta: Ctrl + Shift + Esc → Wydajność → GPU (nazwa u dołu), albo Win + R → dxdiag → zakładka Ekran.",
+                "NVIDIA: prawy klik na pulpicie → „NVIDIA Control Panel” → Wyświetlacz → „Zmień rozdzielczość” → wybierz ekran LED → „Użyj ustawień kolorów NVIDIA”: głębia 32 bit, format kolorów wyjściowych RGB, głębia wyjściowa 8 bpc, zakres dynamiki wyjściowej Pełny.",
+                "AMD: AMD Software Adrenalin → Ustawienia (zębatka) → Wyświetlacz → ekran LED → Pixel Format: RGB 4:4:4 PC Standard (Full RGB); Color Depth: 8 bpc.",
+                "Intel: Intel Graphics Command Center → Wyświetlacz → wybierz ekran LED → opcje kolorów. Dokładna nazwa pozycji BRAK DANYCH, potwierdź na sprzęcie."
+              ],
+              "v": "Czarny ma być czarny (nie szary). Na ekranie LED sprawdź obraz testowy czarny i biały.",
+              "x": "BRAK DANYCH: karta laptopa klienta nieznana. Nazwy w panelach zależą od wersji sterownika. Bez dostępu do panelu: zostaw domyślne i sprawdź czerń."
+            }
           },
           {
             "w": "Zasilanie",
             "p": "Plan zasilania i uśpienie",
             "a": "Wysoka wydajność, uśpienie: nigdy, wygaszacz wyłączony",
             "b": "Wysoka wydajność, uśpienie: nigdy, wygaszacz wyłączony",
-            "n": ""
+            "n": "",
+            "d": {
+              "sub": [
+                {
+                  "t": "Plan: Wysoka wydajność",
+                  "val": "Najlepsza wydajność / Wysoka wydajność",
+                  "k": [
+                    "Ustawienia → System → Zasilanie i bateria → „Tryb zasilania” → „Najlepsza wydajność” (dla zasilania z sieci).",
+                    "Klasyczny plan „Wysoka wydajność”: Win + R → wpisz powercfg.cpl → Enter → zaznacz „Wysoka wydajność”. Nie widać? Kliknij „Pokaż dodatkowe plany”."
+                  ],
+                  "v": "W oknie Opcje zasilania jest zaznaczony właściwy plan."
+                },
+                {
+                  "t": "Uśpienie: Nigdy",
+                  "val": "Nigdy (przy zasilaniu z sieci)",
+                  "k": [
+                    "Ustawienia → System → Zasilanie i bateria → „Ekran, uśpienie i hibernacja” (w niektórych wersjach: „Ekran i uśpienie”).",
+                    "Wiersz „Po tym czasie przełącz urządzenie w stan uśpienia” → „Podłączone do zasilania” → Nigdy."
+                  ],
+                  "v": "W wierszu widać „Nigdy”."
+                },
+                {
+                  "t": "Wyłączanie ekranu: Nigdy",
+                  "val": "Nigdy (przy zasilaniu z sieci)",
+                  "k": [
+                    "Ta sama sekcja: Ustawienia → System → Zasilanie i bateria → „Ekran, uśpienie i hibernacja”.",
+                    "Wiersz „Po tym czasie wyłącz ekran” → „Podłączone do zasilania” → Nigdy."
+                  ],
+                  "v": "W wierszu widać „Nigdy”."
+                },
+                {
+                  "t": "Wygaszacz ekranu: Brak",
+                  "val": "(Brak)",
+                  "k": [
+                    "Ustawienia → Personalizacja → Ekran blokady → „Wygaszacz ekranu”.",
+                    "W oknie z listy „Wygaszacz ekranu” wybierz „(Brak)” → OK."
+                  ],
+                  "v": "Lista pokazuje „(Brak)”.",
+                  "x": "Wygaszanie ekranu i wygaszacz to dwie różne rzeczy. Podczas pokazu obie mają być wyłączone, żeby ekran LED nie zgasł."
+                },
+                {
+                  "t": "Zamknięcie pokrywy: nic nie rób",
+                  "val": "Nie rób nic (jeśli laptop ma stać zamknięty)",
+                  "k": [
+                    "Win + R → powercfg.cpl → Enter.",
+                    "Po lewej „Wybierz działanie zamykania pokrywy” → „Po zamknięciu pokrywy” → przy zasilaniu z sieci: Nie rób nic → Zapisz zmiany."
+                  ],
+                  "v": "W oknie widać „Nie rób nic”."
+                }
+              ]
+            }
           },
           {
             "w": "Kabel",
             "p": "Wejście w MX30",
             "a": "HDMI 2.0-1 IN (jedyne wejście 4K przy 60 Hz)",
             "b": "HDMI 2.0-1 IN (jedyne wejście 4K przy 60 Hz)",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Kabel HDMI: z gniazda HDMI laptopa do gniazda wejściowego HDMI 2.0-1 w MX30.",
+                "W MX30 źródłem jest Input Settings → HDMI1."
+              ],
+              "v": "Na ekranie głównym MX30 pole „Screen” pokazuje rozdzielczość i odświeżanie wejścia.",
+              "x": "Którego fizycznie gniazda użyć: opis na tylnym panelu MX30. Potwierdź na sprzęcie."
+            }
           }
         ]
       },
@@ -1840,70 +1945,150 @@
             "p": "Tryb pracy",
             "a": "All-In-One Controller",
             "b": "All-In-One Controller",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Na ekranie głównym naciśnij pokrętło (wejście do menu).",
+                "Obróć do „System Settings” → naciśnij.",
+                "„Working Mode” → obróć do „All-In-One Controller” → naciśnij, żeby zatwierdzić."
+              ],
+              "v": "Warstwy (layers) w VMP działają tylko w tym trybie.",
+              "x": "Send-Only skraca opóźnienie o jedną klatkę, ale wyłącza warstwy w VMP."
+            }
           },
           {
             "w": "Input Settings → HDMI1 → EDID → Mode",
             "p": "Tryb EDID",
             "a": "Custom",
             "b": "Standard",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Pokrętło → „Input Settings” → „HDMI1” → „EDID”.",
+                "Pole „Mode” → „Custom” (wariant A) albo „Standard” (wariant B)."
+              ],
+              "v": "Po Apply ekran główny zmienia rozdzielczość wejścia."
+            }
           },
           {
             "w": "Input Settings → HDMI1 → EDID",
             "p": "Rozdzielczość i odświeżanie",
             "a": "2048 × 1080 @ 60 Hz",
             "b": "3840 × 2160 @ 60 Hz",
-            "n": "Potem Apply."
+            "n": "Potem Apply.",
+            "d": {
+              "k": [
+                "Wariant A (Custom): w „EDID” wpisz rozdzielczość 2048 × 1080 i odświeżanie 60 Hz.",
+                "Wariant B (Standard): z listy wybierz 3840 × 2160 @ 60 Hz.",
+                "Przewiń na dół i wybierz „Apply”."
+              ],
+              "v": "Ekran główny: pole „Screen” pokazuje nową rozdzielczość i odświeżanie. W Windows pojawia się nowa wartość (odłącz i podłącz HDMI, jeśli nie).",
+              "x": "Dokładne nazwy pól do wpisania liczb w EDID Custom: BRAK DANYCH (manual opisuje: wpisujesz rozdzielczość). Potwierdź na ekranie."
+            }
           },
           {
             "w": "Advanced Functions → Output Settings → Bit Depth",
             "p": "Głębia wyjścia",
             "a": "8 bit",
             "b": "8 bit",
-            "n": "Daje limit 659 722 px na port."
+            "n": "Daje limit 659 722 px na port.",
+            "d": {
+              "k": [
+                "Pokrętło → „Advanced Functions” → „Output Settings”.",
+                "Pozycja „Bit Depth” → 8 bit → naciśnij."
+              ],
+              "v": "Wartość widoczna w tym samym menu.",
+              "x": "Limit portów w kalkulatorze jest dla 8 bit (659 722 px na port). Przy 10/12 bit limit spada."
+            }
           },
           {
             "w": "Advanced Functions → Output Settings",
             "p": "Low Latency",
             "a": "Wyłączony",
             "b": "Wyłączony",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Pokrętło → „Advanced Functions” → „Output Settings”.",
+                "Pozycja „Low Latency” → Off."
+              ],
+              "v": "Wartość widoczna w tym samym menu.",
+              "x": "Pozycja zależy od wersji firmware. Brak jej tu = poszukaj w VMP: Layout → Edit."
+            }
           },
           {
             "w": "Screen Brightness",
             "p": "Jasność startowa",
             "a": "70%",
             "b": "70%",
-            "n": "Potem Screen Configuration → Save to RV Card → Yes."
+            "n": "Potem Screen Configuration → Save to RV Card → Yes.",
+            "d": {
+              "k": [
+                "Pokrętło → „Screen Brightness”.",
+                "Naciśnij pokrętło, żeby wartość była edytowalna → obróć do 70% → naciśnij.",
+                "Wróć BACK → „Screen Configuration” → „Save to RV Card” → „Yes”."
+              ],
+              "v": "Ekran główny pokazuje jasność. Bez Save to RV Card wartość znika po restarcie.",
+              "x": "Gamma i temperatura barwowa: Advanced Functions → LED Screen Color, potem też Save to RV Card."
+            }
           },
           {
             "w": "Display Control",
             "p": "Stan wyświetlania",
             "a": "Normal",
             "b": "Normal",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Pokrętło → „Display Control”.",
+                "Wybierz „Normal” (Freeze trzyma klatkę, Blackout daje czarny ekran)."
+              ],
+              "v": "Obraz gra normalnie."
+            }
           },
           {
             "w": "Screen Configuration → Mapping",
             "p": "Mapping",
             "a": "Włączony tylko na czas testu",
             "b": "Włączony tylko na czas testu",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Pokrętło → „Screen Configuration” → „Mapping” → włącz.",
+                "Każdy cabinet pokaże numer portu Ethernet i numer karty odbiorczej.",
+                "Po teście wyłącz Mapping tą samą drogą."
+              ],
+              "v": "Wszystkie 64 cabinety pokazują numery. Brak numeru = brak sygnału do cabinetu."
+            }
           },
           {
             "w": "Communication Settings → Network Settings",
             "p": "Adres IP",
             "a": "Zapisz ten z ekranu głównego",
             "b": "—",
-            "n": "Komputer ustaw w tej samej podsieci, maska zwykle 255.255.255.0 (potwierdź)."
+            "n": "Komputer ustaw w tej samej podsieci, maska zwykle 255.255.255.0 (potwierdź).",
+            "d": {
+              "k": [
+                "Pokrętło → „Communication Settings” → „Network Settings”.",
+                "Mode: Manual → wpisz IP Address, Subnet Mask, Default Gateway → Apply.",
+                "Komputer: Ustawienia → Sieć i Internet → Ethernet → „Przypisanie adresu IP” → Edytuj → Ręczne → IPv4 → ten sam początek adresu co MX30, inny ostatni numer, maska 255.255.255.0 → Zapisz."
+              ],
+              "v": "W VMP kontroler pojawia się na liście. Albo w wierszu poleceń: ping adresu MX30.",
+              "x": "Maska 255.255.255.0: potwierdź z odczytem z MX30."
+            }
           },
           {
             "w": "Pokrętło + BACK, 5 s",
             "p": "Blokada przycisków",
             "a": "Włącz po zakończeniu pracy",
             "b": "Włącz po zakończeniu pracy",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Przytrzymaj pokrętło i BACK razem 5 sekund lub dłużej."
+              ],
+              "v": "Przyciski nie reagują (zablokowane). Powtórz ruch, żeby odblokować."
+            }
           }
         ]
       },
@@ -1915,126 +2100,268 @@
             "p": "Nazwa i tryb ekranu",
             "a": "LYNK_8x4 · All-In-One Controller",
             "b": "LYNK_8x4 · All-In-One Controller",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Połącz VMP z MX30 (adres IP: patrz MX30 → Network Settings).",
+                "Wybierz ekran na liście → „Layout” → „Edit” w obszarze właściwości.",
+                "Wpisz nazwę LYNK_8x4 i wybierz Working Mode: All-In-One Controller."
+              ],
+              "v": "Nazwa widoczna na liście ekranów."
+            }
           },
           {
             "w": "Layout → Edit",
             "p": "Low Latency",
             "a": "Wyłączony",
             "b": "Wyłączony",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Layout → Edit (to samo okno co nazwa ekranu).",
+                "Low Latency → wyłączony."
+              ],
+              "v": "Pole pokazuje wyłączony.",
+              "x": "Dokładne miejsce pola w tej wersji VMP: potwierdź na ekranie."
+            }
           },
           {
             "w": "Layout → Canvas",
             "p": "Rozmiar canvasu",
             "a": "2048 × 512",
             "b": "2048 × 512",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Layout → Edit → sekcja „Canvas”.",
+                "Wpisz własną szerokość 2048 i wysokość 512 (maksimum 16 384) albo wybierz gotową rozdzielczość."
+              ],
+              "v": "Obszar roboczy pokazuje canvas 2048 × 512. Nie myl z 2048 × 1080 (wejście) i 2048 × 1024 (kompozycja)."
+            }
           },
           {
             "w": "Layout → Canvas",
             "p": "Pozycja canvasu X, Y",
             "a": "0, 0",
             "b": "0, 0",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Layout → Edit → Canvas → pola X i Y → 0, 0."
+              ],
+              "v": "Canvas zaczyna się w lewym górnym rogu ekranu LED."
+            }
           },
           {
             "w": "Layout → cabinet (custom → Edit)",
             "p": "Rozdzielczość cabinetu",
             "a": "256 × 64 px",
             "b": "—",
-            "n": "Potwierdź z kartą cabinetu lub NCP."
+            "n": "Potwierdź z kartą cabinetu lub NCP.",
+            "d": {
+              "k": [
+                "Layout → kliknij cabinet w układzie → „custom” → „Edit”.",
+                "Wpisz szerokość 256 i wysokość 64 pikseli."
+              ],
+              "v": "Siatka cabinetów daje łącznie 2048 × 512.",
+              "x": "BRAK DANYCH: sekcja 16.2 (Cabinet Library) nie była czytana. Potwierdź z kartą cabinetu HL-3978 lub NCP."
+            }
           },
           {
             "w": "Layout → port Ethernet na dole",
             "p": "Linia D1",
             "a": "Port 1: kolumny 1–2, 16 cabinetów, start u góry kolumny 1",
             "b": "Port 1: kolumny 1–2, 16 cabinetów, start u góry kolumny 1",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Layout → zaznacz port Ethernet na dole ekranu.",
+                "Przypisz cabinety zgodnie z zakładką „Układ opięcia” w tej aplikacji (numer portu, kolumny, liczba, kierunek).",
+                "Start u góry pierwszej kolumny, linia idzie w dół, potem w górę w drugiej kolumnie (jak w schemacie)."
+              ],
+              "v": "Mapping (prawy klik na ekranie → Mapping) pokazuje trasę tak, jak fizycznie zrobiłeś kable.",
+              "x": "Dokładne gesty przypisania portów w VMP: potwierdź na ekranie (sekcja topologii)."
+            }
           },
           {
             "w": "Layout → port Ethernet na dole",
             "p": "Linia D2",
             "a": "Port 3: kolumny 3–4, 16 cabinetów",
             "b": "Port 3: kolumny 3–4, 16 cabinetów",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Layout → zaznacz port Ethernet na dole ekranu.",
+                "Przypisz cabinety zgodnie z zakładką „Układ opięcia” w tej aplikacji (numer portu, kolumny, liczba, kierunek).",
+                "Start u góry pierwszej kolumny, linia idzie w dół, potem w górę w drugiej kolumnie (jak w schemacie)."
+              ],
+              "v": "Mapping (prawy klik na ekranie → Mapping) pokazuje trasę tak, jak fizycznie zrobiłeś kable.",
+              "x": "Dokładne gesty przypisania portów w VMP: potwierdź na ekranie (sekcja topologii)."
+            }
           },
           {
             "w": "Layout → port Ethernet na dole",
             "p": "Linia D3",
             "a": "Port 5: kolumny 5–6, 16 cabinetów",
             "b": "Port 5: kolumny 5–6, 16 cabinetów",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Layout → zaznacz port Ethernet na dole ekranu.",
+                "Przypisz cabinety zgodnie z zakładką „Układ opięcia” w tej aplikacji (numer portu, kolumny, liczba, kierunek).",
+                "Start u góry pierwszej kolumny, linia idzie w dół, potem w górę w drugiej kolumnie (jak w schemacie)."
+              ],
+              "v": "Mapping (prawy klik na ekranie → Mapping) pokazuje trasę tak, jak fizycznie zrobiłeś kable.",
+              "x": "Dokładne gesty przypisania portów w VMP: potwierdź na ekranie (sekcja topologii)."
+            }
           },
           {
             "w": "Layout → port Ethernet na dole",
             "p": "Linia D4",
             "a": "Port 7: kolumny 7–8, 16 cabinetów",
             "b": "Port 7: kolumny 7–8, 16 cabinetów",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Layout → zaznacz port Ethernet na dole ekranu.",
+                "Przypisz cabinety zgodnie z zakładką „Układ opięcia” w tej aplikacji (numer portu, kolumny, liczba, kierunek).",
+                "Start u góry pierwszej kolumny, linia idzie w dół, potem w górę w drugiej kolumnie (jak w schemacie)."
+              ],
+              "v": "Mapping (prawy klik na ekranie → Mapping) pokazuje trasę tak, jak fizycznie zrobiłeś kable.",
+              "x": "Dokładne gesty przypisania portów w VMP: potwierdź na ekranie (sekcja topologii)."
+            }
           },
           {
             "w": "Ekran → Backup → Ethernet Backup",
             "p": "Backup portów",
             "a": "Sequential Backup: 1⇌2, 3⇌4, 5⇌6, 7⇌8",
             "b": "—",
-            "n": "Potem Verify Primary i Verify Backup."
+            "n": "Potem Verify Primary i Verify Backup.",
+            "d": {
+              "k": [
+                "Wybierz ekran → „Backup” → „Ethernet Backup” → „Sequential Backup”.",
+                "Zatwierdź parami portów: 1⇌2, 3⇌4, 5⇌6, 7⇌8.",
+                "Kliknij „Verify Primary” i „Verify Backup”."
+              ],
+              "v": "Obie weryfikacje przechodzą bez błędu. Backup działa tylko, gdy fizycznie są kable na porty zapasowe."
+            }
           },
           {
             "w": "Source → HDMI1 → Resolution i Refresh Rate",
             "p": "Źródło",
             "a": "2048 × 1080 @ 60 Hz",
             "b": "3840 × 2160 @ 60 Hz",
-            "n": "Apply."
+            "n": "Apply.",
+            "d": {
+              "k": [
+                "Wybierz kontroler → „Source”.",
+                "W polach „Resolution” i „Refresh Rate” wybierz wartość taką samą jak EDID w MX30 (A: 2048 × 1080 @ 60 Hz).",
+                "Kliknij „Apply”."
+              ],
+              "v": "Wskaźnik źródła HDMI1 jest zielony (połączone)."
+            }
           },
           {
             "w": "Source → warstwa HDMI1 (Properties)",
             "p": "Rozmiar i pozycja warstwy",
             "a": "2048 × 512, X 0, Y 0",
             "b": "2048 × 512, X 0, Y 0",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Source → kliknij dwukrotnie miniaturę HDMI1 albo przeciągnij ją na obszar roboczy (tworzy się warstwa).",
+                "W obszarze właściwości: Width 2048, Height 512, X 0, Y 0."
+              ],
+              "v": "Warstwa w obszarze roboczym pokrywa cały canvas.",
+              "x": "Warstwy tylko w trybie All-In-One Controller (maksimum 3)."
+            }
           },
           {
             "w": "Source → warstwa HDMI1 → Crop",
             "p": "Kadrowanie",
             "a": "Włączone, Same as Layer Size włączone, początek 0, 0",
             "b": "Włączone, Same as Layer Size włączone, początek 0, 0",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Zaznacz warstwę HDMI1 → właściwości → „Crop”.",
+                "Włącz Crop, zaznacz „Same as Layer Size”, początek 0, 0."
+              ],
+              "v": "Widoczny fragment źródła zaczyna się w lewym górnym rogu.",
+              "x": "Zachowanie crop przy źródle 2048 × 1080 → warstwa 2048 × 512: potwierdź na próbce."
+            }
           },
           {
             "w": "Screen Settings → Image Quality",
             "p": "Jasność",
             "a": "70%",
             "b": "70%",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Wybierz ekran → „Screen Settings” → „Image Quality”.",
+                "Brightness → 70%. „Brightness Limit” ustawia maksimum."
+              ],
+              "v": "Zmiana widoczna na ekranie LED. Pamiętaj o spójności z MX30 (70%)."
+            }
           },
           {
             "w": "Ustawienia cabinetów",
             "p": "No data signal",
             "a": "Blackout (albo Last Frame, jeśli klient woli)",
             "b": "Blackout (albo Last Frame, jeśli klient woli)",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Prawy klik na ekranie lub kontrolerze → opcja sygnału: brak sygnału → Blackout albo Last Frame."
+              ],
+              "v": "Odłącz HDMI na chwilę: ekran ma zgasnąć albo zatrzymać klatkę.",
+              "x": "Dokładna nazwa pozycji menu: potwierdź na ekranie."
+            }
           },
           {
             "w": "Ustawienia cabinetów",
             "p": "Light up slowly",
             "a": "Włączone",
             "b": "Włączone",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Ustawienia cabinetów w VMP → „Light up slowly” → włącz."
+              ],
+              "v": "Pozycja zaznaczona.",
+              "x": "Dokładne miejsce: potwierdź na ekranie (w manualu nie czytano całej sekcji)."
+            }
           },
           {
             "w": "Ustawienia cabinetów",
             "p": "Indicator",
             "a": "Włączony",
             "b": "Włączony",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Włącz „Indicator” przy ekranie (prawy klik na ekranie lub kontrolerze).",
+                "Zielony = cabinet cały w canvasie, temperatura i napięcie w normie. Żółty = częściowo poza canvasem lub ostrzeżenie. Czerwony = poza canvasem lub awaria. Szary = offline."
+              ],
+              "v": "Wszystkie 64 cabinety zielone."
+            }
           },
           {
             "w": "Preset → zapisz",
             "p": "Nazwa presetu",
             "a": "LYNK_FINAL_70",
             "b": "LYNK_FINAL_70",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Prawy klik → „Preset” → kliknij wolne miejsce presetu.",
+                "Zaznacz dane: Source, Layout, Processing, Screen Settings → „Save”.",
+                "Nazwa: LYNK_FINAL_70. Wczytanie: dwuklik na presecie. Do 128 presetów."
+              ],
+              "v": "Aktywny preset ma znacznik w prawym górnym rogu.",
+              "x": "Nazwa presetu: pole przy zapisie. Potwierdź na ekranie."
+            }
           }
         ]
       },
@@ -2046,56 +2373,116 @@
             "p": "Rozmiar kompozycji",
             "a": "2048 × 1024",
             "b": "2048 × 1024",
-            "n": "Kreacja w proporcji 2:1."
+            "n": "Kreacja w proporcji 2:1.",
+            "d": {
+              "k": [
+                "Menu Composition → Settings (w Resolume 7). Wpisz szerokość 2048, wysokość 1024."
+              ],
+              "v": "Siatka kompozycji ma proporcję 2:1.",
+              "x": "BRAK DANYCH w dostarczonych PDF-ach. Nazwa menu zależy od wersji, potwierdź."
+            }
           },
           {
             "w": "Output → Advanced → Screen",
             "p": "Wyjście",
             "a": "To podłączone do MX30",
             "b": "—",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Menu „Output” → „Advanced”.",
+                "W oknie Advanced Output po lewej kliknij „+” i dodaj ekran, przypisz go do ekranu LED (ten podłączony do MX30)."
+              ],
+              "v": "Obraz pojawia się na ekranie LED.",
+              "x": "Pomyłka na głównym monitorze: wyjście go wypełni. Naciśnij CTRL + SHIFT + D, żeby wyłączyć wszystkie wyjścia."
+            }
           },
           {
             "w": "Output → Advanced → Screen → Width, Height",
             "p": "Rozmiar ekranu wirtualnego",
             "a": "2048 × 1080",
             "b": "3840 × 2160",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Output → Advanced → wybierz Screen → pola Width i Height.",
+                "Wpisz 2048 i 1080 (wariant A) albo 3840 i 2160 (wariant B)."
+              ],
+              "v": "Wartość taka jak w Windows i EDID MX30.",
+              "x": "Bez drugiego ekranu otworzy się jeden Virtual Screen. Więcej dodasz z menu Plus +."
+            }
           },
           {
             "w": "Slice → Input Selection",
             "p": "Wejście slice",
             "a": "X 0, Y 0, 2048 × 1024 (cała kompozycja)",
             "b": "X 0, Y 0, 2048 × 1024 (cała kompozycja)",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Output → Advanced → Slice → zakładka „Input Selection”.",
+                "X 0, Y 0, szerokość 2048, wysokość 1024 (cała kompozycja)."
+              ],
+              "v": "Cała kompozycja widoczna w slice.",
+              "x": "BRAK DANYCH: rozdział Input Selection nie został wgrany. Potwierdź w programie."
+            }
           },
           {
             "w": "Slice → Output Transformation",
             "p": "Wyjście slice",
             "a": "X 0, Y 0, 2048 × 512",
             "b": "X 0, Y 0, 2048 × 512",
-            "n": "Skaluje 2:1 do pikseli ekranu."
+            "n": "Skaluje 2:1 do pikseli ekranu.",
+            "d": {
+              "k": [
+                "Output → Advanced → Slice → zakładka „Output Transformation”.",
+                "X 0, Y 0, szerokość 2048, wysokość 512."
+              ],
+              "v": "Slice na wyjściu zajmuje pas 2048 × 512 w lewym górnym rogu.",
+              "x": "BRAK DANYCH: rozdział Output Transformation nie został wgrany. Potwierdź w programie."
+            }
           },
           {
             "w": "Screen",
             "p": "Brightness, Contrast",
             "a": "100%, 100%",
             "b": "—",
-            "n": "Jasność ekranu ustawiasz w MX30 i VMP."
+            "n": "Jasność ekranu ustawiasz w MX30 i VMP.",
+            "d": {
+              "k": [
+                "Output → Advanced → zaznacz Screen → suwaki Brightness i Contrast (oraz osobno Red, Green, Blue).",
+                "Ustaw Brightness 100%, Contrast 100%."
+              ],
+              "v": "Jasność ekranu ustawiasz w MX30 i VMP, nie tutaj."
+            }
           },
           {
             "w": "Screen",
             "p": "Delay",
             "a": "0 ms",
             "b": "0 ms",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Output → Advanced → zaznacz Screen → suwak „Delay” (0–100 ms) → 0 ms."
+              ],
+              "v": "Pole pokazuje 0."
+            }
           },
           {
             "w": "Zapis",
             "p": "Preset ustawień wyjścia",
             "a": "Zapisz pod nazwą LYNK_2048x512",
             "b": "Zapisz pod nazwą LYNK_2048x512",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Advanced Output → lista w lewym górnym rogu → zapisz konfigurację → nazwa LYNK_2048x512.",
+                "Plik .xml ląduje w Documents → Resolume (folder presets → screensetup)."
+              ],
+              "v": "Preset widać na liście.",
+              "x": "Dokładna nazwa folderu zależy od wersji Resolume. Wg manuala: Documents\\Resolume Avenue-Arena 5\\presets\\screensetup."
+            }
           }
         ]
       },
@@ -2107,46 +2494,182 @@
             "p": "Kontener i kodek",
             "a": "MP4, H.264 (albo HAP / DXV)",
             "b": "MP4, H.264 (albo HAP / DXV)",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Ustawia się w programie eksportującym (kodek, kontener).",
+                "Sprawdzenie: prawy klik na pliku → Właściwości → zakładka Szczegóły."
+              ],
+              "v": "Widoczny typ pliku i kodek.",
+              "x": "BRAK DANYCH: program montażowy klienta nieznany. Nazwy opcji eksportu zależą od programu."
+            }
           },
           {
             "w": "Format",
             "p": "Rozmiar",
             "a": "2048 × 1024 (2:1)",
             "b": "—",
-            "n": "Wersja 2048 × 512 tylko, gdy slice ma być 1:1."
+            "n": "Wersja 2048 × 512 tylko, gdy slice ma być 1:1.",
+            "d": {
+              "k": [
+                "W programie eksportującym ustaw rozmiar klatki 2048 × 1024.",
+                "Sprawdzenie: Właściwości → Szczegóły → „Szerokość klatki” i „Wysokość klatki”."
+              ],
+              "v": "2048 i 1024."
+            }
           },
           {
             "w": "Format",
             "p": "Klatki na sekundę",
             "a": "30 (albo 60)",
             "b": "—",
-            "n": "Przy wyjściu 60 Hz dobieraj 30 lub 60. 25 i 50 tylko gdy cały łańcuch pracuje na 50 Hz."
+            "n": "Przy wyjściu 60 Hz dobieraj 30 lub 60. 25 i 50 tylko gdy cały łańcuch pracuje na 50 Hz.",
+            "d": {
+              "k": [
+                "Eksport: klatki na sekundę 30 (lub 60).",
+                "Sprawdzenie: Właściwości → Szczegóły → „Szybkość klatek”."
+              ],
+              "v": "Wartość 30 lub 60 klatek na sekundę."
+            }
           },
           {
             "w": "Format",
             "p": "Dźwięk",
             "a": "Brak",
             "b": "Brak",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Eksport: wyłącz ścieżkę dźwiękową.",
+                "Sprawdzenie: Właściwości → Szczegóły → brak pola „Szybkość transmisji bitowej audio”."
+              ],
+              "v": "Brak audio."
+            }
           },
           {
             "w": "Format",
             "p": "Bitrate",
             "a": "co najmniej 40 Mb/s",
             "b": "co najmniej 40 Mb/s",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Eksport: bitrate co najmniej 40 Mb/s.",
+                "Sprawdzenie: Właściwości → Szczegóły → „Szybkość transmisji danych”."
+              ],
+              "v": "Wartość nie niższa niż 40 Mb/s."
+            }
           },
           {
             "w": "Treść",
             "p": "Tło",
             "a": "Czarne, bez pełnej bieli całego kadru",
             "b": "Czarne, bez pełnej bieli całego kadru",
-            "n": ""
+            "n": "",
+            "d": {
+              "k": [
+                "Przygotuj czarne tło w projekcie wideo. Nie rób pełnej bieli całego kadru."
+              ],
+              "v": "Podgląd: czerń wokół treści.",
+              "x": "Powód: ekran jest transparentny, czerń daje przezroczystość, pełna biel to maksymalny pobór mocy."
+            }
           }
         ]
       }
-    ]
+    ],
+    "multi": {
+      "title": "Gdzie ustawiasz to samo w kilku miejscach",
+      "intro": "Te wartości występują w kilku programach. Zacznij od MX30 (źródło prawdy), potem Windows, potem Resolume i VMP. Wartość ma być wszędzie taka sama.",
+      "items": [
+        {
+          "t": "Rozdzielczość wejścia",
+          "a": "2048 × 1080",
+          "b": "3840 × 2160",
+          "rows": [
+            [
+              "1. MX30",
+              "Input Settings → HDMI1 → EDID → Mode i rozdzielczość → Apply"
+            ],
+            [
+              "2. Windows",
+              "Ustawienia → System → Ekran → ekran LED → Rozdzielczość ekranu"
+            ],
+            [
+              "3. Resolume",
+              "Output → Advanced → Screen → Width, Height"
+            ],
+            [
+              "4. VMP",
+              "Kontroler → Source → Resolution → Apply"
+            ]
+          ]
+        },
+        {
+          "t": "Odświeżanie",
+          "a": "60 Hz",
+          "b": "60 Hz",
+          "rows": [
+            [
+              "1. MX30",
+              "Input Settings → HDMI1 → EDID → odświeżanie → Apply"
+            ],
+            [
+              "2. Windows",
+              "Ustawienia → System → Ekran → Zaawansowane ustawienia ekranu → Wybierz częstotliwość odświeżania"
+            ],
+            [
+              "3. VMP",
+              "Kontroler → Source → Refresh Rate → Apply"
+            ],
+            [
+              "4. Resolume",
+              "BRAK DANYCH w dostarczonych PDF-ach: osobnego pola nie opisano"
+            ]
+          ]
+        },
+        {
+          "t": "Skalowanie 100%",
+          "a": "100%",
+          "b": "100%",
+          "rows": [
+            [
+              "Windows (jedyne miejsce)",
+              "Ustawienia → System → Ekran → ekran LED → Skala → 100%"
+            ]
+          ]
+        },
+        {
+          "t": "Trzy rozdzielczości, nie mylić",
+          "a": "1080 / 1024 / 512",
+          "b": "2160 / 1024 / 512",
+          "rows": [
+            [
+              "Wejście (EDID, Windows, Resolume Screen, VMP Source)",
+              "2048 × 1080 (A) albo 3840 × 2160 (B)"
+            ],
+            [
+              "Kompozycja Resolume i plik wideo",
+              "2048 × 1024"
+            ],
+            [
+              "Ściana LED: canvas VMP, warstwa, Output Transformation",
+              "2048 × 512"
+            ]
+          ]
+        }
+      ],
+      "order": [
+        "MX30: EDID → Apply",
+        "Podłącz HDMI (odłącz i podłącz, jeśli Windows nie widzi wartości)",
+        "Windows: Win + P → Rozszerz",
+        "Windows: rozdzielczość, odświeżanie, skala 100%",
+        "Windows: zasilanie (Najlepsza wydajność, Nigdy, wygaszacz Brak)",
+        "Resolume: Output → Advanced → Screen i slice",
+        "VMP: Source, Layout, Canvas, warstwa",
+        "MX30: jasność 70% → Save to RV Card",
+        "VMP: preset LYNK_FINAL_70"
+      ]
+    }
   },
   "summary": {
     "az": "9 faz od kabli do przekazania. Najpierw lista pytań i projekt offline w VMP, potem kable, włączenie MX30, ustawienia na panelu, VMP, HDMI i Resolume, jasność 70% i zapis. Na końcu tabela awarii.",

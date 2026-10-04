@@ -67,3 +67,10 @@
 
 ## Wdrożenie v31 — instrukcja Cowork
 - Dodano `DEPLOY-v31-COWORK.md` (kolejność uploadu, sw.js na końcu, weryfikacja, CDN, aktualizacja telefonu, offline) i `docs/DEPLOY-v31-SHA256.txt` (151 plików). Precache 147/147 plików istnieje; validate 0 błędów. Wdrożenie wykonuje ręcznie Cowork/użytkownik; sandbox nie ma dostępu do elite-athlete.shop.
+
+## v32 — drill-down parametrów, szukajka
+- Parametry: każdy wiersz rozwija się do kroków (dokładna ścieżka kliknięć, „Sprawdź”, „Uwaga”). Windows (rozdzielczość, odświeżanie, skala 100%, tryb Rozszerz, plan zasilania, uśpienie, wyłączanie ekranu, wygaszacz, pokrywa, panel GPU), MX30, VMP, Resolume, plik wideo. Zasilanie rozbite na 5 podopcji.
+- Sekcja „Gdzie ustawiasz to samo w kilku miejscach” (rozdzielczość, odświeżanie, skala, trzy rozdzielczości) + kolejność ustawiania. „Kopiuj wszystkie parametry” zawiera kroki.
+- Szukajka w menu Montażu (bez polskich znaków, końcówki): rozdziały, parametry, kroki MX30/VMP/Resolume, listy przygotowań.
+- Pola bez pewności oznaczone BRAK DANYCH / potwierdź (m.in. panel Intel, EDID Custom pola, topologia VMP, cabinet 16.2, Resolume Input Selection/Output Transformation, Composition → Settings).
+- sw.js: rigtalk-v32. validate 0 błędów; test Playwright 64 ok. Instrukcja wdrożenia: DEPLOY-COWORK.md.

@@ -1,28 +1,28 @@
-# RIG TALK v31 — wdrożenie na Hostinger (instrukcja dla Cowork)
+# RIG TALK v32 — wdrożenie na Hostinger (instrukcja dla Cowork)
 
 Wklej Coworkowi w całości. Mów po polsku, krótko. **Nigdy nie wpisuj za Damiana haseł** — pracuj na już zalogowanej sesji hPanel. Jeśli wymaga logowania: zatrzymaj się i poproś Damiana.
 
 ## 0. Cel i adresy
 - Aktualizacja istniejącej aplikacji: **https://elite-athlete.shop/rig-talk/** (pisownia: `elite-athlete`, NIE „atlete").
 - Folder na serwerze: `public_html/rig-talk/`. **Nie ruszaj** `public_html` (root), sklepu ani `/nauka-angielskiego/`.
-- Wersja: **rigtalk-v31** (`CACHE_NAME` w `sw.js`). 151 plików, ~7,5 MB.
+- Wersja: **rigtalk-v32** (`CACHE_NAME` w `sw.js`). 151 plików, ~7,5 MB.
 
 ## 1. Skąd wziąć pliki
-Źródło prawdy: repo GitHub `eliteathlete777/RIG.TALK-APP`, branch **`claude/dreamy-shannon-vzsoj4`** (commit „v31 …" i nowszy).
+Źródło prawdy: repo GitHub `eliteathlete777/RIG.TALK-APP`, branch **`claude/dreamy-shannon-vzsoj4`** (commit „v32 …" i nowszy).
 - Pobierz: https://github.com/eliteathlete777/RIG.TALK-APP/archive/refs/heads/claude/dreamy-shannon-vzsoj4.zip i rozpakuj lokalnie (Windows: prawy klik → Wyodrębnij wszystko), albo `git pull origin claude/dreamy-shannon-vzsoj4` w `C:\Users\DELL\Documents\ChatGPT\RIG.TALK APP`.
 - Do wgrania TYLKO te elementy (z korzenia projektu): `index.html`, `manifest.webmanifest`, `sw.js`, foldery `assets/`, `css/`, `js/`, `content/`, `vendor/`.
 - NIE wgrywaj: `.git`, `docs/`, `tools/`, `n8n/`, `source-material/`, `*.md`, `*.zip`, `_hostinger_v20`, `*.png` z korzenia (podglądy), `node_modules`.
-- Lista kontrolna: `docs/DEPLOY-v31-SHA256.txt` (151 plików, sha256).
+- Lista kontrolna: `docs/DEPLOY-SHA256.txt` (plików: 151, sha256).
 
 ## 2. Przed uploadem (kopia zapasowa)
-W File Managerze: `public_html/rig-talk/` → zaznacz wszystko → Kompresuj/Archiwizuj do `rig-talk-backup-przed-v31.zip` w `public_html/` (poza folderem rig-talk). Dzięki temu jest powrót.
+W File Managerze: `public_html/rig-talk/` → zaznacz wszystko → Kompresuj/Archiwizuj do `rig-talk-backup-przed-v32.zip` w `public_html/` (poza folderem rig-talk). Dzięki temu jest powrót.
 
 ## 3. Upload — kolejność ma znaczenie
 Zachowaj strukturę folderów (File Manager → wejdź w `rig-talk/` → Upload → wybierz foldery/pliki; nadpisuj przy pytaniu).
 1. `assets/` (w tym `assets/plany/` ~6 MB, `assets/test/`) — nowe obrazy.
 2. `vendor/`, `css/`, `content/`, `js/`.
 3. `index.html`, `manifest.webmanifest`.
-4. **`sw.js` NA KOŃCU** — nowy service worker ma zastać na serwerze wszystkie pliki z precache, inaczej instalacja v31 się wywali.
+4. **`sw.js` NA KOŃCU** — nowy service worker ma zastać na serwerze wszystkie pliki z precache, inaczej instalacja v32 się wywali.
 
 Zasady (znane pułapki Hostingera):
 - **Nie używaj ZIP z Windows PowerShell** (`Compress-Archive`) — psuje foldery (`\` w nazwach). Wgrywaj foldery/pliki bezpośrednio.
@@ -31,7 +31,7 @@ Zasady (znane pułapki Hostingera):
 
 ## 4. Weryfikacja na serwerze (PRZED czyszczeniem CDN)
 Otwórz w przeglądarce (z `?x=1`, żeby ominąć cache):
-- `https://elite-athlete.shop/rig-talk/sw.js?x=1` → w 4. linii ma być `const CACHE_NAME = 'rigtalk-v31';`
+- `https://elite-athlete.shop/rig-talk/sw.js?x=1` → w 4. linii ma być `const CACHE_NAME = 'rigtalk-v32';`
 - `https://elite-athlete.shop/rig-talk/content/montaz.json?x=1` → ma się wczytać (JSON, nie 404).
 - `https://elite-athlete.shop/rig-talk/js/uklad.js?x=1`, `.../js/acc.js?x=1` → muszą istnieć (to nowe pliki).
 - `https://elite-athlete.shop/rig-talk/assets/plany/th-tw-01.jpg?x=1` → obraz.
@@ -47,7 +47,7 @@ Chrome → `https://elite-athlete.shop/rig-talk/` → Ctrl+Shift+R. Sprawdź: ek
 ## 7. Aktualizacja telefonu Damiana (podaj mu dosłownie)
 Aplikacja sama pobiera nową wersję i cały pakiet offline (147 plików z precache, ~7 MB). Wymagane jest Wi-Fi.
 1. Telefon na **Wi-Fi**. Otwórz RIG TALK (ikona z ekranu głównego lub w Chrome `elite-athlete.shop/rig-talk/`).
-2. Zostaw otwartą aplikację **~60 sekund** (service worker ściąga v31 w tle i przełącza się sam).
+2. Zostaw otwartą aplikację **~60 sekund** (service worker ściąga v32 w tle i przełącza się sam).
 3. **Zamknij aplikację całkowicie** (przesuń z listy ostatnich) i otwórz ponownie. Powtórz raz.
 4. U góry ma być zielone **„OFFLINE GOTOWE"**. Jeśli „OFFLINE ŁADUJE" — poczekaj na Wi-Fi i otwórz jeszcze raz.
 5. Sprawdź, że to nowa wersja: Montaż → są kafle rozdziałów, w „Układ opięcia" generator, w „Plany" miniatury z PDF.
@@ -64,4 +64,4 @@ Dane (postęp, ulubione, ustawienia) są w localStorage w telefonie — aktualiz
 - wszystko, co nie zadziałało (bez ukrywania).
 
 ## 9. Rollback
-Gdy coś pęka: usuń zawartość `rig-talk/`, rozpakuj `rig-talk-backup-przed-v31.zip`, wyczyść CDN.
+Gdy coś pęka: usuń zawartość `rig-talk/`, rozpakuj `rig-talk-backup-przed-v32.zip`, wyczyść CDN.

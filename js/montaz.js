@@ -352,7 +352,7 @@ function renderParam(root, data){
   root.appendChild(bar);
   const val = r => (current === 'b' && r.b && r.b !== '—') ? r.b : r.a;
   const lines = [`PARAMETRY · wariant ${current.toUpperCase()}`, ''];
-  section.sections.forEach(sec => { lines.push(sec.title.toUpperCase()); sec.rows.forEach(r => lines.push(`- ${r.w}: ${r.p} = ${val(r)}`)); lines.push(''); });
+  section.sections.forEach(sec => { lines.push(sec.title.toUpperCase()); sec.rows.forEach(r => { lines.push(`- ${r.w}: ${r.p} = ${val(r)}`); detailLines(r.d).forEach(l => lines.push('    ' + l)); }); lines.push(''); });
   const text = lines.join('\n').trim();
   const copy = el('button', 'btn btn-primary btn-lg', 'Kopiuj wszystkie parametry');
   const area = el('textarea', 'mz-msg'); area.readOnly = true; area.rows = 10; area.value = text; area.id = 'param-text';
@@ -365,18 +365,89 @@ function renderParam(root, data){
   section.sections.forEach((sec, index) => {
     const { wrap, body } = acc(sec.title, { open: index < 2, sub: trunc(sec.rows.slice(0, 3).map(r => r.p).join(' · ')), badge: String(sec.rows.length) });
     sec.rows.forEach(r => {
-      const row = el('div', 'pr-row');
-      row.appendChild(el('small', 'pr-w', r.w));
-      row.appendChild(el('span', 'pr-p', r.p));
-      row.appendChild(el('b', 'pr-v', val(r)));
-      if (r.n) row.appendChild(el('small', 'pr-n', r.n));
-      body.appendChild(row);
+      if (!r.d){
+        const row = el('div', 'pr-row');
+        row.appendChild(el('small', 'pr-w', r.w));
+        row.appendChild(el('span', 'pr-p', r.p));
+        row.appendChild(el('b', 'pr-v', val(r)));
+        if (r.n) row.appendChild(el('small', 'pr-n', r.n));
+        body.appendChild(row);
+        return;
+      }
+      const focus = store.get().ui?.paramFocus === r.p;
+      const item = acc(r.p, { open: focus, sub: trunc(val(r)), badge: r.d.sub ? String(r.d.sub.length) : 'GDZIE' });
+      item.wrap.classList.add('pr-item');
+      item.wrap.dataset.row = r.p;
+      item.body.appendChild(el('small', 'pr-w', r.w));
+      item.body.appendChild(el('b', 'pr-v', val(r)));
+      if (r.n) item.body.appendChild(el('small', 'pr-n', r.n));
+      renderDetail(item.body, r.d);
+      body.appendChild(item.wrap);
+      if (focus) setTimeout(() => item.wrap.scrollIntoView({ block: 'center' }), 60);
     });
     root.appendChild(wrap);
   });
+  if (store.get().ui?.paramFocus) store.set({ ui: { paramFocus: null } });
+  if (section.multi) renderMulti(root, section.multi, current);
   const raw = acc('Tekst do skopiowania ręcznie', {});
   raw.body.appendChild(area);
   root.appendChild(raw.wrap);
+}
+
+function detailLines(d){
+  if (!d) return [];
+  const out = [];
+  const add = (x, prefix = '') => {
+    (x.k || []).forEach((t, i) => out.push(`${prefix}${i + 1}. ${t}`));
+    if (x.v) out.push(`${prefix}Sprawdź: ${x.v}`);
+    if (x.x) out.push(`${prefix}Uwaga: ${x.x}`);
+  };
+  if (d.sub) d.sub.forEach(sub => { out.push(`${sub.t} = ${sub.val}`); add(sub, '  '); });
+  else add(d);
+  return out;
+}
+
+function renderDetail(body, d){
+  const block = (box, x) => {
+    if (x.k?.length){
+      const ol = el('ol', 'mz-steps pr-steps');
+      x.k.forEach(t => ol.appendChild(el('li', '', t)));
+      box.appendChild(ol);
+    }
+    if (x.v){ const v = el('p', 'pr-check'); v.append(el('b', '', 'Sprawdź: '), document.createTextNode(x.v)); box.appendChild(v); }
+    if (x.x){ const w = el('p', 'pr-warn'); w.append(el('b', '', 'Uwaga: '), document.createTextNode(x.x)); box.appendChild(w); }
+  };
+  if (d.sub){
+    d.sub.forEach(sub => {
+      const item = acc(sub.t, { sub: trunc(sub.val), badge: 'GDZIE' });
+      item.wrap.classList.add('pr-sub');
+      block(item.body, sub);
+      body.appendChild(item.wrap);
+    });
+  } else block(body, d);
+}
+
+function renderMulti(root, multi, current){
+  const group = acc(multi.title, { open: true, color: '#e01e1e', sub: multi.items.map(i => i.t).join(' · '), badge: String(multi.items.length) });
+  group.wrap.classList.add('pr-multi');
+  group.body.appendChild(el('p', 'mz-intro', multi.intro));
+  multi.items.forEach(it => {
+    const value = (current === 'b' && it.b && it.b !== '—') ? it.b : it.a;
+    const item = acc(it.t, { sub: value, badge: String(it.rows.length) });
+    it.rows.forEach(([w, p]) => {
+      const row = el('div', 'pr-row');
+      row.appendChild(el('span', 'pr-p', w));
+      row.appendChild(el('small', 'pr-n', p));
+      item.body.appendChild(row);
+    });
+    group.body.appendChild(item.wrap);
+  });
+  const order = acc('Kolejność ustawiania (dokładnie tak)', { sub: 'od MX30 do presetu', badge: String(multi.order.length) });
+  const ol = el('ol', 'mz-steps');
+  multi.order.forEach(t => ol.appendChild(el('li', '', t)));
+  order.body.appendChild(ol);
+  group.body.appendChild(order.wrap);
+  root.appendChild(group.wrap);
 }
 
 function renderPrzed(root, data){
@@ -491,6 +562,55 @@ function ensureDock(){
   document.body.appendChild(dock);
 }
 
+
+// ---------- szukajka: jedno pole przeszukuje rozdziały, parametry i kroki programów ----------
+
+const fold = t => String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ł/g, 'l');
+
+function buildIndex(data){
+  if (data._index) return data._index;
+  const idx = [];
+  const add = (chapter, title, where, text, focus) => idx.push({ chapter, title, where, hay: fold(title + ' ' + where + ' ' + text), focus });
+  data.chapters.forEach(c => add(c.id, c.title, 'Rozdział', `${c.en} ${c.when} ${data.summary?.[c.id] || ''}`));
+  (data.param?.sections || []).forEach(sec => sec.rows.forEach(r => {
+    const d = r.d ? [...(r.d.k || []), r.d.v || '', r.d.x || '', ...(r.d.sub || []).flatMap(x => [x.t, x.val, ...(x.k || []), x.v || '', x.x || ''])].join(' ') : '';
+    add('param', r.p, 'Parametry · ' + sec.title, `${r.w} ${r.a} ${r.b} ${r.n || ''} ${d}`, r.p);
+  }));
+  ['mx30panel', 'vmp', 'resolume'].forEach(id => (data[id]?.blocks || []).forEach(b => {
+    const chapter = data.chapters.find(c => c.id === id);
+    add(id, b.h.split(' · ')[1] || b.h, chapter?.title || id, b.steps.map(st => `${st.pl} ${st.en}`).join(' '));
+  }));
+  (data.przed?.groups || []).forEach(g => add('przed', g.title, 'Przygotuj wcześniej', g.items.join(' ')));
+  data._index = idx;
+  return idx;
+}
+
+function renderSearch(container, data){
+  const box = el('div', 'mz-search');
+  const input = el('input', 'mz-search-in');
+  input.type = 'search'; input.id = 'mzSearch'; input.placeholder = 'Szukaj: EDID, skala 100%, uśpienie, backup, jasność…';
+  input.setAttribute('aria-label', 'Szukaj w montażu');
+  input.autocomplete = 'off';
+  const out = el('div', 'mz-search-out');
+  const run = () => {
+    out.innerHTML = '';
+    const words = fold(input.value).split(/\s+/).filter(Boolean).map(w => (w.length >= 5 ? w.slice(0, -1) : w));
+    if (!words.length) return;
+    const hits = buildIndex(data).filter(e => words.every(w => e.hay.includes(w)))
+      .sort((a, b) => (fold(b.title).includes(words[0]) ? 1 : 0) - (fold(a.title).includes(words[0]) ? 1 : 0)).slice(0, 12);
+    if (!hits.length){ out.appendChild(el('p', 'muted-sm', 'Brak wyników. Spróbuj krótszego słowa.')); return; }
+    hits.forEach(h => {
+      const b = el('button', 'mz-search-hit');
+      b.append(el('b', '', h.title), el('small', '', h.where));
+      b.addEventListener('click', () => { if (h.focus) store.set({ ui: { paramFocus: h.focus } }); openChapter(h.chapter); });
+      out.appendChild(b);
+    });
+  };
+  input.addEventListener('input', run);
+  box.append(input, out);
+  container.appendChild(box);
+}
+
 const groupMap = (data) => new Map(data.groups.map(g => [g.id, g]));
 
 function chapterTile(data, chapter, groups){
@@ -598,6 +718,7 @@ export async function renderMontazHub(container, ctx){
     hero.appendChild(el('div', 'hero-sub', data.subtitle));
     container.appendChild(hero);
     container.appendChild(quick);
+    renderSearch(container, data);
 
     const view = store.get().ui?.montazView || 'mapa';
     const bar = el('div', 'mz-views');
