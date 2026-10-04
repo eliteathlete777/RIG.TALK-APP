@@ -17,7 +17,7 @@ await page.evaluate(() => localStorage.clear());
 await page.reload({ waitUntil: 'networkidle' });
 await page.locator('[data-mode-select="assembly"]').click();
 await page.waitForSelector('.mz-tile');
-ok(await page.locator('.mz-tile').count() === 10, '10 kafli rozdziałów');
+ok(await page.locator('.mz-tile').count() === 13, '13 kafli rozdziałów');
 ok(!(await page.locator('#bottomNav').isVisible()), 'montaż bez nawigacji angielskiego');
 
 // komplet
@@ -52,7 +52,34 @@ ok(text.includes('3 × 16 A'), 'kalkulator: linie 16 A');
 // niespodzianki + zwroty
 await page.locator('.mz-back').click();
 await page.locator('[data-chapter="niespodzianki"]').click();
-ok(await page.locator('.mz-risk').count() === 9, '9 ryzyk');
+ok(await page.locator('.mz-risk').count() === 10, '10 ryzyk');
+await page.locator('.mz-back').click();
+
+// Plany
+await page.locator('[data-chapter="plany"]').click();
+await page.waitForSelector('.plan-card');
+ok(await page.locator('.plan-card').count() === 29, 'Plany: 29 rysunków');
+await page.locator('[data-plan="tw-12"]').click();
+await page.waitForSelector('.plan-img');
+ok((await page.locator('.plan-title').innerText()).includes('Elewacja A'), 'Plany: podgląd Elewacja A');
+await page.locator('.plan-tools button', { hasText: '+' }).click();
+ok((await page.locator('.plan-zoom').innerText()) === '150%', 'Plany: zoom 150%');
+await page.locator('.plan-bar .plan-btn').click();
+await page.locator('.mz-back').click();
+await page.locator('[data-chapter="mechanika"]').click();
+await page.waitForSelector('.plan-link');
+ok(await page.locator('.plan-link').count() === 5, 'Mechanika: 5 linków do planów');
+await page.locator('.mz-back').click();
+
+// MX30 panel i Resolume
+await page.locator('[data-chapter="mx30panel"]').click();
+await page.waitForSelector('.mx-step');
+ok((await page.locator('#stoiskoRoot').innerText()).includes('Quick Configuration'), 'MX30 panel: Quick Configuration');
+ok(await page.locator('.mz-src').count() === 5, 'MX30 panel: 5 źródeł');
+await page.locator('.mz-back').click();
+await page.locator('[data-chapter="resolume"]').click();
+await page.waitForSelector('.mx-step');
+ok((await page.locator('#stoiskoRoot').innerText()).includes('Output Transformation'), 'Resolume: Output Transformation');
 await page.locator('.mz-back').click();
 
 // MX30 i etapy
@@ -64,7 +91,7 @@ await page.locator('[data-chapter="etapy"]').click();
 await page.waitForSelector('.stage-card');
 ok(await page.locator('.stage-card').count() === 10, 'Etapy: 10 kart');
 await page.locator('.mz-back').click();
-ok(await page.locator('.mz-tile').count() === 10, 'powrót do wyboru rozdziału');
+ok(await page.locator('.mz-tile').count() === 13, 'powrót do wyboru rozdziału');
 
 ok(await page.evaluate(() => document.documentElement.scrollWidth === document.documentElement.clientWidth), 'brak poziomego scrolla (375 px)');
 await page.screenshot({ path: 'montaz-v24-preview.png', fullPage: true });

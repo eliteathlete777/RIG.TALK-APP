@@ -4,6 +4,7 @@
 
 import { store } from './state.js';
 import * as speech from './speech.js';
+import { planLinks, renderPlany } from './plany.js';
 
 let cache = null;
 
@@ -62,6 +63,40 @@ function stepList(steps){
 }
 
 // ---------- rozdziały ----------
+
+
+const BLOCK_STATUS = {
+  manual: '🟢 Z OFICJALNEJ INSTRUKCJI',
+  calc: '🟡 WYLICZONE, POTWIERDŹ NA MIEJSCU',
+  verify: '🟡 PROCEDURA OGÓLNA, POTWIERDŹ',
+};
+
+function renderBlocks(root, section){
+  if (section.warning) root.appendChild(warning(section.warning));
+  section.blocks.forEach(block => {
+    const wrap = el('section', 'mx-step ' + (block.status === 'manual' ? 'safe' : ''));
+    wrap.appendChild(el('div', 'mx-status', BLOCK_STATUS[block.status] || ''));
+    wrap.appendChild(el('h3', 'mz-block-h', block.h));
+    wrap.appendChild(stepList(block.steps));
+    root.appendChild(wrap);
+  });
+  if (section.missing?.length){
+    const box = el('div', 'mz-dont');
+    box.appendChild(el('b', '', 'CZEGO NIE MAM POTWIERDZONEGO'));
+    section.missing.forEach(m => box.appendChild(el('div', '', '• ' + m)));
+    root.appendChild(box);
+  }
+  if (section.sources?.length){
+    const box = el('div', 'card');
+    box.appendChild(el('h3', 'mz-h', 'ŹRÓDŁA (OTWÓRZ I PORÓWNAJ)'));
+    section.sources.forEach(src => {
+      const a = el('a', 'mz-src', src.t);
+      a.href = src.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      box.appendChild(a);
+    });
+    root.appendChild(box);
+  }
+}
 
 function renderFakty(root, data){
   root.appendChild(el('p', 'muted-sm', data.source_note));
@@ -319,8 +354,13 @@ export async function renderMontazHub(container, { openStages, openMx30 }){
     case 'zasilanie': renderSteps(body, data.zasilanie); break;
     case 'kalkulator': renderKalkulator(body, data); break;
     case 'niespodzianki': renderNiespodzianki(body, data); break;
+    case 'plany': await renderPlany(body, data.plany?.intro); break;
+    case 'mx30panel': renderBlocks(body, data.mx30panel); break;
+    case 'resolume': renderBlocks(body, data.resolume); break;
     default: break;
   }
+  const plans = await planLinks(data[chapter.id]?.plans);
+  if (plans) container.appendChild(plans);
   const phrases = phraseBlock(data[chapter.id]?.phrases);
   if (phrases) container.appendChild(phrases);
 

@@ -21,7 +21,7 @@ with sync_playwright() as p:
     page.locator('[data-mode-select="assembly"]').click()
     assert page.locator('[data-screen="stoisko"]').is_visible()
     assert not page.locator('#bottomNav').is_visible()
-    assert page.locator('#stoiskoRoot .mz-tile').count() == 10
+    assert page.locator('#stoiskoRoot .mz-tile').count() == 13
 
     page.locator('#modeChange').click()
     page.locator('[data-mode-select="english"]').click()

@@ -1,0 +1,283 @@
+{
+ "groups": [
+  [
+   "led",
+   "Ekran LED i welon"
+  ],
+  [
+   "prad",
+   "Zasilanie i sieć"
+  ],
+  [
+   "mech",
+   "Mechanika i zabudowa"
+  ],
+  [
+   "og",
+   "Ogólne"
+  ]
+ ],
+ "items": [
+  {
+   "id": "tw-01",
+   "title": "Strona tytułowa",
+   "desc": "Lynk & Co — dossier techniczne",
+   "tag": "og",
+   "full": "assets/plany/tw-01.jpg",
+   "thumb": "assets/plany/th-tw-01.jpg",
+   "src": "TECH WIZKA, strona PDF 1"
+  },
+  {
+   "id": "tw-02",
+   "title": "Spis planów",
+   "desc": "Lista wszystkich stron dossier",
+   "tag": "og",
+   "full": "assets/plany/tw-02.jpg",
+   "thumb": "assets/plany/th-tw-02.jpg",
+   "src": "TECH WIZKA, strona PDF 2"
+  },
+  {
+   "id": "tw-03",
+   "title": "Pozycja stoiska w hali",
+   "desc": "Gdzie na Hali 5.1 jest stoisko 51A32",
+   "tag": "og",
+   "full": "assets/plany/tw-03.jpg",
+   "thumb": "assets/plany/th-tw-03.jpg",
+   "src": "TECH WIZKA, strona PDF 3"
+  },
+  {
+   "id": "tw-04",
+   "title": "Plan ogólny — parter",
+   "desc": "Rozmieszczenie wszystkiego na parterze",
+   "tag": "og",
+   "full": "assets/plany/tw-04.jpg",
+   "thumb": "assets/plany/th-tw-04.jpg",
+   "src": "TECH WIZKA, strona PDF 4"
+  },
+  {
+   "id": "tw-05",
+   "title": "Plan ogólny — piętro",
+   "desc": "Rozmieszczenie na piętrze",
+   "tag": "og",
+   "full": "assets/plany/tw-05.jpg",
+   "thumb": "assets/plany/th-tw-05.jpg",
+   "src": "TECH WIZKA, strona PDF 5"
+  },
+  {
+   "id": "tw-06",
+   "title": "Plan podłogi — parter",
+   "desc": "Podłoga i wykładziny, parter",
+   "tag": "og",
+   "full": "assets/plany/tw-06.jpg",
+   "thumb": "assets/plany/th-tw-06.jpg",
+   "src": "TECH WIZKA, strona PDF 6"
+  },
+  {
+   "id": "tw-07",
+   "title": "Plan podłogi — piętro",
+   "desc": "Podłoga, piętro i schody",
+   "tag": "og",
+   "full": "assets/plany/tw-07.jpg",
+   "thumb": "assets/plany/th-tw-07.jpg",
+   "src": "TECH WIZKA, strona PDF 7"
+  },
+  {
+   "id": "tw-08",
+   "title": "Plan ścianek — parter",
+   "desc": "Przegrody i ściany parteru",
+   "tag": "mech",
+   "full": "assets/plany/tw-08.jpg",
+   "thumb": "assets/plany/th-tw-08.jpg",
+   "src": "TECH WIZKA, strona PDF 8"
+  },
+  {
+   "id": "tw-09",
+   "title": "Plan zabudowy stoiska",
+   "desc": "Obrys zabudowy i rusztowanie",
+   "tag": "mech",
+   "full": "assets/plany/tw-09.jpg",
+   "thumb": "assets/plany/th-tw-09.jpg",
+   "src": "TECH WIZKA, strona PDF 9"
+  },
+  {
+   "id": "tw-10",
+   "title": "Zabudowa — elewacje welonu",
+   "desc": "Widoki z boków zabudowy z welonem",
+   "tag": "mech",
+   "full": "assets/plany/tw-10.jpg",
+   "thumb": "assets/plany/th-tw-10.jpg",
+   "src": "TECH WIZKA, strona PDF 10"
+  },
+  {
+   "id": "tw-11",
+   "title": "Plan welonu",
+   "desc": "Welon nad ekranem i wokół stoiska",
+   "tag": "led",
+   "full": "assets/plany/tw-11.jpg",
+   "thumb": "assets/plany/th-tw-11.jpg",
+   "src": "TECH WIZKA, strona PDF 11"
+  },
+  {
+   "id": "tw-12",
+   "title": "Elewacja A — ściana LED",
+   "desc": "Ekran 8 m × 4 m na wspornikach do rusztowania, wymiary",
+   "tag": "led",
+   "full": "assets/plany/tw-12.jpg",
+   "thumb": "assets/plany/th-tw-12.jpg",
+   "src": "TECH WIZKA, strona PDF 12"
+  },
+  {
+   "id": "tw-13",
+   "title": "Elewacja B",
+   "desc": "Widok B zabudowy",
+   "tag": "mech",
+   "full": "assets/plany/tw-13.jpg",
+   "thumb": "assets/plany/th-tw-13.jpg",
+   "src": "TECH WIZKA, strona PDF 13"
+  },
+  {
+   "id": "tw-14",
+   "title": "Elewacja C",
+   "desc": "Widok C zabudowy",
+   "tag": "mech",
+   "full": "assets/plany/tw-14.jpg",
+   "thumb": "assets/plany/th-tw-14.jpg",
+   "src": "TECH WIZKA, strona PDF 14"
+  },
+  {
+   "id": "tw-15",
+   "title": "Elewacja D — truss",
+   "desc": "Konstrukcja truss i logo klienta",
+   "tag": "mech",
+   "full": "assets/plany/tw-15.jpg",
+   "thumb": "assets/plany/th-tw-15.jpg",
+   "src": "TECH WIZKA, strona PDF 15"
+  },
+  {
+   "id": "tw-16",
+   "title": "Plan zawieszeń",
+   "desc": "8 punktów, 56,25 kg na punkt, linki 1250 mm, wysokość 7000 mm",
+   "tag": "mech",
+   "full": "assets/plany/tw-16.jpg",
+   "thumb": "assets/plany/th-tw-16.jpg",
+   "src": "TECH WIZKA, strona PDF 16"
+  },
+  {
+   "id": "tw-17",
+   "title": "Plan skrzynki zasilania",
+   "desc": "Stała skrzynia 60 kW i odległości",
+   "tag": "prad",
+   "full": "assets/plany/tw-17.jpg",
+   "thumb": "assets/plany/th-tw-17.jpg",
+   "src": "TECH WIZKA, strona PDF 17"
+  },
+  {
+   "id": "tw-18",
+   "title": "Plan elektryczny — parter",
+   "desc": "Gniazda i punkty zasilania, parter",
+   "tag": "prad",
+   "full": "assets/plany/tw-18.jpg",
+   "thumb": "assets/plany/th-tw-18.jpg",
+   "src": "TECH WIZKA, strona PDF 18"
+  },
+  {
+   "id": "tw-19",
+   "title": "Plan elektryczny — piętro",
+   "desc": "Gniazda i punkty zasilania, piętro",
+   "tag": "prad",
+   "full": "assets/plany/tw-19.jpg",
+   "thumb": "assets/plany/th-tw-19.jpg",
+   "src": "TECH WIZKA, strona PDF 19"
+  },
+  {
+   "id": "tw-20",
+   "title": "Plan elektryczny — 2. poziom",
+   "desc": "Zasilanie na drugim poziomie",
+   "tag": "prad",
+   "full": "assets/plany/tw-20.jpg",
+   "thumb": "assets/plany/th-tw-20.jpg",
+   "src": "TECH WIZKA, strona PDF 20"
+  },
+  {
+   "id": "tw-21",
+   "title": "Plan elektryczny — truss",
+   "desc": "Zasilanie na kratownicy",
+   "tag": "prad",
+   "full": "assets/plany/tw-21.jpg",
+   "thumb": "assets/plany/th-tw-21.jpg",
+   "src": "TECH WIZKA, strona PDF 21"
+  },
+  {
+   "id": "tw-22",
+   "title": "Plan — przyłącze internetu",
+   "desc": "Rysunek z oznaczeniem przyłącza sieci",
+   "tag": "prad",
+   "full": "assets/plany/tw-22.jpg",
+   "thumb": "assets/plany/th-tw-22.jpg",
+   "src": "TECH WIZKA, strona PDF 22"
+  },
+  {
+   "id": "tw-23",
+   "title": "Pozycje samochodów i mebli",
+   "desc": "Gdzie stoją auta i meble",
+   "tag": "og",
+   "full": "assets/plany/tw-23.jpg",
+   "thumb": "assets/plany/th-tw-23.jpg",
+   "src": "TECH WIZKA, strona PDF 23"
+  },
+  {
+   "id": "tw-24",
+   "title": "Meble — bar (rysunek)",
+   "desc": "Bar z logo Lynk & Co",
+   "tag": "og",
+   "full": "assets/plany/tw-24.jpg",
+   "thumb": "assets/plany/th-tw-24.jpg",
+   "src": "TECH WIZKA, strona PDF 24"
+  },
+  {
+   "id": "tw-25",
+   "title": "Meble — bar, szczegóły",
+   "desc": "Widoki i wymiary baru",
+   "tag": "og",
+   "full": "assets/plany/tw-25.jpg",
+   "thumb": "assets/plany/th-tw-25.jpg",
+   "src": "TECH WIZKA, strona PDF 25"
+  },
+  {
+   "id": "tw-26",
+   "title": "Słup animacji (borne)",
+   "desc": "Słup animacji, zdjęcia widoków",
+   "tag": "og",
+   "full": "assets/plany/tw-26.jpg",
+   "thumb": "assets/plany/th-tw-26.jpg",
+   "src": "TECH WIZKA, strona PDF 26"
+  },
+  {
+   "id": "kable",
+   "title": "Tu idą kable — wizualizacja",
+   "desc": "Żółta trasa kabli po lewej stronie bryły",
+   "tag": "led",
+   "full": "assets/plany/kable.jpg",
+   "thumb": "assets/plany/th-kable.jpg",
+   "src": "materiały SQM"
+  },
+  {
+   "id": "wizka",
+   "title": "Wizualizacja stoiska",
+   "desc": "Wygląd gotowego stoiska z ekranem LED",
+   "tag": "led",
+   "full": "assets/plany/wizka.jpg",
+   "thumb": "assets/plany/th-wizka.jpg",
+   "src": "materiały SQM"
+  },
+  {
+   "id": "power",
+   "title": "Wycinek planu zasilania",
+   "desc": "Skrzynia 60 kW „permanent” i wymiar 6141 mm",
+   "tag": "prad",
+   "full": "assets/plany/power.jpg",
+   "thumb": "assets/plany/th-power.jpg",
+   "src": "materiały SQM"
+  }
+ ]
+}
