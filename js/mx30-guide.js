@@ -1,5 +1,6 @@
 import { store } from './state.js';
 import * as speech from './speech.js';
+import { acc, expandBar } from './acc.js';
 
 let cache = null;
 
@@ -23,29 +24,35 @@ export async function renderMx30Guide(container){
   hero.innerHTML = `<div class="eyebrow">FIELD MANUAL · PL / EN</div><h2>${guide.title}</h2><p>${guide.subtitle}</p><div class="mx-fact-grid">${guide.facts.map(f => `<div class="mx-fact"><b>${f.value}</b><span>${f.label}</span><em class="mx-status">${statusLabel(f.status)}</em></div>`).join('')}</div><div class="mx-warning">${guide.identity_warning}</div><p class="muted-sm">${guide.source_note}</p>`;
   container.appendChild(hero);
 
-  guide.sections.forEach(section => {
-    const wrap = document.createElement('section');
-    wrap.className = `mx-step ${section.status}`;
-    const title = document.createElement('h3');
-    title.textContent = `${section.id}. ${section.title_pl}`;
-    const en = document.createElement('div');
-    en.className = 'mx-step-en';
-    en.textContent = section.title_en;
+  container.appendChild(expandBar(container));
+  guide.sections.forEach((section, index) => {
+    const done = () => (section.checks || []).filter((_, k) => (store.get().mx30?.checks || {})[`${section.id}-${k}`]).length;
+    const first = section.steps_pl[0] || '';
+    const { wrap, body } = acc(`${section.id}. ${section.title_pl}`, {
+      open: index === 0,
+      sub: first.length > 90 ? first.slice(0, 89).trimEnd() + '…' : first,
+      badge: (section.checks || []).length ? `${done()}/${section.checks.length}` : statusLabel(section.status).replace(/^\S+\s/, '').toLowerCase(),
+      color: section.status === 'safe' ? 'var(--ok)' : section.status === 'stop' ? 'var(--red)' : '#f2b705',
+    });
     const status = document.createElement('div');
     status.className = 'mx-status';
     status.textContent = statusLabel(section.status);
     const list = document.createElement('ol');
     section.steps_pl.forEach(step => { const li = document.createElement('li'); li.textContent = step; list.appendChild(li); });
-    wrap.append(status, title, en, list);
-    if (section.note_pl){ const note = document.createElement('div'); note.className = 'tip'; note.textContent = section.note_pl; wrap.appendChild(note); }
-    (section.checks || []).forEach((label, index) => {
-      const key = `${section.id}-${index}`;
+    body.append(status, list);
+    if (section.note_pl){ const note = document.createElement('div'); note.className = 'tip'; note.textContent = section.note_pl; body.appendChild(note); }
+    (section.checks || []).forEach((label, k) => {
+      const key = `${section.id}-${k}`;
       const row = document.createElement('label');
       row.className = 'check-row' + (checks[key] ? ' on' : '');
       const input = document.createElement('input'); input.type = 'checkbox'; input.checked = !!checks[key];
       const text = document.createElement('span'); text.textContent = label;
-      input.addEventListener('change', () => { store.set({ mx30: { checks: { [key]: input.checked } } }); row.classList.toggle('on', input.checked); });
-      row.append(input, text); wrap.appendChild(row);
+      input.addEventListener('change', () => {
+        store.set({ mx30: { checks: { [key]: input.checked } } });
+        row.classList.toggle('on', input.checked);
+        wrap.querySelector('.mz-acc-b').textContent = `${done()}/${section.checks.length}`;
+      });
+      row.append(input, text); body.appendChild(row);
     });
     container.appendChild(wrap);
   });

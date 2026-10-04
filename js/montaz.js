@@ -7,7 +7,7 @@ import * as speech from './speech.js';
 import { planLinks, renderPlany } from './plany.js';
 import { renderAz, renderWordsChapter, wordList, loadAz } from './az.js';
 import { renderUklad } from './uklad.js';
-import { acc, expandBar, bulletsToText } from './acc.js';
+import { acc, expandBar, bulletsToText, outline } from './acc.js';
 
 let cache = null;
 
@@ -18,6 +18,9 @@ async function loadMontaz(){
   cache = await response.json();
   return cache;
 }
+
+const trunc = (t, n = 90) => (String(t).length > n ? String(t).slice(0, n - 1).trimEnd() + '…' : String(t));
+const stepText = st => (typeof st === 'string' ? st : st.pl);
 
 const el = (tag, className, text) => {
   const node = document.createElement(tag);
@@ -84,18 +87,18 @@ function renderBlocks(root, section){
   root.appendChild(expandBar(root));
   section.blocks.forEach((block, index) => {
     const title = block.h.includes(' · ') ? block.h.split(' · ').pop() : block.h;
-    const { wrap, body } = acc(title, { open: index === 0, badge: (BLOCK_STATUS[block.status] || '').replace(/^\S+\s/, '').toLowerCase(), color: block.status === 'manual' ? 'var(--ok)' : block.status === 'stop' ? 'var(--red)' : '#f2b705' });
+    const { wrap, body } = acc(title, { open: index === 0, sub: trunc(stepText(block.steps[0])), badge: (BLOCK_STATUS[block.status] || '').replace(/^\S+\s/, '').toLowerCase(), color: block.status === 'manual' ? 'var(--ok)' : block.status === 'stop' ? 'var(--red)' : '#f2b705' });
     body.appendChild(stepList(block.steps));
     if (block.src) body.appendChild(el('small', 'mz-srcline', 'Źródło: ' + block.src));
     root.appendChild(wrap);
   });
   if (section.missing?.length){
-    const { wrap, body } = acc('Czego nie mam potwierdzonego', { tone: 'bad', badge: String(section.missing.length) });
+    const { wrap, body } = acc('Czego nie mam potwierdzonego', { tone: 'bad', sub: trunc(section.missing[0]), badge: String(section.missing.length) });
     section.missing.forEach(m => body.appendChild(el('div', 'mz-miss', '• ' + m)));
     root.appendChild(wrap);
   }
   if (section.sources?.length){
-    const { wrap, body } = acc('Źródła (otwórz i porównaj)', { badge: String(section.sources.length) });
+    const { wrap, body } = acc('Źródła (otwórz i porównaj)', { sub: trunc(section.sources.map(x => x.t).join(' · ')), badge: String(section.sources.length) });
     section.sources.forEach(src => {
       const a = el('a', 'mz-src', src.t);
       a.href = src.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
@@ -111,7 +114,7 @@ function renderFakty(root, data){
   const cats = [...new Set(data.fakty.facts.map(f => f.cat))];
   cats.forEach((cat, index) => {
     const facts = data.fakty.facts.filter(f => f.cat === cat);
-    const { wrap, body } = acc(cat, { open: index === 0, badge: String(facts.length), tone: cat.startsWith('Brakuje') ? 'bad' : '' });
+    const { wrap, body } = acc(cat, { open: index === 0, sub: trunc(facts.map(f => f.label).join(' · ')), badge: String(facts.length), tone: cat.startsWith('Brakuje') ? 'bad' : '' });
     const list = el('div', 'mz-facts');
     facts.forEach(fact => {
       const row = el('div', 'mz-fact ' + fact.status);
@@ -134,7 +137,7 @@ function renderKomplet(root, data){
   cats.forEach((cat, index) => {
     const items = section.items.filter(i => i.cat === cat);
     const count = () => items.filter(i => getChecks()['komplet-' + i.id]).length;
-    const { wrap, body } = acc(cat, { open: index === 0, badge: `${count()}/${items.length}` });
+    const { wrap, body } = acc(cat, { open: index === 0, sub: trunc(items.map(i => i.id.toUpperCase()).join(' · ')), badge: `${count()}/${items.length}` });
     items.forEach(item => {
       const key = 'komplet-' + item.id;
       const row = el('label', 'check-row' + (checks[key] ? ' on' : ''));
@@ -161,17 +164,17 @@ function renderSteps(root, section){
   if (section.warning) root.appendChild(warning(section.warning));
   root.appendChild(expandBar(root));
   if (section.facts){
-    const { wrap, body } = acc('Co wiemy z dokumentów', { open: true, badge: String(section.facts.length) });
+    const { wrap, body } = acc('Co wiemy z dokumentów', { open: true, sub: trunc(section.facts[0]), badge: String(section.facts.length) });
     const ul = el('ul', 'mz-list');
     section.facts.forEach(f => ul.appendChild(el('li', '', f)));
     body.appendChild(ul);
     root.appendChild(wrap);
   }
-  const steps = acc('Kroki', { open: true, badge: String(section.steps.length) });
+  const steps = acc('Kroki', { open: true, sub: trunc(stepText(section.steps[0])), badge: String(section.steps.length) });
   steps.body.appendChild(stepList(section.steps));
   root.appendChild(steps.wrap);
   if (section.dont){
-    const { wrap, body } = acc('Nie robisz', { tone: 'bad', badge: String(section.dont.length) });
+    const { wrap, body } = acc('Nie robisz', { tone: 'bad', sub: trunc(section.dont[0]), badge: String(section.dont.length) });
     section.dont.forEach(d => body.appendChild(el('div', 'mz-miss', '✕ ' + d)));
     root.appendChild(wrap);
   }
@@ -181,7 +184,7 @@ function renderRj45(root, data){
   const section = data.rj45;
   root.appendChild(warning(section.hold));
   root.appendChild(expandBar(root));
-  const colors = acc('Kolory żył (T568B)', { open: true, badge: '8 pinów' });
+  const colors = acc('Kolory żył (T568B)', { open: true, sub: 'biało-pomarańczowy, pomarańczowy, biało-zielony, niebieski…', badge: '8 pinów' });
   const plug = el('div', 'rj-plug');
   plug.setAttribute('role', 'img');
   plug.setAttribute('aria-label', 'Kolejność żył T568B od pinu 1 do 8');
@@ -199,10 +202,10 @@ function renderRj45(root, data){
   section.pins.forEach(pin => table.appendChild(el('li', '', pin.color)));
   colors.body.appendChild(table);
   root.appendChild(colors.wrap);
-  const steps = acc('Zaciskanie krok po kroku', { badge: String(section.steps.length) });
+  const steps = acc('Zaciskanie krok po kroku', { sub: trunc(stepText(section.steps[0])), badge: String(section.steps.length) });
   steps.body.appendChild(stepList(section.steps));
   root.appendChild(steps.wrap);
-  const notes = acc('Uwagi', { badge: String(section.notes.length) });
+  const notes = acc('Uwagi', { sub: trunc(section.notes[0]), badge: String(section.notes.length) });
   section.notes.forEach(note => notes.body.appendChild(el('div', 'mz-miss', note)));
   root.appendChild(notes.wrap);
 }
@@ -323,7 +326,7 @@ function renderNiespodzianki(root, data){
   const cats = [...new Set(items.map(i => i.cat))];
   cats.forEach((cat, index) => {
     const list = items.filter(i => i.cat === cat);
-    const { wrap, body } = acc(cat, { open: index === 0, badge: String(list.length), tone: cat === 'Laptop klienta' ? 'warn' : '' });
+    const { wrap, body } = acc(cat, { open: index === 0, sub: trunc(list.map(x => x.t).join(' · ')), badge: String(list.length), tone: cat === 'Laptop klienta' ? 'warn' : '' });
     list.forEach(item => {
       const card = el('div', 'mz-risk');
       card.appendChild(el('b', '', item.t));
@@ -360,7 +363,7 @@ function renderParam(root, data){
   root.appendChild(copy);
   root.appendChild(expandBar(root));
   section.sections.forEach((sec, index) => {
-    const { wrap, body } = acc(sec.title, { open: index < 2, badge: String(sec.rows.length) });
+    const { wrap, body } = acc(sec.title, { open: index < 2, sub: trunc(sec.rows.slice(0, 3).map(r => r.p).join(' · ')), badge: String(sec.rows.length) });
     sec.rows.forEach(r => {
       const row = el('div', 'pr-row');
       row.appendChild(el('small', 'pr-w', r.w));
@@ -389,7 +392,7 @@ function renderPrzed(root, data){
   root.appendChild(copy);
   root.appendChild(expandBar(root));
   section.groups.forEach((group, index) => {
-    const { wrap, body } = acc(group.title, { open: index === 0, badge: String(group.items.length) });
+    const { wrap, body } = acc(group.title, { open: index === 0, sub: trunc(group.items[0]), badge: String(group.items.length) });
     const ul = el('ul', 'mz-list');
     group.items.forEach(item => ul.appendChild(el('li', '', item)));
     body.appendChild(ul);
@@ -406,13 +409,13 @@ function renderWideo(root, data){
   const section = data.wideo;
   root.appendChild(el('p', 'mz-intro', section.intro));
   root.appendChild(expandBar(root));
-  const rules = acc('Zasady dla przezroczystego ekranu', { open: true, badge: String(section.rules.length) });
+  const rules = acc('Zasady dla przezroczystego ekranu', { open: true, sub: trunc(section.rules[0]), badge: String(section.rules.length) });
   const ul = el('ul', 'mz-list');
   section.rules.forEach(r => ul.appendChild(el('li', '', r)));
   rules.body.appendChild(ul);
   root.appendChild(rules.wrap);
 
-  const variants = acc('Warianty plików: rozmiary i kodeki', { open: true, badge: String(section.variants.length) });
+  const variants = acc('Warianty plików: rozmiary i kodeki', { open: true, sub: 'W1 2048 × 1024 zalecane, W2 2048 × 512, W3 4K…', badge: String(section.variants.length) });
   section.variants.forEach(v => {
     const card = el('div', 'mz-risk');
     card.appendChild(el('b', '', v.name));
@@ -422,7 +425,7 @@ function renderWideo(root, data){
   });
   root.appendChild(variants.wrap);
 
-  const prompts = acc('Prompty do generatora (kopiuj)', { badge: String(section.prompts.length) });
+  const prompts = acc('Prompty do generatora (kopiuj)', { sub: 'animacja byka, grafika, gdy brak 2:1', badge: String(section.prompts.length) });
   section.prompts.forEach(pr => {
     prompts.body.appendChild(el('b', 'mz-block-h', pr.title));
     const area = el('textarea', 'mz-msg');
@@ -438,7 +441,7 @@ function renderWideo(root, data){
   });
   root.appendChild(prompts.wrap);
 
-  const files = acc('Gotowe pliki testowe', { badge: String(section.files.length) });
+  const files = acc('Gotowe pliki testowe', { sub: 'siatka 2048 × 512, siatka 2:1, test koła', badge: String(section.files.length) });
   section.files.forEach(f => {
     const a = el('a', 'mz-file');
     a.href = f.file; a.target = '_blank'; a.rel = 'noopener'; a.download = f.file.split('/').pop();
@@ -449,7 +452,7 @@ function renderWideo(root, data){
   files.body.appendChild(el('small', 'mz-srcline', 'Dotknij, aby otworzyć. Zapis: przytrzymaj obraz albo użyj menu przeglądarki. Pliki są też w repozytorium GitHub w folderze assets/test/.'));
   root.appendChild(files.wrap);
 
-  const steps = acc('Jak przetestować krok po kroku', { badge: String(section.steps.length) });
+  const steps = acc('Jak przetestować krok po kroku', { sub: trunc(section.steps[0]), badge: String(section.steps.length) });
   steps.body.appendChild(stepList(section.steps));
   root.appendChild(steps.wrap);
 }
@@ -626,6 +629,13 @@ export async function renderMontazHub(container, ctx){
   head.appendChild(titles);
   container.appendChild(head);
 
+  const summary = data.summary?.[chapter.id];
+  if (summary){
+    const box = el('div', 'mz-summary');
+    box.appendChild(el('b', '', 'W SKRÓCIE'));
+    box.appendChild(el('p', '', summary));
+    container.appendChild(box);
+  }
   const body = el('div', 'mz-body');
   container.appendChild(body);
   switch (chapter.id){
@@ -637,7 +647,7 @@ export async function renderMontazHub(container, ctx){
     case 'zasilanie': renderSteps(body, data.zasilanie); break;
     case 'uklad':
       renderUklad(body, data);
-      { const k = acc('Kalkulator pikseli i portów', { open: true, badge: 'MX30' }); renderKalkulator(k.body, data); body.appendChild(k.wrap); }
+      { const k = acc('Kalkulator pikseli i portów', { open: true, sub: 'rozdzielczość, limit portu, moc', badge: 'MX30' }); renderKalkulator(k.body, data); body.appendChild(k.wrap); }
       break;
     case 'niespodzianki': renderNiespodzianki(body, data); break;
     case 'przed': renderPrzed(body, data); break;
@@ -651,6 +661,8 @@ export async function renderMontazHub(container, ctx){
     case 'resolume': renderBlocks(body, data.resolume); break;
     default: break;
   }
+  const plan = outline(body);
+  if (plan) container.insertBefore(plan, body);
   const plans = await planLinks(data[chapter.id]?.plans);
   if (plans) container.appendChild(plans);
   const azData = await loadAz();

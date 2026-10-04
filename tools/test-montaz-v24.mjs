@@ -86,14 +86,16 @@ await page.locator('.mz-back').click();
 
 // generator układu
 await page.locator('[data-chapter="uklad"]').click();
-await page.waitForSelector('.uk-svg');
-ok(await page.locator('.uk-svg').count() === 2, 'Układ: 2 grafiki (sygnał, zasilanie)');
-let uk = await page.locator('.uk-out').innerText();
+await page.waitForSelector('.uk-out details', { state: 'attached' });
+ok(await page.locator('.uk-svg').count() === 10, 'Układ: 10 schematów (2 całe + 8 linii) w rozwijanych sekcjach');
+ok(await page.locator('.uk-out > details.mz-acc').count() === 6, 'Układ: 6 podrozdziałów');
+ok(await page.locator('.mz-summary').count() === 1 && await page.locator('.mz-outline-btn').count() >= 6, 'Układ: streszczenie i plan rozdziału');
+let uk = (await page.locator('.uk-out').textContent()).replace(/\u00a0|\u202f/g, ' ');
 ok(uk.includes('P7') && uk.includes('B8'), 'Układ: porty główne 1,3,5,7 i zapasowe 2,4,6,8');
-ok(uk.replace(/\u00a0|\u202f/g, ' ').includes('262 144'), 'Układ: 16 cabinetów = 262 144 px na linię');
-ok(uk.replace(/\u00a0|\u202f/g, ' ').includes('986 W'), 'Układ: 16 × 88 W × 70% = 986 W na linię zasilania');
+ok(uk.includes('262 144'), 'Układ: 16 cabinetów = 262 144 px na linię');
+ok(uk.includes('986 W'), 'Układ: 16 × 88 W × 70% = 986 W na linię zasilania');
 await page.selectOption('#uk-dataK', '4');
-uk = await page.locator('.uk-out').innerText();
+uk = (await page.locator('.uk-out').textContent()).replace(/\u00a0|\u202f/g, ' ');
 ok(uk.includes('P3') && !uk.includes('P7'), 'Układ: po 4 kolumny to 2 linie, porty 1 i 3');
 await page.selectOption('#uk-dataK', '2');
 const lim = (await page.locator('.uk-out').textContent()).replace(/\u00a0|\u202f/g, ' ');
@@ -103,7 +105,7 @@ ok((await page.locator('#uk-wiring').inputValue()).includes('P7'), 'Ściąga opi
 // niespodzianki + zwroty
 await page.locator('.mz-back').click();
 await page.locator('[data-chapter="niespodzianki"]').click();
-ok(await page.locator('.mz-risk').count() === 18, '18 ryzyk w kategoriach');
+ok(await page.locator('.mz-risk').count() === 19, '19 ryzyk w kategoriach');
 await page.locator('.mz-back').click();
 
 // Od A do Z + słówka
@@ -126,6 +128,7 @@ await page.locator('.mz-back').click();
 await page.locator('[data-chapter="plany"]').click();
 await page.waitForSelector('.plan-card');
 ok(await page.locator('.plan-card').count() === 35, 'Plany: 35 rysunków (29 z SQM + 6 naszych schematów)');
+await page.locator('.mz-expand .btn').first().click();
 await page.locator('[data-plan="tw-12"]').click();
 await page.waitForSelector('.plan-img');
 ok((await page.locator('.plan-title').innerText()).includes('Elewacja A'), 'Plany: podgląd Elewacja A');
@@ -156,8 +159,8 @@ await page.locator('.mz-back').click();
 
 // MX30 i etapy
 await page.locator('[data-chapter="mx30"]').click();
-await page.waitForSelector('.mx-step');
-ok(await page.locator('.mx-step').count() === 10, 'MX30: 10 sekcji');
+await page.waitForSelector('.mz-acc');
+ok(await page.locator('.mz-acc').count() >= 10, 'MX30: 10 sekcji rozwijanych');
 await page.locator('.mz-back').click();
 await page.locator('[data-chapter="etapy"]').click();
 await page.waitForSelector('.stage-card');

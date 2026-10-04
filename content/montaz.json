@@ -309,6 +309,20 @@
         "src": "—",
         "status": "missing",
         "cat": "Brakuje w dokumentach"
+      },
+      {
+        "label": "Legenda planu elektrycznego",
+        "value": "PRISE ECRAN × 6, PRISE alim × 11, TRIPLETTE × 7, zasilanie napowietrzne × 1",
+        "src": "TECH WIZKA, strona PDF 18",
+        "status": "ok",
+        "cat": "Konstrukcja, zasilanie, procesor"
+      },
+      {
+        "label": "Standard napięcia i faz na hali",
+        "value": "BRAK DANYCH w dokumentach SQM. Zapytaj Viparis (typ przyłącza, wtyk, liczba faz).",
+        "src": "—",
+        "status": "missing",
+        "cat": "Brakuje w dokumentach"
       }
     ],
     "phrases": [
@@ -650,7 +664,9 @@
       "Na hali jest stała skrzynia 60 kW (plan zasilania). Na wycinku planu leży w prawym górnym rogu, z opisem „permanent”.",
       "Rack: POWERBOX RACK 32A → 2 × 16A i 6 × 230V (Riedconn STV32/002-6/2k). Czyli dwa obwody 16 A dla ekranu.",
       "Kable: 2 × 230V → PowerCon TRUE1 16A, 10 m. Do tego extendery PowerCon TRUE1: 2 × 0,8 m F–F i 2 × 1,2 m M–M.",
-      "DATA: 2 × Ethercon M–M 1,4 m i 2 × Ethercon F–F 0,8 m (INFILED / Dicolor UT-390). Tyle jest na liście."
+      "DATA: 2 × Ethercon M–M 1,4 m i 2 × Ethercon F–F 0,8 m (INFILED / Dicolor UT-390). Tyle jest na liście.",
+      "Plan elektryczny SQM: skrzynia hali 60 kW (stała), 6 gniazd „PRISE ECRAN”, 11 gniazd „PRISE alim”, 7 triplet. Napięcia i liczby faz dokumenty nie podają.",
+      "Rack SQM ma wejście 32 A i wyjścia 2 × 16 A oraz 6 × 230 V. Kable zasilające z listy: 2 × 230 V → PowerCon 16 A 10 m. Tyle wystarczy na 2 linie, a Twój plan to 4 linie, więc dopytaj SQM o dodatkowe obwody i kable."
     ],
     "steps": [
       "Rozłóż kable zasilania i DATA oddzielnie. Nie krzyżuj ich bez potrzeby.",
@@ -805,6 +821,11 @@
         "t": "Hasło i konto na laptopie",
         "cat": "Laptop klienta",
         "d": "Poproś, żeby klient był przy teście i sam odblokował laptop. Nie zapisuj ich haseł. W manualu MX30 i VMP nie ma żadnego hasła ani konta."
+      },
+      {
+        "t": "Za mało kabli na 4 linie",
+        "cat": "Prąd i sygnał",
+        "d": "Lista SQM: 1 patchcord RJ45, 2 + 2 krótkie Ethercon, 2 + 2 PowerCon i 2 kable zasilające 10 m. Plan 4 linii DATA z backupem to 8 przebiegów Ethernet i 4 linie zasilania. Zapytaj SQM o dodatkowe kable i o to, jak cabinety łączą się między sobą."
       }
     ],
     "plans": [
@@ -1557,7 +1578,9 @@
       "wAvg": 88,
       "kg": 7.5,
       "amp": 16,
-      "bri": 70
+      "bri": 70,
+      "supply": 3,
+      "feed": 32
     },
     "cabPx": 16384,
     "portLimit": 659722,
@@ -1566,7 +1589,8 @@
       "Moc i waga cabinetu INFiLED HL-3978 pochodzą ze strony producenta (wynik wyszukiwania): max 263 W, średnio 88 W, 7,5 kg. W dokumentach SQM ich nie ma. Potwierdź na etykiecie cabinetu i w karcie technicznej od SQM.",
       "Liczba kolumn 2 na linię daje 16 cabinetów na linię, 4 linie, 8 portów (4 główne i 4 zapasowe) z 10 dostępnych w MX30.",
       "Wężyk po 3 kolumny kończy się na dole ekranu, a po 2 i 4 kolumny kończy się u góry, obok początku.",
-      "Moc maksymalna występuje tylko przy pełnej bieli na całym ekranie. Zwykły materiał zbliża się do średniej."
+      "Moc maksymalna występuje tylko przy pełnej bieli na całym ekranie. Zwykły materiał zbliża się do średniej.",
+      "Fazy: przy trzech fazach linie rozkładane są równo na L1, L2, L3. Prąd na fazę porównaj z wejściem racka (domyślnie 32 A, potwierdź)."
     ],
     "sources": [
       {
@@ -1582,6 +1606,38 @@
       "uklad-sygnal-2",
       "uklad-zasilanie-2",
       "tw-12"
+    ],
+    "standard": [
+      {
+        "label": "Skrzynia zasilania hali",
+        "value": "60 kW, stała (coffret permanent). Przy 400 V trójfazowo to około 87 A na fazę przy równym obciążeniu (wyliczenie).",
+        "src": "TECH WIZKA, plan skrzynki (strona PDF 17)",
+        "status": "ok"
+      },
+      {
+        "label": "Legenda planu elektrycznego",
+        "value": "PRISE ECRAN × 6, PRISE alim × 11, TRIPLETTE × 7, arrivée électrique aérienne × 1, Écran LED Transparent × 1",
+        "src": "TECH WIZKA, plan elektryczny (strona PDF 18)",
+        "status": "ok"
+      },
+      {
+        "label": "Rack SQM",
+        "value": "POWERBOX RACK 32A → 2 × 16A / 6 × 230V (Riedconn STV32/002-6/2k). Czy wejście 32 A jest jedno- czy trójfazowe, sprawdź na urządzeniu.",
+        "src": "Lista kompletacyjna, str. 4",
+        "status": "verify"
+      },
+      {
+        "label": "Kable zasilające z listy",
+        "value": "2 × 230 V → PowerCon TRUE1 16 A, 10 m. To wskazuje na 2 linie zasilania w planie SQM.",
+        "src": "Lista kompletacyjna, str. 4",
+        "status": "ok"
+      },
+      {
+        "label": "Napięcie i fazy na hali",
+        "value": "Dokumenty SQM tego nie podają. W Europie sieć to 230 V między fazą a neutralnym i 400 V między fazami, 50 Hz. Zapytaj Viparis o typ przyłącza i wtyk.",
+        "src": "brak w dokumentach",
+        "status": "missing"
+      }
     ]
   },
   "przed": {
@@ -2091,5 +2147,26 @@
         ]
       }
     ]
+  },
+  "summary": {
+    "az": "9 faz od kabli do przekazania. Najpierw lista pytań i projekt offline w VMP, potem kable, włączenie MX30, ustawienia na panelu, VMP, HDMI i Resolume, jasność 70% i zapis. Na końcu tabela awarii.",
+    "param": "Gotowe wartości do wpisania dla laptopa, MX30, VMP, Resolume i pliku wideo. Dwa warianty wejścia: Custom 2048 × 1080 albo Standard 3840 × 2160, oba 60 Hz, 8 bit.",
+    "mx30panel": "Obsługa panelu MX30: pokrętło, ekran główny, EDID wejścia, Swift Layout, plik .rcfgx, jasność, mapping, adres IP, diagnostyka. Reset All kasuje wszystko.",
+    "vmp": "VMP (COEX): połączenie po IP, projekt offline, canvas 2048 × 512, topologia portów, warstwa HDMI1, test pattern, mapping, presety, jasność.",
+    "resolume": "Resolume: Output → Advanced, ekran na wyjściu do MX30, slice 2048 × 1024 → 2048 × 512, preset ustawień. Ekran szerszy niż Full HD, więc wejście 2048 × 1080 albo 4K.",
+    "mx30": "Test i przekazanie: 10 etapów od identyfikacji sprzętu przez backup, konfigurację, test pattern i HDMI po przekazanie klientowi.",
+    "uklad": "Układ 8 × 8, wężyk góra–dół, 4 linie po 16 cabinetów: porty główne 1, 3, 5, 7, zapasowe 2, 4, 6, 8. Przy 70%: 3,9 kW średnio, 11,8 kW max. Schematy, linie i fazy rozwijasz po kliknięciu.",
+    "zasilanie": "Zasilanie: skrzynia hali 60 kW, rack SQM 32 A z wyjściami 2 × 16 A i 6 × 230 V. Standard faz nie jest w dokumentach. Przy 4 liniach potrzebujesz więcej obwodów niż daje lista SQM.",
+    "rj45": "Ściąga RJ45 w układzie B (T568B): kolejność żył, zaciskanie, test kablem. Oba końce w tym samym układzie.",
+    "fakty": "Fakty ze zlecenia: stoisko 51A32, hala 5.1, ekran 8 × 4 m z 64 cabinetów, MX30, skrzynia 60 kW. Brakuje wagi, mocy z SQM i standardu faz.",
+    "niespodzianki": "Ryzyka w kategoriach: sprzęt, hala i mechanika, prąd i sygnał, laptop klienta. Najważniejsze: piksel 2× wyższy niż szeroki i za mało kabli na 4 linie.",
+    "plany": "35 rysunków: 29 z dokumentów SQM i 6 naszych schematów sygnału i zasilania. Dotknij, aby powiększyć.",
+    "mechanika": "Ekran wisi na wspornikach przykręconych do rusztowania. Truss ma 8 punktów po 56,25 kg. Aplikacja nie zastępuje planu rigging.",
+    "cabinety": "Montaż 8 × 8 cabinetów (1000 × 500 mm). Numeruj kolumny i rzędy przed kablami, sprawdzaj krawędź po każdym rzędzie.",
+    "przed": "Lista do skopiowania: o co poprosić SQM, klienta i organizatora, i co przygotować w hotelu (projekt offline, pliki testowe, przejściówki).",
+    "wideo": "Wideo testowe: kreacja w 2:1 (2048 × 1024), skalowana do 2048 × 512. Warianty plików, prompty do generatora i 3 pliki testowe.",
+    "komplet": "17 pozycji z listy SQM w 3 grupach. Odhaczaj przy rozładunku i zwrocie.",
+    "slowka": "Słówka polsko-angielskie po rozdziałach. Przycisk „Ukryj angielski” służy do sprawdzenia się.",
+    "etapy": "10 etapów stoiska z zwrotami po angielsku i checklistą."
   }
 }

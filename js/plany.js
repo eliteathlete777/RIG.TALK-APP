@@ -1,6 +1,8 @@
 // RIG TALK — plany.js: zakładka PLANY (rysunki z PDF-ów SQM) i podgląd pełnoekranowy z powiększaniem.
 // Dane: content/plany.json. Link do planu z dowolnego rozdziału: planLinks(ids).
 
+import { acc, expandBar } from './acc.js';
+
 let cache = null;
 
 async function loadPlany(){
@@ -89,10 +91,11 @@ export async function planLinks(ids){
 export async function renderPlany(container, intro){
   const data = await loadPlany();
   container.appendChild(el('p', 'muted-sm', intro || ''));
-  data.groups.forEach(([key, label]) => {
+  container.appendChild(expandBar(container));
+  data.groups.forEach(([key, label], gi) => {
     const items = data.items.filter(p => p.tag === key);
     if (!items.length) return;
-    container.appendChild(el('h3', 'mz-h', label.toUpperCase()));
+    const { wrap, body } = acc(label, { open: gi === 0, badge: String(items.length), sub: items.slice(0, 3).map(p => p.title).join(' · ') });
     const grid = el('div', 'plan-grid');
     items.forEach(plan => {
       const card = el('button', 'plan-card');
@@ -102,6 +105,7 @@ export async function renderPlany(container, intro){
       card.addEventListener('click', () => openPlan(data.items, plan.id));
       grid.appendChild(card);
     });
-    container.appendChild(grid);
+    body.appendChild(grid);
+    container.appendChild(wrap);
   });
 }

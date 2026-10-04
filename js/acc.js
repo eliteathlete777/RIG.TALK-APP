@@ -8,12 +8,15 @@ const el = (tag, className, text) => {
 };
 
 /** Zwraca { wrap, body }. Wypełniasz body. badge: krótki napis po prawej (np. 3/5). */
-export function acc(title, { open = false, badge = '', color = '', tone = '' } = {}){
+export function acc(title, { open = false, badge = '', color = '', tone = '', sub = '' } = {}){
   const wrap = el('details', 'mz-acc' + (tone ? ' ' + tone : ''));
   if (open) wrap.open = true;
   if (color) wrap.style.setProperty('--ac', color);
   const sum = el('summary');
-  sum.appendChild(el('span', 'mz-acc-t', title));
+  const t = el('span', 'mz-acc-t');
+  t.appendChild(el('b', '', title));
+  if (sub) t.appendChild(el('small', 'mz-acc-s', sub));
+  sum.appendChild(t);
   if (badge) sum.appendChild(el('small', 'mz-acc-b', badge));
   wrap.appendChild(sum);
   const body = el('div', 'mz-acc-body');
@@ -41,4 +44,28 @@ export function bulletsToText(title, groups){
     lines.push('');
   });
   return lines.join('\n').trim();
+}
+
+/** Plan rozdziału: lista podrozdziałów z przeskokiem (otwiera i przewija). Lista odświeża się przy każdym kliknięciu. */
+export function outline(scope, title = 'Plan rozdziału'){
+  const top = () => [...scope.querySelectorAll('details.mz-acc')].filter(d => !d.parentElement.closest('details'));
+  const items = top();
+  if (items.length < 3) return null;
+  const { wrap, body } = acc(title, { badge: items.length + ' podrozdziałów', color: '#3fb950', sub: 'dotknij, aby przeskoczyć' });
+  const list = el('ol', 'mz-outline');
+  items.forEach((d, i) => {
+    const label = d.querySelector(':scope > summary .mz-acc-t b')?.textContent || 'Podrozdział';
+    const li = el('li');
+    const b = el('button', 'mz-outline-btn', label);
+    b.addEventListener('click', () => {
+      const target = top()[i];
+      if (!target) return;
+      target.open = true;
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    li.appendChild(b);
+    list.appendChild(li);
+  });
+  body.appendChild(list);
+  return wrap;
 }

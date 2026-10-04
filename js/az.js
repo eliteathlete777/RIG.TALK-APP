@@ -89,8 +89,8 @@ export async function renderAz(root){
   root.appendChild(el('p', 'mz-intro', az.intro));
 
   // zapytanie o dostępy i pliki
-  const ask = el('div', 'mx-warning');
-  ask.appendChild(el('b', '', az.ask.title.toUpperCase()));
+  const askAcc = acc(az.ask.title, { open: true, tone: 'warn', badge: String(az.ask.list.length), sub: 'hasła, plik .rcfgx, wersje: wiadomość do SQM' });
+  const ask = askAcc.body;
   ask.appendChild(el('p', '', az.ask.why));
   const ul = el('ul', 'mz-list');
   az.ask.list.forEach(item => ul.appendChild(el('li', '', item)));
@@ -99,7 +99,7 @@ export async function renderAz(root){
   area.id = 'az-msg'; area.readOnly = true; area.rows = 9; area.value = az.ask.message;
   ask.appendChild(area);
   ask.appendChild(copyButton(az.ask.message, 'Kopiuj wiadomość do SQM'));
-  root.appendChild(ask);
+  root.appendChild(askAcc.wrap);
 
   const openId = store.get().ui?.azOpen ?? 'p0';
   az.phases.forEach(phase => {

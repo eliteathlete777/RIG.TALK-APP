@@ -331,3 +331,8 @@ Sytuacje, w których użytkownik zaznaczył „Stanąłem”, dodają powiązane
 - Menu montażu: każdy rozdział ma `group` (kolor) i `stage` (etap pracy). Widoki Mapa, Kolejność i Tematy korzystają z tych samych danych (`content/montaz.json`). Dolny pasek i pasek szybkiej powtórki są dostępne w każdym rozdziale trybu Montaż.
 - Układ ekranu: linie DATA i zasilania liczone osobno (wężyk góra–dół). Porty główne to nieparzyste, zapasowe parzyste (Sequential Backup). Przy 2 lub 4 kolumnach na linię początek i koniec linii są u góry; przy 3 koniec jest na dole.
 - Moc cabinetu: max 263 W, średnio 88 W (producent INFiLED, do potwierdzenia). Moc max występuje tylko przy pełnej bieli.
+
+## v31 — struktura rozdziałów i fazy
+- Każdy rozdział: ramka „W skrócie” (`content/montaz.json → summary`), plan rozdziału (z `js/acc.js → outline`, odświeżany przy kliknięciu, bo generator przerysowuje sekcje), potem podrozdziały jako `details`. Podtytuł w stanie zwiniętym to pierwsze zdanie albo lista pozycji.
+- Zasilanie: linie rozkładane zachłannie na fazy (najpierw najliczniejsze linie na najmniej obciążoną fazę). Przy 4 liniach po 16 cabinetów na 3 fazach wychodzi 32/16/16, więc aplikacja podpowiada podział 1 kolumna na linię (24/24/16).
+- Standard faz hali nie jest w dokumentach SQM. 60 kW przy 400 V to około 87 A na fazę (wyliczenie), przy równym obciążeniu.
