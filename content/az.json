@@ -831,6 +831,90 @@
         "wat",
         "łot"
       ]
+    ],
+    "wideo": [
+      [
+        "loop",
+        "pętla",
+        "lup"
+      ],
+      [
+        "frame rate",
+        "liczba klatek na sekundę",
+        "frejm rejt"
+      ],
+      [
+        "codec",
+        "kodek",
+        "kodek"
+      ],
+      [
+        "aspect ratio",
+        "proporcje obrazu",
+        "espekt rejszo"
+      ],
+      [
+        "outline",
+        "kontur",
+        "autlajn"
+      ],
+      [
+        "black background",
+        "czarne tło",
+        "blek bekgraund"
+      ],
+      [
+        "export",
+        "eksport",
+        "yksport"
+      ],
+      [
+        "bull",
+        "byk",
+        "bul"
+      ]
+    ],
+    "przed": [
+      [
+        "password",
+        "hasło",
+        "pasłerd"
+      ],
+      [
+        "login",
+        "login",
+        "logyn"
+      ],
+      [
+        "license",
+        "licencja",
+        "lajsens"
+      ],
+      [
+        "version",
+        "wersja",
+        "werszyn"
+      ],
+      [
+        "file",
+        "plik",
+        "fajl"
+      ],
+      [
+        "laptop",
+        "laptop",
+        "laptop"
+      ],
+      [
+        "adapter",
+        "przejściówka",
+        "adapter"
+      ],
+      [
+        "resolution",
+        "rozdzielczość",
+        "rezolusz"
+      ]
     ]
   }
 }

@@ -17,15 +17,15 @@ await page.evaluate(() => localStorage.clear());
 await page.reload({ waitUntil: 'networkidle' });
 await page.locator('[data-mode-select="assembly"]').click();
 await page.waitForSelector('.mm-chip');
-ok(await page.locator('.mm-chip').count() === 16, 'Mapa: 16 rozdziałów w 6 grupach');
+ok(await page.locator('.mm-chip').count() === 18, 'Mapa: 18 rozdziałów w 6 grupach');
 ok(await page.locator('.mm-branch').count() === 6, 'Mapa: 6 grup');
 ok(await page.locator('.mz-dock-btn').count() === 4, 'Dolny pasek: 4 przyciski');
 await page.locator('[data-view="tematy"]').click();
 await page.waitForSelector('.mz-tile');
-ok(await page.locator('.mz-tile').count() === 16, 'Tematy: 16 kafli');
+ok(await page.locator('.mz-tile').count() === 18, 'Tematy: 18 kafli');
 await page.locator('[data-view="kolejnosc"]').click();
 await page.waitForSelector('.mz-step-row');
-ok(await page.locator('.mz-step-row').count() === 16 && await page.locator('.mz-stage').count() === 7, 'Kolejność: 7 etapów, 16 rozdziałów');
+ok(await page.locator('.mz-step-row').count() === 18 && await page.locator('.mz-stage').count() === 7, 'Kolejność: 7 etapów, 18 rozdziałów');
 ok((await page.locator('.mz-stage-h b').last().innerText()).toLowerCase().includes('rozładunek'), 'Kompletacja na końcu kolejności');
 await page.locator('[data-view="tematy"]').click();
 ok(!(await page.locator('#bottomNav').isVisible()), 'montaż bez nawigacji angielskiego');
@@ -61,8 +61,20 @@ text = await page.locator('.mz-result').last().innerText();
 ok(text.includes('9,60 kW') || text.includes('9.60 kW'), 'kalkulator: 64 × 150 W = 9,6 kW');
 ok(text.includes('3 × 16 A'), 'kalkulator: linie 16 A');
 
-// generator układu
+// przygotuj wcześniej + wideo
 await page.locator('.mz-back').click();
+await page.locator('[data-chapter="przed"]').click();
+await page.waitForSelector('.mz-acc');
+ok(await page.locator('.mz-acc').count() >= 5, 'Przygotuj: rozwijane grupy');
+ok((await page.locator('#przed-text').inputValue()).includes('.rcfgx'), 'Przygotuj: lista do skopiowania zawiera .rcfgx');
+await page.locator('.mz-back').click();
+await page.locator('[data-chapter="wideo"]').click();
+await page.waitForSelector('.mz-acc');
+ok((await page.locator('#stoiskoRoot').textContent()).includes('2048 × 1024'), 'Wideo: wariant 2048 × 1024');
+ok(await page.locator('.mz-file').count() === 3, 'Wideo: 3 pliki testowe');
+await page.locator('.mz-back').click();
+
+// generator układu
 await page.locator('[data-chapter="uklad"]').click();
 await page.waitForSelector('.uk-svg');
 ok(await page.locator('.uk-svg').count() === 2, 'Układ: 2 grafiki (sygnał, zasilanie)');
@@ -78,7 +90,7 @@ await page.selectOption('#uk-dataK', '2');
 // niespodzianki + zwroty
 await page.locator('.mz-back').click();
 await page.locator('[data-chapter="niespodzianki"]').click();
-ok(await page.locator('.mz-risk').count() === 10, '10 ryzyk');
+ok(await page.locator('.mz-risk').count() === 18, '18 ryzyk w kategoriach');
 await page.locator('.mz-back').click();
 
 // Od A do Z + słówka
@@ -115,18 +127,18 @@ await page.locator('.mz-back').click();
 
 // VMP
 await page.locator('[data-chapter="vmp"]').click();
-await page.waitForSelector('.mx-step');
-ok((await page.locator('#stoiskoRoot').innerText()).includes('Enter Offline Mode'), 'VMP: Offline Mode');
+await page.waitForSelector('.mz-acc');
+ok((await page.locator('#stoiskoRoot').textContent()).includes('Enter Offline Mode'), 'VMP: Offline Mode');
 await page.locator('.mz-back').click();
 // MX30 panel i Resolume
 await page.locator('[data-chapter="mx30panel"]').click();
-await page.waitForSelector('.mx-step');
-ok((await page.locator('#stoiskoRoot').innerText()).includes('Swift Layout'), 'MX30 panel: Swift Layout');
+await page.waitForSelector('.mz-acc');
+ok((await page.locator('#stoiskoRoot').textContent()).includes('Swift Layout'), 'MX30 panel: Swift Layout');
 ok(await page.locator('.mz-src').count() === 3, 'MX30 panel: 3 źródła');
 await page.locator('.mz-back').click();
 await page.locator('[data-chapter="resolume"]').click();
-await page.waitForSelector('.mx-step');
-ok((await page.locator('#stoiskoRoot').innerText()).includes('Output Transformation'), 'Resolume: Output Transformation');
+await page.waitForSelector('.mz-acc');
+ok((await page.locator('#stoiskoRoot').textContent()).includes('Output Transformation'), 'Resolume: Output Transformation');
 await page.locator('.mz-back').click();
 
 // MX30 i etapy
@@ -138,7 +150,7 @@ await page.locator('[data-chapter="etapy"]').click();
 await page.waitForSelector('.stage-card');
 ok(await page.locator('.stage-card').count() === 10, 'Etapy: 10 kart');
 await page.locator('.mz-back').click();
-ok(await page.locator('.mz-tile').count() === 16, 'powrót do menu');
+ok(await page.locator('.mz-tile').count() === 18, 'powrót do menu');
 
 ok(await page.evaluate(() => document.documentElement.scrollWidth === document.documentElement.clientWidth), 'brak poziomego scrolla (375 px)');
 await page.screenshot({ path: 'montaz-v24-preview.png', fullPage: true });

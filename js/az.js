@@ -3,6 +3,7 @@
 
 import { store } from './state.js';
 import * as speech from './speech.js';
+import { acc, expandBar } from './acc.js';
 
 let cache = null;
 
@@ -72,11 +73,14 @@ export function wordList(words, { title = 'SŁÓWKA · POWTÓRKA', quiz = true }
 
 export async function renderWordsChapter(root){
   const az = await loadAz();
-  const labels = { az: 'Uruchomienie ekranu', komplet: 'Sprzęt', mechanika: 'Mechanika', cabinety: 'Cabinety', rj45: 'RJ45', zasilanie: 'Zasilanie', mx30panel: 'MX30', vmp: 'VMP', resolume: 'Resolume' };
+  const labels = { az: 'Uruchomienie ekranu', komplet: 'Sprzęt', mechanika: 'Mechanika', cabinety: 'Cabinety', rj45: 'RJ45', zasilanie: 'Zasilanie', mx30panel: 'MX30', vmp: 'VMP', resolume: 'Resolume', uklad: 'Układ ekranu', wideo: 'Wideo testowe', przed: 'Przygotowanie' };
   root.appendChild(el('p', 'muted-sm', 'Tylko kluczowe słowa: polski jest główny, angielski do szybkiej powtórki. Dotknij ukryj angielski, aby się sprawdzić.'));
-  Object.entries(az.words).forEach(([key, list]) => {
-    const card = wordList(list, { title: (labels[key] || key).toUpperCase() });
-    if (card) root.appendChild(card);
+  root.appendChild(expandBar(root));
+  Object.entries(az.words).forEach(([key, list], index) => {
+    const { wrap, body } = acc(labels[key] || key, { open: index === 0, badge: String(list.length) });
+    const card = wordList(list, { title: 'LISTA', quiz: true });
+    if (card){ card.classList.add('plain'); body.appendChild(card); }
+    root.appendChild(wrap);
   });
 }
 

@@ -7,6 +7,7 @@ import * as speech from './speech.js';
 import { planLinks, renderPlany } from './plany.js';
 import { renderAz, renderWordsChapter, wordList, loadAz } from './az.js';
 import { renderUklad } from './uklad.js';
+import { acc, expandBar, bulletsToText } from './acc.js';
 
 let cache = null;
 
@@ -80,92 +81,107 @@ const BLOCK_STATUS = {
 
 function renderBlocks(root, section){
   if (section.warning) root.appendChild(warning(section.warning));
-  section.blocks.forEach(block => {
-    const wrap = el('section', 'mx-step ' + (block.status === 'manual' ? 'safe' : ''));
-    wrap.appendChild(el('div', 'mx-status', BLOCK_STATUS[block.status] || ''));
-    wrap.appendChild(el('h3', 'mz-block-h', block.h.includes(' · ') ? block.h.split(' · ').pop() : block.h));
-    wrap.appendChild(stepList(block.steps));
-    if (block.src) wrap.appendChild(el('small', 'mz-srcline', 'Źródło: ' + block.src));
+  root.appendChild(expandBar(root));
+  section.blocks.forEach((block, index) => {
+    const title = block.h.includes(' · ') ? block.h.split(' · ').pop() : block.h;
+    const { wrap, body } = acc(title, { open: index === 0, badge: (BLOCK_STATUS[block.status] || '').replace(/^\S+\s/, '').toLowerCase(), color: block.status === 'manual' ? 'var(--ok)' : block.status === 'stop' ? 'var(--red)' : '#f2b705' });
+    body.appendChild(stepList(block.steps));
+    if (block.src) body.appendChild(el('small', 'mz-srcline', 'Źródło: ' + block.src));
     root.appendChild(wrap);
   });
   if (section.missing?.length){
-    const box = el('div', 'mz-dont');
-    box.appendChild(el('b', '', 'CZEGO NIE MAM POTWIERDZONEGO'));
-    section.missing.forEach(m => box.appendChild(el('div', '', '• ' + m)));
-    root.appendChild(box);
+    const { wrap, body } = acc('Czego nie mam potwierdzonego', { tone: 'bad', badge: String(section.missing.length) });
+    section.missing.forEach(m => body.appendChild(el('div', 'mz-miss', '• ' + m)));
+    root.appendChild(wrap);
   }
   if (section.sources?.length){
-    const box = el('div', 'card');
-    box.appendChild(el('h3', 'mz-h', 'ŹRÓDŁA (OTWÓRZ I PORÓWNAJ)'));
+    const { wrap, body } = acc('Źródła (otwórz i porównaj)', { badge: String(section.sources.length) });
     section.sources.forEach(src => {
       const a = el('a', 'mz-src', src.t);
       a.href = src.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
-      box.appendChild(a);
+      body.appendChild(a);
     });
-    root.appendChild(box);
+    root.appendChild(wrap);
   }
 }
 
 function renderFakty(root, data){
   root.appendChild(el('p', 'muted-sm', data.source_note));
-  const list = el('div', 'mz-facts');
-  data.fakty.facts.forEach(fact => {
-    const row = el('div', 'mz-fact ' + fact.status);
-    row.appendChild(el('span', 'mz-fact-label', fact.label));
-    row.appendChild(el('b', '', fact.value));
-    row.appendChild(el('small', '', 'Źródło: ' + fact.src));
-    list.appendChild(row);
+  root.appendChild(expandBar(root));
+  const cats = [...new Set(data.fakty.facts.map(f => f.cat))];
+  cats.forEach((cat, index) => {
+    const facts = data.fakty.facts.filter(f => f.cat === cat);
+    const { wrap, body } = acc(cat, { open: index === 0, badge: String(facts.length), tone: cat.startsWith('Brakuje') ? 'bad' : '' });
+    const list = el('div', 'mz-facts');
+    facts.forEach(fact => {
+      const row = el('div', 'mz-fact ' + fact.status);
+      row.appendChild(el('span', 'mz-fact-label', fact.label));
+      row.appendChild(el('b', '', fact.value));
+      row.appendChild(el('small', '', 'Źródło: ' + fact.src));
+      list.appendChild(row);
+    });
+    body.appendChild(list);
+    root.appendChild(wrap);
   });
-  root.appendChild(list);
 }
 
-function renderKomplet(root, data, rerender){
+function renderKomplet(root, data){
   const section = data.komplet;
   root.appendChild(el('p', 'muted-sm', section.intro));
+  root.appendChild(expandBar(root));
   const checks = getChecks();
-  section.items.forEach(item => {
-    const key = 'komplet-' + item.id;
-    const row = el('label', 'check-row' + (checks[key] ? ' on' : ''));
-    const input = el('input');
-    input.type = 'checkbox';
-    input.checked = !!checks[key];
-    const text = el('span', 'mz-item');
-    text.appendChild(el('b', 'mz-qty', item.qty + ' ×'));
-    text.appendChild(document.createTextNode(' ' + item.label));
-    if (item.note) text.appendChild(el('small', '', item.note));
-    input.addEventListener('change', () => {
-      store.set({ montaz: { checks: { [key]: input.checked } } });
-      row.classList.toggle('on', input.checked);
+  const cats = [...new Set(section.items.map(i => i.cat))];
+  cats.forEach((cat, index) => {
+    const items = section.items.filter(i => i.cat === cat);
+    const count = () => items.filter(i => getChecks()['komplet-' + i.id]).length;
+    const { wrap, body } = acc(cat, { open: index === 0, badge: `${count()}/${items.length}` });
+    items.forEach(item => {
+      const key = 'komplet-' + item.id;
+      const row = el('label', 'check-row' + (checks[key] ? ' on' : ''));
+      const input = el('input');
+      input.type = 'checkbox';
+      input.checked = !!checks[key];
+      const text = el('span', 'mz-item');
+      text.appendChild(el('b', 'mz-qty', item.qty + ' ×'));
+      text.appendChild(document.createTextNode(' ' + item.label));
+      if (item.note) text.appendChild(el('small', '', item.note));
+      input.addEventListener('change', () => {
+        store.set({ montaz: { checks: { [key]: input.checked } } });
+        row.classList.toggle('on', input.checked);
+        wrap.querySelector('.mz-acc-b').textContent = `${count()}/${items.length}`;
+      });
+      row.append(input, text);
+      body.appendChild(row);
     });
-    row.append(input, text);
-    root.appendChild(row);
+    root.appendChild(wrap);
   });
 }
 
 function renderSteps(root, section){
   if (section.warning) root.appendChild(warning(section.warning));
+  root.appendChild(expandBar(root));
   if (section.facts){
-    const box = el('div', 'card');
-    box.appendChild(el('h3', 'mz-h', 'CO WIEMY Z DOKUMENTÓW'));
+    const { wrap, body } = acc('Co wiemy z dokumentów', { open: true, badge: String(section.facts.length) });
     const ul = el('ul', 'mz-list');
     section.facts.forEach(f => ul.appendChild(el('li', '', f)));
-    box.appendChild(ul);
-    root.appendChild(box);
+    body.appendChild(ul);
+    root.appendChild(wrap);
   }
-  root.appendChild(el('h3', 'mz-h', 'KROKI'));
-  root.appendChild(stepList(section.steps));
+  const steps = acc('Kroki', { open: true, badge: String(section.steps.length) });
+  steps.body.appendChild(stepList(section.steps));
+  root.appendChild(steps.wrap);
   if (section.dont){
-    const box = el('div', 'mz-dont');
-    box.appendChild(el('b', '', 'NIE ROBISZ'));
-    section.dont.forEach(d => box.appendChild(el('div', '', '✕ ' + d)));
-    root.appendChild(box);
+    const { wrap, body } = acc('Nie robisz', { tone: 'bad', badge: String(section.dont.length) });
+    section.dont.forEach(d => body.appendChild(el('div', 'mz-miss', '✕ ' + d)));
+    root.appendChild(wrap);
   }
 }
 
 function renderRj45(root, data){
   const section = data.rj45;
   root.appendChild(warning(section.hold));
-  // wizualna wtyczka: osiem żył w kolejności B
+  root.appendChild(expandBar(root));
+  const colors = acc('Kolory żył (T568B)', { open: true, badge: '8 pinów' });
   const plug = el('div', 'rj-plug');
   plug.setAttribute('role', 'img');
   plug.setAttribute('aria-label', 'Kolejność żył T568B od pinu 1 do 8');
@@ -178,15 +194,17 @@ function renderRj45(root, data){
     slot.append(wire, el('b', '', String(pin.pin)));
     plug.appendChild(slot);
   });
-  root.appendChild(plug);
+  colors.body.appendChild(plug);
   const table = el('ol', 'rj-order');
   section.pins.forEach(pin => table.appendChild(el('li', '', pin.color)));
-  root.appendChild(table);
-  root.appendChild(el('h3', 'mz-h', 'ZACISKANIE'));
-  root.appendChild(stepList(section.steps));
-  const notes = el('div', 'tip');
-  section.notes.forEach(note => notes.appendChild(el('div', '', note)));
-  root.appendChild(notes);
+  colors.body.appendChild(table);
+  root.appendChild(colors.wrap);
+  const steps = acc('Zaciskanie krok po kroku', { badge: String(section.steps.length) });
+  steps.body.appendChild(stepList(section.steps));
+  root.appendChild(steps.wrap);
+  const notes = acc('Uwagi', { badge: String(section.notes.length) });
+  section.notes.forEach(note => notes.body.appendChild(el('div', 'mz-miss', note)));
+  root.appendChild(notes.wrap);
 }
 
 // ---------- kalkulator ----------
@@ -300,17 +318,100 @@ function renderKalkulator(root, data){
 }
 
 function renderNiespodzianki(root, data){
-  data.niespodzianki.items.forEach(item => {
-    const card = el('div', 'mz-risk');
-    card.appendChild(el('b', '', item.t));
-    card.appendChild(el('p', '', item.d));
-    root.appendChild(card);
+  root.appendChild(expandBar(root));
+  const items = data.niespodzianki.items;
+  const cats = [...new Set(items.map(i => i.cat))];
+  cats.forEach((cat, index) => {
+    const list = items.filter(i => i.cat === cat);
+    const { wrap, body } = acc(cat, { open: index === 0, badge: String(list.length), tone: cat === 'Laptop klienta' ? 'warn' : '' });
+    list.forEach(item => {
+      const card = el('div', 'mz-risk');
+      card.appendChild(el('b', '', item.t));
+      card.appendChild(el('p', '', item.d));
+      body.appendChild(card);
+    });
+    root.appendChild(wrap);
   });
 }
 
-// ---------- ekran główny montażu ----------
+function renderPrzed(root, data){
+  const section = data.przed;
+  root.appendChild(el('p', 'mz-intro', section.intro));
+  const text = bulletsToText('RIG TALK: o co poprosić i co przygotować', section.groups);
+  const copy = el('button', 'btn btn-primary btn-lg', 'Kopiuj całą listę do notatek');
+  copy.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(text); copy.textContent = 'Skopiowano'; }
+    catch (e) { area.focus(); area.select(); copy.textContent = 'Zaznaczone: Ctrl+C'; }
+    setTimeout(() => { copy.textContent = 'Kopiuj całą listę do notatek'; }, 2200);
+  });
+  root.appendChild(copy);
+  root.appendChild(expandBar(root));
+  section.groups.forEach((group, index) => {
+    const { wrap, body } = acc(group.title, { open: index === 0, badge: String(group.items.length) });
+    const ul = el('ul', 'mz-list');
+    group.items.forEach(item => ul.appendChild(el('li', '', item)));
+    body.appendChild(ul);
+    root.appendChild(wrap);
+  });
+  const area = el('textarea', 'mz-msg');
+  area.id = 'przed-text'; area.readOnly = true; area.rows = 10; area.value = text;
+  const raw = acc('Tekst do skopiowania ręcznie', {});
+  raw.body.appendChild(area);
+  root.appendChild(raw.wrap);
+}
 
-/** Zwraca true, gdy obsłużono (hub albo rozdział własny); false → stoisko.js renderuje etapy/MX30. */
+function renderWideo(root, data){
+  const section = data.wideo;
+  root.appendChild(el('p', 'mz-intro', section.intro));
+  root.appendChild(expandBar(root));
+  const rules = acc('Zasady dla przezroczystego ekranu', { open: true, badge: String(section.rules.length) });
+  const ul = el('ul', 'mz-list');
+  section.rules.forEach(r => ul.appendChild(el('li', '', r)));
+  rules.body.appendChild(ul);
+  root.appendChild(rules.wrap);
+
+  const variants = acc('Warianty plików: rozmiary i kodeki', { open: true, badge: String(section.variants.length) });
+  section.variants.forEach(v => {
+    const card = el('div', 'mz-risk');
+    card.appendChild(el('b', '', v.name));
+    card.appendChild(el('p', 'mz-spec', v.spec));
+    card.appendChild(el('p', '', 'Użycie: ' + v.use));
+    variants.body.appendChild(card);
+  });
+  root.appendChild(variants.wrap);
+
+  const prompts = acc('Prompty do generatora (kopiuj)', { badge: String(section.prompts.length) });
+  section.prompts.forEach(pr => {
+    prompts.body.appendChild(el('b', 'mz-block-h', pr.title));
+    const area = el('textarea', 'mz-msg');
+    area.readOnly = true; area.rows = 6; area.value = pr.text;
+    prompts.body.appendChild(area);
+    const btn = el('button', 'btn', 'Kopiuj prompt');
+    btn.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(pr.text); btn.textContent = 'Skopiowano'; }
+      catch (e) { area.focus(); area.select(); btn.textContent = 'Zaznaczone: Ctrl+C'; }
+      setTimeout(() => { btn.textContent = 'Kopiuj prompt'; }, 2200);
+    });
+    prompts.body.appendChild(btn);
+  });
+  root.appendChild(prompts.wrap);
+
+  const files = acc('Gotowe pliki testowe', { badge: String(section.files.length) });
+  section.files.forEach(f => {
+    const a = el('a', 'mz-file');
+    a.href = f.file; a.target = '_blank'; a.rel = 'noopener'; a.download = f.file.split('/').pop();
+    const img = el('img'); img.src = f.file; img.alt = ''; img.loading = 'lazy';
+    a.append(img, el('span', '', f.name));
+    files.body.appendChild(a);
+  });
+  files.body.appendChild(el('small', 'mz-srcline', 'Dotknij, aby otworzyć. Zapis: przytrzymaj obraz albo użyj menu przeglądarki. Pliki są też w repozytorium GitHub w folderze assets/test/.'));
+  root.appendChild(files.wrap);
+
+  const steps = acc('Jak przetestować krok po kroku', { badge: String(section.steps.length) });
+  steps.body.appendChild(stepList(section.steps));
+  root.appendChild(steps.wrap);
+}
+
 // ---------- menu montażu: grupy, widoki, pasek na dole ----------
 
 let hubCtx = null;
@@ -366,14 +467,12 @@ function viewTematy(data, groups){
   data.groups.forEach(group => {
     const items = data.chapters.filter(c => c.group === group.id);
     if (!items.length) return;
-    const section = el('section', 'mz-group');
+    const { wrap: section, body } = acc(group.title, { open: true, badge: group.sub, color: group.color });
+    section.classList.add('mz-group');
     section.style.setProperty('--gc', group.color);
-    const h = el('div', 'mz-group-h');
-    h.append(el('b', '', group.title), el('small', '', group.sub));
-    section.appendChild(h);
     const grid = el('div', 'mz-grid');
     items.forEach(c => grid.appendChild(chapterTile(data, c, groups)));
-    section.appendChild(grid);
+    body.appendChild(grid);
     wrap.appendChild(section);
   });
   return wrap;
@@ -496,10 +595,11 @@ export async function renderMontazHub(container, ctx){
     case 'zasilanie': renderSteps(body, data.zasilanie); break;
     case 'uklad':
       renderUklad(body, data);
-      body.appendChild(el('h3', 'mz-h', 'KALKULATOR PIKSELI I PORTÓW'));
-      renderKalkulator(body, data);
+      { const k = acc('Kalkulator pikseli i portów', { open: true, badge: 'MX30' }); renderKalkulator(k.body, data); body.appendChild(k.wrap); }
       break;
     case 'niespodzianki': renderNiespodzianki(body, data); break;
+    case 'przed': renderPrzed(body, data); break;
+    case 'wideo': renderWideo(body, data); break;
     case 'plany': await renderPlany(body, data.plany?.intro); break;
     case 'az': await renderAz(body); break;
     case 'slowka': await renderWordsChapter(body); break;

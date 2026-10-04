@@ -3,6 +3,7 @@
 // Dane wejściowe w content/montaz.json → "uklad". Źródła mocy: strona producenta INFiLED (HL3978).
 
 import { store } from './state.js';
+import { acc, expandBar } from './acc.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const COLORS = ['#d3362b', '#e09a14', '#2f9e55', '#2b7fc1', '#9b4fb8', '#17a58a', '#b5601c', '#6c7a89'];
@@ -204,15 +205,19 @@ export function renderUklad(root, data){
     Object.entries(inputs).forEach(([k, i]) => { cur[k] = Number(i.value); });
     store.set({ montaz: { uklad: cur } });
     const plan = layoutPlan({ cols: 8, rows: 8, cabPx: cfg.cabPx, portLimit: cfg.portLimit, ...cur });
+    const wasOpen = [...out.querySelectorAll('details.mz-acc')].map(d => d.open);
     out.innerHTML = '';
+    const sec = (title, index, badge) => acc(title, { open: wasOpen.length ? !!wasOpen[index] : true, badge });
+    const s1 = sec('Sygnał: linie DATA, porty główne i zapasowe', 0, `${plan.data.length} linie`);
+    const s2 = sec('Zasilanie: linie i pobór mocy', 1, `${plan.power.length} linie`);
+    const s3 = sec('Wytyczne wynikające z tego układu', 2, '');
 
     // sygnał
-    out.appendChild(el('h3', 'mz-h', 'SYGNAŁ: LINIE DATA, PORTY GŁÓWNE I ZAPASOWE'));
     const dataSvg = drawWall(plan, 'data');
-    const dataBox = el('div', 'uk-svg'); dataBox.appendChild(dataSvg); out.appendChild(dataBox);
+    const dataBox = el('div', 'uk-svg'); dataBox.appendChild(dataSvg); s1.body.appendChild(dataBox);
     const dBtn = el('button', 'btn', 'Zapisz grafikę sygnału (PNG)');
     dBtn.addEventListener('click', () => toPng(dataSvg, `uklad-sygnal-${cur.dataK}kol.png`));
-    out.appendChild(dBtn);
+    s1.body.appendChild(dBtn);
 
     const tbl = el('div', 'uk-table');
     const head = el('div', 'uk-row uk-head');
@@ -224,15 +229,15 @@ export function renderUklad(root, data){
       [`D${l.id}`, `${l.cols[0] + 1}–${l.cols[l.cols.length - 1] + 1}`, l.cabs.length, `P${l.main}`, `B${l.backup}`, fmt(l.px), `${l.pct}%`].forEach(x => row.appendChild(el('span', '', String(x))));
       tbl.appendChild(row);
     });
-    out.appendChild(tbl);
+    s1.body.appendChild(tbl);
+    out.appendChild(s1.wrap);
 
     // zasilanie
-    out.appendChild(el('h3', 'mz-h', 'ZASILANIE: LINIE I POBÓR MOCY'));
     const pSvg = drawWall(plan, 'power');
-    const pBox = el('div', 'uk-svg'); pBox.appendChild(pSvg); out.appendChild(pBox);
+    const pBox = el('div', 'uk-svg'); pBox.appendChild(pSvg); s2.body.appendChild(pBox);
     const pBtn = el('button', 'btn', 'Zapisz grafikę zasilania (PNG)');
     pBtn.addEventListener('click', () => toPng(pSvg, `uklad-zasilanie-${cur.powerK}kol.png`));
-    out.appendChild(pBtn);
+    s2.body.appendChild(pBtn);
     const ptbl = el('div', 'uk-table');
     const ph = el('div', 'uk-row uk-head uk-p');
     ['Linia', 'Cabinety', 'Moc śr.', 'Moc max', 'Prąd śr.', 'Prąd max'].forEach(h => ph.appendChild(el('span', '', h)));
@@ -246,26 +251,27 @@ export function renderUklad(root, data){
       });
       ptbl.appendChild(row);
     });
-    out.appendChild(ptbl);
+    s2.body.appendChild(ptbl);
     const sum = el('div', 'mz-result frame');
     const line = (label, value) => { const r = el('div', 'mz-line'); r.append(el('span', '', label), el('b', '', value)); sum.appendChild(r); };
     line('Cały ekran, średnio', `${fmt(plan.total.wAvg / 1000, 1)} kW · ${fmt(plan.total.aAvg, 1)} A przy 230 V`);
     line('Cały ekran, maksimum', `${fmt(plan.total.wMax / 1000, 1)} kW · ${fmt(plan.total.aMax, 1)} A przy 230 V`);
     line('Waga cabinetów', `${fmt(plan.total.kg)} kg (bez belek i kabli)`);
     line('Rack z listy SQM', '2 × 16 A = 32 A, czyli ok. 7,4 kW');
-    out.appendChild(sum);
+    s2.body.appendChild(sum);
+    out.appendChild(s2.wrap);
 
     // wytyczne
-    out.appendChild(el('h3', 'mz-h', 'WYTYCZNE WYNIKAJĄCE Z TEGO UKŁADU'));
     const list = el('ol', 'mz-steps');
     guidelines(plan, cur).forEach(t => list.appendChild(el('li', '', t)));
-    out.appendChild(list);
+    s3.body.appendChild(list);
+    out.appendChild(s3.wrap);
   };
   Object.values(inputs).forEach(i => i.addEventListener('input', paint));
   paint();
 
-  const src = el('div', 'tip');
-  cfg.notes.forEach(n => src.appendChild(el('div', '', n)));
-  cfg.sources.forEach(s => { const a = el('a', 'mz-src', s.t); a.href = s.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; src.appendChild(a); });
-  root.appendChild(src);
+  const notes = acc('Uwagi i źródła mocy cabinetu', { badge: String(cfg.notes.length + cfg.sources.length) });
+  cfg.notes.forEach(n => notes.body.appendChild(el('div', 'mz-miss', n)));
+  cfg.sources.forEach(s => { const a = el('a', 'mz-src', s.t); a.href = s.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; notes.body.appendChild(a); });
+  root.appendChild(notes.wrap);
 }

@@ -146,6 +146,24 @@
       "en": "Gear check",
       "icon": "📦",
       "when": "Rozładunek i zwrot"
+    },
+    {
+      "id": "przed",
+      "group": "dok",
+      "stage": 0,
+      "title": "Przygotuj wcześniej: lista do skopiowania",
+      "en": "Prepare in advance",
+      "icon": "📝",
+      "when": "Przed wyjazdem"
+    },
+    {
+      "id": "wideo",
+      "group": "proc",
+      "stage": 0,
+      "title": "Wideo testowe: byk, rozmiary, warianty",
+      "en": "Test video",
+      "icon": "🐂",
+      "when": "Do testu ekranu"
     }
   ],
   "fakty": {
@@ -154,115 +172,134 @@
         "label": "Klient / projekt",
         "value": "Lynk & Co · Mondial de l'Automobile Paris 2026",
         "src": "TECH WIZKA, str. 1",
-        "status": "ok"
+        "status": "ok",
+        "cat": "Zlecenie"
       },
       {
         "label": "Hala / stoisko",
         "value": "Porte de Versailles, Hala 5.1, stoisko 51A32, 368 m²",
         "src": "TECH WIZKA, str. 1",
-        "status": "ok"
+        "status": "ok",
+        "cat": "Zlecenie"
       },
       {
         "label": "Wystawa",
         "value": "12–18 października 2026",
         "src": "TECH WIZKA, str. 1",
-        "status": "ok"
+        "status": "ok",
+        "cat": "Zlecenie"
       },
       {
         "label": "Wynajem sprzętu",
         "value": "28.09.2026 09:00 – 28.10.2026 17:00",
         "src": "Lista kompletacyjna, str. 1",
-        "status": "ok"
+        "status": "ok",
+        "cat": "Zlecenie"
       },
       {
         "label": "Umowa",
         "value": "SQM/39462 · Loc'Event",
         "src": "Lista kompletacyjna, str. 1",
-        "status": "ok"
+        "status": "ok",
+        "cat": "Zlecenie"
       },
       {
         "label": "Ekran LED",
         "value": "8 m długości × 4 m wysokości, przezroczysty",
         "src": "EKRAN, plan A; Lista kompletacyjna",
-        "status": "ok"
+        "status": "ok",
+        "cat": "Ekran LED"
       },
       {
         "label": "Cabinet",
         "value": "P3.9 · INFILED HL-3978 · 1000 × 500 mm · transparent",
         "src": "Lista kompletacyjna",
-        "status": "ok"
+        "status": "ok",
+        "cat": "Ekran LED"
       },
       {
         "label": "Liczba cabinetów",
         "value": "64 w ekranie + 8 zapasowych (backup)",
         "src": "Lista kompletacyjna, str. 1–4",
-        "status": "ok"
+        "status": "ok",
+        "cat": "Ekran LED"
       },
       {
         "label": "Welon przy ekranie",
         "value": "szary, półprzezroczysty (voilage gris semi-transparent)",
         "src": "EKRAN, plan A",
-        "status": "ok"
+        "status": "ok",
+        "cat": "Ekran LED"
       },
       {
         "label": "Konstrukcja (truss)",
         "value": "wysokość konstrukcji 7000 mm",
         "src": "TECH WIZKA, str. 16",
-        "status": "ok"
+        "status": "ok",
+        "cat": "Konstrukcja, zasilanie, procesor"
       },
       {
         "label": "Mocowanie ekranu LED",
         "value": "na wspornikach (pattes) przymocowanych do rusztowania",
         "src": "TECH WIZKA, elewacja A (strona PDF 12)",
-        "status": "ok"
+        "status": "ok",
+        "cat": "Ekran LED"
       },
       {
         "label": "Wymiary ekranu na planie",
         "value": "8000 mm w osi, po 1124 mm z boku w sekcji 10248 mm; welon 15592 mm szer. × 4700 mm wys.",
         "src": "TECH WIZKA, elewacja A",
-        "status": "ok"
+        "status": "ok",
+        "cat": "Ekran LED"
       },
       {
         "label": "Zawieszenie truss",
         "value": "8 punktów, 56,25 kg (≈57 kg) na punkt, linki 1250 mm, wysokość 7000 mm. Dotyczy konstrukcji z reflektorami i logo klienta, nie ekranu.",
         "src": "TECH WIZKA, plan zawieszeń (strona PDF 16)",
-        "status": "ok"
+        "status": "ok",
+        "cat": "Konstrukcja, zasilanie, procesor"
       },
       {
         "label": "Zasilanie na hali",
         "value": "skrzynia 60 kW, stała (coffret permanent)",
         "src": "plan zasilania, POWER.png",
-        "status": "ok"
+        "status": "ok",
+        "cat": "Konstrukcja, zasilanie, procesor"
       },
       {
         "label": "Procesor",
         "value": "NovaStar MX30 × 1",
         "src": "Lista kompletacyjna, str. 3",
-        "status": "ok"
+        "status": "ok",
+        "cat": "Konstrukcja, zasilanie, procesor"
       },
       {
         "label": "Trasa kabli",
         "value": "zaznaczona na żółto po lewej stronie bryły stoiska",
         "src": "Tu idą kable.png",
-        "status": "ok"
+        "status": "ok",
+        "cat": "Konstrukcja, zasilanie, procesor"
       },
       {
         "label": "Waga cabinetu",
         "value": "BRAK DANYCH",
         "src": "nie ma w dokumentach",
-        "status": "missing"
+        "status": "missing",
+        "cat": "Brakuje w dokumentach"
       },
       {
         "label": "Pobór mocy cabinetu",
         "value": "BRAK DANYCH",
         "src": "nie ma w dokumentach",
-        "status": "missing"
+        "status": "missing",
+        "cat": "Brakuje w dokumentach"
       },
       {
         "label": "Nośność punktów dla ekranu LED",
         "value": "BRAK DANYCH. Plan podaje obciążenie tylko dla truss.",
         "src": "—",
-        "status": "missing"
+        "status": "missing",
+        "cat": "Brakuje w dokumentach"
       }
     ],
     "phrases": [
@@ -295,103 +332,120 @@
         "id": "cab",
         "label": "P3.9 LED CABINET INFILED HL-3978 1000×500 transparent",
         "qty": "64 + 8 backup",
-        "note": "strona 1–4 listy"
+        "note": "strona 1–4 listy",
+        "cat": "Ekran i mocowanie"
       },
       {
         "id": "beam",
         "label": "LED SUPPORT BEAM INFILED transparent 1 m",
         "qty": "8",
-        "note": "STREFA LED/DODATKI"
+        "note": "STREFA LED/DODATKI",
+        "cat": "Ekran i mocowanie"
       },
       {
         "id": "shackle",
         "label": "SHACKLE 2T black",
         "qty": "20",
-        "note": "D4 SKRZYNIA"
+        "note": "D4 SKRZYNIA",
+        "cat": "Ekran i mocowanie"
       },
       {
         "id": "steelflex",
         "label": "STEELFLEX 1T 1,5 m (red mark)",
         "qty": "20",
-        "note": "D0 / kosz-paleta"
+        "note": "D0 / kosz-paleta",
+        "cat": "Ekran i mocowanie"
       },
       {
         "id": "angle",
         "label": "Kątownik do P3,9 HOXLED",
         "qty": "7 + 1 backup",
-        "note": "sprzedaż (Sale)"
+        "note": "sprzedaż (Sale)",
+        "cat": "Ekran i mocowanie"
       },
       {
         "id": "tape",
         "label": "Taśma papierowa",
         "qty": "2 + 1 backup",
-        "note": "sprzedaż (Sale)"
+        "note": "sprzedaż (Sale)",
+        "cat": "Ekran i mocowanie"
       },
       {
         "id": "foil",
         "label": "Folia malarska 4×5 m",
         "qty": "2 + 1 backup",
-        "note": "sprzedaż (Sale)"
+        "note": "sprzedaż (Sale)",
+        "cat": "Ekran i mocowanie"
       },
       {
         "id": "mx30",
         "label": "LED CONTROLLER NovaStar MX30",
         "qty": "1",
-        "note": "C03 lub zielona skrzynia na kółkach"
+        "note": "C03 lub zielona skrzynia na kółkach",
+        "cat": "Procesor i sygnał"
       },
       {
         "id": "hdmi",
         "label": "HDMI–HDMI 4K 3 m",
         "qty": "1",
-        "note": ""
+        "note": "",
+        "cat": "Procesor i sygnał"
       },
       {
         "id": "dp",
         "label": "DisplayPort–DisplayPort 1,2 4K 3 m",
         "qty": "1",
-        "note": "regał A, półka 1"
+        "note": "regał A, półka 1",
+        "cat": "Procesor i sygnał"
       },
       {
         "id": "patch",
         "label": "Patchcord RJ45",
         "qty": "1",
-        "note": ""
+        "note": "",
+        "cat": "Procesor i sygnał"
       },
       {
         "id": "rack",
         "label": "POWERBOX RACK 32A → 2×16A / 6×230V Riedconn STV32/002-6/2k",
         "qty": "1",
-        "note": ""
+        "note": "",
+        "cat": "Zasilanie"
       },
       {
         "id": "ecx",
         "label": "Ethercon extender F–F 0,8 m INFILED / Dicolor UT-390 transparent",
         "qty": "2",
-        "note": ""
+        "note": "",
+        "cat": "Procesor i sygnał"
       },
       {
         "id": "ecm",
         "label": "Ethercon M–M 1,4 m INFILED / Dicolor UT-390 transparent",
         "qty": "2",
-        "note": "STREFA LED/DODATKI"
+        "note": "STREFA LED/DODATKI",
+        "cat": "Procesor i sygnał"
       },
       {
         "id": "pcx",
         "label": "PowerCon TRUE1 16A F–F extender 0,8 m INFILED",
         "qty": "2",
-        "note": ""
+        "note": "",
+        "cat": "Zasilanie"
       },
       {
         "id": "pcm",
         "label": "PowerCon TRUE1 16A M–M extender 1,2 m INFILED",
         "qty": "2",
-        "note": "PAL 5"
+        "note": "PAL 5",
+        "cat": "Zasilanie"
       },
       {
         "id": "pc10",
         "label": "230V → PowerCon TRUE1 16A 10 m INFILED",
         "qty": "2",
-        "note": "PAL 9"
+        "note": "PAL 9",
+        "cat": "Zasilanie"
       }
     ],
     "phrases": [
@@ -655,43 +709,93 @@
     "items": [
       {
         "t": "Ekran wisi na rusztowaniu",
-        "d": "Elewacja A: wspornik przykręcony do rusztowania, nie punkty hali. Rusztowanie musi być gotowe, zanim zaczniesz cabinety."
+        "d": "Elewacja A: wspornik przykręcony do rusztowania, nie punkty hali. Rusztowanie musi być gotowe, zanim zaczniesz cabinety.",
+        "cat": "Hala i mechanika"
       },
       {
         "t": "Trzy nazwy tego samego sprzętu",
-        "d": "Lista SQM: INFILED HL-3978. Plik techniczny: HOXLED P3.9/7.8. Akcesoria: Dicolor UT-390. Zrób zdjęcie etykiety cabinetu i control boxa, zanim wyślesz jakikolwiek plik do procesora."
+        "d": "Lista SQM: INFILED HL-3978. Plik techniczny: HOXLED P3.9/7.8. Akcesoria: Dicolor UT-390. Zrób zdjęcie etykiety cabinetu i control boxa, zanim wyślesz jakikolwiek plik do procesora.",
+        "cat": "Sprzęt"
       },
       {
         "t": "Tylko 2+2 kable Ethercon na liście",
-        "d": "Na liście są 2 × Ethercon M–M 1,4 m i 2 × F–F 0,8 m. Cabinety zapewne łączą się własnymi złączami. Potwierdź przed wyjazdem, jak idzie łańcuch DATA."
+        "d": "Na liście są 2 × Ethercon M–M 1,4 m i 2 × F–F 0,8 m. Cabinety zapewne łączą się własnymi złączami. Potwierdź przed wyjazdem, jak idzie łańcuch DATA.",
+        "cat": "Prąd i sygnał"
       },
       {
-        "t": "BRAK wagi i poboru mocy",
-        "d": "Paczka SQM nie ma wagi cabinetu ani mocy. Bez tego nie policzysz obciążenia ani amperażu. Weź kartę techniczną od SQM."
+        "t": "Waga i moc są spoza SQM",
+        "d": "Paczka SQM nie ma wagi ani mocy cabinetu. Dane producenta INFiLED HL-3978: 263 W max, 88 W średnio, 7,5 kg (do potwierdzenia na etykiecie). Rack 2 × 16 A nie pokryje pełnej bieli całego ekranu.",
+        "cat": "Prąd i sygnał"
       },
       {
         "t": "Zasady hali",
-        "d": "Zawieszenie z dachu na Porte de Versailles bywa zastrzeżone dla obsługi hali. Plan wymienia 8 punktów po 56,25 kg dla truss. Ekran idzie na rusztowanie, więc zapytaj, kto je stawia i do kiedy."
+        "d": "Zawieszenie z dachu na Porte de Versailles bywa zastrzeżone dla obsługi hali. Plan wymienia 8 punktów po 56,25 kg dla truss. Ekran idzie na rusztowanie, więc zapytaj, kto je stawia i do kiedy.",
+        "cat": "Hala i mechanika"
       },
       {
         "t": "Welon przy ekranie",
-        "d": "Szary półprzezroczysty welon jest na planie obok ekranu. Sprawdź, czy nie zasłania wentylacji ani kabli."
+        "d": "Szary półprzezroczysty welon jest na planie obok ekranu. Sprawdź, czy nie zasłania wentylacji ani kabli.",
+        "cat": "Hala i mechanika"
       },
       {
         "t": "Trasa kabli po lewej",
-        "d": "Obraz „Tu idą kable” pokazuje trasę po lewej stronie bryły. Skrzynia 60 kW jest na wycinku planu w prawym górnym rogu. Zmierz trasę na miejscu i porównaj z kablami 10 m."
+        "d": "Obraz „Tu idą kable” pokazuje trasę po lewej stronie bryły. Skrzynia 60 kW jest na wycinku planu w prawym górnym rogu. Zmierz trasę na miejscu i porównaj z kablami 10 m.",
+        "cat": "Prąd i sygnał"
       },
       {
         "t": "Zapasowe cabinety",
-        "d": "8 zapasowych cabinetów i 1 zapasowy kątownik jedzie ze sprzętem. Zapisz, gdzie leżą."
+        "d": "8 zapasowych cabinetów i 1 zapasowy kątownik jedzie ze sprzętem. Zapisz, gdzie leżą.",
+        "cat": "Sprzęt"
       },
       {
         "t": "Termin zwrotu",
-        "d": "Wynajem kończy się 28.10.2026 17:00. Demontaż po 18.10 zaplanuj z wyprzedzeniem."
+        "d": "Wynajem kończy się 28.10.2026 17:00. Demontaż po 18.10 zaplanuj z wyprzedzeniem.",
+        "cat": "Hala i mechanika"
       },
       {
         "t": "Klient puszcza obraz z własnego laptopa",
-        "d": "Zanim go podłączy, ustaw w MX30 działający test pattern. Klient wybiera tylko Extend i pełny ekran."
+        "d": "Zanim klient podłączy laptop, ustaw w MX30 działający obraz testowy. Połączenie: laptop → kabel HDMI → wejście HDMI 2.0-1 MX30. Klient wybiera tylko Extend i pełny ekran.",
+        "cat": "Laptop klienta"
+      },
+      {
+        "t": "Piksel nie jest kwadratowy",
+        "cat": "Sprzęt",
+        "d": "Pitch 3,9 mm w poziomie i 7,8 mm w pionie: piksel jest dwa razy wyższy niż szeroki. Siatka 2048 × 512 px to fizycznie 8 × 4 m (2:1). Materiał o kwadratowych pikselach 2048 × 512 rozciągnie obraz w pionie. Kreację rób w 2:1 (2048 × 1024) i skaluj w pionie do 512 (rozdział „Wideo testowe”)."
+      },
+      {
+        "t": "Laptop klienta: Windows czy Mac",
+        "cat": "Laptop klienta",
+        "d": "Zapytaj wcześniej. Mac: Ustawienia → Ekrany → wyłącz mirroring (powielanie), ustaw rozszerzony pulpit. Windows: Win + P → Rozszerz. Różne systemy mają różne ścieżki, więc przygotuj obie instrukcje."
+      },
+      {
+        "t": "Inny program niż Resolume",
+        "cat": "Laptop klienta",
+        "d": "Klient może używać PowerPointa, Keynote, VLC, ProPresentera, Millumina, Watchouta albo TouchDesignera. Każdy ma własne ustawienie wyjścia na drugi ekran. Poproś o nazwę i wersję programu, i o godzinę próby."
+      },
+      {
+        "t": "Wersja i licencja Resolume",
+        "cat": "Laptop klienta",
+        "d": "Advanced Output jest w Avenue i Arenie, ale wszystkie funkcje wymagają Areny. Zapytaj o wersję i licencję. Bez licencji program pracuje w trybie demo (potwierdź zachowanie na ich wersji)."
+      },
+      {
+        "t": "Przejściówka i kabel HDMI",
+        "cat": "Laptop klienta",
+        "d": "Laptop może mieć tylko USB-C albo DisplayPort. Zabierz przejściówki (USB-C → HDMI, mini DP → HDMI) i zapasowy kabel HDMI 4K. Lista SQM ma jeden HDMI 3 m i jeden DisplayPort 3 m. MX30 ma wejście DP 1.1 (do 4096 × 1080)."
+      },
+      {
+        "t": "Rozdzielczość i odświeżanie z laptopa",
+        "cat": "Laptop klienta",
+        "d": "Karta graficzna musi dopuszczać rozdzielczość z EDID MX30. Manual MX30: maksymalna rozdzielczość i szerokość wejścia HDMI/DP zależy od ustawień karty graficznej. Zgraj częstotliwość: 50 albo 60 Hz w całym łańcuchu."
+      },
+      {
+        "t": "Oszczędzanie energii i powiadomienia",
+        "cat": "Laptop klienta",
+        "d": "Wyłącz uśpienie, wygaszacz, blokadę ekranu, powiadomienia i aktualizacje na czas pokazu. Skalowanie ekranu w Windows ustaw na 100%. Zapytaj o hasło do odblokowania laptopa na czas testu."
+      },
+      {
+        "t": "Hasło i konto na laptopie",
+        "cat": "Laptop klienta",
+        "d": "Poproś, żeby klient był przy teście i sam odblokował laptop. Nie zapisuj ich haseł. W manualu MX30 i VMP nie ma żadnego hasła ani konta."
       }
     ],
     "plans": [
@@ -1467,6 +1571,131 @@
       "uklad-sygnal-2",
       "uklad-zasilanie-2",
       "tw-12"
+    ]
+  },
+  "przed": {
+    "intro": "Oficjalna instrukcja VMP pozwala przygotować połączenia wcześniej: w trybie offline dodajesz kontroler MX30, układasz topologię cabinetów i zapisujesz projekt .nprj. Na hali tylko go wczytujesz. Poniżej lista do skopiowania do notatek, o co poprosić i co przygotować.",
+    "groups": [
+      {
+        "title": "Od SQM i właściciela sprzętu",
+        "items": [
+          "Plik .rcfgx (konfiguracja cabinetu / karty odbiorczej) dla INFiLED HL-3978. Potwierdzenie, że pasuje do tego batcha cabinetów.",
+          "Plik NCP i informacja, czy NCP karty odbiorczej i kontrolera są zgodne (wymaga tego VMP przy jasności i Overdrive).",
+          "Typ karty odbiorczej w cabinetach (np. A10s Pro) i wersja jej firmware.",
+          "MX30: wersja firmware, adres IP i tryb pracy (All-In-One albo Send-Only) ustawione w magazynie.",
+          "Wersja VMP, którą mamy użyć, plus instalator. Informacja, czy jest gotowy projekt .nprj.",
+          "Schemat DATA: które cabinety na który port, kierunek łańcucha (Data Flow) i które porty są zapasowe.",
+          "Karta techniczna cabinetu: moc max i średnia, waga, maksymalna liczba cabinetów na linię zasilania.",
+          "Login i hasło do komputera sterującego, jeśli będzie to komputer SQM. W manualach MX30 i VMP nie ma żadnego hasła.",
+          "Licencja lub dongle Resolume, jeśli SQM dostarcza komputer z Resolume.",
+          "Lista kontaktowa: kto odbiera telefon w razie awarii."
+        ]
+      },
+      {
+        "title": "Od klienta (Lynk & Co, agencja)",
+        "items": [
+          "Jaki laptop: Windows czy Mac. Jakie wyjścia (HDMI, USB-C, DisplayPort) i czy mają przejściówkę.",
+          "Jaki program odtwarza materiał: Resolume (wersja, Avenue czy Arena, licencja) czy inny (nazwa i wersja).",
+          "Rozdzielczość, odświeżanie (50 czy 60 Hz) i format plików (MP4 H.264, HAP, DXV, ProRes).",
+          "Czy kreacja jest zrobiona w proporcji 2:1 dla ekranu 8 × 4 m (pitch 3,9 × 7,8 mm, piksele nie są kwadratowe).",
+          "Pliki wideo z wyprzedzeniem, najlepiej na dzień przed testem.",
+          "Godzina próby z laptopem klienta i kto zatwierdza jasność.",
+          "Kto odblokuje laptop na czas testu i wyłączy uśpienie, powiadomienia i aktualizacje.",
+          "Czy klient przyniesie własny kabel HDMI."
+        ]
+      },
+      {
+        "title": "Od organizatora hali (Viparis)",
+        "items": [
+          "Zasady wieszania: kto może wieszać z dachu i jakie są limity punktów.",
+          "Punkt przyłączenia skrzyni 60 kW i wymagania elektryka.",
+          "Godziny montażu, rozładunku i demontażu. Termin zwrotu sprzętu 28.10.2026 17:00.",
+          "Czy hala ma Wi-Fi albo przewodowy internet dla laptopa (przyda się do pobrania plików)."
+        ]
+      },
+      {
+        "title": "Do przygotowania w hotelu",
+        "items": [
+          "Zainstaluj VMP. Tools → Offline Mode → Enter Offline Mode → Add Controller (MX30, nazwa, IP).",
+          "Ekran: canvas 2048 × 512, cabinet 256 × 64 px (custom), układ 8 × 8, porty główne 1, 3, 5, 7 i zapasowe 2, 4, 6, 8 (zakładka Układ ekranu).",
+          "Zapisz projekt: Project → Export (.nprj). Kopia na pendrive i w chmurze.",
+          "Resolume: Output → Advanced → Virtual Screen o rozdzielczości z wariantu A (2048 × 1080) albo B (3840 × 2160), slice 2048 × 512 w pozycji 0, 0.",
+          "Pliki testowe (siatka, koło, byk) na pendrive i w laptopie.",
+          "Przejściówki USB-C → HDMI, mini DP → HDMI, zapasowy kabel HDMI 4K, kabel Ethernet do portu sterującego, tester kabli RJ45.",
+          "Wydrukuj albo zapisz offline: tabelę portów, plan zasilania, listę kompletacji."
+        ]
+      }
+    ]
+  },
+  "wideo": {
+    "intro": "Wideo testowe ma sprawdzić ekran, proporcje i płynność. Najważniejsze: ekran ma 2048 × 512 pikseli, ale fizycznie 8 × 4 m (2:1), bo piksel jest dwa razy wyższy niż szeroki (pitch 3,9 × 7,8 mm).",
+    "rules": [
+      "Kreację rób w proporcji 2:1, czyli 2048 × 1024. W Resolume slice wejściowy 2048 × 1024 skaluj do wyjścia 2048 × 512. Wtedy koło na ekranie jest kołem.",
+      "Czarne tło oznacza wyłączone diody, czyli przezroczystość. Nie rób jasnego tła całej klatki: pobór mocy rośnie do maksimum (do 263 W na cabinet).",
+      "Jedna komórka cabinetu to tylko 256 × 64 piksele. Detale mniejsze niż około 8 pikseli znikną. Linie rób grube (co najmniej 6 px w pliku 2048 × 1024).",
+      "Kolory nasycone i jasne, kontur (outline) grubszy niż wypełnienie drobne. Bez tekstu mniejszego niż 80 px wysokości w pliku 2:1.",
+      "Pętla bez cięcia, bez migania całego ekranu bielą."
+    ],
+    "variants": [
+      {
+        "name": "W1: autoryzacja 2:1 (zalecane)",
+        "spec": "2048 × 1024 px, MP4 H.264, 30 albo 25 albo 50 klatek/s (zgodnie z klientem i EDID), 20–30 s, bez dźwięku, sRGB, bitrate co najmniej 40 Mb/s",
+        "use": "Resolume: kompozycja 2048 × 1024, slice wejściowy 2048 × 1024 → wyjściowy 2048 × 512."
+      },
+      {
+        "name": "W2: gotowy pod piksele",
+        "spec": "2048 × 512 px, MP4 H.264, ta sama liczba klatek",
+        "use": "Obraz „ściśnięty” w pionie: na podglądzie komputera wygląda na rozciągnięty, na ekranie jest poprawny. Slice 1:1, bez skalowania."
+      },
+      {
+        "name": "W3: ekran w rogu kanwy 4K",
+        "spec": "3840 × 2160 px, ekran 2048 × 512 w lewym górnym rogu, reszta czarna",
+        "use": "Wariant B z rozdziału Resolume (wejście 3840 × 2160)."
+      },
+      {
+        "name": "W4: wariant do Resolume (HAP lub DXV)",
+        "spec": "2048 × 1024 px, kodek HAP albo DXV, 30 klatek/s",
+        "use": "Lżejsze dla procesora laptopa w Resolume. Konwersja programem Alley (Resolume)."
+      },
+      {
+        "name": "W5: test siatki i proporcji",
+        "spec": "PNG 2048 × 512 oraz 2048 × 1024 z siatką 8 × 8, narożnikami kolorów i kołem",
+        "use": "Pierwszy obraz po uruchomieniu: sprawdza lewy górny róg, ucięcia i proporcję."
+      }
+    ],
+    "prompts": [
+      {
+        "title": "Prompt: animacja byka (po angielsku, do ChatGPT / generatora wideo)",
+        "text": "Create a looping animation of a charging bull, side view, for a transparent LED wall. Neon outline style: thick glowing yellow and red outline, simple flat shapes, no fine detail. Pure black background (black is transparent on the wall). Wide 2:1 frame (2048 x 1024 px). The bull runs from the left edge to the right edge in 8 seconds and loops seamlessly. High contrast, saturated colors, bold lines at least 6 pixels thick. No text, no gradients in the background, no bright full-frame flashes."
+      },
+      {
+        "title": "Prompt: grafika byka (nieruchoma)",
+        "text": "A bold bull logo in thick neon outline, front-facing, centered, on a pure black background, 2:1 wide frame (2048 x 1024 px). Simple geometric shapes, saturated yellow and red, line thickness at least 6 px, no small details, no text."
+      },
+      {
+        "title": "Jeśli generator nie daje 2:1",
+        "text": "Wygeneruj w 16:9 (1920 × 1080), byk na środku z dużymi marginesami po bokach. W CapCut przytnij do 2:1 (1920 × 960) i przeskaluj do 2048 × 1024. Eksport: MP4, H.264, taka sama liczba klatek jak w Resolume. Sprawdź w narzędziu aktualne dostępne rozmiary."
+      }
+    ],
+    "files": [
+      {
+        "name": "Siatka 2048 × 512 (piksele ekranu)",
+        "file": "assets/test/test-siatka-2048x512.png"
+      },
+      {
+        "name": "Siatka 2048 × 1024 (autoryzacja 2:1)",
+        "file": "assets/test/test-siatka-2048x1024-proporcje-2do1.png"
+      },
+      {
+        "name": "Test proporcji: koło i kwadrat 2048 × 1024",
+        "file": "assets/test/test-kolo-2048x1024-proporcje-2do1.png"
+      }
+    ],
+    "steps": [
+      "Wgraj siatkę 2048 × 512 do Resolume jako klip. Slice 2048 × 512 w pozycji 0, 0. Sprawdź, że czerwony narożnik jest w lewym górnym rogu ekranu i nie ma ucięć.",
+      "Wgraj test proporcji 2048 × 1024. Slice wejściowy 2048 × 1024, wyjściowy 2048 × 512. Koło ma być kołem. Jeśli jest elipsą, zamieniłeś wariant W1 z W2.",
+      "Puść animację byka (W1). Sprawdź płynność, krawędzie, kolory i temperaturę cabinetów.",
+      "Przy pełnej bieli nie trzymaj ekranu dłużej niż to konieczne. Pobór mocy rośnie do 16,8 kW."
     ]
   }
 }
