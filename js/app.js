@@ -103,6 +103,7 @@ function enterMode(mode){
     document.getElementById('bottomNav').style.display = 'none';
     document.getElementById('quickAddPhrase').hidden = true;
     document.getElementById('settingsBtn').hidden = true;
+    store.set({ ui: { stoiskoMode: 'hub', montazChapter: null } });
     showScreen('stoisko', false);
   } else {
     document.getElementById('bottomNav').style.display = '';

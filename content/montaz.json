@@ -1,0 +1,191 @@
+{
+  "title": "MONTAŻ KROK PO KROKU",
+  "subtitle": "Lynk & Co · Mondial de l'Auto Paris 2026 · Hala 5.1 · stoisko 51A32",
+  "source_note": "Dane z paczki SQM39462: lista kompletacyjna, TECH WIZKA, EKRAN, plan zasilania. Przy każdej liczbie jest źródło. Czego nie ma w dokumentach, oznaczone jest BRAK DANYCH.",
+  "chapters": [
+    { "id": "fakty", "n": "1", "title": "Fakty z dokumentów", "en": "Job facts", "icon": "📋", "when": "Zanim wyjedziesz" },
+    { "id": "komplet", "n": "2", "title": "Kompletacja sprzętu", "en": "Gear check", "icon": "📦", "when": "Rozładunek" },
+    { "id": "mechanika", "n": "3", "title": "Mechanika i zawieszenie", "en": "Rigging", "icon": "⛓", "when": "Montaż" },
+    { "id": "cabinety", "n": "4", "title": "Montaż cabinetów", "en": "Cabinet build", "icon": "▦", "when": "Montaż" },
+    { "id": "rj45", "n": "5", "title": "RJ45 · układ B", "en": "RJ45 · T568B", "icon": "🔌", "when": "Okablowanie" },
+    { "id": "zasilanie", "n": "6", "title": "Zasilanie", "en": "Power", "icon": "⚡", "when": "Okablowanie" },
+    { "id": "kalkulator", "n": "7", "title": "Kalkulator pikseli i linii", "en": "Pixel calculator", "icon": "🧮", "when": "Przed procesorem" },
+    { "id": "mx30", "n": "8", "title": "MX30 · VMP · test · przekazanie", "en": "Processor and handover", "icon": "🖥", "when": "Programowanie" },
+    { "id": "etapy", "n": "9", "title": "Etapy stoiska i zwroty", "en": "Stand stages", "icon": "🗣", "when": "Cały dzień" },
+    { "id": "niespodzianki", "n": "10", "title": "Co może zaskoczyć", "en": "Risks and unknowns", "icon": "⚠", "when": "Przeczytaj przed wyjazdem" }
+  ],
+  "fakty": {
+    "facts": [
+      { "label": "Klient / projekt", "value": "Lynk & Co · Mondial de l'Automobile Paris 2026", "src": "TECH WIZKA, str. 1", "status": "ok" },
+      { "label": "Hala / stoisko", "value": "Porte de Versailles, Hala 5.1, stoisko 51A32, 368 m²", "src": "TECH WIZKA, str. 1", "status": "ok" },
+      { "label": "Wystawa", "value": "12–18 października 2026", "src": "TECH WIZKA, str. 1", "status": "ok" },
+      { "label": "Wynajem sprzętu", "value": "28.09.2026 09:00 – 28.10.2026 17:00", "src": "Lista kompletacyjna, str. 1", "status": "ok" },
+      { "label": "Umowa", "value": "SQM/39462 · Loc'Event", "src": "Lista kompletacyjna, str. 1", "status": "ok" },
+      { "label": "Ekran LED", "value": "8 m długości × 4 m wysokości, przezroczysty", "src": "EKRAN, plan A; Lista kompletacyjna", "status": "ok" },
+      { "label": "Cabinet", "value": "P3.9 · INFILED HL-3978 · 1000 × 500 mm · transparent", "src": "Lista kompletacyjna", "status": "ok" },
+      { "label": "Liczba cabinetów", "value": "64 w ekranie + 8 zapasowych (backup)", "src": "Lista kompletacyjna, str. 1–4", "status": "ok" },
+      { "label": "Welon przy ekranie", "value": "szary, półprzezroczysty (voilage gris semi-transparent)", "src": "EKRAN, plan A", "status": "ok" },
+      { "label": "Konstrukcja (truss)", "value": "wysokość konstrukcji 7000 mm", "src": "TECH WIZKA, str. 16", "status": "ok" },
+      { "label": "Zasilanie na hali", "value": "skrzynia 60 kW, stała (coffret permanent)", "src": "plan zasilania, POWER.png", "status": "ok" },
+      { "label": "Procesor", "value": "NovaStar MX30 × 1", "src": "Lista kompletacyjna, str. 3", "status": "ok" },
+      { "label": "Trasa kabli", "value": "zaznaczona na żółto po lewej stronie bryły stoiska", "src": "Tu idą kable.png", "status": "ok" },
+      { "label": "Waga cabinetu", "value": "BRAK DANYCH", "src": "nie ma w dokumentach", "status": "missing" },
+      { "label": "Pobór mocy cabinetu", "value": "BRAK DANYCH", "src": "nie ma w dokumentach", "status": "missing" },
+      { "label": "Dopuszczalne obciążenie punktu", "value": "BRAK DANYCH w paczce SQM. Zasady hali potwierdź u organizatora.", "src": "—", "status": "missing" }
+    ],
+    "phrases": [
+      { "en": "What is the stand number?", "ph": "łot yz de stend namber", "pl": "Jaki jest numer stoiska?" },
+      { "en": "Where is the power box?", "ph": "ler yz de pałer boks", "pl": "Gdzie jest skrzynia zasilania?" },
+      { "en": "The screen is eight metres wide.", "ph": "de skrin yz ejt mitez łajd", "pl": "Ekran ma osiem metrów szerokości." }
+    ]
+  },
+  "komplet": {
+    "intro": "Odhaczaj przy rozładunku. Liczby z listy kompletacyjnej SQM39462 (daty 06/08/2026).",
+    "items": [
+      { "id": "cab", "label": "P3.9 LED CABINET INFILED HL-3978 1000×500 transparent", "qty": "64 + 8 backup", "note": "strona 1–4 listy" },
+      { "id": "beam", "label": "LED SUPPORT BEAM INFILED transparent 1 m", "qty": "8", "note": "STREFA LED/DODATKI" },
+      { "id": "shackle", "label": "SHACKLE 2T black", "qty": "20", "note": "D4 SKRZYNIA" },
+      { "id": "steelflex", "label": "STEELFLEX 1T 1,5 m (red mark)", "qty": "20", "note": "D0 / kosz-paleta" },
+      { "id": "angle", "label": "Kątownik do P3,9 HOXLED", "qty": "7 + 1 backup", "note": "sprzedaż (Sale)" },
+      { "id": "tape", "label": "Taśma papierowa", "qty": "2 + 1 backup", "note": "sprzedaż (Sale)" },
+      { "id": "foil", "label": "Folia malarska 4×5 m", "qty": "2 + 1 backup", "note": "sprzedaż (Sale)" },
+      { "id": "mx30", "label": "LED CONTROLLER NovaStar MX30", "qty": "1", "note": "C03 lub zielona skrzynia na kółkach" },
+      { "id": "hdmi", "label": "HDMI–HDMI 4K 3 m", "qty": "1", "note": "" },
+      { "id": "dp", "label": "DisplayPort–DisplayPort 1,2 4K 3 m", "qty": "1", "note": "regał A, półka 1" },
+      { "id": "patch", "label": "Patchcord RJ45", "qty": "1", "note": "" },
+      { "id": "rack", "label": "POWERBOX RACK 32A → 2×16A / 6×230V Riedconn STV32/002-6/2k", "qty": "1", "note": "" },
+      { "id": "ecx", "label": "Ethercon extender F–F 0,8 m INFILED / Dicolor UT-390 transparent", "qty": "2", "note": "" },
+      { "id": "ecm", "label": "Ethercon M–M 1,4 m INFILED / Dicolor UT-390 transparent", "qty": "2", "note": "STREFA LED/DODATKI" },
+      { "id": "pcx", "label": "PowerCon TRUE1 16A F–F extender 0,8 m INFILED", "qty": "2", "note": "" },
+      { "id": "pcm", "label": "PowerCon TRUE1 16A M–M extender 1,2 m INFILED", "qty": "2", "note": "PAL 5" },
+      { "id": "pc10", "label": "230V → PowerCon TRUE1 16A 10 m INFILED", "qty": "2", "note": "PAL 9" }
+    ],
+    "phrases": [
+      { "en": "Let's check the list.", "ph": "lets czek de list", "pl": "Sprawdźmy listę." },
+      { "en": "One cabinet is missing.", "ph": "łan kabinet yz mysing", "pl": "Brakuje jednego cabinetu." },
+      { "en": "Do we have the spare cabinets?", "ph": "du ły hew de spe kabinets", "pl": "Mamy zapasowe cabinety?" }
+    ]
+  },
+  "mechanika": {
+    "warning": "Zawieszenie robią uprawnieni ludzie, zgodnie z zasadami hali. Aplikacja nie zastępuje planu rigging ani nadzoru. Dokumenty SQM nie podają wagi cabinetu ani nośności punktów.",
+    "steps": [
+      "Weź plan konstrukcji (TECH WIZKA str. 11 i 16) i pokaż go ekipie. Konstrukcja ma 7000 mm wysokości.",
+      "Ustal z klientem i organizatorem, kto wieszać może. Na wielu halach z dachu wiesza wyłącznie obsługa hali. Potwierdź zasady dla Hali 5.1.",
+      "Sprawdź komplet: 8 belek wsparcia 1 m, 20 szekli 2T, 20 steelflexów 1T 1,5 m.",
+      "Obejrzyj każdy element: szekle bez luzu na zamknięciu, steelflexy bez przetarć. Uszkodzone odłóż i zgłoś.",
+      "Oznacz na podłodze linię ekranu: 8 m długości. Ekran ma 4 m wysokości.",
+      "Zawieś belki wsparcia zgodnie z planem. Każdy punkt ma zabezpieczenie (steelflex + szekla).",
+      "Przed podniesieniem: czysta strefa pod ekranem, nikt nie stoi pod ładunkiem.",
+      "Po zawieszeniu sprawdź wypoziomowanie belek i dokręć zamknięcia szekli."
+    ],
+    "dont": [
+      "Nie wieszaj nic, jeśli nie znasz obciążenia punktu.",
+      "Nie zostawiaj zawieszonego ekranu bez drugiego zabezpieczenia.",
+      "Nie wchodź pod zawieszone elementy."
+    ],
+    "phrases": [
+      { "en": "Who is allowed to rig here?", "ph": "hu yz alałd turyg hir", "pl": "Kto może tu wieszać?" },
+      { "en": "What is the load limit per point?", "ph": "łot yz de lołd lymyt per pojnt", "pl": "Jaki jest limit obciążenia na punkt?" },
+      { "en": "Clear the area, please.", "ph": "klir di erija plyz", "pl": "Proszę opróżnić strefę." },
+      { "en": "Check the shackle.", "ph": "czek de szakel", "pl": "Sprawdź szeklę." }
+    ]
+  },
+  "cabinety": {
+    "warning": "Instrukcja montażu cabinetu INFILED HL-3978 nie jest w paczce SQM. Poniżej jest ogólna kolejność. Szczegóły łączeń weź od właściciela sprzętu.",
+    "steps": [
+      "Rozpakuj cabinety i sprawdź ilość: 64 plus 8 zapasowych.",
+      "Przygotuj kątowniki (7 szt. na liście), taśmę papierową i folię malarską 4×5 m. Do czego służą w tej realizacji, potwierdź z szefem ekipy.",
+      "Układ ekranu: 8 cabinetów w poziomie (8 m) i 8 w pionie (4 m), bo cabinet ma 1000×500 mm.",
+      "Montuj w tej samej kolejności, w jakiej planujesz DATA. Zapisz kierunek na planie.",
+      "Po każdym rzędzie sprawdź prostą krawędź i szczelinę między cabinetami.",
+      "Oznacz numerami (taśma papierowa) kolumnę i rząd każdego cabinetu przed podłączeniem kabli.",
+      "Zostaw zapasowe cabinety w skrzyni, opisane i zabezpieczone."
+    ],
+    "phrases": [
+      { "en": "Hold it level, please.", "ph": "hold yt lewel plyz", "pl": "Trzymaj równo, proszę." },
+      { "en": "Number each cabinet.", "ph": "namber ycz kabinet", "pl": "Ponumeruj każdy cabinet." },
+      { "en": "Mind the gap.", "ph": "majnd de gep", "pl": "Uważaj na szczelinę." }
+    ]
+  },
+  "rj45": {
+    "title": "RJ45 · układ B (T568B)",
+    "pins": [
+      { "pin": 1, "color": "biało-pomarańczowy", "css": "#f4d9b0", "stripe": "#ee7a1a" },
+      { "pin": 2, "color": "pomarańczowy", "css": "#ee7a1a" },
+      { "pin": 3, "color": "biało-zielony", "css": "#cfe7c4", "stripe": "#2c9a3d" },
+      { "pin": 4, "color": "niebieski", "css": "#2f6fd1" },
+      { "pin": 5, "color": "biało-niebieski", "css": "#cfdcf4", "stripe": "#2f6fd1" },
+      { "pin": 6, "color": "zielony", "css": "#2c9a3d" },
+      { "pin": 7, "color": "biało-brązowy", "css": "#e3d3c4", "stripe": "#7a4a22" },
+      { "pin": 8, "color": "brązowy", "css": "#7a4a22" }
+    ],
+    "hold": "Wtyk trzymaj stykami do siebie i klipsem od siebie, kabel wchodzi od dołu. Wtedy pin 1 jest po lewej.",
+    "steps": [
+      "Zdejmij osłonę kabla na około 25–30 mm. Nie nacinaj żył.",
+      "Rozpleć pary i wyprostuj żyły palcami.",
+      "Ułóż od lewej: biało-pomarańczowy, pomarańczowy, biało-zielony, niebieski, biało-niebieski, zielony, biało-brązowy, brązowy.",
+      "Dociśnij żyły do siebie, jedna przy drugiej, bez zakładek.",
+      "Przytnij równo, tak aby po wsunięciu w wtyk żyły sięgały do końca, a osłona kabla weszła pod zacisk (około 12–14 mm odsłoniętych żył).",
+      "Wsuń do oporu. Zajrzyj od strony styków: osiem żył dotyka przedniej ścianki.",
+      "Zaciśnij zaciskarką. Nie ciągnij kabla przed zaciskiem.",
+      "Sprawdź testerem kabli: osiem świateł po kolei, bez przeskoków. Jeśli nie, utnij wtyk i zrób od nowa."
+    ],
+    "notes": [
+      "Oba końce kabla zaciskasz w tym samym układzie B. Wtedy to jest kabel prosty (straight).",
+      "Kable INFILED/Dicolor z listy SQM są fabryczne z Ethercon. Nie zaciskasz ich. Ściąga służy do patchcordu RJ45 i awaryjnych kabli.",
+      "Gigabit wymaga wszystkich ośmiu żył. Dwa przesunięte kolory mogą dać obraz z błędami lub brak połączenia."
+    ],
+    "phrases": [
+      { "en": "I need a cable tester.", "ph": "aj nid e kejbel tester", "pl": "Potrzebuję testera kabli." },
+      { "en": "This cable is wired straight.", "ph": "dys kejbel yz łajerd strejt", "pl": "Ten kabel jest zaciśnięty prosto." },
+      { "en": "The tester shows a fault.", "ph": "de tester szołz e folt", "pl": "Tester pokazuje błąd." },
+      { "en": "Do you have a spare patch cable?", "ph": "du ju hew e spe pecz kejbel", "pl": "Masz zapasowy patchcord?" }
+    ]
+  },
+  "zasilanie": {
+    "warning": "Zasilanie podłącza uprawniona osoba. Nigdy nie podłączaj pod napięciem ani przy mokrej podłodze.",
+    "facts": [
+      "Na hali jest stała skrzynia 60 kW (plan zasilania). Na wycinku planu leży w prawym górnym rogu, z opisem „permanent”.",
+      "Rack: POWERBOX RACK 32A → 2 × 16A i 6 × 230V (Riedconn STV32/002-6/2k). Czyli dwa obwody 16 A dla ekranu.",
+      "Kable: 2 × 230V → PowerCon TRUE1 16A, 10 m. Do tego extendery PowerCon TRUE1: 2 × 0,8 m F–F i 2 × 1,2 m M–M.",
+      "DATA: 2 × Ethercon M–M 1,4 m i 2 × Ethercon F–F 0,8 m (INFILED / Dicolor UT-390). Tyle jest na liście."
+    ],
+    "steps": [
+      "Rozłóż kable zasilania i DATA oddzielnie. Nie krzyżuj ich bez potrzeby.",
+      "Ustal z elektrykiem stoiska, do którego gniazda w skrzyni 60 kW się podpinamy.",
+      "Sprawdź kable wzrokowo: wtyki, osłony, zamknięcia PowerCon.",
+      "Podłącz rack do 32 A dopiero po zgodzie elektryka. Wyłączniki w pozycji wyłączonej.",
+      "Podłącz dwie linie 16 A do dwóch grup cabinetów. Zapisz, która linia zasila które kolumny.",
+      "Włącz zasilanie. Sprawdź każdy cabinet: czy się zapala (autotest) lub czy ma sygnał zasilania.",
+      "Nie przekraczaj 16 A na linię. Policz w kalkulatorze po wpisaniu mocy cabinetu z karty technicznej."
+    ],
+    "phrases": [
+      { "en": "Can you connect the power?", "ph": "ken ju konekt de pałer", "pl": "Możesz podłączyć zasilanie?" },
+      { "en": "Is the circuit breaker on?", "ph": "yz de serkyt brejker on", "pl": "Czy wyłącznik jest włączony?" },
+      { "en": "Do not switch it on yet.", "ph": "du not słycz yt on jet", "pl": "Jeszcze nie włączaj." },
+      { "en": "How many amps per line?", "ph": "hał meny emps per lajn", "pl": "Ile amperów na linię?" }
+    ]
+  },
+  "kalkulator": {
+    "intro": "Domyślne wartości są z listy SQM. Rozdzielczość cabinetu jest liczona z rozmiaru i pixel pitch. Prawdziwe wartości odczytaj w VMP/NCP.",
+    "defaults": { "w": 1000, "h": 500, "pitchH": 3.9, "pitchV": 7.8, "cols": 8, "rows": 8, "portPx": 650000, "watt": "", "amp": 16 },
+    "notes": [
+      "Pitch 3.9 × 7.8 mm wynika z nazwy pliku „(P3.9_7.8) Hoxled Transparent 8x8”. Lista SQM podaje tylko P3.9. Potwierdź na etykiecie cabinetu.",
+      "Limit pikseli na port (650 000) to wartość orientacyjna dla portu Gigabit przy 8 bit i 60 Hz. Zweryfikuj w aktualnej karcie MX30.",
+      "Wynik 256 × 64 px na cabinet i 2048 × 512 px na ekran jest warunkowy. Nie wysyłaj konfiguracji, dopóki VMP nie pokaże tej samej rozdzielczości."
+    ]
+  },
+  "niespodzianki": {
+    "items": [
+      { "t": "Trzy nazwy tego samego sprzętu", "d": "Lista SQM: INFILED HL-3978. Plik techniczny: HOXLED P3.9/7.8. Akcesoria: Dicolor UT-390. Zrób zdjęcie etykiety cabinetu i control boxa, zanim wyślesz jakikolwiek plik do procesora." },
+      { "t": "Tylko 2+2 kable Ethercon na liście", "d": "Na liście są 2 × Ethercon M–M 1,4 m i 2 × F–F 0,8 m. Cabinety zapewne łączą się własnymi złączami. Potwierdź przed wyjazdem, jak idzie łańcuch DATA." },
+      { "t": "BRAK wagi i poboru mocy", "d": "Paczka SQM nie ma wagi cabinetu ani mocy. Bez tego nie policzysz obciążenia ani amperażu. Weź kartę techniczną od SQM." },
+      { "t": "Zasady hali", "d": "Wieszanie z dachu na Porte de Versailles bywa zastrzeżone dla obsługi hali. Zapytaj organizatora wcześniej." },
+      { "t": "Welon przy ekranie", "d": "Szary półprzezroczysty welon jest na planie obok ekranu. Sprawdź, czy nie zasłania wentylacji ani kabli." },
+      { "t": "Trasa kabli po lewej", "d": "Obraz „Tu idą kable” pokazuje trasę po lewej stronie bryły. Skrzynia 60 kW jest na wycinku planu w prawym górnym rogu. Zmierz trasę na miejscu i porównaj z kablami 10 m." },
+      { "t": "Zapasowe cabinety", "d": "8 zapasowych cabinetów i 1 zapasowy kątownik jedzie ze sprzętem. Zapisz, gdzie leżą." },
+      { "t": "Termin zwrotu", "d": "Wynajem kończy się 28.10.2026 17:00. Demontaż po 18.10 zaplanuj z wyprzedzeniem." },
+      { "t": "Klient puszcza obraz z własnego laptopa", "d": "Zanim go podłączy, ustaw w MX30 działający test pattern. Klient wybiera tylko Extend i pełny ekran." }
+    ]
+  }
+}

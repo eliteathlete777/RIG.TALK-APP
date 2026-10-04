@@ -315,3 +315,9 @@ Baza pokazuje jeden aktualny blok zamiast zmuszać użytkownika do ręcznego por
 ### 2026-10-04 — próba generalna buduje Ulubione
 
 Sytuacje, w których użytkownik zaznaczył „Stanąłem”, dodają powiązane zwroty do Ulubionych. Dzięki temu symulacja automatycznie tworzy osobistą talię braków.
+
+## v24 — tryb Montaż: wybór rozdziału
+- Wejście w Montaż zawsze pokazuje siatkę rozdziałów (`ui.stoiskoMode = 'hub'`). Rozdział „MX30" i „Etapy stoiska" otwierają istniejące widoki (`mx30`, `stages`), pozostałe są w `js/montaz.js` na danych z `content/montaz.json`.
+- Zasada danych: każda liczba ma źródło (plik SQM + strona). Czego nie ma w dokumentach, jest oznaczone BRAK DANYCH, a nie zgadywane.
+- Kalkulator: rozdzielczość cabinetu = round(rozmiar / pitch). Wynik jest warunkowy i ma być potwierdzony w VMP/NCP. Limit pikseli na port to wartość orientacyjna do weryfikacji w karcie MX30.
+- Stan: `montaz.checks` (kompletacja), `montaz.calc` (ostatnie wartości kalkulatora), `ui.montazChapter` (otwarty rozdział).

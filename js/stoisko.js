@@ -7,6 +7,7 @@ import { toggleStar } from './library.js';
 import { loadGlossary, termRow, speakEn } from './glossary.js';
 import * as session from './session.js';
 import { renderMx30Guide } from './mx30-guide.js';
+import { renderMontazHub } from './montaz.js';
 
 let metaCache = null;
 
@@ -110,21 +111,19 @@ function phraseRow(chunk, rerender){
 }
 
 export async function renderStoiskoScreen(container){
-  const mode = store.get().ui?.stoiskoMode === 'mx30' ? 'mx30' : 'montaz';
+  const stored = store.get().ui?.stoiskoMode;
+  const mode = stored === 'mx30' ? 'mx30' : stored === 'stages' ? 'stages' : 'hub';
   container.innerHTML = '';
-  const modeBar = document.createElement('div');
-  modeBar.className = 'track-switch course-mode-switch';
-  [['montaz', 'MONTAŻ'], ['mx30', 'MX30 + LED']].forEach(([key, label]) => {
-    const button = document.createElement('button');
-    button.textContent = label;
-    button.classList.toggle('active', mode === key);
-    button.addEventListener('click', () => {
-      store.set({ ui: { stoiskoMode: key } });
-      renderStoiskoScreen(container);
-    });
-    modeBar.appendChild(button);
-  });
-  container.appendChild(modeBar);
+  const go = (next) => { store.set({ ui: { stoiskoMode: next, montazChapter: null } }); renderStoiskoScreen(container); window.scrollTo(0, 0); };
+  if (mode === 'hub'){
+    await renderMontazHub(container, { openStages: () => go('stages'), openMx30: () => go('mx30') });
+    return;
+  }
+  const back = document.createElement('button');
+  back.className = 'btn mz-back';
+  back.textContent = '← Wybór rozdziału';
+  back.addEventListener('click', () => go('hub'));
+  container.appendChild(back);
   if (mode === 'mx30'){
     await renderMx30Guide(container);
     return;
