@@ -15,13 +15,37 @@
 <body>
   <div class="app-shell">
     <header class="topbar">
-      <div class="brand">RIG <span class="accent">TALK</span></div>
-      <div class="topbar-actions"><span class="offline-state" id="offlineState">SPRAWDZAM OFFLINE</span><button class="icon-box" data-nav-to="ustawienia" aria-label="Ustawienia" id="settingsBtn"></button></div>
+      <button class="brand brand-button" id="modeHome" aria-label="Wybierz część aplikacji">RIG <span class="accent">TALK</span></button>
+      <div class="topbar-actions"><button class="mode-change" id="modeChange" hidden>Zmień tryb</button><span class="offline-state" id="offlineState">SPRAWDZAM OFFLINE</span><button class="icon-box" data-nav-to="ustawienia" aria-label="Ustawienia" id="settingsBtn"></button></div>
     </header>
 
     <main id="screens">
 
-      <section data-screen="baza" class="active">
+      <section data-screen="wybor" class="active mode-gate">
+        <div class="mode-gate-copy">
+          <div class="mode-gate-mark">RIG / TALK</div>
+          <h1>Co robisz teraz?</h1>
+          <p>Wybierz narzędzie. Montaż prowadzi przez robotę na stoisku. Angielski prowadzi przez naukę i powtórki.</p>
+        </div>
+        <div class="mode-options">
+          <button class="mode-option mode-option-build" data-mode-select="assembly">
+            <span class="mode-symbol" aria-hidden="true">⌁</span>
+            <span class="mode-number">01</span>
+            <span class="mode-title">Montaż<br>krok po kroku</span>
+            <span class="mode-desc">Etapy stoiska, MX30, LED, checklisty i instrukcje PL/EN.</span>
+            <span class="mode-action">Otwórz montaż</span>
+          </button>
+          <button class="mode-option mode-option-english" data-mode-select="english">
+            <span class="mode-symbol" aria-hidden="true">Aa</span>
+            <span class="mode-number">02</span>
+            <span class="mode-title">Angielski<br>do pracy</span>
+            <span class="mode-desc">Zwroty, fonetyka, lektor 3 × 70% i plan powtórek.</span>
+            <span class="mode-action">Rozpocznij naukę</span>
+          </button>
+        </div>
+      </section>
+
+      <section data-screen="baza">
 
         <div class="rank-card">
           <div class="level-badge" id="levelBadge">LEVEL 1</div>
@@ -181,11 +205,11 @@
 
     <nav class="bottom-nav" id="bottomNav">
       <button class="nav-item active" data-nav="baza"><span class="icon-box" id="navIcon-baza"></span>BAZA</button>
-      <button class="nav-item" data-nav="stoisko"><span class="icon-box" id="navIcon-stoisko"></span>STOISKO</button>
       <button class="nav-item" data-nav="kurs"><span class="icon-box" id="navIcon-kurs"></span>55H</button>
       <button class="nav-item" data-nav="czerwone"><span class="icon-box" id="navIcon-czerwone"></span>CZERWONE</button>
       <button class="nav-item" data-nav="biblioteka"><span class="icon-box" id="navIcon-biblioteka"></span>BIBLIOTEKA</button>
     </nav>
+    <button class="quick-add" id="quickAddPhrase" aria-label="Dodaj własny zwrot">+ ZWROT</button>
   </div>
 
   <script src="vendor/ts-fsrs.umd.js"></script>

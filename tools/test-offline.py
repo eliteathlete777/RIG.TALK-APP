@@ -13,9 +13,10 @@ with sync_playwright() as p:
     cache_names = page.evaluate("caches.keys()")
     context.set_offline(True)
     page.reload(wait_until="domcontentloaded")
+    page.locator('[data-mode-select="english"]').click()
     page.wait_for_selector("#nextActionRoot .next-action")
     print({
-        "cache_v20_present": "rigtalk-v20" in cache_names,
+        "cache_v23_present": "rigtalk-v23" in cache_names,
         "offline_title": page.title(),
         "offline_next_action": page.locator("#nextActionRoot .next-action").is_visible(),
         "offline_status": page.locator("#offlineState").inner_text(),

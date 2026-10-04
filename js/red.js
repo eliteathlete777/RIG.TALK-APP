@@ -33,6 +33,8 @@ export async function renderRedScreen(container){
   redDataCache = redDataCache || await loadRedJson();
   const ctx = ctxCache;
   const redData = redDataCache;
+  const deleted = new Set(store.get().deleted || []);
+  const getChunk = (id) => deleted.has(id) ? null : (ctx.chunks.get(id) || (store.get().custom || []).find(c => c.id === id));
   container.innerHTML = '';
 
   const onSiteStatus = document.createElement('div');
@@ -119,7 +121,7 @@ export async function renderRedScreen(container){
       title.textContent = group.title;
       body.appendChild(title);
 
-      const chunks = group.ids.map(id => ctx.chunks.get(id)).filter(Boolean);
+      const chunks = group.ids.map(getChunk).filter(Boolean);
       if (!chunks.length){
         const empty = document.createElement('div');
         empty.style.cssText = 'color:var(--dim); padding:10px 0;';
@@ -131,7 +133,7 @@ export async function renderRedScreen(container){
     }
 
     redData.groups.forEach(group => {
-      const chunks = group.ids.map(id => ctx.chunks.get(id)).filter(Boolean);
+      const chunks = group.ids.map(getChunk).filter(Boolean);
       const tile = document.createElement('button');
       tile.className = 'card';
       tile.style.cssText = 'width:100%; text-align:left; display:flex; justify-content:space-between; align-items:center; border-color:var(--red);';
@@ -162,7 +164,7 @@ export async function renderRedScreen(container){
       title.textContent = situation.title;
       body.appendChild(title);
 
-      const chunks = situation.ids.map(id => ctx.chunks.get(id)).filter(Boolean);
+      const chunks = situation.ids.map(getChunk).filter(Boolean);
       if (!chunks.length){
         const empty = document.createElement('div');
         empty.style.cssText = 'color:var(--dim); padding:10px 0;';
@@ -173,7 +175,7 @@ export async function renderRedScreen(container){
       return;
     }
     (redData.standMode || []).forEach(situation => {
-      const chunks = situation.ids.map(id => ctx.chunks.get(id)).filter(Boolean);
+      const chunks = situation.ids.map(getChunk).filter(Boolean);
       const tile = document.createElement('button');
       tile.className = 'card';
       tile.style.cssText = 'width:100%; text-align:left; display:flex; justify-content:space-between; align-items:center; border-color:var(--red);';
@@ -193,7 +195,7 @@ export async function renderRedScreen(container){
   function renderSciaga(){
     const s = store.get();
     const order = s.redOrder && s.redOrder.length ? s.redOrder : (s.starred || []);
-    const chunks = order.map(id => ctx.chunks.get(id) || (s.custom || []).find(c => c.id === id)).filter(Boolean);
+    const chunks = order.map(getChunk).filter(Boolean);
     if (!chunks.length){
       const empty = document.createElement('div');
       empty.className = 'card';
@@ -224,6 +226,7 @@ export async function renderRedScreen(container){
     if (query){
       const custom = store.get().custom || [];
       const results = [...ctx.chunks.values(), ...custom]
+        .filter(chunk => !deleted.has(chunk.id))
         .filter(chunk => chunk.en.toLowerCase().includes(query) || chunk.pl.toLowerCase().includes(query));
       if (!results.length){
         const empty = document.createElement('div');

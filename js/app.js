@@ -82,6 +82,45 @@ function paintNavIcons(){
 // stare nazwy ekranów (sprzed v2) → nowe
 const SCREEN_ALIASES = { codzienny: 'kurs', tech: 'kurs' };
 
+let activeMode = null;
+
+function showModeGate(){
+  activeMode = null;
+  document.body.removeAttribute('data-app-mode');
+  document.querySelectorAll('[data-screen]').forEach(sec => sec.classList.toggle('active', sec.dataset.screen === 'wybor'));
+  document.getElementById('bottomNav').style.display = 'none';
+  document.getElementById('quickAddPhrase').hidden = true;
+  document.getElementById('settingsBtn').hidden = true;
+  document.getElementById('modeChange').hidden = true;
+  window.scrollTo(0, 0);
+}
+
+function enterMode(mode){
+  activeMode = mode;
+  document.body.dataset.appMode = mode;
+  document.getElementById('modeChange').hidden = false;
+  if (mode === 'assembly'){
+    document.getElementById('bottomNav').style.display = 'none';
+    document.getElementById('quickAddPhrase').hidden = true;
+    document.getElementById('settingsBtn').hidden = true;
+    showScreen('stoisko', false);
+  } else {
+    document.getElementById('bottomNav').style.display = '';
+    document.getElementById('quickAddPhrase').hidden = false;
+    document.getElementById('settingsBtn').hidden = false;
+    const remembered = store.get().ui?.lastScreen;
+    showScreen(['baza', 'kurs', 'czerwone', 'biblioteka', 'ustawienia'].includes(remembered) ? remembered : 'baza', false);
+  }
+}
+
+function initModeGate(){
+  document.querySelectorAll('[data-mode-select]').forEach(button => {
+    button.addEventListener('click', () => enterMode(button.dataset.modeSelect));
+  });
+  document.getElementById('modeHome')?.addEventListener('click', showModeGate);
+  document.getElementById('modeChange')?.addEventListener('click', showModeGate);
+}
+
 function showScreen(name, persist = true){
   name = SCREEN_ALIASES[name] || name;
   if (!document.querySelector(`[data-screen="${name}"]`)) name = 'baza';
@@ -91,7 +130,7 @@ function showScreen(name, persist = true){
   document.querySelectorAll('.nav-item').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.nav === name);
   });
-  if (persist) store.set({ ui: { lastScreen: name } });
+  if (persist && activeMode === 'english') store.set({ ui: { lastScreen: name } });
   if (name === 'baza'){
     renderBaza();
     const wrap = document.getElementById('trackSwitch');
@@ -137,6 +176,38 @@ function initNav(){
   });
 }
 
+function initQuickAdd(){
+  document.getElementById('quickAddPhrase')?.addEventListener('click', () => {
+    const overlay = document.createElement('div');
+    overlay.className = 'quick-add-overlay';
+    overlay.innerHTML = `<div class="quick-add-card frame">
+      <button class="quick-add-close" aria-label="Zamknij">✕</button>
+      <div class="eyebrow">WŁASNY ZWROT</div><h2>DODAJ DO TRENINGU</h2>
+      <label>Polski<input class="field" data-field="pl" placeholder="Co chcesz powiedzieć?"></label>
+      <label>English<input class="field" data-field="en" placeholder="Wpisz lub wklej tłumaczenie"></label>
+      <div class="track-switch"><button data-track="T" class="active">TECH</button><button data-track="D">CODZIENNY</button></div>
+      <p class="muted-sm">Zwrot zapisuje się na tym urządzeniu. Oznacz go ★, aby trafiał na początek powtórek.</p>
+      <button class="btn btn-primary btn-lg" data-save>ZAPISZ ZWROT</button>
+    </div>`;
+    let track = 'T';
+    overlay.querySelector('.quick-add-close').addEventListener('click', () => overlay.remove());
+    overlay.querySelectorAll('[data-track]').forEach(button => button.addEventListener('click', () => {
+      track = button.dataset.track;
+      overlay.querySelectorAll('[data-track]').forEach(b => b.classList.toggle('active', b === button));
+    }));
+    overlay.querySelector('[data-save]').addEventListener('click', () => {
+      const pl = overlay.querySelector('[data-field="pl"]').value.trim();
+      const en = overlay.querySelector('[data-field="en"]').value.trim();
+      if (!pl || !en){ alert('Wpisz polską i angielską wersję zwrotu.'); return; }
+      library.addCustomChunk({ pl, en, track });
+      overlay.remove();
+      if (document.querySelector('[data-screen="biblioteka"]')?.classList.contains('active')) renderBiblioteka();
+    });
+    document.body.appendChild(overlay);
+    overlay.querySelector('[data-field="pl"]').focus();
+  });
+}
+
 function initTrackSwitch(){
   const wrap = document.getElementById('trackSwitch');
   if (!wrap) return;
@@ -168,8 +239,8 @@ function initSessionButtons(){
     session.startSession(10);
   });
   window.addEventListener('rigtalk:session-ended', () => {
-    // po sesji skupionej wróć tam, skąd przyszedłeś (STOISKO / KURS), inaczej do BAZY
-    showScreen(store.get().ui?.lastScreen || 'baza', false);
+    // montaż wraca do instrukcji; angielski wraca do ostatniego ekranu nauki
+    showScreen(activeMode === 'assembly' ? 'stoisko' : (store.get().ui?.lastScreen || 'baza'), false);
     renderBaza();
   });
 }
@@ -343,7 +414,9 @@ function renderFromState(){
 
 function init(){
   paintNavIcons();
+  initModeGate();
   initNav();
+  initQuickAdd();
   initTrackSwitch();
   initBrush();
   session.initSessionDom();
@@ -351,7 +424,8 @@ function init(){
   initSettingsScreen();
   initBackupUI();
   initLibTabs();
-  renderFromState();
+  renderBaza();
+  showModeGate();
   if ('serviceWorker' in navigator && 'caches' in window){
     navigator.serviceWorker.ready.then(async () => {
       const names = await caches.keys();

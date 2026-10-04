@@ -1,0 +1,36 @@
+{
+  "groups": [
+    { "key": "nie-rozumiem", "title": "Nie rozumiem",
+      "ids": ["t0u2-01", "t0u2-02", "d10u1-04", "d10u1-05", "d10u1-06", "d10u1-07", "d10u1-08", "d10u1-09"] },
+    { "key": "chwileczke", "title": "Chwileczkę",
+      "ids": ["t0u2-03", "t0u2-04", "d2u3-08", "d2u4-07", "t9u1-01", "t9u1-02", "t9u1-04", "t9u2-05"] },
+    { "key": "kontakt", "title": "Kontakt",
+      "ids": ["t0u1-01", "t0u1-02", "t1u1-02", "t1u4-01", "t1u4-02", "d1u1-02", "d1u1-04", "d1u1-05",
+              "d2u3-01", "d2u3-02", "d2u3-03", "d2u3-04", "d10u1-01", "d10u1-02", "d10u1-03",
+              "t9u2-01", "t9u2-02", "t9u2-03"] },
+    { "key": "zakupy", "title": "Zakupy i jedzenie", "ids": [] },
+    { "key": "droga", "title": "Droga i transport", "ids": [] },
+    { "key": "telefon", "title": "Telefon", "ids": [] },
+    { "key": "awaria", "title": "Awaria i BHP",
+      "ids": ["t1u6-02", "t1u6-03", "t9u2-04", "t9u3-01", "t9u3-02", "t9u3-03", "t9u3-04", "t9u3-05", "t9u3-06", "t9u3-07"] },
+    { "key": "zdrowie", "title": "Zdrowie",
+      "ids": ["d10u2-01", "d10u2-02", "d10u2-03", "d10u2-04", "d10u2-05", "d10u2-06"] }
+  ],
+  "standMode": [
+    { "key": "powitanie", "title": "Powitanie", "ids": ["t0u1-01", "t0u1-02", "t1u1-01"] },
+    { "key": "pytania", "title": "Pytania", "ids": ["t1u2-01", "t1u2-02", "t1u2-03"] },
+    { "key": "demo", "title": "Demo", "ids": ["t1u3-01", "t1u3-02", "t1u3-03"] },
+    { "key": "kontakt", "title": "Kontakt", "ids": ["t1u4-01", "t1u4-02", "t1u4-03"] },
+    { "key": "cena", "title": "Cena", "ids": ["t0u3-03"] },
+    { "key": "problem", "title": "Problem", "ids": ["t9u1-02", "t9u1-03", "t9u2-04"] },
+    { "key": "zmiana", "title": "Zmiana", "ids": [] },
+    { "key": "pozegnanie", "title": "Pożegnanie", "ids": ["t1u5-01", "t1u5-02", "t1u5-03"] }
+  ],
+  "showClientCards": [
+    { "id": "sc-email", "en": "Please write your email here.", "pl": "Proszę wpisać tu maila." },
+    { "id": "sc-colleague", "en": "One moment please, I will call my colleague.", "pl": "Chwileczkę, zadzwonię do kolegi." },
+    { "id": "sc-slowly", "en": "Can you speak slowly, please? My English is simple, my work is not.", "pl": "Może Pan mówić wolniej? Mój angielski jest prosty, moja praca nie." },
+    { "id": "sc-qr", "en": "Please scan this QR code for our portfolio.", "pl": "Proszę zeskanować kod QR — nasze portfolio." },
+    { "id": "sc-sign", "en": "Please sign here.", "pl": "Proszę podpisać tutaj." }
+  ]
+}

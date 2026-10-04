@@ -1,0 +1,1151 @@
+
+--- STRONA 1 ---
+LYNK&CO
+DESSIERTECHNIQUE
+Stand: LYNK&CO
+StandNo: 51A32
+Hall: 5.1
+Surface: 368M2
+Datesdel'exposition: Du12au18Octobre2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)
+,2026
+PortedeVersailles-Paris
+
+--- STRONA 2 ---
+(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:66)(cid:3)(cid:47)(cid:60)(cid:49)(cid:46)(cid:3)(cid:9)(cid:3)(cid:38)(cid:50)(cid:66)(cid:79)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25)
+23092026
+Version_FINAL.1
+Name Page
+POSITIONDUSTAND 1
+PLANGENARALRDC 2A
+PLANGENARAL1EETAGE 2B
+PLANSOLRDC 3A
+PLANSOL1EETAGE 3B
+PLANCLOISONRDC 4
+PLANHABILLAGEDESTAND 5
+PLANVELUM 6
+ELEVATIONA 7
+ELEVATIONB 8
+ELEVATIONC 9
+ELEVATIOND 10
+PLANELINGUES 11
+PLANTABLEAUELECTRIQUE 12
+PLANELECTRIQUERDC 13A
+PLANELECTRIQUE1EETAGE 13B
+PLANELECTRIQUE2EMEETAGE 13C
+PLANELECTRIQUETRUSS 13D
+PLANPositiondesvoituresetmeubles 14
+MEUBLE-BAR 15
+MEUBLEBORNEANIMATION 16
+
+--- STRONA 3 ---
+NomdeStand:LYNK&CO
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:3)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Surface:368m2
+LYNK&CODESSINTECHNIQUE 23092026 Page:1
+Nomdestand: LYNK&CO
+POSITIONDUSTAND FormatA3
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+
+--- STRONA 4 ---
+23000
+00061
+RESERVE
+0507
+10188
+150
+19 100 100 150
+3615 1410 2472 2472
+ellimaF(cid:112)(cid:79)(cid:92)(cid:87)(cid:54)(cid:112)(cid:75)(cid:70)(cid:81)(cid:68)(cid:85)(cid:37)sucoFfitropS
+7050
+0012
+91
+91
+8312
+2650 905 905 1696 701 887 905 680
+459 100 75 100
+124
+96
+96
+0002
+3596
+0012 0012
+1391 2434
+0012
+2434
+0012
+01751
+54 57
+@
+7662
+464
+54
+57
+142
+(cid:40)(cid:87)(cid:68)(cid:74)(cid:113)(cid:85)(cid:72) (cid:40)(cid:87)(cid:68)(cid:74)(cid:113)(cid:85)(cid:72)
+Evierautonome Plandetravail 1100mmhaut (cid:36)(cid:85)(cid:80)(cid:82)(cid:76)(cid:85)(cid:72)(cid:3)(cid:112)(cid:79)(cid:72)(cid:70)(cid:87)(cid:85)(cid:76)(cid:84)(cid:88)(cid:72) 300mmhaut
+Chaise
+Smoke
+Mogador
+Frigo
+1400mmhaut
+08SUNSETCOPPER
+02ONYXBLACK
+CARRENTAL
+01MINERALGREEN 08GUINESSWORLD
+RECORD
+Vendingmachine
+LYNK&CODESSINTECHNIQUE 23092026 Page:2a
+Nomdestand: LYNK&CO
+(cid:51)(cid:47)(cid:36)(cid:49)(cid:3)(cid:74)(cid:112)(cid:81)(cid:112)(cid:85)(cid:68)(cid:79)(cid:3)(cid:53)(cid:39)(cid:38) FormatA3 Scale=1100
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:55)(cid:72)(cid:86)(cid:79)(cid:68)(cid:12)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:40)(cid:79)(cid:72)(cid:70)(cid:87)(cid:85)(cid:76)(cid:70)(cid:3)(cid:69)(cid:82)(cid:91)(cid:12)
+
+--- STRONA 5 ---
+00061
+10288
+6177
+2572
+2752
+2572
+2752
+5144
+2752
+1572
+0303
+781
+LYNK&CODESSINTECHNIQUE 23092026 Page:2b
+Nomdestand: LYNK&CO
+(cid:51)(cid:47)(cid:36)(cid:49)(cid:3)(cid:51)(cid:85)(cid:72)(cid:80)(cid:76)(cid:72)(cid:85)(cid:3)(cid:112)(cid:87)(cid:68)(cid:74)(cid:72) FormatA3 Scale=1100
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:55)(cid:72)(cid:86)(cid:79)(cid:68)(cid:12)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:40)(cid:79)(cid:72)(cid:70)(cid:87)(cid:85)(cid:76)(cid:70)(cid:3)(cid:69)(cid:82)(cid:91)(cid:12)
+
+--- STRONA 6 ---
+00061
+LYNK&CODESSINTECHNIQUE 23092026 Page:3a
+Nomdestand: LYNK&CO
+PLANSOLRDC FormatA3 Scale=1100
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:55)(cid:72)(cid:86)(cid:79)(cid:68)(cid:12)
+Salsapamplemousse
+1751360
+(cid:54)(cid:68)(cid:79)(cid:86)(cid:68)(cid:3)(cid:74)(cid:85)(cid:76)(cid:86)(cid:3)(cid:70)(cid:75)(cid:76)(cid:81)(cid:112)
+1751896
+15200
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:40)(cid:79)(cid:72)(cid:70)(cid:87)(cid:85)(cid:76)(cid:70)(cid:3)(cid:69)(cid:82)(cid:91)(cid:12)
+00061
+52331
+7800
+5762
+52331
+23000
+2
+5 0
+0
+0
+0
+4
+5 Podiumvoiture
+(cid:75)(cid:87)(cid:3)(cid:21)(cid:19)(cid:19)(cid:80)(cid:80)(cid:3)(cid:14)(cid:3)(cid:70)(cid:82)(cid:87)(cid:112)(cid:3)(cid:72)(cid:81)(cid:3)(cid:73)(cid:68)(cid:76)(cid:85)(cid:72)(cid:3)(cid:72)(cid:81)
+menuiserie-stratnoir+des
+(cid:83)(cid:85)(cid:82)(cid:73)(cid:76)(cid:79)(cid:112)(cid:86)(cid:3)(cid:68)(cid:79)(cid:88)(cid:3)(cid:70)(cid:76)(cid:81)(cid:87)(cid:85)(cid:112)(cid:3)(cid:83)(cid:82)(cid:88)(cid:85)(cid:3)(cid:70)(cid:68)(cid:70)(cid:75)(cid:72)(cid:85)
+champmoquette
++DessusMoquetteSalsanoir
+1751961
+7800
+2131
+4881
+1062
+1315
+0
+0
+3
+R
+R300
+R300
+0
+0
+3
+R
+
+--- STRONA 7 ---
+00061
+10288
+6177
+2572
+2752
+2572
+2752
+5144
+2752
+1572
+0303
+781
+LYNK&CODESSINTECHNIQUE 23092026 Page:3b
+Nomdestand: LYNK&CO
+PLANSOL1eetage FormatA3 Scale=1100
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:55)(cid:72)(cid:86)(cid:79)(cid:68)(cid:12)
+PlanchermelaEggerChromixArgentF638
+ST10
+(cid:48)(cid:82)(cid:84)(cid:88)(cid:72)(cid:87)(cid:87)(cid:72)(cid:3)(cid:54)(cid:68)(cid:79)(cid:86)(cid:68)(cid:3)(cid:74)(cid:85)(cid:76)(cid:86)(cid:3)(cid:73)(cid:82)(cid:81)(cid:70)(cid:112)(cid:3)(cid:20)(cid:26)(cid:24)(cid:3)(cid:20)(cid:27)(cid:28)(cid:25)
+13foisplatsdemarcheescalier
+1572mmx187mm
++13foisnezdemarchesurl'escalier
+1572mmx40mmx25mm
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:40)(cid:79)(cid:72)(cid:70)(cid:87)(cid:85)(cid:76)(cid:70)(cid:3)(cid:69)(cid:82)(cid:91)(cid:12)
+
+--- STRONA 8 ---
+23000
+00061
+10188
+150
+19 100 100 150
+3615 1410 2472 2472
+RESERVE
+0012
+91
+91
+8312
+2650 905 905 1696 701 887 905 680
+459 100 75 100
+124
+96
+96
+0002
+3596
+0012 0012
+1391
+2434
+0012
+2434
+0012
+01751
+54 57
+7662
+464
+54
+57
+142
+LYNK&CODESSINTECHNIQUE 23092026 Page:4
+Nomdestand: LYNK&CO
+PLANCLOISONrdc FormatA3 Scale=1100
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:55)(cid:72)(cid:86)(cid:79)(cid:68)(cid:12)
+Cloisonmela
+ref.GrisarctiqueU788ST9
+ht2200mm
+Vitre Ecran55'' Ecran55''
+Portesavec
+(cid:68)(cid:70)(cid:70)(cid:113)(cid:86)(cid:3)(cid:83)(cid:68)(cid:85) Cloisontradibrut
+digicode
+Tasseaupourtenirtissu
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:40)(cid:79)(cid:72)(cid:70)(cid:87)(cid:85)(cid:76)(cid:70)(cid:3)(cid:69)(cid:82)(cid:91)(cid:12)
+
+--- STRONA 9 ---
+00061
+10448
+RESERVE
+29551
+10487
+29551 82101
+8793
+15611
+LYNK&CODESSINTECHNIQUE 23092026 Page:5a
+Nomdestand: LYNK&CO
+PLANHabillagedustand FormatA3 Scale=1120
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:55)(cid:72)(cid:86)(cid:79)(cid:68)(cid:12)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:40)(cid:79)(cid:72)(cid:70)(cid:87)(cid:85)(cid:76)(cid:70)(cid:3)(cid:69)(cid:82)(cid:91)(cid:12)
+
+--- STRONA 10 ---
+00061
+RESERVE
+voilage
+semitransparent
+10487
+Voilage_Elevation3
+0007
+voilagegris
+semitransparent
+0007
+10448
+Voilage_Elevation2
+0007
+Ouverture
+10248
+Voilage_Elevation1
+0032
+15592
+Voilagegris
+semitransparent
+(cid:71)(cid:182)(cid:88)(cid:81)(cid:3)(cid:86)(cid:72)(cid:88)(cid:79)(cid:3)(cid:87)(cid:72)(cid:81)(cid:68)(cid:81)(cid:87)
+(saufsur
+lesouverturesenbas)
+2672 2672
+0007
+15592
+2672
+Voilage_Elevation5
+0032
+12920
+0007
+Voilage
+Polytexgris
+moyen
+025319
+Voilage_Elevation4
+0074
+15592
+0072
+4144
+0002
+0032
+voilagegrissemitransparent
+LYNK&CODESSINTECHNIQUE 23092026 Page:5b
+Nomdestand: LYNK&CO
+ELEVATIONHabillagedustand FormatA3 Scale=1100
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36) (cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:55)(cid:72)(cid:86)(cid:79)(cid:68)(cid:12)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:40)(cid:79)(cid:72)(cid:70)(cid:87)(cid:85)(cid:76)(cid:70)(cid:3)(cid:69)(cid:82)(cid:91)(cid:12)
+Elevation
+1
+2 noitavelE
+Elevation 3
+4
+noitavelE
+Elevation
+5
+
+--- STRONA 11 ---
+00061
+RESERVE
+LYNK&CODESSINTECHNIQUE 23092026 Page:6
+Nomdestand: LYNK&CO
+PLANVelum FormatA3 Scale=1100
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:55)(cid:72)(cid:86)(cid:79)(cid:68)(cid:12)
+3596
+(cid:57)(cid:112)(cid:79)(cid:88)(cid:80)(cid:3)(cid:69)(cid:79)(cid:68)(cid:81)(cid:70)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:40)(cid:79)(cid:72)(cid:70)(cid:87)(cid:85)(cid:76)(cid:70)(cid:3)(cid:69)(cid:82)(cid:91)(cid:12)
+0012
+2434
+0012
+
+--- STRONA 12 ---
+0007
+8000
+0074
+0
+007
+0002
+voilagegris
+semitransparent
+LemurLED8mlongx4mhaut
+(cid:68)(cid:70)(cid:70)(cid:85)(cid:82)(cid:70)(cid:75)(cid:72)(cid:85)(cid:3)(cid:89)(cid:76)(cid:68)(cid:3)(cid:83)(cid:68)(cid:87)(cid:87)(cid:72)(cid:86)(cid:3)(cid:73)(cid:76)(cid:91)(cid:112)(cid:3)(cid:106)
+(cid:79)(cid:182)(cid:112)(cid:70)(cid:75)(cid:68)(cid:73)(cid:68)(cid:88)(cid:71)(cid:68)(cid:74)(cid:72)
+0032
+15592
+10248
+0007
+1124 1124
+00061
+0022
+(cid:40)(cid:87)(cid:68)(cid:74)(cid:113)(cid:85)(cid:72) (cid:40)(cid:87)(cid:68)(cid:74)(cid:113)(cid:85)(cid:72)
+Plandetravail 1E1v0ie0rmaumtohnaoumte (cid:36)30(cid:85)(cid:80)0m(cid:82)(cid:76)m(cid:85)(cid:72)h(cid:3)(cid:112)a(cid:79)u(cid:72)t(cid:70)(cid:87)(cid:85)(cid:76)(cid:84)(cid:88)(cid:72)
+Mo
+CSgmh
+a
+aod isko eer
+F1r4ig0o0mmhaut RESERVE
+08SUNSETCOPPER
+02ONYXBLACK
+CARRENTAL
+01MINERALGREEN R08EGCUOIRNDESSWORLD
+Vendingmachine
+0022
+0002
+glacesclaires
+2000
+160 160
+LYNK&CODESSINTECHNIQUE 23092026 Page:7
+Nomdestand: LYNK&CO
+ELEVATIONA FormatA3 Scale=180
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+Elevation
+A
+ELEVATIONA
+
+--- STRONA 13 ---
+voilagegris
+semitransparent 0007
+ElevationB
+00061
+007
+(cid:40)(cid:87)(cid:68)(cid:74)(cid:113)(cid:85)(cid:72) (cid:40)(cid:87)(cid:68)(cid:74)(cid:113)(cid:85)(cid:72)
+Plandetravail E11v0ie0rmaumtohnaoumte 3(cid:36)0(cid:85)(cid:80)0m(cid:82)(cid:76)m(cid:85)(cid:72)h(cid:3)(cid:112)a(cid:79)u(cid:72)t(cid:70)(cid:87)(cid:85)(cid:76)(cid:84)(cid:88)(cid:72)
+Mo
+CSgmh
+a
+aod isko eer
+F1r4ig0o0mmhaut RESERVE
+08SUNSETCOPPER
+02ONYXBLACK
+CARRENTAL
+01MINERALGREEN 0R8EGCUOIRNDESSWORLD
+Vendingmachine
+Elevation B
+ELEVATIONB
+LYNK&CODESSINTECHNIQUE 23092026 Page:8
+Nomdestand: LYNK&CO
+ElevationB FormatA3 Scale=180
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+
+--- STRONA 14 ---
+voilagegrissemi
+transparent
+0007
+Logolumineauxduclient
+ref.776501
+2200mmlongueur
+10448
+00061
+C noitavelE
+(cid:40)(cid:87)(cid:68)(cid:74)(cid:113)(cid:85)(cid:72) (cid:40)(cid:87)(cid:68)(cid:74)(cid:113)(cid:85)(cid:72)
+Plandetravail E11v0ie0rmaumtohnaoumte 3(cid:36)0(cid:85)(cid:80)0m(cid:82)(cid:76)m(cid:85)(cid:72)h(cid:3)(cid:112)a(cid:79)u(cid:72)t(cid:70)(cid:87)(cid:85)(cid:76)(cid:84)(cid:88)(cid:72)
+Mo
+CSgmh
+a
+aod isko eer
+F1r4ig0o0mmhaut RESERVE
+08SUNSETCOPPER
+02ONYXBLACK
+CARRENTAL
+01MINERALGREEN 0R8EGCUOIRNDESSWORLD
+Vendingmachine
+ELEVATIONC
+LYNK&CODESSINTECHNIQUE 23092026 Page:9
+Nomdestand: LYNK&CO
+ElevationC FormatA3 Scale=180
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+
+--- STRONA 15 ---
+0007
+Logolumineauxduclient
+ref.776507
+4500mmlongueur
+Truss
+1275 4500 1275
+4475 11525 4475
+16000
+0521
+0528
+PlanfondHall
+00061
+5406
+RESERVE
+0507
+7050
+LYNK&CODESSINTECHNIQUE 23092026 Page:10
+Nomdestand: LYNK&CO
+ELEVATIOND FormatA3 Scale=180
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+Elevation
+D
+ELEVATIOND
+
+--- STRONA 16 ---
+00061
+4672
+2790.56
+0059
+0056
+5.8164
+0507
+7672
+7050
+35.18311
+9553.56
+0007
+Logolumineauxduclient
+ref.776507
+4500mmlongueur
+Truss
+1275 4500 1275
+4475 11525 4475
+16000
+0521
+0528
+PlanfondHall
+5406
+LYNK&CODESSINTECHNIQUE 23092026 Page:11
+Nomdestand: LYNK&CO
+(cid:51)(cid:47)(cid:36)(cid:49)(cid:3)(cid:101)(cid:47)(cid:44)(cid:49)(cid:42)(cid:56)(cid:40)(cid:54) FormatA3 Scale=1100
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:27)(cid:91)(cid:3)(cid:51)(cid:82)(cid:76)(cid:81)(cid:87)(cid:3)(cid:3)(cid:112)(cid:79)(cid:76)(cid:81)(cid:74)(cid:88)(cid:72)(cid:86)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:55)(cid:72)(cid:86)(cid:79)(cid:68)(cid:12)
+Elevation
+INFORMATIONSDESUSPENSION:
+Poidstotalstructure
++projecteurs
++logolumineux:duclient
+(cid:49)(cid:82)(cid:80)(cid:69)(cid:85)(cid:72)(cid:3)(cid:71)(cid:72)(cid:3)(cid:83)(cid:82)(cid:76)(cid:81)(cid:87)(cid:86)(cid:3)(cid:71)(cid:10)(cid:112)(cid:79)(cid:76)(cid:81)(cid:74)(cid:68)(cid:74)(cid:72)(cid:3)(cid:29)(cid:3)(cid:27)
+(cid:38)(cid:75)(cid:68)(cid:85)(cid:74)(cid:72)(cid:3)(cid:87)(cid:75)(cid:112)(cid:82)(cid:85)(cid:76)(cid:84)(cid:88)(cid:72)(cid:3)(cid:83)(cid:68)(cid:85)(cid:3)(cid:83)(cid:82)(cid:76)(cid:81)(cid:87)(cid:3)(cid:29)
+(cid:24)(cid:25)(cid:17)(cid:21)(cid:24)(cid:3)(cid:78)(cid:74)(cid:3)(cid:11)(cid:167)(cid:24)(cid:26)(cid:3)(cid:78)(cid:74)(cid:12)
+(cid:47)(cid:82)(cid:81)(cid:74)(cid:88)(cid:72)(cid:88)(cid:85)(cid:3)(cid:71)(cid:72)(cid:86)(cid:3)(cid:112)(cid:79)(cid:76)(cid:81)(cid:74)(cid:88)(cid:72)(cid:86)(cid:3)(cid:29)(cid:20)(cid:21)(cid:24)(cid:19)(cid:3)(cid:80)(cid:80)
+Hauteurstructure:7000mm
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:40)(cid:79)(cid:72)(cid:70)(cid:87)(cid:85)(cid:76)(cid:70)(cid:3)(cid:69)(cid:82)(cid:91)(cid:12)
+
+--- STRONA 17 ---
+00061
+0507
+7050
+LYNK&CODESSINTECHNIQUE 23092026 Page:12a
+Nomdestand: LYNK&CO
+(cid:51)(cid:47)(cid:36)(cid:49)(cid:3)(cid:38)(cid:50)(cid:41)(cid:41)(cid:53)(cid:40)(cid:55)(cid:3)(cid:101)(cid:47)(cid:40)(cid:38)(cid:55)(cid:53)(cid:44)(cid:52)(cid:56)(cid:40) FormatA3 Scale=1100
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:55)(cid:72)(cid:86)(cid:79)(cid:68)(cid:12)
+565
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:40)(cid:79)(cid:72)(cid:70)(cid:87)(cid:85)(cid:76)(cid:70)(cid:3)(cid:69)(cid:82)(cid:91)(cid:12)
+736
+1416
+13443
+60kwCoffret
+permanent
+alimentation
+(cid:68)(cid:112)(cid:85)(cid:76)(cid:72)(cid:81)(cid:81)(cid:72)(cid:3)(cid:23)(cid:3)(cid:106)(cid:3)(cid:28)(cid:78)(cid:58)
+
+--- STRONA 18 ---
+00061
+RESERVE
+0507
+7233.83
+7905.14
+6101.76
+5885.66 3158.67
+1103.32
+ellimaF(cid:112)(cid:79)(cid:92)(cid:87)(cid:54)(cid:112)(cid:75)(cid:70)(cid:81)(cid:68)(cid:85)(cid:37)sucoFfitropS
+@
+7050
+1576.65
+7904.43
+10643.27
+12258.45
+12835.06
+15419.85
+42.334
+61.6996
+47.6793
+63.76201
+4190.59
+5006.53
+18.337
+63.1235
+482.04
+1674
+83.8611
+82.2318
+95.468
+50.5705
+33.2391
+(cid:40)(cid:87)(cid:68)(cid:74)(cid:113)(cid:85)(cid:72) (cid:40)(cid:87)(cid:68)(cid:74)(cid:113)(cid:85)(cid:72)
+Evierautonome Plandetravail 1100mmhaut (cid:36)(cid:85)(cid:80)(cid:82)(cid:76)(cid:85)(cid:72)(cid:3)(cid:112)(cid:79)(cid:72)(cid:70)(cid:87)(cid:85)(cid:76)(cid:84)(cid:88)(cid:72)
+300mmhaut
+Chaise
+Smoke
+Mogador
+Frigo 1400mmhaut
+08SUNSETCOPPER
+02ONYXBLACK
+(cid:47)(cid:44)(cid:54)(cid:55)(cid:40)(cid:3)(cid:101)(cid:47)(cid:40)(cid:38)(cid:55)(cid:53)(cid:44)(cid:52)(cid:56)(cid:40)
+(cid:55)(cid:36)(cid:37)(cid:47)(cid:40)(cid:36)(cid:56)(cid:3)(cid:101)(cid:47)(cid:40)(cid:38)(cid:55)(cid:53)(cid:44)(cid:52)(cid:56)(cid:40) 1
+(cid:36)(cid:85)(cid:85)(cid:76)(cid:89)(cid:112)(cid:72)(cid:3)(cid:112)(cid:79)(cid:72)(cid:70)(cid:87)(cid:85)(cid:76)(cid:84)(cid:88)(cid:72)(cid:3)(cid:68)(cid:112)(cid:85)(cid:76)(cid:72)(cid:81)(cid:81)(cid:72) 1
+TRIPLETTE 7
+PRISEECRAN 6
+CARRENTAL
+PRISEalim 11
+01MINERALGREEN 08GUINESSWORLD
+RECORD
+Frigo140L 1
+Projecteur 6
+Vendingmachine
+(cid:54)(cid:51)(cid:50)(cid:55)(cid:3)(cid:106)(cid:3)(cid:87)(cid:76)(cid:74)(cid:72)(cid:3)(cid:79)(cid:72)(cid:71)(cid:3)(cid:16)(cid:55)(cid:85)(cid:88)(cid:86)(cid:86) 20
+(cid:55)(cid:88)(cid:69)(cid:72)(cid:3)(cid:81)(cid:112)(cid:82)(cid:81)(cid:3)(cid:47)(cid:40)(cid:39)(cid:3)(cid:89)(cid:72)(cid:85)(cid:87) 18
+8929.23
+(cid:101)(cid:70)(cid:85)(cid:68)(cid:81)(cid:3)(cid:47)(cid:40)(cid:39)(cid:3)(cid:55)(cid:85)(cid:68)(cid:81)(cid:86)(cid:83)(cid:68)(cid:85)(cid:72)(cid:81)(cid:87) 1
+Spot 9
+@
+Mbps 1
+3
+Lampadaire
+LYNK&CODESSINTECHNIQUE 23092026 Page:12b
+Nomdestand: LYNK&CO
+(cid:51)(cid:47)(cid:36)(cid:49)(cid:3)(cid:101)(cid:47)(cid:40)(cid:38)(cid:55)(cid:53)(cid:44)(cid:52)(cid:56)(cid:40)(cid:3)(cid:53)(cid:39)(cid:38) FormatA3 Scale=1100
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:55)(cid:72)(cid:86)(cid:79)(cid:68)(cid:12)
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:40)(cid:79)(cid:72)(cid:70)(cid:87)(cid:85)(cid:76)(cid:70)(cid:3)(cid:69)(cid:82)(cid:91)(cid:12)
+
+--- STRONA 19 ---
+00061
+0507
+7050
+(cid:47)(cid:44)(cid:54)(cid:55)(cid:40)(cid:3)(cid:101)(cid:47)(cid:40)(cid:38)(cid:55)(cid:53)(cid:44)(cid:52)(cid:56)(cid:40)
+PRISEalim
+Lampadaire
+(cid:55)(cid:88)(cid:69)(cid:72)(cid:3)(cid:81)(cid:112)(cid:82)(cid:81)(cid:3)(cid:47)(cid:40)(cid:39)(cid:3)(cid:89)(cid:72)(cid:85)(cid:87) 18
+LYNK&CODESSINTECHNIQUE 23092026 Page:12b
+Nomdestand: LYNK&CO
+(cid:51)(cid:47)(cid:36)(cid:49)(cid:3)(cid:101)(cid:47)(cid:40)(cid:38)(cid:55)(cid:53)(cid:44)(cid:52)(cid:56)(cid:40)(cid:20)(cid:3)(cid:72)(cid:87)(cid:68)(cid:74)(cid:72) FormatA3 Scale=1100
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:55)(cid:72)(cid:86)(cid:79)(cid:68)(cid:12)
+(cid:3)(cid:20)(cid:3)(cid:68)(cid:85)(cid:85)(cid:76)(cid:89)(cid:112)(cid:72)(cid:3)(cid:112)(cid:79)(cid:72)(cid:70)(cid:87)(cid:85)(cid:76)(cid:84)(cid:88)(cid:72)(cid:3)(cid:14)(cid:3)(cid:20)(cid:3)(cid:80)(cid:88)(cid:79)(cid:87)(cid:76)(cid:83)(cid:85)(cid:76)(cid:86)(cid:72)
+1
+1
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:40)(cid:79)(cid:72)(cid:70)(cid:87)(cid:85)(cid:76)(cid:70)(cid:3)(cid:69)(cid:82)(cid:91)(cid:12)
+
+--- STRONA 20 ---
+00061
+0507
+7050
+(cid:47)(cid:44)(cid:54)(cid:55)(cid:40)(cid:3)(cid:101)(cid:47)(cid:40)(cid:38)(cid:55)(cid:53)(cid:44)(cid:52)(cid:56)(cid:40)
+(cid:55)(cid:88)(cid:69)(cid:72)(cid:3)(cid:81)(cid:112)(cid:82)(cid:81)(cid:3)(cid:47)(cid:40)(cid:39)(cid:3)(cid:89)(cid:72)(cid:85)(cid:87) 18
+(cid:101)(cid:70)(cid:85)(cid:68)(cid:81)(cid:3)(cid:47)(cid:40)(cid:39)(cid:3)(cid:55)(cid:85)(cid:68)(cid:81)(cid:86)(cid:83)(cid:68)(cid:85)(cid:72)(cid:81)(cid:87) 1
+LYNK&CODESSINTECHNIQUE 23092026 Page:12c
+Nomdestand: LYNK&CO
+(cid:51)(cid:47)(cid:36)(cid:49)(cid:3)(cid:101)(cid:47)(cid:40)(cid:38)(cid:55)(cid:53)(cid:44)(cid:52)(cid:56)(cid:40)(cid:3)(cid:21)(cid:3)(cid:72)(cid:87)(cid:68)(cid:74)(cid:72) FormatA3 Scale=1100
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:55)(cid:72)(cid:86)(cid:79)(cid:68)(cid:12)
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:40)(cid:79)(cid:72)(cid:70)(cid:87)(cid:85)(cid:76)(cid:70)(cid:3)(cid:69)(cid:82)(cid:91)(cid:12)
+
+--- STRONA 21 ---
+00061
+0507
+7050
+(cid:36)(cid:85)(cid:85)(cid:76)(cid:89)(cid:112)(cid:72)(cid:3)(cid:112)(cid:79)(cid:72)(cid:70)(cid:87)(cid:85)(cid:76)(cid:84)(cid:88)(cid:72)(cid:3)(cid:68)(cid:112)(cid:85)(cid:76)(cid:72)(cid:81)(cid:81)(cid:72) 1
+(cid:54)(cid:51)(cid:50)(cid:55)(cid:3)(cid:106)(cid:3)(cid:87)(cid:76)(cid:74)(cid:72)(cid:3)(cid:79)(cid:72)(cid:71)(cid:3)(cid:16)(cid:55)(cid:85)(cid:88)(cid:86)(cid:86) 20
+LYNK&CODESSINTECHNIQUE 23092026 Page:12d
+Nomdestand: LYNK&CO
+(cid:51)(cid:47)(cid:36)(cid:49)(cid:3)(cid:101)(cid:47)(cid:40)(cid:38)(cid:55)(cid:53)(cid:44)(cid:52)(cid:56)(cid:40)(cid:3)(cid:55)(cid:85)(cid:88)(cid:86)(cid:86) FormatA3 Scale=1100
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:55)(cid:72)(cid:86)(cid:79)(cid:68)(cid:12)
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:40)(cid:79)(cid:72)(cid:70)(cid:87)(cid:85)(cid:76)(cid:70)(cid:3)(cid:69)(cid:82)(cid:91)(cid:12)
+
+--- STRONA 22 ---
+00061
+0507
+@
+7050
+LYNK&CODESSINTECHNIQUE 23092026 Page:12e
+Nomdestand: LYNK&CO
+PLANINTERNET FormatA3 Scale=1100
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:55)(cid:72)(cid:86)(cid:79)(cid:68)(cid:12)
+(cid:3)(cid:36)(cid:85)(cid:85)(cid:76)(cid:89)(cid:112)(cid:72)(cid:3)(cid:76)(cid:81)(cid:87)(cid:72)(cid:85)(cid:81)(cid:72)(cid:87)(cid:3)(cid:73)(cid:76)(cid:79)(cid:68)(cid:76)(cid:85)(cid:72)
+6Mbps
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:40)(cid:79)(cid:72)(cid:70)(cid:87)(cid:85)(cid:76)(cid:70)(cid:3)(cid:69)(cid:82)(cid:91)(cid:12)
+949
+600
+
+--- STRONA 23 ---
+00061
+ellimaF(cid:112)(cid:79)(cid:92)(cid:87)(cid:54)(cid:112)(cid:75)(cid:70)(cid:81)(cid:68)(cid:85)(cid:37)sucoFfitropS
+RESERVE
+1459
+1062 5252
+5305
+7697
+10642
+5555
+9625
+2181
+2131
+8356
+0361
+7214
+11721 670 1320
+350
+0994
+2714
+3351
+579
+9851
+6906
+3628
+811
+6088
+5362
+7541
+441
+8856
+7298
+678
+378
+0003
+Evierautonome
+1100mmhaut
+Frigo
+1400mmhaut
+005
+670
+006
+1476
+600
+0601
+800
+(cid:36)(cid:85)(cid:80)(cid:82)(cid:76)(cid:85)(cid:72)(cid:3)(cid:112)(cid:79)(cid:72)(cid:70)(cid:87)(cid:85)(cid:76)(cid:84)(cid:88)(cid:72)
+300mmhaut
+1476
+052
+(cid:40)(cid:87)(cid:68)(cid:74)(cid:113)(cid:85)(cid:72)
+006
+(cid:40)(cid:87)(cid:68)(cid:74)(cid:113)(cid:85)(cid:72)
+1000
+052
+1391
+Plandetravail
+Chaise Smoke Mogador
+08SUNSETCOPPER
+02ONYXBLACK
+R300
+2500
+5400
+R300
+CAR 48 R 46 EN 1 T9A00L
+01MINERALGREEN 08GUINESSWORLD
+RECORD
+R300
+Vendingmachine
+R300
+8933
+LYNK&CODESSINTECHNIQUE 23092026 Page:13
+Nomdestand: LYNK&CO
+PLANpositionmeubleetvoitureRDC FormatA3 Scale=1100
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:36)(cid:47)(cid:47)(cid:101)(cid:40)
+(cid:40)(cid:101)(cid:47)(cid:47)(cid:36)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:55)(cid:72)(cid:86)(cid:79)(cid:68)(cid:12)
+(cid:47)(cid:72)(cid:3)(cid:81)(cid:88)(cid:68)(cid:74)(cid:72)(cid:3)(cid:106)(cid:3)(cid:86)(cid:88)(cid:86)(cid:83)(cid:72)(cid:81)(cid:71)(cid:85)(cid:72)(cid:3)(cid:72)(cid:81)(cid:89)(cid:76)(cid:85)(cid:82)(cid:81)
+50kg.
+avec1brasdepuis
+(cid:79)(cid:182)(cid:112)(cid:70)(cid:75)(cid:68)(cid:73)(cid:68)(cid:88)(cid:71)(cid:68)(cid:74)(cid:72)
+(cid:11)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:71)(cid:88)(cid:3)(cid:54)(cid:87)(cid:68)(cid:81)(cid:71)(cid:3)(cid:40)(cid:79)(cid:72)(cid:70)(cid:87)(cid:85)(cid:76)(cid:70)(cid:3)(cid:69)(cid:82)(cid:91)(cid:12)
+
+--- STRONA 24 ---
+1500 670 1320 1706
+002
+003
+003
+002
+005
+0002
+005
+0003 0003
+R100
+R100
+0082
+EggerU999Blackinapremiummatte finish
+Plan
+200 1300
+1706 200
+0011
+83
+2601 2601
+83
+0011
+LEDStripe
+0432
+350
+(cid:89)(cid:88)(cid:72)(cid:3)(cid:71)(cid:72)(cid:3)(cid:70)(cid:123)(cid:87)(cid:112)(cid:3)(cid:72)(cid:91)(cid:83)(cid:82)
+Welcome
+Textblancensticker
+?eeffocatnaW
+rekcitsnecnalbtxeT
+(cid:72)(cid:74)(cid:81)(cid:88)(cid:82)(cid:47)(cid:3)(cid:112)(cid:87)(cid:123)(cid:70)(cid:3)(cid:72)(cid:71)(cid:3)(cid:72)(cid:88)(cid:89)
+(cid:57)(cid:88)(cid:72)(cid:3)(cid:89)(cid:88)(cid:72)(cid:3)(cid:71)(cid:72)(cid:3)(cid:70)(cid:123)(cid:87)(cid:112)
+002
+0062
+002
+2340
+1100
+0011
+0432
+350
+0003
+014
+(cid:72)(cid:87)(cid:3)(cid:112)(cid:87)(cid:68)(cid:74)(cid:113)(cid:85)(cid:72)(cid:86)(cid:3)(cid:76)(cid:81)(cid:87)(cid:112)(cid:85)(cid:76)(cid:72)(cid:88)(cid:85)(cid:72)(cid:86) (cid:53)(cid:68)(cid:81)(cid:74)(cid:72)(cid:80)(cid:72)(cid:81)(cid:87)(cid:3)(cid:73)(cid:72)(cid:85)(cid:80)(cid:68)(cid:81)(cid:87)(cid:3)(cid:106)(cid:3)(cid:70)(cid:79)(cid:112)
+005
+005
+002
+003
+002
+0002 (cid:112)(cid:87)(cid:68)(cid:74)(cid:113)(cid:85)(cid:72)(cid:86)(cid:3)(cid:86)(cid:68)(cid:81)(cid:86)(cid:3)(cid:83)(cid:82)(cid:85)(cid:87)(cid:72)(cid:86)
+670 1320
+1500
+2200mmlongueur ref.776500 Logolumineauxduclient
+tneilcudxuaenimulogoL
+005677.fer
+rueugnolmm0022
+110
+120 120
+055
+009
+055
+009
+906.04
+720
+906.04
+0501
+009
+0501
+600 600
+Meublederangementavecportes+ Meublederangementavecportes+
+serrure+boutons serrure+boutons
+comptoirdroit (cid:70)(cid:82)(cid:80)(cid:83)(cid:87)(cid:82)(cid:76)(cid:85)(cid:3)(cid:76)(cid:81)(cid:70)(cid:88)(cid:85)(cid:89)(cid:112)
+LYNK&CODESSINTECHNIQUE 23092026 Page:14a
+Nomdestand: LYNK&CO
+MEUBLEBAR FormatA3 Scale=150
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+
+--- STRONA 25 ---
+2800
+001R
+LEDStripe
+200 300 300 200 2000 500
+500
+3000
+0011
+500 2000 500
+500 500 500 500
+200 300 2000 300 200
+83
+05
+2101
+Rangementfermant
+(cid:106)(cid:3)(cid:70)(cid:79)(cid:112)(cid:3)(cid:72)(cid:87)(cid:3)(cid:112)(cid:87)(cid:68)(cid:74)(cid:113)(cid:85)(cid:72)(cid:86)
+(cid:76)(cid:81)(cid:87)(cid:112)(cid:85)(cid:76)(cid:72)(cid:88)(cid:85)(cid:72)(cid:86)
+91
+2101 83 05
+0011
+1000
+19 1012 50 38
+490.5
+490.5
+(cid:76)(cid:81)(cid:87)(cid:112)(cid:85)(cid:76)(cid:72)(cid:88)(cid:85)(cid:72)(cid:86) (cid:106)(cid:3)(cid:70)(cid:79)(cid:112)(cid:3)(cid:72)(cid:87)(cid:3)(cid:112)(cid:87)(cid:68)(cid:74)(cid:113)(cid:85)(cid:72)(cid:86) Rangementfermant
+tnamreftnemegnaR (cid:86)(cid:72)(cid:85)(cid:113)(cid:74)(cid:68)(cid:87)(cid:112)(cid:3)(cid:87)(cid:72)(cid:3)(cid:112)(cid:79)(cid:70)(cid:3)(cid:106) (cid:86)(cid:72)(cid:85)(cid:88)(cid:72)(cid:76)(cid:85)(cid:112)(cid:87)(cid:81)(cid:76) (cid:53)(cid:68)(cid:81)(cid:74)(cid:72)(cid:80)(cid:72)(cid:81)(cid:87)(cid:3)(cid:73)(cid:72)(cid:85)(cid:80)(cid:68)(cid:81)(cid:87)(cid:3)(cid:106)(cid:3)(cid:70)(cid:79)(cid:112)(cid:3)(cid:72)(cid:87)(cid:3)(cid:112)(cid:87)(cid:68)(cid:74)(cid:113)(cid:85)(cid:72)(cid:86)(cid:3)(cid:76)(cid:81)(cid:87)(cid:112)(cid:85)(cid:76)(cid:72)(cid:88)(cid:85)(cid:72)(cid:86)
+1100
+Plan
+VueFace
+(cid:89)(cid:88)(cid:72)(cid:3)(cid:71)(cid:72)(cid:3)(cid:70)(cid:123)(cid:87)(cid:112)
+1500
+500
+200
+5.094
+5.094
+0051
+(cid:112)(cid:87)(cid:123)(cid:70)(cid:3)(cid:72)(cid:71)(cid:3)(cid:72)(cid:88)(cid:89)
+Plan
+1620.42 283.16 1620.42
+485 2554 485
+Developpe
+33.813
+33.813
+33.733
+83
+91
+91
+05
+0011
+2000
+500 500
+(cid:53)(cid:68)(cid:81)(cid:74)(cid:72)(cid:80)(cid:72)(cid:81)(cid:87)(cid:3)(cid:73)(cid:72)(cid:85)(cid:80)(cid:68)(cid:81)(cid:87)(cid:3)(cid:106)(cid:3)(cid:70)(cid:79)(cid:112)
+(cid:72)(cid:87)(cid:3)(cid:112)(cid:87)(cid:68)(cid:74)(cid:113)(cid:85)(cid:72)(cid:86)(cid:3)(cid:76)(cid:81)(cid:87)(cid:112)(cid:85)(cid:76)(cid:72)(cid:88)(cid:85)(cid:72)(cid:86)
+014
+1109.5
+1382.44 1382.44
+283.16
+1069.37 1069.37
+(cid:112)(cid:87)(cid:68)(cid:74)(cid:113)(cid:85)(cid:72)(cid:86)(cid:3)(cid:86)(cid:68)(cid:81)(cid:86)(cid:3)(cid:83)(cid:82)(cid:85)(cid:87)(cid:72)(cid:86)
+200 300 200
+3000
+78.627 78.627
+860
+20 20
+900
+009
+001
+91
+91
+267
+900
+Meublederangement
+avecportes+serrure+
+boutons
+006
+(cid:48)(cid:40)(cid:56)(cid:37)(cid:47)(cid:40)(cid:3)(cid:37)(cid:36)(cid:53)(cid:66)(cid:70)(cid:123)(cid:87)(cid:112)(cid:3)(cid:72)(cid:91)(cid:87)(cid:112)(cid:85)(cid:76)(cid:72)(cid:88)(cid:85)
+2xfois (cid:48)(cid:40)(cid:56)(cid:37)(cid:47)(cid:40)(cid:3)(cid:37)(cid:36)(cid:53)(cid:66)(cid:38)(cid:123)(cid:87)(cid:112)(cid:3)(cid:47)(cid:82)(cid:88)(cid:81)(cid:74)(cid:72)
+Plan
+MEUBLEBARpourCafe
+LYNK&CODESSINTECHNIQUE 23092026 Page:14b
+Nomdestand: LYNK&CO
+MEUBLEBAR FormatA3 Scale=150
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)
+
+--- STRONA 26 ---
+Sportif Focus (cid:37)(cid:85)(cid:68)(cid:81)(cid:70)(cid:75)(cid:112)(cid:54)(cid:87)(cid:92)(cid:79)(cid:112) Famille
+1500
+006
+001 1168.5
+006
+91
+91
+836
+1500 20 20
+1540
+450 600 450
+1500
+005
+002
+003
+007
+5781
+1540
+053 87.945 87.945
+R50
+R50
+R50 R50
+R175
+R175
+(cid:55)(cid:72)(cid:91)(cid:87)(cid:72)(cid:3)(cid:85)(cid:112)(cid:87)(cid:85)(cid:82)(cid:112)(cid:70)(cid:79)(cid:68)(cid:76)(cid:85)(cid:112)
+(cid:85)(cid:112)(cid:73)(cid:112)(cid:85)(cid:72)(cid:81)(cid:70)(cid:72)(cid:3)(cid:40)(cid:74)(cid:74)(cid:72)(cid:85)(cid:3)(cid:81)(cid:82)(cid:76)(cid:85)(cid:3)(cid:56)(cid:28)(cid:28)(cid:28)(cid:3)(cid:68)(cid:89)(cid:72)(cid:70)(cid:3)(cid:88)(cid:81)
+(cid:70)(cid:82)(cid:81)(cid:87)(cid:82)(cid:88)(cid:85)(cid:3)(cid:72)(cid:73)(cid:73)(cid:72)(cid:87)(cid:3)(cid:68)(cid:79)(cid:88)(cid:3)(cid:69)(cid:85)(cid:82)(cid:86)(cid:86)(cid:112) 1190
+(cid:87)(cid:72)(cid:91)(cid:87)(cid:72)(cid:3)(cid:68)(cid:71)(cid:75)(cid:112)(cid:86)(cid:76)(cid:73)(cid:3)(cid:81)(cid:82)(cid:76)(cid:85)
+MelaEggerChromixArgentF638ST10
+EggernoirU999
+006 836 5781 005
+007 003 005
+0001
+02
+100
+053
+Plan
+(cid:40)(cid:70)(cid:85)(cid:68)(cid:81)(cid:3)(cid:55)(cid:68)(cid:70)(cid:87)(cid:76)(cid:79)(cid:72)(cid:3)(cid:23)(cid:22)(cid:10)(cid:10)(cid:3)(cid:72)(cid:81)(cid:70)(cid:68)(cid:86)(cid:87)(cid:85)(cid:112)
+VueFace
+(cid:112)(cid:87)(cid:123)(cid:70)(cid:3)(cid:72)(cid:71)(cid:3)(cid:72)(cid:88)(cid:89)
+(cid:55)(cid:72)(cid:91)(cid:87)(cid:72)(cid:3)(cid:85)(cid:112)(cid:87)(cid:85)(cid:82)(cid:112)(cid:70)(cid:79)(cid:68)(cid:76)(cid:85)(cid:112)
+EggernoirU999 Serrurerieepoxynoire
+957
+20 20
+1540
+955
+0051
+(cid:70)(cid:81)(cid:68)(cid:79)(cid:69)(cid:3)(cid:73)(cid:76)(cid:86)(cid:112)(cid:75)(cid:71)(cid:68)(cid:3)(cid:72)(cid:87)(cid:91)(cid:72)(cid:87)
+(cid:112)(cid:85)(cid:76)(cid:68)(cid:79)(cid:70)(cid:112)(cid:82)(cid:85)(cid:87)(cid:112)(cid:85)(cid:3)(cid:72)(cid:87)(cid:91)(cid:72)(cid:55)
+1000
+(cid:72)(cid:85)(cid:113)(cid:76)(cid:85)(cid:85)(cid:68)(cid:3)(cid:112)(cid:87)(cid:123)(cid:70)(cid:3)(cid:72)(cid:71)(cid:3)(cid:72)(cid:88)(cid:89)
+VueFace
+(cid:57)(cid:88)(cid:72)(cid:3)(cid:68)(cid:85)(cid:85)(cid:76)(cid:113)(cid:85)(cid:72)
+(cid:57)(cid:88)(cid:72)(cid:3)(cid:71)(cid:72)(cid:3)(cid:70)(cid:123)(cid:87)(cid:112)
+(cid:57)(cid:88)(cid:72)(cid:3)(cid:71)(cid:72)(cid:3)(cid:70)(cid:123)(cid:87)(cid:112)
+LYNK&CODESSINTECHNIQUE 23092026 Page:15
+Nomdestand: LYNK&CO
+MEUBLEBORNEANIMATION FormatA3 Scale=150
+(cid:49)(cid:88)(cid:80)(cid:112)(cid:85)(cid:82)(cid:3)(cid:71)(cid:72)(cid:3)(cid:86)(cid:87)(cid:68)(cid:81)(cid:71)(cid:29)(cid:24)(cid:20)(cid:3)(cid:36)(cid:3)(cid:22)(cid:21)
+Datesdel'exposition:12-18oCTOBRE2026
+(cid:47)(cid:72)(cid:3)(cid:48)(cid:82)(cid:81)(cid:71)(cid:76)(cid:68)(cid:79)(cid:3)(cid:71)(cid:72)(cid:3)(cid:79)(cid:182)(cid:36)(cid:88)(cid:87)(cid:82)(cid:15)(cid:3)(cid:21)(cid:19)(cid:21)(cid:25) Designpar:KaziMurshidaKHAN
+Surface:368m2
+108avenueHenriBarbusse
+PortedeVersaillesHall-5.1
+(cid:28)(cid:21)(cid:25)(cid:19)(cid:19)(cid:3)(cid:36)(cid:86)(cid:81)(cid:76)(cid:113)(cid:85)(cid:72)(cid:86)(cid:16)(cid:86)(cid:88)(cid:85)(cid:16)(cid:54)(cid:72)(cid:76)(cid:81)(cid:72)(cid:15)(cid:3)(cid:41)(cid:85)(cid:68)(cid:81)(cid:70)(cid:72)

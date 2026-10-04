@@ -1,5 +1,7 @@
 /* RIG TALK — layout ogólny (rozbudowywane w kolejnych etapach) */
 
+[hidden]{ display:none !important; }
+
 .app-shell{
   display:flex;
   flex-direction:column;
@@ -26,7 +28,12 @@
 }
 
 .topbar .brand .accent{ color:var(--red); }
+.brand-button{ padding:0; border:0; background:transparent; cursor:pointer; }
 .topbar-actions{ display:flex; align-items:center; gap:8px; }
+.mode-change{
+  min-height:36px; padding:0 10px; border:1px solid var(--line); border-radius:7px;
+  background:transparent; color:var(--white); font-size:11px; font-weight:700; cursor:pointer;
+}
 .offline-state{
   display:inline-flex; align-items:center; min-height:30px; padding:0 8px;
   border:1px solid var(--line); border-radius:7px; color:var(--dim);
@@ -36,6 +43,39 @@
 
 [data-screen]{ display:none; }
 [data-screen].active{ display:block; }
+
+/* ---------- brama: dwa osobne narzędzia ---------- */
+.mode-gate{ padding-top:12px; }
+.mode-gate-copy{ max-width:390px; margin:10px 0 24px; }
+.mode-gate-mark{ color:var(--dim); font-size:12px; font-weight:800; letter-spacing:2px; margin-bottom:8px; }
+.mode-gate h1{ max-width:330px; font-size:42px; line-height:.95; text-transform:none; letter-spacing:-1px; }
+.mode-gate p{ max-width:390px; color:var(--dim); font-size:15px; }
+.mode-options{ display:grid; grid-template-columns:1fr; gap:12px; }
+.mode-option{
+  position:relative; display:grid; grid-template-columns:1fr auto; gap:7px 14px;
+  min-height:210px; width:100%; padding:20px; overflow:hidden; text-align:left;
+  border:2px solid transparent; border-radius:16px; color:#fff; cursor:pointer;
+}
+.mode-option:focus-visible{ outline:3px solid #fff; outline-offset:3px; }
+.mode-option-build{
+  background:#dfb315;
+  background-image:repeating-linear-gradient(135deg,rgba(0,0,0,.08) 0 10px,transparent 10px 20px);
+  color:#0a0a0b; border-color:#f8d650;
+}
+.mode-option-english{ background:#173db8; border-color:#466ff2; }
+.mode-option-english::after{
+  content:"/ə/  /ɪ/  /θ/"; position:absolute; right:-8px; bottom:34px;
+  color:rgba(255,255,255,.12); font:bold 42px/1 var(--font-display); transform:rotate(-8deg);
+}
+.mode-symbol{ grid-row:1; font:36px/1 var(--font-display); }
+.mode-number{ grid-column:2; font:18px/1 var(--font-display); opacity:.62; }
+.mode-title{ grid-column:1/-1; font:32px/.94 var(--font-display); text-transform:uppercase; max-width:280px; }
+.mode-desc{ grid-column:1/-1; max-width:310px; font-size:14px; line-height:1.35; font-weight:600; }
+.mode-action{ grid-column:1/-1; align-self:end; font:16px/1 var(--font-display); text-transform:uppercase; }
+body[data-app-mode="assembly"]{ --red:#dfb315; --red-dark:#8d6e00; }
+body[data-app-mode="assembly"] .topbar .brand .accent{ color:#dfb315; }
+body[data-app-mode="assembly"] .app-shell{ padding-bottom:30px; }
+body[data-app-mode="english"]{ --red:#e01e1e; }
 
 /* ---------- .frame: czerwone narożniki kadru ---------- */
 .frame{
@@ -488,3 +528,40 @@
 .module-name{ font-family:var(--font-display); font-size:16px; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .module-card .mini-bar{ grid-area:bar; }
 .module-card .btn{ grid-area:btn; }
+
+/* MX30 FIELD MANUAL + szybkie dodawanie zwrotów */
+.quick-add{ position:fixed; right:14px; bottom:calc(76px + env(safe-area-inset-bottom)); z-index:25; min-height:46px; padding:0 14px; border:2px solid var(--red); border-radius:999px; background:var(--red); color:var(--white); font:18px var(--font-display); box-shadow:0 10px 30px #0009; }
+.quick-add-overlay{ position:fixed; inset:0; z-index:80; display:flex; align-items:flex-end; justify-content:center; padding:16px; background:#000c; }
+.quick-add-card{ position:relative; width:min(100%,520px); background:var(--bg-2); padding:20px; }
+.quick-add-card label{ display:block; color:var(--dim); font-size:12px; margin-top:10px; }
+.quick-add-card .field{ display:block; margin-top:5px; color:var(--white); background:var(--bg); border:1px solid var(--line); border-radius:8px; }
+.quick-add-close{ position:absolute; right:12px; top:12px; width:44px; height:44px; color:var(--white); background:transparent; border:1px solid var(--line); border-radius:9px; }
+.mx-hero{ margin:14px 0; border-color:var(--red); }
+.mx-fact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:12px 0; }
+.mx-fact{ padding:10px; background:var(--bg); border:1px solid var(--line); border-radius:8px; }
+.mx-fact b,.mx-fact span{ display:block; }.mx-fact b{ color:var(--red); font:22px var(--font-display); }.mx-fact span{ color:var(--dim); font-size:11px; }
+.mx-fact em{ display:block; color:var(--dim); font-style:normal; margin-top:5px; }
+.mx-status{ display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; margin-bottom:5px; }
+.mx-step{ border-left:3px solid var(--line); padding:0 0 18px 16px; margin-left:14px; }
+.mx-step.safe{ border-left-color:var(--ok); }.mx-step.stop{ border-left-color:var(--red); }
+.mx-step h3{ text-transform:none; font-size:19px; }.mx-step-en{ color:var(--red); font-size:13px; margin-bottom:7px; }
+.mx-step ol{ padding-left:18px; }.mx-step li{ margin:7px 0; line-height:1.4; }
+.mx-warning{ padding:10px 12px; border:1px solid var(--red); border-radius:8px; background:#1d090b; color:var(--white); margin:10px 0; }
+.mx-phrase{ display:grid; grid-template-columns:1fr auto; gap:8px; padding:9px 0; border-top:1px solid var(--line); }
+.mx-phrase small{ display:block; color:var(--dim); margin-top:2px; }
+
+/* Sesja nauki: 3 odsłuchy po 70% + 10 sekund na odpowiedź */
+.guided-learning{ min-height:520px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; border-color:var(--red); }
+.guided-en{ max-width:18ch; font-family:var(--font-display); font-size:clamp(28px,9vw,44px); line-height:1.12; margin:14px 0 8px; }
+.guided-phonetic{ color:#ffd166; font-size:17px; line-height:1.35; margin-bottom:10px; }
+.guided-pl{ color:var(--dim); font-size:15px; margin-bottom:14px; }
+.guided-voice{ color:var(--dim); font-size:10px; border:1px solid var(--line); border-radius:999px; padding:6px 9px; margin-bottom:18px; }
+.guided-rounds{ display:flex; gap:12px; margin:6px 0 18px; }
+.guided-rounds span{ width:18px; height:18px; border:2px solid var(--line); border-radius:50%; background:var(--bg); }
+.guided-rounds span.active{ border-color:var(--red); }.guided-rounds span.done{ background:var(--red); }
+.guided-status{ font-weight:700; color:var(--white); letter-spacing:.6px; }
+.guided-countdown{ font-family:var(--font-display); font-size:42px; color:var(--red); margin:8px 0 20px; }
+.guided-confirm{ width:100%; min-height:58px; display:flex; align-items:center; justify-content:center; gap:10px; background:var(--red); border-radius:10px; cursor:pointer; }
+.guided-confirm input{ width:24px; height:24px; accent-color:var(--white); }
+.guided-confirm span{ font-family:var(--font-display); font-size:19px; }
+.guided-confirm[hidden]{ display:none; }

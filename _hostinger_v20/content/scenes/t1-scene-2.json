@@ -1,0 +1,16 @@
+{
+  "id": "t1-scene-2",
+  "track": "T",
+  "module": "T1",
+  "title": "Demo na ekranie",
+  "lines": [
+    { "who": "other", "en": "Can I try it myself?", "pl": "Mogę spróbować sam?", "chunk": "t1u3-04" },
+    { "who": "me", "en": "Sure, go ahead.", "pl": "Jasne, proszę bardzo." },
+    { "who": "other", "en": "Wow, you can control it from your phone?", "pl": "Wow, można sterować tym z telefonu?" },
+    { "who": "me", "en": "You can control it from your phone.", "pl": "Można sterować tym z telefonu.", "chunk": "t1u3-02" },
+    { "who": "other", "en": "This is our best-selling model, right?", "pl": "To jest ten najczęściej wybierany model, tak?" },
+    { "who": "me", "en": "This is our best-selling model.", "pl": "To nasz najczęściej wybierany model.", "chunk": "t1u3-03" },
+    { "who": "other", "en": "Can you send me the details by email?", "pl": "Może Pan wysłać szczegóły mailem?", "chunk": "t1u4-04" },
+    { "who": "me", "en": "Of course, can I have your email?", "pl": "Oczywiście, mogę prosić o maila?" }
+  ]
+}

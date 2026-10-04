@@ -32,7 +32,7 @@ export function toggleStar(id){
   store.set({ starred: [...starred], redOrder });
 }
 
-function addCustomChunk({ en, pl, track }){
+export function addCustomChunk({ en, pl, track = 'T' }){
   const s = store.get();
   const custom = [...(s.custom || [])];
   const id = `custom-${Date.now()}`;
@@ -45,14 +45,22 @@ function addCustomChunk({ en, pl, track }){
   return id;
 }
 
-function deleteCustomChunk(id){
+export function deleteChunkForever(id){
   const s = store.get();
-  store.set({ custom: (s.custom || []).filter(c => c.id !== id) });
+  const deleted = new Set(s.deleted || []);
+  deleted.add(id);
+  store.set({
+    custom: (s.custom || []).filter(c => c.id !== id),
+    deleted: [...deleted],
+    starred: (s.starred || []).filter(x => x !== id),
+    redOrder: (s.redOrder || []).filter(x => x !== id),
+  });
 }
 
 /** Zwraca wszystkie zwroty (curriculum + własne) jako jedną tablicę do przeszukiwania. */
 export function allSearchableChunks(ctx){
-  return [...allChunksArray(ctx), ...(store.get().custom || [])];
+  const deleted = new Set(store.get().deleted || []);
+  return [...allChunksArray(ctx), ...(store.get().custom || [])].filter(c => !deleted.has(c.id));
 }
 
 function matchesFilters(chunk, filters){
@@ -217,13 +225,16 @@ export async function renderLibraryScreen(container){
       starToggle.addEventListener('click', () => { toggleStar(chunk.id); renderList(); });
       row.appendChild(starToggle);
 
-      if (chunk.tags?.includes('custom')){
-        const delBtn = document.createElement('button');
-        delBtn.className = 'icon-box';
-        delBtn.textContent = '✕';
-        delBtn.addEventListener('click', () => { deleteCustomChunk(chunk.id); renderList(); });
-        row.appendChild(delBtn);
-      }
+      const delBtn = document.createElement('button');
+      delBtn.className = 'icon-box';
+      delBtn.textContent = '✕';
+      delBtn.setAttribute('aria-label', 'Usuń na zawsze');
+      delBtn.addEventListener('click', () => {
+        if (!confirm(`Usunąć ten zwrot na zawsze z aplikacji?\n\n${chunk.en}`)) return;
+        deleteChunkForever(chunk.id);
+        renderList();
+      });
+      row.appendChild(delBtn);
 
       listWrap.appendChild(row);
     });
