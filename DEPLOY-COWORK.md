@@ -7,6 +7,17 @@ Wklej Coworkowi w całości. Mów po polsku, krótko. **Nigdy nie wpisuj za Dami
 - Folder na serwerze: `public_html/rig-talk/`. **Nie ruszaj** `public_html` (root), sklepu ani `/nauka-angielskiego/`.
 - Wersja: **rigtalk-v32** (`CACHE_NAME` w `sw.js`). 151 plików, ~7,5 MB.
 
+
+## 0a. Skille: których użyć i jak
+Damian zlecił **aktualizację istniejącej wersji** RIG TALK w `public_html/rig-talk/` (zgoda na nadpisanie jest, ale kopia zapasowa z pkt 2 jest obowiązkowa). Zanim zaczniesz, załaduj skille:
+- **`baza-wiedzy-editor`** — to ten sam sposób pracy na Hostingerze (hPanel → Menedżer plików przez Claude in Chrome, plan Damiana, weryfikacja na żywo). Używaj tylko jego **technik**. NIE dotykaj folderu `public_html/baza-wiedzy/` ani plików Bazy Wiedzy: to inna aplikacja.
+  - Przed nadpisaniem pokaż Damianowi krótko, co się zmienia (lista plików, wersja v31 → v32) i zrób kopię.
+  - Pliki wgrywaj przez **Upload** w Menedżerze plików (foldery/pliki z dysku). Nie wpisuj kodu znak po znaku w edytorze ACE: psuje nawiasy i cudzysłowy. Jeśli musisz poprawić pojedynczy plik w edytorze, wklej treść zdarzeniem `paste` przez JavaScript (opis w skillu), zrób test na 3 liniach i screenshot.
+  - Po zapisie zawsze sprawdź adres na żywo (pkt 4).
+- **`pwa-ikonka-na-telefon`** — tylko do instalacji na telefonie (pkt 7) i testu manifestu. Ikony i manifest RIG TALK już są w paczce (`assets/rigtalk-icon-*.png`, `manifest.webmanifest`). **Nie generuj nowych ikon i nie zmieniaj manifestu.** Skill potwierdza: `start_url` i `scope` muszą być pełnym adresem `https://elite-athlete.shop/rig-talk/` (tak jest).
+- Narzędzia: Claude in Chrome (`mcp__claude-in-chrome__*`) na już zalogowanej sesji hPanel. Jeśli wymaga logowania lub kodu 2FA: zatrzymaj się i poproś Damiana. Nigdy nie wpisuj za niego hasła.
+- Hostinger hostuje pliki statycznie: nowa wersja na telefonie pojawia się po otwarciu aplikacji online. Service worker (`sw.js`) pobiera wtedy całość do offline, dlatego `sw.js` wgrywasz na końcu.
+
 ## 1. Skąd wziąć pliki
 Źródło prawdy: repo GitHub `eliteathlete777/RIG.TALK-APP`, branch **`claude/dreamy-shannon-vzsoj4`** (commit „v32 …" i nowszy).
 - Pobierz: https://github.com/eliteathlete777/RIG.TALK-APP/archive/refs/heads/claude/dreamy-shannon-vzsoj4.zip i rozpakuj lokalnie (Windows: prawy klik → Wyodrębnij wszystko), albo `git pull origin claude/dreamy-shannon-vzsoj4` w `C:\Users\DELL\Documents\ChatGPT\RIG.TALK APP`.
