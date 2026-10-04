@@ -17,7 +17,7 @@ await page.evaluate(() => localStorage.clear());
 await page.reload({ waitUntil: 'networkidle' });
 await page.locator('[data-mode-select="assembly"]').click();
 await page.waitForSelector('.mz-tile');
-ok(await page.locator('.mz-tile').count() === 13, '13 kafli rozdziałów');
+ok(await page.locator('.mz-tile').count() === 14, '14 kafli rozdziałów');
 ok(!(await page.locator('#bottomNav').isVisible()), 'montaż bez nawigacji angielskiego');
 
 // komplet
@@ -44,6 +44,8 @@ ok(text.includes('2048 × 512'), 'kalkulator: 2048 × 512 px');
 ok(text.includes('256 × 64'), 'kalkulator: cabinet 256 × 64 px');
 ok(text.includes('64 cabinetów'), 'kalkulator: 64 cabinety');
 ok(text.includes('BRAK DANYCH'), 'kalkulator: brak mocy oznaczony');
+ok(text.replace(/\u00a0|\u202f/g, ' ').includes('659 722'), 'kalkulator: limit portu 659 722 px (wzór z manuala MX30)');
+ok(text.includes('Swift Layout') && text.includes('2 × 32'), 'kalkulator: Swift Layout 2 × 32');
 await page.fill('#calc-watt', '150');
 text = await page.locator('.mz-result').innerText();
 ok(text.includes('9,60 kW') || text.includes('9.60 kW'), 'kalkulator: 64 × 150 W = 9,6 kW');
@@ -71,11 +73,16 @@ await page.waitForSelector('.plan-link');
 ok(await page.locator('.plan-link').count() === 5, 'Mechanika: 5 linków do planów');
 await page.locator('.mz-back').click();
 
+// VMP
+await page.locator('[data-chapter="vmp"]').click();
+await page.waitForSelector('.mx-step');
+ok((await page.locator('#stoiskoRoot').innerText()).includes('Enter Offline Mode'), 'VMP: Offline Mode');
+await page.locator('.mz-back').click();
 // MX30 panel i Resolume
 await page.locator('[data-chapter="mx30panel"]').click();
 await page.waitForSelector('.mx-step');
-ok((await page.locator('#stoiskoRoot').innerText()).includes('Quick Configuration'), 'MX30 panel: Quick Configuration');
-ok(await page.locator('.mz-src').count() === 5, 'MX30 panel: 5 źródeł');
+ok((await page.locator('#stoiskoRoot').innerText()).includes('Swift Layout'), 'MX30 panel: Swift Layout');
+ok(await page.locator('.mz-src').count() === 3, 'MX30 panel: 3 źródła');
 await page.locator('.mz-back').click();
 await page.locator('[data-chapter="resolume"]').click();
 await page.waitForSelector('.mx-step');
@@ -91,7 +98,7 @@ await page.locator('[data-chapter="etapy"]').click();
 await page.waitForSelector('.stage-card');
 ok(await page.locator('.stage-card').count() === 10, 'Etapy: 10 kart');
 await page.locator('.mz-back').click();
-ok(await page.locator('.mz-tile').count() === 13, 'powrót do wyboru rozdziału');
+ok(await page.locator('.mz-tile').count() === 14, 'powrót do wyboru rozdziału');
 
 ok(await page.evaluate(() => document.documentElement.scrollWidth === document.documentElement.clientWidth), 'brak poziomego scrolla (375 px)');
 await page.screenshot({ path: 'montaz-v24-preview.png', fullPage: true });

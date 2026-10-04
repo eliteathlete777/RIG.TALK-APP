@@ -321,3 +321,8 @@ Sytuacje, w których użytkownik zaznaczył „Stanąłem”, dodają powiązane
 - Zasada danych: każda liczba ma źródło (plik SQM + strona). Czego nie ma w dokumentach, jest oznaczone BRAK DANYCH, a nie zgadywane.
 - Kalkulator: rozdzielczość cabinetu = round(rozmiar / pitch). Wynik jest warunkowy i ma być potwierdzony w VMP/NCP. Limit pikseli na port to wartość orientacyjna do weryfikacji w karcie MX30.
 - Stan: `montaz.checks` (kompletacja), `montaz.calc` (ostatnie wartości kalkulatora), `ui.montazChapter` (otwarty rozdział).
+
+## v26 — instrukcje procesora z oficjalnych manuali
+- Rozdziały MX30, VMP i Resolume mają kroki po angielsku (jak w manualu) i tłumaczenie PL. Każdy blok podaje źródło (manual, sekcja, strona). Status bloku: z oficjalnej instrukcji / wyliczone / ogólne do potwierdzenia.
+- Limit portu w kalkulatorze: wzór z MX30 Manual sekcja 11. Zmiana karty odbiorczej (A10s Pro: × 32 dla 10 bit) zmienia limit 10 bit.
+- Swift Layout w MX30 działa tylko przy równym podziale cabinetów na porty będącym wielokrotnością liczby rzędów lub kolumn. Kalkulator szuka takiego podziału.

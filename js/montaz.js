@@ -58,7 +58,12 @@ function warning(text){ return el('div', 'mx-warning', text); }
 
 function stepList(steps){
   const list = el('ol', 'mz-steps');
-  steps.forEach(step => list.appendChild(el('li', '', step)));
+  steps.forEach(step => {
+    const li = el('li');
+    if (typeof step === 'string'){ li.textContent = step; }
+    else { li.appendChild(el('span', 'mz-en-line', step.en)); li.appendChild(el('small', 'mz-pl-line', step.pl)); }
+    list.appendChild(li);
+  });
   return list;
 }
 
@@ -78,6 +83,7 @@ function renderBlocks(root, section){
     wrap.appendChild(el('div', 'mx-status', BLOCK_STATUS[block.status] || ''));
     wrap.appendChild(el('h3', 'mz-block-h', block.h));
     wrap.appendChild(stepList(block.steps));
+    if (block.src) wrap.appendChild(el('small', 'mz-srcline', 'Źródło: ' + block.src));
     root.appendChild(wrap);
   });
   if (section.missing?.length){
@@ -187,7 +193,9 @@ export function computeCalc(v){
   const num = x => (x === '' || x === null || x === undefined ? NaN : Number(x));
   const w = num(v.w), h = num(v.h), pH = num(v.pitchH), pV = num(v.pitchV);
   const cols = Math.round(num(v.cols)), rows = Math.round(num(v.rows));
-  const portPx = num(v.portPx), watt = num(v.watt), amp = num(v.amp);
+  const fps = num(v.fps), bits = num(v.bits), watt = num(v.watt), amp = num(v.amp);
+  // Wzór z manuala MX30 (sekcja 11): px × 24 × fps < 0,95 × 10^9 (8 bit); 10 bit: × 48 (karty Armor)
+  const portPx = Number.isFinite(fps) && fps > 0 ? Math.floor(0.95e9 / ((bits === 10 ? 48 : 24) * fps)) : num(v.portPx);
   const ok = [w, h, pH, pV, cols, rows].every(n => Number.isFinite(n) && n > 0);
   if (!ok) return { valid: false };
   const cabW = Math.round(w / pH), cabH = Math.round(h / pV);
@@ -203,8 +211,15 @@ export function computeCalc(v){
   if (Number.isFinite(portPx) && portPx > 0){
     out.cabsPerPort = Math.floor(portPx / cabPx);
     out.minPorts = Math.ceil(total / portPx);
+    out.portPx = portPx;
     out.colsPerPort = Math.max(0, Math.floor(out.cabsPerPort / rows));
     out.portsByColumns = out.colsPerPort > 0 ? Math.ceil(cols / out.colsPerPort) : null;
+    // Swift Layout: równy podział na n portów, wielokrotność rzędów
+    out.swift = null;
+    for (let n = 1; n <= 10; n++){
+      const per = Math.ceil(cols / n) * rows;
+      if (per <= out.cabsPerPort && per % rows === 0){ out.swift = { ports: n, perPort: per, load: per * cabPx }; break; }
+    }
   }
   if (Number.isFinite(watt) && watt > 0){
     out.totalKw = cabs * watt / 1000;
@@ -223,7 +238,7 @@ function renderKalkulator(root, data){
     ['w', 'Szerokość cabinetu (mm)'], ['h', 'Wysokość cabinetu (mm)'],
     ['pitchH', 'Pitch poziomo (mm)'], ['pitchV', 'Pitch pionowo (mm)'],
     ['cols', 'Cabinety w poziomie'], ['rows', 'Cabinety w pionie'],
-    ['portPx', 'Limit pikseli na port'], ['watt', 'Moc cabinetu (W) z karty'],
+    ['fps', 'Odświeżanie (Hz)'], ['bits', 'Głębia (8 albo 10 bit)'], ['watt', 'Moc cabinetu (W) z karty'],
     ['amp', 'Linia zasilania (A)'],
   ];
   const grid = el('div', 'mz-calc-grid');
@@ -261,8 +276,10 @@ function renderKalkulator(root, data){
     line('Cały ekran', `${r.wallW} × ${r.wallH} px`, 'big');
     line('Razem pikseli', r.total.toLocaleString('pl-PL'));
     if (r.cabsPerPort !== undefined){
+      line('Limit portu', r.portPx.toLocaleString('pl-PL') + ' px');
       line('Cabinetów na port (max)', String(r.cabsPerPort));
       line('Minimum portów', String(r.minPorts));
+      if (r.swift) line('Swift Layout', `${r.swift.ports} × ${r.swift.perPort} cab. (${r.swift.load.toLocaleString('pl-PL')} px na port)`);
       if (r.portsByColumns) line('Całe kolumny na port', `${r.colsPerPort} kol. → ${r.portsByColumns} portów`);
     }
     if (r.totalKw !== undefined){
@@ -356,6 +373,7 @@ export async function renderMontazHub(container, { openStages, openMx30 }){
     case 'niespodzianki': renderNiespodzianki(body, data); break;
     case 'plany': await renderPlany(body, data.plany?.intro); break;
     case 'mx30panel': renderBlocks(body, data.mx30panel); break;
+    case 'vmp': renderBlocks(body, data.vmp); break;
     case 'resolume': renderBlocks(body, data.resolume); break;
     default: break;
   }

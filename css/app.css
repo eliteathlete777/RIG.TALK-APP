@@ -633,3 +633,7 @@ body.plan-open{ overflow:hidden; }
 
 .mz-block-h{ margin:2px 0 6px; font-size:17px; text-transform:none; }
 .mz-src{ display:block; padding:9px 0; border-top:1px solid var(--line); color:#f2b705; overflow-wrap:anywhere; }
+
+.mz-en-line{ display:block; font-weight:700; }
+.mz-pl-line{ display:block; color:var(--dim); margin-top:2px; }
+.mz-srcline{ display:block; color:var(--dim); margin-top:6px; font-size:11px; }

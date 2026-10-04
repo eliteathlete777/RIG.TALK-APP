@@ -70,14 +70,22 @@
     {
       "id": "mx30panel",
       "n": "9",
-      "title": "MX30: panel przedni i VMP",
-      "en": "MX30 front panel and VMP",
+      "title": "MX30: panel przedni (z manuala)",
+      "en": "MX30 front panel menus",
       "icon": "🎛",
       "when": "Programowanie"
     },
     {
-      "id": "resolume",
+      "id": "vmp",
       "n": "10",
+      "title": "VMP (COEX): połączenie i ekran",
+      "en": "VMP: connect and configure",
+      "icon": "🖥",
+      "when": "Programowanie"
+    },
+    {
+      "id": "resolume",
+      "n": "11",
       "title": "Resolume: wyjście na ekran LED",
       "en": "Resolume output to the LED wall",
       "icon": "🎬",
@@ -85,7 +93,7 @@
     },
     {
       "id": "etapy",
-      "n": "11",
+      "n": "12",
       "title": "Etapy stoiska i zwroty",
       "en": "Stand stages",
       "icon": "🗣",
@@ -93,7 +101,7 @@
     },
     {
       "id": "plany",
-      "n": "12",
+      "n": "13",
       "title": "Plany i rysunki",
       "en": "Plans and drawings",
       "icon": "🗺",
@@ -101,7 +109,7 @@
     },
     {
       "id": "niespodzianki",
-      "n": "13",
+      "n": "14",
       "title": "Co może zaskoczyć",
       "en": "Risks and unknowns",
       "icon": "⚠",
@@ -589,7 +597,7 @@
     ]
   },
   "kalkulator": {
-    "intro": "Domyślne wartości są z listy SQM. Rozdzielczość cabinetu jest liczona z rozmiaru i pixel pitch. Prawdziwe wartości odczytaj w VMP/NCP.",
+    "intro": "Domyślne wartości są z listy SQM. Limit portu liczony wzorem z manuala MX30 (sekcja 11, str. 29). Rozdzielczość cabinetu wynika z rozmiaru i pitchu. Prawdziwą odczytaj w VMP.",
     "defaults": {
       "w": 1000,
       "h": 500,
@@ -597,13 +605,16 @@
       "pitchV": 7.8,
       "cols": 8,
       "rows": 8,
-      "portPx": 650000,
+      "fps": 60,
+      "bits": 8,
       "watt": "",
       "amp": 16
     },
     "notes": [
-      "Pitch 3.9 × 7.8 mm wynika z nazwy pliku „(P3.9_7.8) Hoxled Transparent 8x8”. Lista SQM podaje tylko P3.9. Potwierdź na etykiecie cabinetu.",
-      "Limit pikseli na port (650 000) to wartość orientacyjna dla portu Gigabit przy 8 bit i 60 Hz. Zweryfikuj w aktualnej karcie MX30.",
+      "Wzór z manuala MX30 (sekcja 11): 8 bit: piksele na port × 24 × fps < 1 000 000 000 × 0,95. 10 bit: × 48 (karty Armor) albo × 32 (karta A10s Pro). Dla 8 bit i 60 Hz wychodzi 659 722 piksele na port.",
+      "Limit portu osiąga się tylko przy szerokości ładunku portu co najmniej 192 px. Całe urządzenie: 6,5 mln pikseli, 10 portów Ethernet.",
+      "Swift Layout wymaga, by liczba cabinetów na port była wielokrotnością liczby rzędów lub kolumn. Kalkulator pokazuje takie podziały.",
+      "Pitch 3.9 × 7.8 mm wynika z nazwy pliku „(P3.9_7.8) Hoxled Transparent 8x8”. Lista SQM podaje tylko P3.9. Potwierdź na etykiecie cabinetu i w VMP.",
       "Wynik 256 × 64 px na cabinet i 2048 × 512 px na ekran jest warunkowy. Nie wysyłaj konfiguracji, dopóki VMP nie pokaże tej samej rozdzielczości."
     ],
     "plans": [
@@ -663,60 +674,195 @@
     "intro": "Wszystkie rysunki z PDF-ów SQM i zdjęcia trasy kabli. Dotknij miniaturę, aby powiększyć."
   },
   "mx30panel": {
-    "warning": "Poniższe ścieżki menu pochodzą z oficjalnej instrukcji MX30 (Novastar). Kroki w programie VMP są w osobnym manualu. Zanim cokolwiek wyślesz do cabinetów, zrób backup (rozdział 8).",
+    "warning": "Wszystko poniżej jest z oficjalnej instrukcji MX30 V1.4.2 (Novastar), ze wskazaniem sekcji i strony. Zanim wyślesz cokolwiek do cabinetów, zrób backup (rozdział 8).",
     "blocks": [
       {
-        "h": "Jak się poruszać po panelu przednim",
+        "h": "The front panel · Panel przedni",
         "status": "manual",
+        "src": "MX30 Manual V1.4.2, sekcja 2.1, str. 2",
         "steps": [
-          "Na ekranie głównym naciśnij pokrętło. Wejdziesz do menu głównego.",
-          "Kręć pokrętłem, aby wybrać pozycję menu albo zmienić wartość.",
-          "Naciśnij pokrętło, aby zatwierdzić."
+          {
+            "en": "On the home screen, press the knob to enter the main menu.",
+            "pl": "Na ekranie głównym naciśnij pokrętło, aby wejść do menu."
+          },
+          {
+            "en": "In the main menu, rotate the knob to select an item or change a value. Press the knob to confirm. BACK goes up one level or cancels.",
+            "pl": "W menu kręć pokrętłem, aby wybrać pozycję lub zmienić wartość. Naciśnij, aby zatwierdzić. BACK cofa o poziom albo anuluje."
+          },
+          {
+            "en": "Hold the knob and BACK together for 5 s or longer to lock or unlock the buttons.",
+            "pl": "Przytrzymaj pokrętło i BACK razem przez 5 s lub dłużej, aby zablokować lub odblokować przyciski."
+          },
+          {
+            "en": "Running indicator: solid red = standby, solid blue = starting, solid green = running normally, flashing red = running abnormally. The Standby button powers the device on or off; hold it 5 s to restart.",
+            "pl": "Dioda: czerwona ciągła = czuwanie, niebieska = uruchamianie, zielona = praca normalna, czerwona migająca = nieprawidłowa praca. Przycisk Standby włącza i wyłącza; 5 s = restart."
+          }
         ]
       },
       {
-        "h": "Wybór wejścia i rozdzielczości",
+        "h": "Home screen · Ekran główny",
         "status": "manual",
+        "src": "MX30 Manual V1.4.2, sekcja 4.1, str. 7–8",
         "steps": [
-          "Menu główne → Input Settings → Select Input.",
-          "Wybierz źródło (np. HDMI).",
-          "Ustaw tryb Standard (rozdzielczość z listy) albo Custom (wpisujesz rozdzielczość i odświeżanie ręcznie).",
-          "HDMI 2.0 obsługuje do 4K przy 60 Hz."
+          {
+            "en": "The home screen shows the device IP address, the working mode (All-In-One Controller or Send-Only Controller), the lock status and the Ethernet port status (blue = connected, gray = disconnected).",
+            "pl": "Ekran główny pokazuje adres IP, tryb pracy (All-In-One albo Send-Only), blokadę i stan portów Ethernet (niebieski = podłączony, szary = brak)."
+          },
+          {
+            "en": "Input signals: green = signal OK and used, blue = OK but not used, red = abnormal, gray = abnormal and not used.",
+            "pl": "Wejścia: zielony = sygnał OK i używany, niebieski = OK, nieużywany, czerwony = błąd, szary = błąd i nieużywany."
+          },
+          {
+            "en": "Screen shows the screen resolution, frame rate and brightness. Sync shows the signal in use (Active Input, Genlock or Internal).",
+            "pl": "Screen pokazuje rozdzielczość, odświeżanie i jasność ekranu. Sync pokazuje używany sygnał (Active Input, Genlock lub Internal)."
+          }
         ]
       },
       {
-        "h": "Szybka konfiguracja ekranu z panelu (tylko dla prostego układu)",
+        "h": "Set the input resolution (EDID) · Rozdzielczość wejścia",
         "status": "manual",
+        "src": "MX30 Manual V1.4.2, sekcje 5.1.1 i 6.2.2, str. 10 i 13",
         "steps": [
-          "Menu główne → Screen Configuration → Quick Configuration. Potwierdź Yes.",
-          "Wpisz: Cabinet Row Qty (liczba cabinetów w pionie) i Cabinet Column Qty (w poziomie).",
-          "Wpisz Port 1 Cabinet Qty: ile cabinetów jest na porcie Ethernet 1.",
-          "Wybierz Data Flow (Front View): kierunek łańcucha danych liczony od przodu ekranu.",
-          "Dla naszego ekranu: 8 w pionie i 8 w poziomie. Port i liczbę na port ustal z kalkulatora (rozdział 7)."
+          {
+            "en": "Main menu → Input Settings → [input source: HDMI1, HDMI2 or DP] → EDID.",
+            "pl": "Menu → Input Settings → [źródło: HDMI1, HDMI2 lub DP] → EDID."
+          },
+          {
+            "en": "Set Mode to Custom (type the resolution) or Standard (pick it from the list). Then set the resolution and frame rate and click Apply.",
+            "pl": "Ustaw Mode na Custom (wpisujesz rozdzielczość) albo Standard (wybierasz z listy). Ustaw rozdzielczość i odświeżanie i kliknij Apply."
+          },
+          {
+            "en": "If the input and screen resolutions are the same, the image is displayed pixel to pixel. A lower frame rate may cause flicker; a higher one stabilises the image.",
+            "pl": "Jeśli rozdzielczość wejścia i ekranu jest taka sama, obraz idzie piksel do piksela. Niższe odświeżanie może migać, wyższe stabilizuje obraz."
+          },
+          {
+            "en": "In All-In-One Controller mode the Select Input menu is not shown. In Send-Only mode use Input Settings → Select Input.",
+            "pl": "W trybie All-In-One menu Select Input się nie pokazuje. W trybie Send-Only użyj Input Settings → Select Input."
+          },
+          {
+            "en": "The maximum HDMI/DP resolution and size must be enabled in the computer graphics card settings.",
+            "pl": "Maksymalna rozdzielczość HDMI/DP musi być włączona w ustawieniach karty graficznej komputera."
+          }
         ]
       },
       {
-        "h": "Wczytanie pliku konfiguracji cabinetu (NCP)",
+        "h": "Swift Layout: quick screen setup · Szybki układ ekranu",
         "status": "manual",
+        "src": "MX30 Manual V1.4.2, sekcje 5 i 5.1.3, str. 10–12",
         "steps": [
-          "Najpierw wczytaj plik w VMP albo skopiuj go do głównego katalogu pendrive i włóż do USB na przednim panelu.",
-          "Menu główne → Screen Configuration → Send Cabinet Config File.",
-          "Nie wysyłaj pliku, jeśli nie masz pewności, że pasuje do cabinetu (patrz rozdział 13, trzy nazwy sprzętu)."
+          {
+            "en": "It works only if: the screen is regular; all cabinets are the same size and working; data runs the same way on all ports, starting at the first cabinet of port 1.",
+            "pl": "Działa tylko gdy: ekran jest regularny; cabinety jednakowe i sprawne; dane idą tak samo na wszystkich portach, od pierwszego cabinetu portu 1."
+          },
+          {
+            "en": "If n ports are used, each of the first n−1 ports must load the same number of cabinets, a whole multiple of the cabinet rows or columns, and not less than the last port.",
+            "pl": "Gdy użyto n portów, każdy z pierwszych n−1 portów ładuje tyle samo cabinetów, będących wielokrotnością liczby rzędów lub kolumn, i nie mniej niż ostatni port."
+          },
+          {
+            "en": "Main menu → Screen Configuration → Swift Layout. Select Yes.",
+            "pl": "Menu → Screen Configuration → Swift Layout. Wybierz Yes."
+          },
+          {
+            "en": "Set: Cabinet Row Qty, Cabinet Column Qty, Port 1 Cabinet Qty, Data Flow (Front View), H Offset, V Offset.",
+            "pl": "Ustaw: Cabinet Row Qty (rzędy), Cabinet Column Qty (kolumny), Port 1 Cabinet Qty (ile cabinetów na porcie 1), Data Flow (Front View) (kierunek danych od frontu), H Offset i V Offset (przesunięcie obrazu)."
+          },
+          {
+            "en": "If these conditions are not met, configure the screen in VMP (free wiring).",
+            "pl": "Jeśli warunki nie są spełnione, skonfiguruj ekran w VMP (dowolne prowadzenie kabli)."
+          }
         ]
       },
       {
-        "h": "Kiedy panel nie wystarczy",
+        "h": "Load the cabinet config file · Plik konfiguracji cabinetu",
         "status": "manual",
+        "src": "MX30 Manual V1.4.2, sekcja 5.1.2, str. 11",
         "steps": [
-          "Szybka konfiguracja działa tylko przy regularnym układzie, jednakowych cabinetach i spełnionych warunkach z instrukcji. W innym przypadku użyj VMP.",
-          "VMP pozwala na dowolne prowadzenie kabli (free wiring) i liczy obciążenie portów."
+          {
+            "en": "Use it when the cabinet cannot display images normally. The file is .rcfgx.",
+            "pl": "Używaj, gdy cabinet nie wyświetla obrazu poprawnie. Plik ma rozszerzenie .rcfgx."
+          },
+          {
+            "en": "First import the file in VMP, or put it in the root folder of a USB drive and plug it into the front USB port.",
+            "pl": "Najpierw zaimportuj plik w VMP albo skopiuj go do głównego folderu pendrive i włóż do USB na przednim panelu."
+          },
+          {
+            "en": "Main menu → Screen Configuration → Send Cabinet Config File. Select the file and choose Yes.",
+            "pl": "Menu → Screen Configuration → Send Cabinet Config File. Wybierz plik i Yes."
+          },
+          {
+            "en": "After the message that it was sent, press BACK and choose Save to RV Card. Confirm with Yes.",
+            "pl": "Po komunikacie o wysłaniu naciśnij BACK i wybierz Save to RV Card. Potwierdź Yes."
+          }
+        ]
+      },
+      {
+        "h": "Brightness, gamma, colour temperature · Jasność i gamma",
+        "status": "manual",
+        "src": "MX30 Manual V1.4.2, sekcje 6.5.1 i 6.5.2, str. 17–18",
+        "steps": [
+          {
+            "en": "Main menu → Screen Brightness. Press the knob to make the value editable, rotate to the target value and press to confirm.",
+            "pl": "Menu → Screen Brightness. Naciśnij pokrętło, aby wartość była edytowalna, obróć do celu i naciśnij."
+          },
+          {
+            "en": "Then Screen Configuration → Save to RV Card → Yes, to save the brightness.",
+            "pl": "Potem Screen Configuration → Save to RV Card → Yes, aby zapisać jasność."
+          },
+          {
+            "en": "Gamma and colour temperature: Advanced Functions → LED Screen Color. Select the value, press the knob, rotate, press. Then Screen Configuration → Save to RV Card.",
+            "pl": "Gamma i temperatura barwowa: Advanced Functions → LED Screen Color. Wybierz wartość, naciśnij, obróć, naciśnij. Potem Screen Configuration → Save to RV Card."
+          }
+        ]
+      },
+      {
+        "h": "Mapping, freeze and blackout · Mapping, zatrzymanie, czarny ekran",
+        "status": "manual",
+        "src": "MX30 Manual V1.4.2, sekcje 7.3 i 7.4, str. 21",
+        "steps": [
+          {
+            "en": "Main menu → Screen Configuration → Mapping, then switch it on. The cabinets show the Ethernet port number and the receiving card number, so you can see the location and the wiring path.",
+            "pl": "Menu → Screen Configuration → Mapping i włącz. Cabinety pokażą numer portu Ethernet i numer karty odbiorczej, więc zobaczysz położenie i trasę kabli."
+          },
+          {
+            "en": "Main menu → Display Control: Normal, Freeze (the screen keeps the current frame, the source keeps playing) or Blackout (black screen).",
+            "pl": "Menu → Display Control: Normal, Freeze (ekran trzyma bieżącą klatkę, źródło gra dalej) albo Blackout (czarny ekran)."
+          }
+        ]
+      },
+      {
+        "h": "IP address and diagnostics · Adres IP i diagnostyka",
+        "status": "manual",
+        "src": "MX30 Manual V1.4.2, sekcje 7.2 i 7.5, str. 20–22",
+        "steps": [
+          {
+            "en": "Main menu → Communication Settings → Network Settings. Mode: Manual (set IP Address, Subnet Mask, Default Gateway, then Apply) or Auto (the device gets an address itself). Reset returns the default.",
+            "pl": "Menu → Communication Settings → Network Settings. Mode: Manual (wpisz IP Address, Subnet Mask, Default Gateway, potem Apply) albo Auto (urządzenie dostaje adres samo). Reset przywraca domyślne."
+          },
+          {
+            "en": "Main menu → System Settings → Diagnostics. Choose Yes, then View Results or Export to USB Drive (NTFS or FAT32).",
+            "pl": "Menu → System Settings → Diagnostics. Wybierz Yes, potem View Results albo Export to USB Drive (NTFS lub FAT32)."
+          },
+          {
+            "en": "At power-up the device runs a self-check. Orange messages are warnings (you can Continue in limited mode). Red messages are errors and the device cannot be used.",
+            "pl": "Przy włączeniu urządzenie robi autotest. Pomarańczowe komunikaty to ostrzeżenia (Continue = tryb ograniczony). Czerwone to błędy i nie wolno kontynuować."
+          }
+        ]
+      },
+      {
+        "h": "Do not press · Czego nie naciskać",
+        "status": "stop",
+        "src": "MX30 Manual V1.4.2, sekcja 7.7, str. 23",
+        "steps": [
+          {
+            "en": "System Settings → Factory Reset → Reset All erases all data and cannot be undone. Keep User Data keeps imported files, network settings, language and device name.",
+            "pl": "System Settings → Factory Reset → Reset All kasuje wszystko i nie da się cofnąć. Keep User Data zachowuje zaimportowane pliki, ustawienia sieci, język i nazwę urządzenia."
+          }
         ]
       }
     ],
     "missing": [
-      "Dokładne kliknięcia w VMP (nazwy okien i przycisków). Wgraj do Dysku PDF „VMP Vision Management Platform User Manual” i „MX30 User Manual”. Wtedy opiszę je krok po kroku.",
-      "Dokładny plik NCP dla cabinetu INFILED HL-3978. Daje go właściciel sprzętu.",
-      "Adres IP i port sieciowy MX30 w VMP. Weź z manuala albo z ekranu urządzenia."
+      "Konkretny plik .rcfgx / NCP dla cabinetu INFILED HL-3978. Daje go właściciel sprzętu. Bez niego nie wysyłaj konfiguracji.",
+      "Typ karty odbiorczej w cabinetach (np. A10s Pro albo inna). Od niej zależy limit pikseli na port (rozdział 7)."
     ],
     "sources": [
       {
@@ -726,14 +872,6 @@
       {
         "t": "MX30 User Manual V1.5.0 (kopia)",
         "url": "https://www.eagerled.com/resource/NovaStar/Document/COEX/MX30/MX30-LED-Display-Controller-User-Manual-V1.5.0.pdf"
-      },
-      {
-        "t": "VMP Vision Management Platform, instrukcja V1.5.0",
-        "url": "https://www.eagerled.com/resource/NovaStar/Software/VMP/COEX%20VMP/VMP-Vision-Management-Platform-User-Manual-V1.5.0-1.pdf"
-      },
-      {
-        "t": "VMP instrukcja V1.2.3 (Novastar)",
-        "url": "https://oss.novastar.tech/uploads/2023/09/VMP-Vision-Management-Platform-User-Manual-V1.2.3.pdf"
       },
       {
         "t": "MX30 specyfikacja V1.5.0",
@@ -760,58 +898,183 @@
         "en": "Check the data flow direction.",
         "ph": "czek de dejta flou dyrekszyn",
         "pl": "Sprawdź kierunek łańcucha danych."
+      },
+      {
+        "en": "Please turn on mapping.",
+        "ph": "plyz tern on maping",
+        "pl": "Włącz mapping, proszę."
       }
-    ],
-    "plans": []
+    ]
   },
   "resolume": {
-    "warning": "Resolume wysyła obraz z komputera przez HDMI do MX30. MX30 tnie ten obraz na cabinety. Dlatego rozdzielczość wyjścia z Resolume musi się zgadzać z tym, co ustawiłeś w MX30 (Input Settings).",
+    "warning": "Resolume wysyła obraz z komputera przez HDMI do MX30. MX30 tnie obraz na cabinety. Rozdzielczość wyjścia z Resolume musi się zgadzać z wejściem MX30. Kroki poniżej pochodzą z oficjalnych stron wsparcia Resolume (PDF-y wgrane na Dysk).",
     "blocks": [
       {
-        "h": "Ważny rachunek: czy ekran mieści się w obrazie",
+        "h": "Calculation: does the wall fit the picture? · Czy ekran mieści się w obrazie",
         "status": "calc",
+        "src": "MX30 Manual V1.4.2, sekcja 2.2, str. 3–4 i dane z kalkulatora",
         "steps": [
-          "Ekran ma 2048 × 512 px (rozdział 7). Szerokość 2048 jest większa niż 1920, więc nie mieści się w obrazie Full HD (1920 × 1080).",
-          "Wariant A: ustaw w MX30 wejście Custom 2048 × 512 przy 60 Hz i taką samą rozdzielczość wyjścia w Windows. Wymaga, aby karta graficzna i EDID to przyjęły.",
-          "Wariant B (pewniejszy): wyjście 3840 × 2160 (4K, 60 Hz). Ekran 2048 × 512 leży w lewym górnym rogu obrazu.",
-          "Wybór wariantu potwierdź na miejscu: zależy od laptopa klienta i kabla HDMI."
+          {
+            "en": "The wall is 2048 × 512 px (chapter 7). That is wider than Full HD (1920 px).",
+            "pl": "Ekran ma 2048 × 512 px (rozdział 7). To szerzej niż Full HD (1920 px)."
+          },
+          {
+            "en": "Per the MX30 manual: HDMI 2.0 input, maximum width 8192 px (8192×1080@60 Hz), minimum resolution 800×600@60 Hz, custom input resolutions are supported through EDID.",
+            "pl": "Wg manuala MX30: wejście HDMI 2.0, maksymalna szerokość 8192 px (8192×1080@60 Hz), minimum 800×600@60 Hz, własne rozdzielczości wejściowe przez EDID."
+          },
+          {
+            "en": "Option A: set a custom input of 2048 × 1080@60 Hz in the MX30 (Input Settings → HDMI → EDID → Custom). Resolume output = 2048 × 1080. The wall uses the top-left 2048 × 512.",
+            "pl": "Wariant A: ustaw w MX30 wejście Custom 2048 × 1080@60 Hz (Input Settings → HDMI → EDID → Custom). Wyjście Resolume = 2048 × 1080. Ekran używa lewego górnego rogu 2048 × 512."
+          },
+          {
+            "en": "Option B: use a standard 3840 × 2160@60 Hz input. The wall is the top-left 2048 × 512.",
+            "pl": "Wariant B: standardowe wejście 3840 × 2160@60 Hz. Ekran to lewy górny róg 2048 × 512."
+          },
+          {
+            "en": "The graphics card of the computer must allow the chosen resolution. Check this on site with the client laptop.",
+            "pl": "Karta graficzna komputera musi dopuszczać wybraną rozdzielczość. Sprawdź to na miejscu na laptopie klienta."
+          }
         ]
       },
       {
-        "h": "Otwarcie Advanced Output",
+        "h": "Open Advanced Output · Otwórz Advanced Output",
         "status": "manual",
+        "src": "Resolume · Screens (support/en/screens), str. 1/5",
         "steps": [
-          "W Resolume wybierz z menu Output → Advanced.",
-          "Po lewej widzisz listę ekranów (screens). Każdy ekran to jedno wyjście z Resolume.",
-          "Wybierz wyjście, które idzie do MX30, albo dodaj Virtual Screen z szerokością i wysokością zgodną z wejściem MX30.",
-          "Jeśli ustawiasz wszystko przed podłączeniem: wpisz Width i Height ręcznie. Po podłączeniu kliknij prawym przyciskiem na ekranie i wybierz właściwe wyjście (output)."
+          {
+            "en": "Choose Output > Advanced from the menu.",
+            "pl": "Wybierz z menu Output > Advanced (Wyjście > Zaawansowane)."
+          },
+          {
+            "en": "On the left you see the list of active screens. Each screen is one output leaving Resolume.",
+            "pl": "Po lewej widzisz listę aktywnych ekranów. Każdy ekran to jedno wyjście z Resolume."
+          },
+          {
+            "en": "Right-click the screen on the left. A dropdown shows every output connected to the computer. Pick the output that goes to the MX30.",
+            "pl": "Kliknij prawym przyciskiem ekran po lewej. Lista pokaże wszystkie wyjścia podłączone do komputera. Wybierz to, które idzie do MX30."
+          },
+          {
+            "en": "The screen shows the device name under its own name and in the Device dropdown on the right. Double-click the name to rename the screen.",
+            "pl": "Ekran pokazuje nazwę urządzenia pod swoją nazwą i na liście Device po prawej. Dwukrotne kliknięcie nazwy zmienia nazwę ekranu."
+          }
         ]
       },
       {
-        "h": "Slice: kawałek obrazu na ekran LED",
+        "h": "If the MX30 output does not appear · Gdy nie widać wyjścia do MX30",
         "status": "manual",
+        "src": "Resolume · Screens (support/en/screens), str. 2/5",
         "steps": [
-          "W Advanced Output dodaj slice przyciskiem plus albo zduplikuj istniejący.",
-          "Zakładka Input Selection: tu wybierasz, który fragment kompozycji pokazujesz. Rozciągnij slice na całą kompozycję.",
-          "Zakładka Output Transformation: tu ustawiasz, gdzie slice leży na wyjściu. Ustaw pozycję 0, 0 i rozmiar 2048 × 512 (wariant A: cały ekran, wariant B: lewy górny róg 4K).",
-          "Zasada: slice na wyjściu ma dokładnie tyle pikseli, ile ekran LED. Bez skalowania i bez ramek."
+          {
+            "en": "Resolume does not create outputs. Your computer does. If the screen is connected but missing, first make sure the computer recognises it.",
+            "pl": "Resolume nie tworzy wyjść. Robi to komputer. Jeśli ekran jest podłączony, a nie widać go tu, najpierw sprawdź, czy komputer go rozpoznaje."
+          },
+          {
+            "en": "On a PC the display must be in Extended desktop mode (on a Mac: not mirrored).",
+            "pl": "Na PC ekran musi być w trybie rozszerzonego pulpitu (Windows: Win+P → Extend). Na Macu nie może być lustra (mirror)."
+          },
+          {
+            "en": "Each output can have only one screen assigned. If you pick an output already used by another screen, the other screen goes back to Virtual.",
+            "pl": "Każde wyjście może mieć tylko jeden ekran. Jeśli wybierzesz zajęte wyjście, tamten ekran wraca do Virtual."
+          },
+          {
+            "en": "Tip: if you pick the main monitor by mistake, the output fills it and you lose the interface. Press CTRL-SHIFT-D to turn all outputs off.",
+            "pl": "Tip: jeśli przez pomyłkę wybierzesz główny monitor, wyjście go wypełni i stracisz interfejs. Naciśnij CTRL-SHIFT-D, aby wyłączyć wszystkie wyjścia."
+          }
         ]
       },
       {
-        "h": "Kolejność uruchamiania na hali",
+        "h": "Prepare before the show · Przygotuj przed wyjazdem na halę",
+        "status": "manual",
+        "src": "Resolume · Screens (support/en/screens), str. 5/5",
+        "steps": [
+          {
+            "en": "Open Advanced Output with no second screen connected. It opens with one Virtual Screen.",
+            "pl": "Otwórz Advanced Output bez podłączonego drugiego ekranu. Otworzy się jeden Virtual Screen."
+          },
+          {
+            "en": "Set its Width and Height on the right side to the resolution the output will have at the show (see the calculation above: 2048 × 1080 or 3840 × 2160).",
+            "pl": "Ustaw Width i Height po prawej na rozdzielczość, jaką wyjście będzie miało na hali (z rachunku wyżej: 2048 × 1080 albo 3840 × 2160)."
+          },
+          {
+            "en": "At the venue, right-click the screen and pick the real output from the dropdown.",
+            "pl": "Na hali kliknij ekran prawym przyciskiem i wybierz prawdziwe wyjście z listy."
+          },
+          {
+            "en": "Create more Virtual Screens with the Plus+ menu if you need them.",
+            "pl": "Więcej Virtual Screenów dodasz z menu Plus+."
+          }
+        ]
+      },
+      {
+        "h": "Adjust the screen · Korekty ekranu",
+        "status": "manual",
+        "src": "Resolume · Screens (support/en/screens), str. 4/5",
+        "steps": [
+          {
+            "en": "Each screen has Opacity, Brightness and Contrast, plus separate Red, Green and Blue controls. Use them to adjust a mismatched output, for example to dim the LED panel.",
+            "pl": "Każdy ekran ma Opacity, Brightness i Contrast oraz osobne Red, Green i Blue. Użyj ich do korekty niedopasowanego wyjścia, np. przyciemnienia ekranu LED."
+          },
+          {
+            "en": "Each screen can have a Delay of 0 to 100 ms to match delays added after the output leaves Resolume.",
+            "pl": "Każdy ekran ma Delay od 0 do 100 ms, aby wyrównać opóźnienia po wyjściu z Resolume."
+          },
+          {
+            "en": "The toggle in front of a screen turns all output to that screen on or off. Use it to find which screen is which during troubleshooting.",
+            "pl": "Przełącznik przed ekranem włącza lub wyłącza całe wyjście na ten ekran. Przydaje się do ustalenia, który ekran jest który."
+          },
+          {
+            "en": "The arrow under a screen folds it: output keeps running and the slices are hidden.",
+            "pl": "Strzałka pod ekranem zwija go: wyjście dalej działa, a slice’y są ukryte."
+          }
+        ]
+      },
+      {
+        "h": "Save and share the setup · Zapisz ustawienie",
+        "status": "manual",
+        "src": "Resolume · Advanced Output (support/en/advanced-output), str. 3/4",
+        "steps": [
+          {
+            "en": "In Advanced Output use the dropdown in the top-left corner to save and select different screen setups (presets).",
+            "pl": "W Advanced Output użyj listy w lewym górnym rogu, aby zapisywać i wybierać konfiguracje (presety)."
+          },
+          {
+            "en": "A saved preset is an .xml file in the Resolume documents folder. Windows (per the manual): C:\\Users\\[user]\\Documents\\Resolume Avenue-Arena 5\\presets\\screensetup\\. The folder name can differ in newer versions.",
+            "pl": "Zapisany preset to plik .xml w folderze dokumentów Resolume. Windows (wg manuala): C:\\Users\\[użytkownik]\\Documents\\Resolume Avenue-Arena 5\\presets\\screensetup\\. W nowszych wersjach nazwa folderu może być inna."
+          },
+          {
+            "en": "Choose Reveal in Explorer in the dropdown to jump straight to the file.",
+            "pl": "Wybierz Reveal w Eksploratorze z listy, aby przejść do pliku."
+          },
+          {
+            "en": "Copy the file to the same folder on another computer, then load it through the dropdown.",
+            "pl": "Skopiuj plik do tego samego folderu na drugim komputerze i wczytaj z listy."
+          }
+        ]
+      },
+      {
+        "h": "Slices and LED processors · Slice i procesor LED",
         "status": "verify",
+        "src": "Resolume · Advanced Output (support/en/advanced-output), str. 2/4 (przegląd)",
         "steps": [
-          "Włącz zasilanie ekranu i MX30. Poczekaj, aż MX30 się uruchomi.",
-          "Podłącz HDMI od komputera do wejścia MX30.",
-          "W Windows wybierz tryb Rozszerz (Extend). Ustaw rozdzielczość i odświeżanie takie jak w MX30.",
-          "W Resolume włącz wyjście. Wyświetl siatkę lub test z krawędziami.",
-          "Sprawdź: czy siatka zaczyna się w lewym górnym rogu ekranu i nie jest ucięta. Jeśli jest przesunięta, popraw pozycję slice, nie MX30."
+          {
+            "en": "With LED processors you scale and adjust the output to the needs of the processor. Advanced Output is available in Avenue and Arena. Arena is needed for all features.",
+            "pl": "Przy procesorach LED skalujesz i dopasowujesz wyjście do procesora. Advanced Output jest w Avenue i Arenie. Wszystkie funkcje wymagają Areny."
+          },
+          {
+            "en": "Slices are placed in two tabs: Input Selection (which part of the composition) and Output Transformation (where it lands on the output). Put a 2048 × 512 slice at position 0, 0 of the output.",
+            "pl": "Slice’y ustawia się w dwóch zakładkach: Input Selection (który fragment kompozycji) i Output Transformation (gdzie ląduje na wyjściu). Slice 2048 × 512 połóż w pozycji 0, 0 wyjścia."
+          },
+          {
+            "en": "The details of these two tabs are in the Input Selection and Output Transformation chapters. They are not in the uploaded PDFs yet.",
+            "pl": "Szczegóły tych zakładek są w rozdziałach Input Selection i Output Transformation. Nie ma ich jeszcze we wgranych PDF-ach."
+          }
         ]
       }
     ],
     "missing": [
-      "Konkretne przyciski i ikony w Twojej wersji Resolume (Arena 7 / Arena 8). Menu różnią się wersją. Wgraj PDF „Resolume Arena Manual” albo zrzut ekranu Advanced Output z Twojego komputera.",
-      "Czy karta graficzna laptopa klienta przyjmie 2048 × 512. To trzeba sprawdzić na miejscu."
+      "Rozdziały Input Selection, Output Transformation i Input Maps. Zapisz je jako PDF (Ctrl+P) z https://www.resolume.com/support/en/input-selection , /output-transformation i /input-maps i wrzuć do folderu INSTRUKCJE.",
+      "Czy karta graficzna laptopa klienta przyjmie wybraną rozdzielczość. To sprawdzasz na miejscu.",
+      "Ścieżka folderu presetów dotyczy Resolume 5. W Twojej wersji (Arena 7/8) użyj Reveal in Explorer z listy presetów."
     ],
     "sources": [
       {
@@ -823,16 +1086,16 @@
         "url": "https://www.resolume.com/support/en/screens"
       },
       {
+        "t": "Resolume: Input Selection",
+        "url": "https://www.resolume.com/support/en/input-selection"
+      },
+      {
         "t": "Resolume: Output Transformation",
-        "url": "https://resolume.com/support/en/output-transformation"
+        "url": "https://www.resolume.com/support/en/output-transformation"
       },
       {
-        "t": "Forum Resolume: Mapping with LED processors",
-        "url": "https://resolume.com/forum/viewtopic.php?t=20971"
-      },
-      {
-        "t": "Forum Resolume: 3 walls Novastar and Resolume",
-        "url": "https://resolume.com/forum/viewtopic.php?t=22818"
+        "t": "Resolume: Input Maps",
+        "url": "https://www.resolume.com/support/en/input-maps"
       }
     ],
     "plans": [
@@ -858,6 +1121,234 @@
         "en": "Move the slice to the top left.",
         "ph": "muw de slajs tu de top left",
         "pl": "Przesuń slice w lewy górny róg."
+      }
+    ]
+  },
+  "vmp": {
+    "warning": "VMP (Vision Management Platform) to program COEX na komputerze do MX30. Poniżej kroki z oficjalnej instrukcji VMP V1.5.0 (sekcje 4–6, 9, 11). Nie wysyłaj plików NCP, jeśli nie masz pewności, że pasują do cabinetu.",
+    "blocks": [
+      {
+        "h": "Connect VMP to the MX30 · Połącz VMP z MX30",
+        "status": "manual",
+        "src": "VMP Manual V1.5.0, sekcja 4.1, str. 5–6",
+        "steps": [
+          {
+            "en": "Connect the controller and the computer with an Ethernet cable. Set a static IP on the controller so both are on the same network segment.",
+            "pl": "Połącz kontroler z komputerem kablem Ethernet. Ustaw na kontrolerze stały adres IP w tym samym segmencie sieci co komputer."
+          },
+          {
+            "en": "On the controller: press the knob → Communication Settings → Network Settings → Mode: Manual → set IP Address, Subnet Mask, Default Gateway → Apply.",
+            "pl": "Na kontrolerze: pokrętło → Communication Settings → Network Settings → Mode: Manual → IP Address, Subnet Mask, Default Gateway → Apply."
+          },
+          {
+            "en": "Alternative: connect both to the same LAN through a router and set the controller Mode to Auto, then Apply.",
+            "pl": "Wariant: oba urządzenia do jednej sieci przez router, kontroler w Mode: Auto, potem Apply."
+          },
+          {
+            "en": "If the controller is on a different subnet it may not show in the project list. Search for it by IP address and add it (section 4.3.2).",
+            "pl": "Jeśli kontroler jest w innej podsieci, może nie pojawić się na liście projektów. Wyszukaj go po adresie IP i dodaj (sekcja 4.3.2)."
+          },
+          {
+            "en": "New controllers appear in the Default Project. Screens, screen groups and projects are in the project list on the left.",
+            "pl": "Nowe kontrolery pojawiają się w Default Project. Projekty, grupy ekranów i ekrany są na liście po lewej."
+          }
+        ]
+      },
+      {
+        "h": "Prepare the project in advance (offline mode) · Przygotuj projekt wcześniej",
+        "status": "manual",
+        "src": "VMP Manual V1.5.0, sekcje 4.2 i 4.4, str. 6 i 11–12",
+        "steps": [
+          {
+            "en": "Before the screen is built on site, you can pre-configure it: menu bar → Tools → Offline Mode → Enter Offline Mode.",
+            "pl": "Zanim ekran stanie na hali, możesz go przygotować: pasek menu → Tools → Offline Mode → Enter Offline Mode."
+          },
+          {
+            "en": "Click the plus at the top left → Add Controller. Enter the controller model (MX30), the name and the IP address, then OK.",
+            "pl": "Kliknij plus w lewym górnym rogu → Add Controller. Wpisz model (MX30), nazwę i adres IP, potem OK."
+          },
+          {
+            "en": "Export the project: Project → Export (a .nprj file). On site: Project → Import and select the device. A project can be imported only to a controller of the same model.",
+            "pl": "Eksport projektu: Project → Export (plik .nprj). Na hali: Project → Import i wybierz urządzenie. Projekt można wczytać tylko do kontrolera tego samego modelu."
+          },
+          {
+            "en": "Importing overwrites the original screen and controller names.",
+            "pl": "Import nadpisuje dotychczasowe nazwy ekranu i kontrolera."
+          }
+        ]
+      },
+      {
+        "h": "Create the screen and canvas · Ekran i canvas",
+        "status": "manual",
+        "src": "VMP Manual V1.5.0, sekcje 4.3.1, 5.1, 5.2, str. 8 i 17–19",
+        "steps": [
+          {
+            "en": "Click the plus in the project list → New Screen. Drag the controller onto the screen.",
+            "pl": "Kliknij plus na liście projektów → New Screen. Przeciągnij kontroler na ekran."
+          },
+          {
+            "en": "Select the screen → Layout → click Edit in the properties area. Enter the screen name and choose the Working Mode. Send-Only reduces display latency by 1 frame.",
+            "pl": "Wybierz ekran → Layout → Edit w obszarze właściwości. Wpisz nazwę i wybierz Working Mode. Send-Only skraca opóźnienie o 1 klatkę."
+          },
+          {
+            "en": "In the Canvas section choose a predefined resolution or type a custom width and height (maximum 16,384). Use X and Y to move the canvas start.",
+            "pl": "W sekcji Canvas wybierz gotową rozdzielczość albo wpisz własną szerokość i wysokość (maksimum 16 384). X i Y przesuwają początek canvasu."
+          },
+          {
+            "en": "For our wall the canvas is 2048 × 512 (calculator, chapter 7). Confirm the cabinet resolution first.",
+            "pl": "Dla naszego ekranu canvas to 2048 × 512 (kalkulator, rozdział 7). Najpierw potwierdź rozdzielczość cabinetu."
+          }
+        ]
+      },
+      {
+        "h": "Wire the cabinets (topology) · Okablowanie w topologii",
+        "status": "manual",
+        "src": "VMP Manual V1.5.0, sekcja 5.3, str. 19–25",
+        "steps": [
+          {
+            "en": "Select the controller → Layout. Choose what the topology area shows: cabinets only, input preview only, or both.",
+            "pl": "Wybierz kontroler → Layout. Wybierz widok topologii: tylko cabinety, tylko podgląd źródła albo oba."
+          },
+          {
+            "en": "Select an Ethernet port at the bottom, then drag or click in the topology area to add cabinets. They connect automatically in the order you add them.",
+            "pl": "Wybierz port Ethernet na dole, potem przeciągnij lub klikaj w obszarze topologii, aby dodać cabinety. Łączą się automatycznie w kolejności dodawania."
+          },
+          {
+            "en": "The port capacity is shown, for example 16/- means 16 cabinets on that port, with the percentage of the port load used.",
+            "pl": "Pojemność portu jest pokazana, np. 16/- oznacza 16 cabinetów na porcie, wraz z procentem wykorzystania portu."
+          },
+          {
+            "en": "Swift Layout works only if all ports have the same cabinet model, resolution, quantity and topology, and no cabinet is completely outside the canvas.",
+            "pl": "Swift Layout działa tylko gdy wszystkie porty mają ten sam model cabinetu, rozdzielczość, liczbę i topologię, a żaden cabinet nie leży całkiem poza canvasem."
+          },
+          {
+            "en": "Manual topology: left-click a cabinet to connect or disconnect; right-click a cabinet to assign an Ethernet port (only unused ports can be assigned).",
+            "pl": "Topologia ręczna: lewy klik na cabinecie łączy lub rozłącza; prawy klik przypisuje port Ethernet (tylko nieużywane porty)."
+          },
+          {
+            "en": "Right-click a cabinet: Select String selects the whole connection line; Swap swaps two cabinets.",
+            "pl": "Prawy klik na cabinecie: Select String zaznacza całą linię połączenia; Swap zamienia dwa cabinety."
+          },
+          {
+            "en": "In VMP V1.5.0 a new offline project allows 512 cabinets per port. Projects made in older versions stay capped at 32.",
+            "pl": "W VMP V1.5.0 nowy projekt offline pozwala na 512 cabinetów na port. Projekty ze starszych wersji zostają przy 32."
+          }
+        ]
+      },
+      {
+        "h": "Add the video layer · Warstwa wideo (layer)",
+        "status": "manual",
+        "src": "VMP Manual V1.5.0, sekcje 6.1 i 6.2.2, str. 28–31",
+        "steps": [
+          {
+            "en": "Layers are available only in All-In-One Controller mode. The MX30 supports up to 3 layers.",
+            "pl": "Layery są tylko w trybie All-In-One Controller. MX30 obsługuje do 3 layerów."
+          },
+          {
+            "en": "Select the controller → Source. Double-click the input source thumbnail, or drag it to the target position, to add a layer. Source indicator: green = connected, red = used by the screen but not connected, gray = not connected.",
+            "pl": "Wybierz kontroler → Source. Kliknij dwukrotnie miniaturę źródła albo przeciągnij ją na miejsce, aby dodać layer. Wskaźnik: zielony = połączone, czerwony = używane przez ekran, ale niepołączone, szary = niepołączone."
+          },
+          {
+            "en": "Set the layer size and coordinates in the properties area. Optional: Crop, Border, Lock layer.",
+            "pl": "Ustaw rozmiar i współrzędne layera w obszarze właściwości. Opcjonalnie: Crop, Border, Lock layer."
+          },
+          {
+            "en": "Resolution and refresh rate of the source: pick values from the Resolution and Refresh Rate drop-downs and click Apply.",
+            "pl": "Rozdzielczość i odświeżanie źródła: wybierz z list Resolution i Refresh Rate i kliknij Apply."
+          }
+        ]
+      },
+      {
+        "h": "Test the screen · Test ekranu",
+        "status": "manual",
+        "src": "VMP Manual V1.5.0, sekcja 5.4, str. 25–27; sekcja 4.3.4, str. 9–10",
+        "steps": [
+          {
+            "en": "In the cabinet settings area select a Test Pattern from the drop-down list, to troubleshoot problems.",
+            "pl": "W obszarze ustawień cabinetów wybierz Test Pattern z listy, aby szukać problemów."
+          },
+          {
+            "en": "Right-click the screen or controller → Mapping shows the location and wiring path of the receiving cards. Canvas Mapping shows where the canvas lies on the LED screen. Controller Identify lights the controller LCD in a colour.",
+            "pl": "Prawy klik na ekranie lub kontrolerze → Mapping pokazuje położenie i trasę kabli kart odbiorczych. Canvas Mapping pokazuje, gdzie leży canvas. Controller Identify podświetla LCD kontrolera kolorem."
+          },
+          {
+            "en": "Enable Indicator: green = cabinet fully in the canvas with normal temperature and voltage; yellow = partly outside the canvas or a warning; red = completely outside or a fault; gray = offline.",
+            "pl": "Włącz Indicator: zielony = cabinet całkiem w canvasie, temperatura i napięcie w normie; żółty = częściowo poza canvasem lub ostrzeżenie; czerwony = całkiem poza canvasem lub awaria; szary = offline."
+          },
+          {
+            "en": "Right-click → Blackout or Freeze. No data signal can be set to Blackout or Last Frame.",
+            "pl": "Prawy klik → Blackout lub Freeze. Brak sygnału można ustawić na Blackout albo Last Frame."
+          },
+          {
+            "en": "Source Snapshot freezes the source preview in VMP, so you can adjust settings without looking at the LED screen.",
+            "pl": "Source Snapshot zamraża podgląd źródła w VMP, więc możesz ustawiać bez patrzenia na ekran LED."
+          }
+        ]
+      },
+      {
+        "h": "Brightness and presets · Jasność i presety",
+        "status": "manual",
+        "src": "VMP Manual V1.5.0, sekcje 9.1.2 i 11, str. 53 i 67–68",
+        "steps": [
+          {
+            "en": "Select the screen → Screen Settings → Image Quality. Adjust brightness and gamma. Brightness Limit sets a maximum.",
+            "pl": "Wybierz ekran → Screen Settings → Image Quality. Ustaw jasność i gamma. Brightness Limit ustawia maksimum."
+          },
+          {
+            "en": "Some functions need the NCP file uploaded, and the NCP of the receiving card and the controller must match (section 16.2).",
+            "pl": "Niektóre funkcje wymagają wgranego pliku NCP, a NCP karty odbiorczej i kontrolera muszą się zgadzać (sekcja 16.2)."
+          },
+          {
+            "en": "Save presets: Preset → click a preset slot → choose the data to save (Source, Layout, Processing, Screen Settings) → Save. Up to 128 presets.",
+            "pl": "Zapis presetu: Preset → kliknij miejsce presetu → wybierz dane (Source, Layout, Processing, Screen Settings) → Save. Do 128 presetów."
+          },
+          {
+            "en": "Apply a preset: Preset → double-click it and wait until it loads. The active preset is marked at the top right.",
+            "pl": "Wczytanie presetu: Preset → kliknij dwukrotnie i poczekaj na załadowanie. Aktywny preset ma znacznik w prawym górnym rogu."
+          }
+        ]
+      }
+    ],
+    "missing": [
+      "Sekcja 16.2 „Manage Cabinet Library” (wgrywanie plików NCP, str. 104). Odczyt PDF z Dysku urwał się przy str. 76. Jeśli chcesz tę sekcję, wrzuć osobno same strony 100–106 jako PDF.",
+      "Rozdziały 7–8 (korekcja szwów, kolory) nie są potrzebne do uruchomienia ekranu, więc ich tu nie opisuję.",
+      "Rysunki z manuala (zrzuty okien VMP) są w PDF na Dysku. Aplikacja ich nie kopiuje."
+    ],
+    "sources": [
+      {
+        "t": "VMP Vision Management Platform, instrukcja V1.5.0",
+        "url": "https://www.eagerled.com/resource/NovaStar/Software/VMP/COEX%20VMP/VMP-Vision-Management-Platform-User-Manual-V1.5.0-1.pdf"
+      },
+      {
+        "t": "VMP instrukcja V1.2.3 (Novastar)",
+        "url": "https://oss.novastar.tech/uploads/2023/09/VMP-Vision-Management-Platform-User-Manual-V1.2.3.pdf"
+      }
+    ],
+    "phrases": [
+      {
+        "en": "Can you give me the IP address?",
+        "ph": "ken ju gyw mi di aj pi adres",
+        "pl": "Podasz mi adres IP?"
+      },
+      {
+        "en": "The controller is not showing up.",
+        "ph": "de kontroler yz not szołing ap",
+        "pl": "Kontroler się nie pokazuje."
+      },
+      {
+        "en": "I am adding the cabinets to port one.",
+        "ph": "aj em ading de kabinets tu port łan",
+        "pl": "Dodaję cabinety do portu pierwszego."
+      },
+      {
+        "en": "Please send me the project file.",
+        "ph": "plyz send mi de projekt fajl",
+        "pl": "Prześlij mi plik projektu."
+      },
+      {
+        "en": "I am saving the preset now.",
+        "ph": "aj em sejwing de preset naw",
+        "pl": "Zapisuję teraz preset."
       }
     ]
   }
