@@ -334,6 +334,48 @@ function renderNiespodzianki(root, data){
   });
 }
 
+function renderParam(root, data){
+  const section = data.param;
+  root.appendChild(el('p', 'mz-intro', section.intro));
+  const current = store.get().ui?.paramVariant === 'b' ? 'b' : 'a';
+  const bar = el('div', 'mz-views');
+  bar.style.gridTemplateColumns = '1fr 1fr';
+  section.variants.forEach(v => {
+    const b = el('button', current === v.id ? 'on' : '', v.name);
+    b.dataset.variant = v.id;
+    b.addEventListener('click', () => { store.set({ ui: { paramVariant: v.id } }); hubCtx.rerender(); });
+    bar.appendChild(b);
+  });
+  root.appendChild(bar);
+  const val = r => (current === 'b' && r.b && r.b !== '—') ? r.b : r.a;
+  const lines = [`PARAMETRY · wariant ${current.toUpperCase()}`, ''];
+  section.sections.forEach(sec => { lines.push(sec.title.toUpperCase()); sec.rows.forEach(r => lines.push(`- ${r.w}: ${r.p} = ${val(r)}`)); lines.push(''); });
+  const text = lines.join('\n').trim();
+  const copy = el('button', 'btn btn-primary btn-lg', 'Kopiuj wszystkie parametry');
+  const area = el('textarea', 'mz-msg'); area.readOnly = true; area.rows = 10; area.value = text; area.id = 'param-text';
+  copy.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(text); copy.textContent = 'Skopiowano'; } catch (e) { area.focus(); area.select(); copy.textContent = 'Zaznaczone: Ctrl+C'; }
+    setTimeout(() => { copy.textContent = 'Kopiuj wszystkie parametry'; }, 2200);
+  });
+  root.appendChild(copy);
+  root.appendChild(expandBar(root));
+  section.sections.forEach((sec, index) => {
+    const { wrap, body } = acc(sec.title, { open: index < 2, badge: String(sec.rows.length) });
+    sec.rows.forEach(r => {
+      const row = el('div', 'pr-row');
+      row.appendChild(el('small', 'pr-w', r.w));
+      row.appendChild(el('span', 'pr-p', r.p));
+      row.appendChild(el('b', 'pr-v', val(r)));
+      if (r.n) row.appendChild(el('small', 'pr-n', r.n));
+      body.appendChild(row);
+    });
+    root.appendChild(wrap);
+  });
+  const raw = acc('Tekst do skopiowania ręcznie', {});
+  raw.body.appendChild(area);
+  root.appendChild(raw.wrap);
+}
+
 function renderPrzed(root, data){
   const section = data.przed;
   root.appendChild(el('p', 'mz-intro', section.intro));
@@ -599,6 +641,7 @@ export async function renderMontazHub(container, ctx){
       break;
     case 'niespodzianki': renderNiespodzianki(body, data); break;
     case 'przed': renderPrzed(body, data); break;
+    case 'param': renderParam(body, data); break;
     case 'wideo': renderWideo(body, data); break;
     case 'plany': await renderPlany(body, data.plany?.intro); break;
     case 'az': await renderAz(body); break;

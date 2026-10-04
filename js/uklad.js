@@ -43,7 +43,10 @@ export function buildLines(cols, rows, k){
 }
 
 /** Cały plan: linie DATA i ZASILANIA, porty, piksele, moc. */
-export function layoutPlan(p){
+export function layoutPlan(pIn){
+  // Założenie: pobór rośnie liniowo z jasnością (szacunek, nie dane producenta).
+  const k = (pIn.bri ?? 100) / 100;
+  const p = { ...pIn, wMax: pIn.wMax * k, wAvg: pIn.wAvg * k };
   const cols = p.cols, rows = p.rows;
   const data = buildLines(cols, rows, p.dataK);
   const power = buildLines(cols, rows, p.powerK);
@@ -68,7 +71,7 @@ export function layoutPlan(p){
     wMax: cols * rows * p.wMax, wAvg: cols * rows * p.wAvg, kg: cols * rows * p.kg,
   };
   total.aMax = total.wMax / 230; total.aAvg = total.wAvg / 230;
-  return { data, power, portsNeeded, total, cols, rows, cabPx, portLimit };
+  return { data, power, portsNeeded, total, cols, rows, cabPx, portLimit, bri: pIn.bri ?? 100, wMaxB: p.wMax, wAvgB: p.wAvg };
 }
 
 /** Rysunek SVG ekranu. mode: 'data' albo 'power'. */
@@ -137,6 +140,40 @@ function toPng(svgEl, name){
   } catch (e) { /* brak zapisu w tym widoku */ }
 }
 
+/** Dokładne limity: cabinetów na linię zasilania i na port MX30 (wzór z manuala MX30, sekcja 11). */
+export function limits(cfg, cur){
+  const volt = 230, amp = cur.amp;
+  const cap = amp * volt;
+  const rows = [
+    ['Średnia moc przy ' + cur.bri + '% jasności', cur.wAvg * cur.bri / 100],
+    ['Maksimum (pełna biel) przy ' + cur.bri + '% jasności', cur.wMax * cur.bri / 100],
+    ['Maksimum (pełna biel) przy 100% jasności', cur.wMax],
+  ].map(([label, w]) => ({ label, w, full: Math.floor(cap / w), safe: Math.floor(cap * 0.8 / w) }));
+  const ports = [];
+  [[24, 8], [25, 8], [30, 8], [50, 8], [60, 8], [60, 10], [120, 8]].forEach(([fps, bits]) => {
+    const px = Math.floor(0.95e9 / ((bits === 10 ? 48 : 24) * fps));
+    ports.push({ fps, bits, px, cabs: Math.floor(px / cfg.cabPx) });
+  });
+  const a10 = Math.floor(0.95e9 / (32 * 60));
+  ports.push({ fps: 60, bits: '10 bit (karta A10s Pro)', px: a10, cabs: Math.floor(a10 / cfg.cabPx) });
+  return { cap, rows, ports };
+}
+
+/** Ściąga opięcia jako zwykły tekst do notatek. */
+export function wiringText(plan, cur, cfg){
+  const L = [];
+  L.push('ŚCIĄGA OPIĘCIA · EKRAN LED 8 × 4 m · 64 cabinety · jasność ' + cur.bri + '%');
+  L.push('');
+  L.push('SYGNAŁ (wężyk góra–dół, widok od przodu)');
+  plan.data.forEach(l => L.push(`D${l.id}: kolumny ${l.cols[0] + 1}–${l.cols[l.cols.length - 1] + 1}, ${l.cabs.length} cab., port główny P${l.main}, zapasowy B${l.backup}, ${l.px} px (${l.pct}% portu)`));
+  L.push('VMP: Backup → Ethernet Backup → Sequential Backup (1⇌2, 3⇌4, 5⇌6, 7⇌8), potem Verify Primary i Verify Backup.');
+  L.push('');
+  L.push('ZASILANIE');
+  plan.power.forEach(l => L.push(`Z${l.id}: kolumny ${l.cols[0] + 1}–${l.cols[l.cols.length - 1] + 1}, ${l.n} cab., średnio ${l.wAvg.toFixed(0)} W (${l.aAvg.toFixed(1)} A), max ${l.wMax.toFixed(0)} W (${l.aMax.toFixed(1)} A)`));
+  L.push(`Razem: średnio ${(plan.total.wAvg / 1000).toFixed(1)} kW, max ${(plan.total.wMax / 1000).toFixed(1)} kW przy ${cur.bri}% jasności.`);
+  return L.join('\n');
+}
+
 const fmt = (n, d = 0) => Number(n).toLocaleString('pl-PL', { maximumFractionDigits: d, minimumFractionDigits: d });
 
 function guidelines(plan, p){
@@ -157,8 +194,8 @@ function guidelines(plan, p){
   if (pw.length > 2) out.push(`ZASILANIE: ${pw.length} linie zasilania. Rack z listy SQM daje 2 × 16 A, więc potrzebujesz dodatkowych obwodów albo więcej kolumn na linię (np. 4).`);
   const over = pw.filter(l => l.aMax > p.amp);
   const typOk = pw.every(l => l.aAvg <= p.amp);
-  out.push(`PRĄD: przy średniej mocy ${fmt(p.wAvg)} W na cabinet linia zasilania ciągnie ${fmt(Math.min(...pw.map(l => l.aAvg)), 1)}${Math.min(...pw.map(l => l.aAvg)) === Math.max(...pw.map(l => l.aAvg)) ? '' : ' do ' + fmt(Math.max(...pw.map(l => l.aAvg)), 1)} A. ${typOk ? 'Mieści się w ' + p.amp + ' A.' : 'To przekracza ' + p.amp + ' A.'}`);
-  if (over.length) out.push(`UWAGA: przy mocy maksymalnej (${fmt(p.wMax)} W na cabinet, pełna biel) ${over.length} z ${pw.length} linii przekracza ${p.amp} A (do ${fmt(Math.max(...pw.map(l => l.aMax)), 1)} A). Ogranicz jasność w VMP (Brightness Limit) i nie wyświetlaj pełnej bieli na całym ekranie.`);
+  out.push(`PRĄD: przy jasności ${p.bri}% i średniej mocy ${fmt(plan.wAvgB)} W na cabinet linia zasilania ciągnie ${fmt(Math.min(...pw.map(l => l.aAvg)), 1)}${Math.min(...pw.map(l => l.aAvg)) === Math.max(...pw.map(l => l.aAvg)) ? '' : ' do ' + fmt(Math.max(...pw.map(l => l.aAvg)), 1)} A. ${typOk ? 'Mieści się w ' + p.amp + ' A.' : 'To przekracza ' + p.amp + ' A.'}`);
+  if (over.length) out.push(`UWAGA: przy mocy maksymalnej (${fmt(plan.wMaxB)} W na cabinet, pełna biel, jasność ${p.bri}%) ${over.length} z ${pw.length} linii przekracza ${p.amp} A (do ${fmt(Math.max(...pw.map(l => l.aMax)), 1)} A). Ogranicz jasność w VMP (Brightness Limit) i nie wyświetlaj pełnej bieli na całym ekranie.`);
   out.push(`PRZEKAZANIE: pokaż klientowi, że każda para portów (${d.map(l => `P${l.main}/B${l.backup}`).join(', ')}) jest sprawdzona, i zapisz zdjęcie tabeli portów.`);
   return out;
 }
@@ -173,6 +210,7 @@ export function renderUklad(root, data){
   const fields = [
     ['dataK', 'Kolumn na linię DATA', [1, 2, 3, 4]],
     ['powerK', 'Kolumn na linię zasilania', [1, 2, 3, 4, 8]],
+    ['bri', 'Jasność (%)', null],
     ['wMax', 'Moc max cabinetu (W)', null],
     ['wAvg', 'Moc średnia cabinetu (W)', null],
     ['kg', 'Waga cabinetu (kg)', null],
@@ -240,7 +278,7 @@ export function renderUklad(root, data){
     s2.body.appendChild(pBtn);
     const ptbl = el('div', 'uk-table');
     const ph = el('div', 'uk-row uk-head uk-p');
-    ['Linia', 'Cabinety', 'Moc śr.', 'Moc max', 'Prąd śr.', 'Prąd max'].forEach(h => ph.appendChild(el('span', '', h)));
+    ['Linia', 'Cabinety', 'Moc śr.@' + cur.bri + '%', 'Moc max@' + cur.bri + '%', 'Prąd śr.', 'Prąd max'].forEach(h => ph.appendChild(el('span', '', h)));
     ptbl.appendChild(ph);
     plan.power.forEach((l, i) => {
       const row = el('div', 'uk-row uk-p');
@@ -254,8 +292,8 @@ export function renderUklad(root, data){
     s2.body.appendChild(ptbl);
     const sum = el('div', 'mz-result frame');
     const line = (label, value) => { const r = el('div', 'mz-line'); r.append(el('span', '', label), el('b', '', value)); sum.appendChild(r); };
-    line('Cały ekran, średnio', `${fmt(plan.total.wAvg / 1000, 1)} kW · ${fmt(plan.total.aAvg, 1)} A przy 230 V`);
-    line('Cały ekran, maksimum', `${fmt(plan.total.wMax / 1000, 1)} kW · ${fmt(plan.total.aMax, 1)} A przy 230 V`);
+    line(`Cały ekran, średnio (${cur.bri}%)`, `${fmt(plan.total.wAvg / 1000, 1)} kW · ${fmt(plan.total.aAvg, 1)} A przy 230 V`);
+    line(`Cały ekran, maksimum (${cur.bri}%)`, `${fmt(plan.total.wMax / 1000, 1)} kW · ${fmt(plan.total.aMax, 1)} A przy 230 V`);
     line('Waga cabinetów', `${fmt(plan.total.kg)} kg (bez belek i kabli)`);
     line('Rack z listy SQM', '2 × 16 A = 32 A, czyli ok. 7,4 kW');
     s2.body.appendChild(sum);
@@ -266,6 +304,36 @@ export function renderUklad(root, data){
     guidelines(plan, cur).forEach(t => list.appendChild(el('li', '', t)));
     s3.body.appendChild(list);
     out.appendChild(s3.wrap);
+
+    // dokładne limity
+    const lim = limits(cfg, cur);
+    const s4 = acc('Limity: ile cabinetów na linię i na port', { open: wasOpen.length ? !!wasOpen[3] : true, badge: 'dokładnie' });
+    s4.body.appendChild(el('h3', 'mz-h', `Linia zasilania ${cur.amp} A (${fmt(lim.cap)} W przy 230 V)`));
+    const lt = el('div', 'uk-table');
+    const lh = el('div', 'uk-row uk-head uk-l'); ['Obciążenie', 'W / cab.', 'Do 100% obw.', 'Do 80% obw.'].forEach(h => lh.appendChild(el('span', '', h))); lt.appendChild(lh);
+    lim.rows.forEach(r => { const row = el('div', 'uk-row uk-l'); [r.label, fmt(r.w, 0) + ' W', r.full + ' cab.', r.safe + ' cab.'].forEach(x => row.appendChild(el('span', '', String(x)))); lt.appendChild(row); });
+    s4.body.appendChild(lt);
+    s4.body.appendChild(el('small', 'mz-srcline', 'Reguła 80%: obwód obciążaj ciągle do 80% jego mocy. To zasada ogólna, nie dane SQM. Moc przy mniejszej jasności to szacunek liniowy.'));
+    s4.body.appendChild(el('h3', 'mz-h', 'Port Ethernet MX30 (cabinet 256 × 64 px = 16 384 px)'));
+    const pt = el('div', 'uk-table');
+    const ph2 = el('div', 'uk-row uk-head uk-l'); ['Odświeżanie', 'Głębia', 'Pikseli na port', 'Cabinetów'].forEach(h => ph2.appendChild(el('span', '', h))); pt.appendChild(ph2);
+    lim.ports.forEach(r => { const row = el('div', 'uk-row uk-l'); [r.fps + ' Hz', typeof r.bits === 'number' ? r.bits + ' bit' : r.bits, fmt(r.px), r.cabs].forEach(x => row.appendChild(el('span', '', String(x)))); pt.appendChild(row); });
+    s4.body.appendChild(pt);
+    s4.body.appendChild(el('small', 'mz-srcline', 'Wzór z manuala MX30 V1.4.2, sekcja 11: 8 bit: piksele × 24 × fps < 0,95 × 10⁹. Pełny limit tylko przy szerokości ładunku portu co najmniej 192 px (nasze linie mają 256 lub 512 px). Zalecane: 16 cabinetów na port, rezerwa około 60%.'));
+    out.appendChild(s4.wrap);
+
+    // ściąga opięcia
+    const s5 = acc('Ściąga opięcia (do skopiowania)', { open: wasOpen.length ? !!wasOpen[4] : false, badge: 'tekst' });
+    const text = wiringText(plan, cur, cfg);
+    const ta = el('textarea', 'mz-msg'); ta.readOnly = true; ta.rows = 12; ta.value = text; ta.id = 'uk-wiring';
+    s5.body.appendChild(ta);
+    const cb = el('button', 'btn btn-primary', 'Kopiuj ściągę opięcia');
+    cb.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(text); cb.textContent = 'Skopiowano'; } catch (e) { ta.focus(); ta.select(); cb.textContent = 'Zaznaczone: Ctrl+C'; }
+      setTimeout(() => { cb.textContent = 'Kopiuj ściągę opięcia'; }, 2200);
+    });
+    s5.body.appendChild(cb);
+    out.appendChild(s5.wrap);
   };
   Object.values(inputs).forEach(i => i.addEventListener('input', paint));
   paint();

@@ -915,6 +915,48 @@
         "rozdzielczość",
         "rezolusz"
       ]
+    ],
+    "param": [
+      [
+        "canvas",
+        "obszar obrazu",
+        "kenwas"
+      ],
+      [
+        "crop",
+        "kadrowanie",
+        "krop"
+      ],
+      [
+        "layer",
+        "warstwa",
+        "lejer"
+      ],
+      [
+        "EDID",
+        "opis możliwości ekranu (EDID)",
+        "i di aj di"
+      ],
+      [
+        "brightness",
+        "jasność",
+        "brajtnes"
+      ],
+      [
+        "extend",
+        "rozszerz",
+        "ykstend"
+      ],
+      [
+        "frame rate",
+        "klatki na sekundę",
+        "frejm rejt"
+      ],
+      [
+        "slice",
+        "wycinek",
+        "slajs"
+      ]
     ]
   }
 }

@@ -17,15 +17,15 @@ await page.evaluate(() => localStorage.clear());
 await page.reload({ waitUntil: 'networkidle' });
 await page.locator('[data-mode-select="assembly"]').click();
 await page.waitForSelector('.mm-chip');
-ok(await page.locator('.mm-chip').count() === 18, 'Mapa: 18 rozdziałów w 6 grupach');
+ok(await page.locator('.mm-chip').count() === 19, 'Mapa: 19 rozdziałów w 6 grupach');
 ok(await page.locator('.mm-branch').count() === 6, 'Mapa: 6 grup');
 ok(await page.locator('.mz-dock-btn').count() === 4, 'Dolny pasek: 4 przyciski');
 await page.locator('[data-view="tematy"]').click();
 await page.waitForSelector('.mz-tile');
-ok(await page.locator('.mz-tile').count() === 18, 'Tematy: 18 kafli');
+ok(await page.locator('.mz-tile').count() === 19, 'Tematy: 19 kafli');
 await page.locator('[data-view="kolejnosc"]').click();
 await page.waitForSelector('.mz-step-row');
-ok(await page.locator('.mz-step-row').count() === 18 && await page.locator('.mz-stage').count() === 7, 'Kolejność: 7 etapów, 18 rozdziałów');
+ok(await page.locator('.mz-step-row').count() === 19 && await page.locator('.mz-stage').count() === 7, 'Kolejność: 7 etapów, 19 rozdziałów');
 ok((await page.locator('.mz-stage-h b').last().innerText()).toLowerCase().includes('rozładunek'), 'Kompletacja na końcu kolejności');
 await page.locator('[data-view="tematy"]').click();
 ok(!(await page.locator('#bottomNav').isVisible()), 'montaż bez nawigacji angielskiego');
@@ -74,6 +74,16 @@ ok((await page.locator('#stoiskoRoot').textContent()).includes('2048 × 1024'), 
 ok(await page.locator('.mz-file').count() === 3, 'Wideo: 3 pliki testowe');
 await page.locator('.mz-back').click();
 
+// parametry gotowce
+await page.locator('[data-chapter="param"]').click();
+await page.waitForSelector('.pr-row');
+ok((await page.locator('#param-text').inputValue()).includes('2048 × 1080'), 'Parametry: wariant A 2048 × 1080');
+await page.locator('[data-variant="b"]').click();
+await page.waitForSelector('.pr-row');
+ok((await page.locator('#param-text').inputValue()).includes('3840 × 2160'), 'Parametry: wariant B 3840 × 2160');
+ok((await page.locator('#param-text').inputValue()).includes('Sequential Backup'), 'Parametry: Sequential Backup w VMP');
+await page.locator('.mz-back').click();
+
 // generator układu
 await page.locator('[data-chapter="uklad"]').click();
 await page.waitForSelector('.uk-svg');
@@ -81,11 +91,14 @@ ok(await page.locator('.uk-svg').count() === 2, 'Układ: 2 grafiki (sygnał, zas
 let uk = await page.locator('.uk-out').innerText();
 ok(uk.includes('P7') && uk.includes('B8'), 'Układ: porty główne 1,3,5,7 i zapasowe 2,4,6,8');
 ok(uk.replace(/\u00a0|\u202f/g, ' ').includes('262 144'), 'Układ: 16 cabinetów = 262 144 px na linię');
-ok(uk.replace(/\u00a0|\u202f/g, ' ').includes('1408 W'), 'Układ: 16 × 88 W = 1408 W na linię zasilania');
+ok(uk.replace(/\u00a0|\u202f/g, ' ').includes('986 W'), 'Układ: 16 × 88 W × 70% = 986 W na linię zasilania');
 await page.selectOption('#uk-dataK', '4');
 uk = await page.locator('.uk-out').innerText();
 ok(uk.includes('P3') && !uk.includes('P7'), 'Układ: po 4 kolumny to 2 linie, porty 1 i 3');
 await page.selectOption('#uk-dataK', '2');
+const lim = (await page.locator('.uk-out').textContent()).replace(/\u00a0|\u202f/g, ' ');
+ok(lim.includes('659 722') && lim.includes('40'), 'Limity: port 60 Hz 8 bit = 659 722 px = 40 cabinetów');
+ok((await page.locator('#uk-wiring').inputValue()).includes('P7'), 'Ściąga opięcia zawiera porty');
 
 // niespodzianki + zwroty
 await page.locator('.mz-back').click();
@@ -150,7 +163,7 @@ await page.locator('[data-chapter="etapy"]').click();
 await page.waitForSelector('.stage-card');
 ok(await page.locator('.stage-card').count() === 10, 'Etapy: 10 kart');
 await page.locator('.mz-back').click();
-ok(await page.locator('.mz-tile').count() === 18, 'powrót do menu');
+ok(await page.locator('.mz-tile').count() === 19, 'powrót do menu');
 
 ok(await page.evaluate(() => document.documentElement.scrollWidth === document.documentElement.clientWidth), 'brak poziomego scrolla (375 px)');
 await page.screenshot({ path: 'montaz-v24-preview.png', fullPage: true });

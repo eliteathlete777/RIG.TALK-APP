@@ -13,6 +13,15 @@
       "when": "Szczegółowa instrukcja"
     },
     {
+      "id": "param",
+      "group": "proc",
+      "stage": 3,
+      "title": "Parametry: gotowce do wpisania",
+      "en": "Ready values",
+      "icon": "🎚",
+      "when": "Laptop · MX30 · VMP · Resolume"
+    },
+    {
       "id": "mx30panel",
       "group": "proc",
       "stage": 3,
@@ -1547,11 +1556,13 @@
       "wMax": 263,
       "wAvg": 88,
       "kg": 7.5,
-      "amp": 16
+      "amp": 16,
+      "bri": 70
     },
     "cabPx": 16384,
     "portLimit": 659722,
     "notes": [
+      "Jasność 70% to wartość startowa. Pobór przy mniejszej jasności jest szacunkiem liniowym (moc × jasność). Prawdziwy pobór zmierz miernikiem na linii zasilania podczas testu.",
       "Moc i waga cabinetu INFiLED HL-3978 pochodzą ze strony producenta (wynik wyszukiwania): max 263 W, średnio 88 W, 7,5 kg. W dokumentach SQM ich nie ma. Potwierdź na etykiecie cabinetu i w karcie technicznej od SQM.",
       "Liczba kolumn 2 na linię daje 16 cabinetów na linię, 4 linie, 8 portów (4 główne i 4 zapasowe) z 10 dostępnych w MX30.",
       "Wężyk po 3 kolumny kończy się na dole ekranu, a po 2 i 4 kolumny kończy się u góry, obok początku.",
@@ -1639,7 +1650,7 @@
     "variants": [
       {
         "name": "W1: autoryzacja 2:1 (zalecane)",
-        "spec": "2048 × 1024 px, MP4 H.264, 30 albo 25 albo 50 klatek/s (zgodnie z klientem i EDID), 20–30 s, bez dźwięku, sRGB, bitrate co najmniej 40 Mb/s",
+        "spec": "2048 × 1024 px, MP4 H.264, 30 albo 60 klatek/s (przy wyjściu 60 Hz), 20–30 s, bez dźwięku, sRGB, bitrate co najmniej 40 Mb/s",
         "use": "Resolume: kompozycja 2048 × 1024, slice wejściowy 2048 × 1024 → wyjściowy 2048 × 512."
       },
       {
@@ -1696,6 +1707,389 @@
       "Wgraj test proporcji 2048 × 1024. Slice wejściowy 2048 × 1024, wyjściowy 2048 × 512. Koło ma być kołem. Jeśli jest elipsą, zamieniłeś wariant W1 z W2.",
       "Puść animację byka (W1). Sprawdź płynność, krawędzie, kolory i temperaturę cabinetów.",
       "Przy pełnej bieli nie trzymaj ekranu dłużej niż to konieczne. Pobór mocy rośnie do 16,8 kW."
+    ]
+  },
+  "param": {
+    "intro": "Gotowe wartości do wpisania. Wybierz wariant wejścia: A (własna rozdzielczość 2048 × 1080) albo B (standardowe 4K). Wartość „—” znaczy: tak samo w obu wariantach. Pola z napisem „potwierdź” zależą od wersji programu lub sprzętu.",
+    "variants": [
+      {
+        "id": "a",
+        "name": "A: Custom 2048 × 1080 @ 60 Hz"
+      },
+      {
+        "id": "b",
+        "name": "B: Standard 3840 × 2160 @ 60 Hz"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Laptop (Windows)",
+        "rows": [
+          {
+            "w": "Win + P",
+            "p": "Tryb wyświetlania",
+            "a": "Rozszerz",
+            "b": "Rozszerz",
+            "n": ""
+          },
+          {
+            "w": "Ustawienia → Ekran → drugi monitor",
+            "p": "Rozdzielczość",
+            "a": "2048 × 1080",
+            "b": "3840 × 2160",
+            "n": "Musi być taka jak EDID w MX30. Jeśli Windows jej nie pokazuje, najpierw ustaw EDID w MX30."
+          },
+          {
+            "w": "Ustawienia → Ekran → Zaawansowane",
+            "p": "Odświeżanie",
+            "a": "60 Hz",
+            "b": "60 Hz",
+            "n": ""
+          },
+          {
+            "w": "Ustawienia → Ekran",
+            "p": "Skalowanie",
+            "a": "100%",
+            "b": "100%",
+            "n": ""
+          },
+          {
+            "w": "Panel karty graficznej (potwierdź)",
+            "p": "Format i zakres",
+            "a": "RGB, 8 bit, pełny zakres (Full)",
+            "b": "RGB, 8 bit, pełny zakres (Full)",
+            "n": ""
+          },
+          {
+            "w": "Zasilanie",
+            "p": "Plan zasilania i uśpienie",
+            "a": "Wysoka wydajność, uśpienie: nigdy, wygaszacz wyłączony",
+            "b": "Wysoka wydajność, uśpienie: nigdy, wygaszacz wyłączony",
+            "n": ""
+          },
+          {
+            "w": "Kabel",
+            "p": "Wejście w MX30",
+            "a": "HDMI 2.0-1 IN (jedyne wejście 4K przy 60 Hz)",
+            "b": "HDMI 2.0-1 IN (jedyne wejście 4K przy 60 Hz)",
+            "n": ""
+          }
+        ]
+      },
+      {
+        "title": "MX30: panel przedni",
+        "rows": [
+          {
+            "w": "System Settings → Working Mode",
+            "p": "Tryb pracy",
+            "a": "All-In-One Controller",
+            "b": "All-In-One Controller",
+            "n": ""
+          },
+          {
+            "w": "Input Settings → HDMI1 → EDID → Mode",
+            "p": "Tryb EDID",
+            "a": "Custom",
+            "b": "Standard",
+            "n": ""
+          },
+          {
+            "w": "Input Settings → HDMI1 → EDID",
+            "p": "Rozdzielczość i odświeżanie",
+            "a": "2048 × 1080 @ 60 Hz",
+            "b": "3840 × 2160 @ 60 Hz",
+            "n": "Potem Apply."
+          },
+          {
+            "w": "Advanced Functions → Output Settings → Bit Depth",
+            "p": "Głębia wyjścia",
+            "a": "8 bit",
+            "b": "8 bit",
+            "n": "Daje limit 659 722 px na port."
+          },
+          {
+            "w": "Advanced Functions → Output Settings",
+            "p": "Low Latency",
+            "a": "Wyłączony",
+            "b": "Wyłączony",
+            "n": ""
+          },
+          {
+            "w": "Screen Brightness",
+            "p": "Jasność startowa",
+            "a": "70%",
+            "b": "70%",
+            "n": "Potem Screen Configuration → Save to RV Card → Yes."
+          },
+          {
+            "w": "Display Control",
+            "p": "Stan wyświetlania",
+            "a": "Normal",
+            "b": "Normal",
+            "n": ""
+          },
+          {
+            "w": "Screen Configuration → Mapping",
+            "p": "Mapping",
+            "a": "Włączony tylko na czas testu",
+            "b": "Włączony tylko na czas testu",
+            "n": ""
+          },
+          {
+            "w": "Communication Settings → Network Settings",
+            "p": "Adres IP",
+            "a": "Zapisz ten z ekranu głównego",
+            "b": "—",
+            "n": "Komputer ustaw w tej samej podsieci, maska zwykle 255.255.255.0 (potwierdź)."
+          },
+          {
+            "w": "Pokrętło + BACK, 5 s",
+            "p": "Blokada przycisków",
+            "a": "Włącz po zakończeniu pracy",
+            "b": "Włącz po zakończeniu pracy",
+            "n": ""
+          }
+        ]
+      },
+      {
+        "title": "VMP (COEX)",
+        "rows": [
+          {
+            "w": "Layout → Edit",
+            "p": "Nazwa i tryb ekranu",
+            "a": "LYNK_8x4 · All-In-One Controller",
+            "b": "LYNK_8x4 · All-In-One Controller",
+            "n": ""
+          },
+          {
+            "w": "Layout → Edit",
+            "p": "Low Latency",
+            "a": "Wyłączony",
+            "b": "Wyłączony",
+            "n": ""
+          },
+          {
+            "w": "Layout → Canvas",
+            "p": "Rozmiar canvasu",
+            "a": "2048 × 512",
+            "b": "2048 × 512",
+            "n": ""
+          },
+          {
+            "w": "Layout → Canvas",
+            "p": "Pozycja canvasu X, Y",
+            "a": "0, 0",
+            "b": "0, 0",
+            "n": ""
+          },
+          {
+            "w": "Layout → cabinet (custom → Edit)",
+            "p": "Rozdzielczość cabinetu",
+            "a": "256 × 64 px",
+            "b": "—",
+            "n": "Potwierdź z kartą cabinetu lub NCP."
+          },
+          {
+            "w": "Layout → port Ethernet na dole",
+            "p": "Linia D1",
+            "a": "Port 1: kolumny 1–2, 16 cabinetów, start u góry kolumny 1",
+            "b": "Port 1: kolumny 1–2, 16 cabinetów, start u góry kolumny 1",
+            "n": ""
+          },
+          {
+            "w": "Layout → port Ethernet na dole",
+            "p": "Linia D2",
+            "a": "Port 3: kolumny 3–4, 16 cabinetów",
+            "b": "Port 3: kolumny 3–4, 16 cabinetów",
+            "n": ""
+          },
+          {
+            "w": "Layout → port Ethernet na dole",
+            "p": "Linia D3",
+            "a": "Port 5: kolumny 5–6, 16 cabinetów",
+            "b": "Port 5: kolumny 5–6, 16 cabinetów",
+            "n": ""
+          },
+          {
+            "w": "Layout → port Ethernet na dole",
+            "p": "Linia D4",
+            "a": "Port 7: kolumny 7–8, 16 cabinetów",
+            "b": "Port 7: kolumny 7–8, 16 cabinetów",
+            "n": ""
+          },
+          {
+            "w": "Ekran → Backup → Ethernet Backup",
+            "p": "Backup portów",
+            "a": "Sequential Backup: 1⇌2, 3⇌4, 5⇌6, 7⇌8",
+            "b": "—",
+            "n": "Potem Verify Primary i Verify Backup."
+          },
+          {
+            "w": "Source → HDMI1 → Resolution i Refresh Rate",
+            "p": "Źródło",
+            "a": "2048 × 1080 @ 60 Hz",
+            "b": "3840 × 2160 @ 60 Hz",
+            "n": "Apply."
+          },
+          {
+            "w": "Source → warstwa HDMI1 (Properties)",
+            "p": "Rozmiar i pozycja warstwy",
+            "a": "2048 × 512, X 0, Y 0",
+            "b": "2048 × 512, X 0, Y 0",
+            "n": ""
+          },
+          {
+            "w": "Source → warstwa HDMI1 → Crop",
+            "p": "Kadrowanie",
+            "a": "Włączone, Same as Layer Size włączone, początek 0, 0",
+            "b": "Włączone, Same as Layer Size włączone, początek 0, 0",
+            "n": ""
+          },
+          {
+            "w": "Screen Settings → Image Quality",
+            "p": "Jasność",
+            "a": "70%",
+            "b": "70%",
+            "n": ""
+          },
+          {
+            "w": "Ustawienia cabinetów",
+            "p": "No data signal",
+            "a": "Blackout (albo Last Frame, jeśli klient woli)",
+            "b": "Blackout (albo Last Frame, jeśli klient woli)",
+            "n": ""
+          },
+          {
+            "w": "Ustawienia cabinetów",
+            "p": "Light up slowly",
+            "a": "Włączone",
+            "b": "Włączone",
+            "n": ""
+          },
+          {
+            "w": "Ustawienia cabinetów",
+            "p": "Indicator",
+            "a": "Włączony",
+            "b": "Włączony",
+            "n": ""
+          },
+          {
+            "w": "Preset → zapisz",
+            "p": "Nazwa presetu",
+            "a": "LYNK_FINAL_70",
+            "b": "LYNK_FINAL_70",
+            "n": ""
+          }
+        ]
+      },
+      {
+        "title": "Resolume",
+        "rows": [
+          {
+            "w": "Composition → Settings (potwierdź w swojej wersji)",
+            "p": "Rozmiar kompozycji",
+            "a": "2048 × 1024",
+            "b": "2048 × 1024",
+            "n": "Kreacja w proporcji 2:1."
+          },
+          {
+            "w": "Output → Advanced → Screen",
+            "p": "Wyjście",
+            "a": "To podłączone do MX30",
+            "b": "—",
+            "n": ""
+          },
+          {
+            "w": "Output → Advanced → Screen → Width, Height",
+            "p": "Rozmiar ekranu wirtualnego",
+            "a": "2048 × 1080",
+            "b": "3840 × 2160",
+            "n": ""
+          },
+          {
+            "w": "Slice → Input Selection",
+            "p": "Wejście slice",
+            "a": "X 0, Y 0, 2048 × 1024 (cała kompozycja)",
+            "b": "X 0, Y 0, 2048 × 1024 (cała kompozycja)",
+            "n": ""
+          },
+          {
+            "w": "Slice → Output Transformation",
+            "p": "Wyjście slice",
+            "a": "X 0, Y 0, 2048 × 512",
+            "b": "X 0, Y 0, 2048 × 512",
+            "n": "Skaluje 2:1 do pikseli ekranu."
+          },
+          {
+            "w": "Screen",
+            "p": "Brightness, Contrast",
+            "a": "100%, 100%",
+            "b": "—",
+            "n": "Jasność ekranu ustawiasz w MX30 i VMP."
+          },
+          {
+            "w": "Screen",
+            "p": "Delay",
+            "a": "0 ms",
+            "b": "0 ms",
+            "n": ""
+          },
+          {
+            "w": "Zapis",
+            "p": "Preset ustawień wyjścia",
+            "a": "Zapisz pod nazwą LYNK_2048x512",
+            "b": "Zapisz pod nazwą LYNK_2048x512",
+            "n": ""
+          }
+        ]
+      },
+      {
+        "title": "Plik wideo",
+        "rows": [
+          {
+            "w": "Format",
+            "p": "Kontener i kodek",
+            "a": "MP4, H.264 (albo HAP / DXV)",
+            "b": "MP4, H.264 (albo HAP / DXV)",
+            "n": ""
+          },
+          {
+            "w": "Format",
+            "p": "Rozmiar",
+            "a": "2048 × 1024 (2:1)",
+            "b": "—",
+            "n": "Wersja 2048 × 512 tylko, gdy slice ma być 1:1."
+          },
+          {
+            "w": "Format",
+            "p": "Klatki na sekundę",
+            "a": "30 (albo 60)",
+            "b": "—",
+            "n": "Przy wyjściu 60 Hz dobieraj 30 lub 60. 25 i 50 tylko gdy cały łańcuch pracuje na 50 Hz."
+          },
+          {
+            "w": "Format",
+            "p": "Dźwięk",
+            "a": "Brak",
+            "b": "Brak",
+            "n": ""
+          },
+          {
+            "w": "Format",
+            "p": "Bitrate",
+            "a": "co najmniej 40 Mb/s",
+            "b": "co najmniej 40 Mb/s",
+            "n": ""
+          },
+          {
+            "w": "Treść",
+            "p": "Tło",
+            "a": "Czarne, bez pełnej bieli całego kadru",
+            "b": "Czarne, bez pełnej bieli całego kadru",
+            "n": ""
+          }
+        ]
+      }
     ]
   }
 }
