@@ -1,0 +1,37 @@
+{
+  "id": "boss-t0",
+  "track": "T",
+  "module": "T0",
+  "name": "The Fast Talker",
+  "intro_pl": "Mówi bardzo szybko. Musisz go poprosić o powtórzenie, zanim coś zrozumiesz.",
+  "patience": 50,
+  "rounds": [
+    {
+      "other_en": "HiI'mfromtheorganiserteamandweneedtoknowwhenyoucansetup!",
+      "other_pl": "(mówi bardzo szybko, nie do zrozumienia)",
+      "answers": [
+        { "en": "Sorry, can you say that again?", "effect": -20, "best": true, "why_pl": "Prosisz o powtórzenie — dobry, spokojny start." },
+        { "en": "Okay, sure, whatever you said.", "effect": 25, "why_pl": "Udajesz, że rozumiesz — za chwilę będzie gorzej." },
+        { "en": "I don't have time for this.", "effect": 30, "why_pl": "Niegrzeczne, eskaluje sytuację." }
+      ]
+    },
+    {
+      "other_en": "Can you speak slowly, please?",
+      "other_pl": "(Ty prosisz go o wolniejsze tempo)",
+      "answers": [
+        { "en": "Can you speak slowly, please?", "effect": -25, "best": true, "why_pl": "Prosta, uprzejma prośba działa najlepiej." },
+        { "en": "Never mind, forget it.", "effect": 20, "why_pl": "Rezygnujesz z rozmowy — klient czuje się zignorowany." },
+        { "en": "One moment, please.", "effect": -5, "why_pl": "Kupujesz trochę czasu, ale nie rozwiązujesz problemu." }
+      ]
+    },
+    {
+      "other_en": "Okay... when can you set up the screen?",
+      "other_pl": "Okej… kiedy możecie ustawić ekran?",
+      "answers": [
+        { "en": "Let me check, one moment.", "effect": -15, "best": true, "why_pl": "Spokojna odpowiedź, pokazujesz działanie." },
+        { "en": "I don't know.", "effect": 20, "why_pl": "Brak konkretu denerwuje klienta." },
+        { "en": "We'll fix it.", "effect": -10, "why_pl": "Uspokaja, choć nie odpowiada wprost na pytanie." }
+      ]
+    }
+  ]
+}

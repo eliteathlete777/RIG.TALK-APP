@@ -6,6 +6,7 @@ import { loadAllChunks, allChunksArray } from './content.js';
 import { toggleStar } from './library.js';
 import { loadGlossary, termRow, speakEn } from './glossary.js';
 import * as session from './session.js';
+import { renderMx30Guide } from './mx30-guide.js';
 
 let metaCache = null;
 
@@ -109,12 +110,31 @@ function phraseRow(chunk, rerender){
 }
 
 export async function renderStoiskoScreen(container){
+  const mode = store.get().ui?.stoiskoMode === 'mx30' ? 'mx30' : 'montaz';
+  container.innerHTML = '';
+  const modeBar = document.createElement('div');
+  modeBar.className = 'track-switch course-mode-switch';
+  [['montaz', 'MONTAŻ'], ['mx30', 'MX30 + LED']].forEach(([key, label]) => {
+    const button = document.createElement('button');
+    button.textContent = label;
+    button.classList.toggle('active', mode === key);
+    button.addEventListener('click', () => {
+      store.set({ ui: { stoiskoMode: key } });
+      renderStoiskoScreen(container);
+    });
+    modeBar.appendChild(button);
+  });
+  container.appendChild(modeBar);
+  if (mode === 'mx30'){
+    await renderMx30Guide(container);
+    return;
+  }
   const [meta, ctx, glossary] = await Promise.all([loadMeta(), loadAllChunks(), loadGlossary()]);
   const termsByEn = new Map(glossary.terms.map(t => [t.en, t]));
-  const t7 = allChunksArray(ctx).filter(c => c.module === 'T7');
+  const deleted = new Set(store.get().deleted || []);
+  const t7 = allChunksArray(ctx).filter(c => c.module === 'T7' && !deleted.has(c.id));
   const ui = store.get().stoisko || {};
   const scrollY = window.scrollY;
-  container.innerHTML = '';
   const rerender = () => renderStoiskoScreen(container);
 
   // ---------- nagłówek misji ----------

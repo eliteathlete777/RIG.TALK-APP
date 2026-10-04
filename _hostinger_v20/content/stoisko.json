@@ -1,0 +1,77 @@
+{
+  "title": "PIERWSZE STOISKO",
+  "subtitle": "Paryż · transparentny LED na belkach · solo + stagehand",
+  "scope_pl": "Twój zakres: przyjechać, rozeznać się, zbudować ekran, opiąć, zaprogramować, przygotować procesory, sprawdzić na swoim PC i przekazać klientowi, żeby sam puszczał materiały ze swojego laptopa.",
+  "stages": [
+    {
+      "unit": 1, "key": "przyjazd", "title": "Przyjazd i rozeznanie", "en": "Arrival",
+      "goal_pl": "Wejść na halę, odebrać identyfikator, rozładować się i znaleźć stoisko.",
+      "checklist": ["Identyfikator / opaska odebrane", "Kamizelka i buty robocze na sobie", "Bus rozładowany w limicie czasu", "Stoisko znalezione, skrzynie na miejscu", "Wiem, gdzie są puste skrzynie, toalety, kawa"],
+      "tip_pl": "We Francji zacznij od „Bonjour” i „Merci” — potem spokojnie przejdź na angielski. Na rampie liczy się czas: najpierw rozładunek, rozpakowywanie dopiero na stoisku.",
+      "terms": ["build-up", "badge", "loading dock", "hall", "aisle", "flight case", "empties storage", "hi-vis vest"]
+    },
+    {
+      "unit": 2, "key": "klient", "title": "Powitanie klienta", "en": "Meet the client",
+      "goal_pl": "Przywitać się, ustalić osobę kontaktową, obejść stoisko i potwierdzić plan.",
+      "checklist": ["Przedstawiłem się, powiedziałem, że mówię prosto", "Mam numer / WhatsApp osoby kontaktowej", "Obeszliśmy stoisko razem", "Mam rysunek z ekranem", "Zapytałem o zmiany od ostatniego maila"],
+      "tip_pl": "Powiedz od razu: „My English is simple, so please speak slowly.” Klient zacznie mówić prościej, a Ty zyskujesz spokój.",
+      "terms": ["stand manager", "contact person", "drawing", "floor plan", "stand builder"]
+    },
+    {
+      "unit": 3, "key": "zawieszenie", "title": "Miejsce zawieszenia", "en": "Hanging position",
+      "goal_pl": "Ustalić dokładne miejsce, wysokość, front ekranu i nośność belek.",
+      "checklist": ["Miejsce ekranu pokazane na rysunku", "Front ekranu ustalony (skąd patrzą goście)", "Wysokość dolnej krawędzi potwierdzona liczbą", "Nośność belek / limit na punkt potwierdzony", "Wiem, kto zatwierdza i sprawdza podwieszenie", "Punkty zaznaczone na podłodze"],
+      "tip_pl": "W halach Viparis (Villepinte, Porte de Versailles) z konstrukcji dachu hali wieszają tylko ich służby — Ty wieszasz z belek stoiska. W części hal limit to ok. 80 kg na punkt. Zawsze powtórz liczby na głos: „So, the bottom edge at three metres?”",
+      "terms": ["beam", "hanging point", "load limit", "weight", "bottom edge", "trim height", "centred", "approval"]
+    },
+    {
+      "unit": 4, "key": "rusztowanie", "title": "Rusztowanie i harmonogram", "en": "Scaffold & schedule",
+      "goal_pl": "Wiedzieć, kiedy będzie rusztowanie/podnośnik, prąd i wykładzina.",
+      "checklist": ["Wiem, KIEDY i KTO przywozi rusztowanie", "Podnośnik zarezerwowany (jeśli jest)", "Wiem, kiedy włączają prąd", "Wiem, czy wykładzina jest przed, czy po", "Godziny zamknięcia hali sprawdzone", "Klient wie, ile czasu potrzebuję"],
+      "tip_pl": "Na targach prąd często włączają dopiero na koniec montażu — od tego zależy, kiedy zaprogramujesz ekran. Zapytaj o to pierwszego dnia, nie ostatniego.",
+      "terms": ["scaffold", "scaffold tower", "scissor lift", "cherry picker", "carpet", "on site", "schedule"]
+    },
+    {
+      "unit": 5, "key": "stagehand", "title": "Stagehand: briefing i rozładunek", "en": "Crew briefing",
+      "goal_pl": "Poznać stagehanda, przekazać zasady BHP i razem przygotować sprzęt.",
+      "checklist": ["Znam imię stagehanda i jego doświadczenie", "BHP: buty, rękawice, nikt pod ciężarem", "Skrzynie na stoisku", "Panele policzone", "Panele leżą bezpiecznie na kocach"],
+      "tip_pl": "Daj stagehandowi zawsze jedno konkretne zadanie naraz. Krótko: czasownik + rzecz + „please”. Chwal często: „Good job!”.",
+      "terms": ["stagehand", "safety shoes", "gloves", "fragile", "frame", "blanket", "van", "break"]
+    },
+    {
+      "unit": 6, "key": "montaz", "title": "Montaż na belkach", "en": "Hanging the screen",
+      "goal_pl": "Zamontować belkę nośną, zawiesić panele, zabezpieczyć linkami i wypoziomować.",
+      "checklist": ["Belka nośna na obejmach, dokręcona", "Panele zawieszone i zablokowane (oba zamki)", "Każdy element ma linkę zabezpieczającą", "Ekran wypoziomowany", "Strefa pod ekranem wolna przez cały montaż"],
+      "tip_pl": "Komendy przy podnoszeniu: „Lift on three”, „Hold it there”, „Up a little. Stop!”. Gdy coś może spaść: krzycz „Heads!”. Gdy ktoś krzyczy „Heads!” — odskocz, nie patrz w górę.",
+      "terms": ["hanging bar", "clamp", "shackle", "safety wire", "lock", "level", "spanner", "tighten", "Heads!", "Hold!"]
+    },
+    {
+      "unit": 7, "key": "kable", "title": "Zasilanie i sygnał", "en": "Power & data",
+      "goal_pl": "Doprowadzić prąd, połączyć zasilanie i sygnał panel do panelu, ustawić procesor.",
+      "checklist": ["Wiem, gdzie jest prąd i ile amperów", "Znam elektryka stoiska", "Zasilanie połączone panel do panelu", "Sygnał połączony wg strzałek", "Kable wzdłuż belki, opaski co 50 cm", "Nic nie włączone bez mojej kontroli"],
+      "tip_pl": "Stagehand nie włącza prądu sam — ma pytać. Zasada: „Don't plug in the power yet.” Ty sprawdzasz i Ty włączasz.",
+      "terms": ["power", "socket", "16 amp", "electrician", "power cable", "network cable", "daisy chain", "cable tie", "gaffer tape", "processor"]
+    },
+    {
+      "unit": 8, "key": "opinanie", "title": "Opinanie", "en": "Fabric wrap",
+      "goal_pl": "Opiąć belki czarną tkaniną, schować kable, żeby z przodu i z tyłu było czysto.",
+      "checklist": ["Klient zaakceptował tkaninę", "Belki opięte bez zmarszczek", "Wszystkie kable schowane", "Tylko czarne opaski, przycięte", "Tkanina nie zasłania i nie grzeje diod", "Tył wygląda czysto"],
+      "tip_pl": "Transparentny ekran widać z obu stron — tył i kable muszą wyglądać tak samo porządnie jak front.",
+      "terms": ["fabric", "wrap", "lycra", "molton", "velcro", "wrinkle", "tight", "staple gun"]
+    },
+    {
+      "unit": 9, "key": "programowanie", "title": "Programowanie i procesory", "en": "Programming",
+      "goal_pl": "Skonfigurować procesor, sprawdzić panele obrazami testowymi, ustawić jasność, zapisać i przetestować na swoim PC.",
+      "checklist": ["Plik konfiguracyjny wgrany", "Karty odbiorcze sprawdzone", "Obrazy testowe: wszystkie panele świecą", "Mapowanie poprawne", "Jasność pod wnętrze", "Ustawienia ZAPISANE w procesorze + kopia u mnie", "Materiał klienta działa na moim PC", "Kable opisane"],
+      "tip_pl": "Po wszystkim zapisz ustawienia w procesorze i zrób kopię pliku u siebie. Klient nie może przypadkiem nic zepsuć.",
+      "terms": ["processor", "sending card", "receiving card", "config file", "mapping", "test pattern", "brightness", "resolution", "refresh rate", "flicker", "input"]
+    },
+    {
+      "unit": 10, "key": "przekazanie", "title": "Przekazanie: klient na swoim PC", "en": "Handover",
+      "goal_pl": "Nauczyć klienta podłączyć laptop i puszczać materiały samodzielnie, podpisać odbiór.",
+      "checklist": ["Klient sam podłączył laptop (HDMI)", "Rozdzielczość 1920×1080 ustawiona", "Tryb Extend (Win+P), nie Duplicate", "Wideo na pełnym ekranie na drugim monitorze", "Klient zna kolejność włączania i wyłączania", "Powiedziałem: nie zmieniać ustawień procesora", "Klient ma mój numer", "Odbiór podpisany"],
+      "tip_pl": "Niech klient zrobi wszystko SAM, a Ty tylko patrzysz. Jeśli ekran jest czarny, sprawdź po kolei: kabel HDMI → rozdzielczość → tryb Extend.",
+      "terms": ["handover", "sign-off", "HDMI", "output", "extend", "duplicate", "second display", "full screen", "content"]
+    }
+  ]
+}

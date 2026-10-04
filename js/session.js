@@ -44,6 +44,7 @@ export async function buildSessionPlan(minutes){
   const trackFilter = (id) => matchesTrackMix(id, trackMix);
   const now = new Date();
   const starredSet = new Set(s.starred || []);
+  const deleted = new Set(s.deleted || []);
 
   const reviewLimit = minutes === 10 ? 20 : 10;
   const newIntroducedToday = srs.countNewIntroducedToday(s.cards, now);
@@ -53,12 +54,12 @@ export async function buildSessionPlan(minutes){
   const overdue = srs.countOverdue(s.cards, now);
   const newBlocked = overdue > 30 || newCount === 0;
 
-  const reviewIds = srs.buildDueQueue(s.cards, starredSet, now, reviewLimit, trackFilter);
+  const reviewIds = srs.buildDueQueue(s.cards, starredSet, now, reviewLimit, id => trackFilter(id) && !deleted.has(id));
 
   let newIds = [];
   if (!newBlocked){
     const candidates = allChunksArray(ctx)
-      .filter(c => !(c.id in s.cards) && trackFilter(c.id))
+      .filter(c => !(c.id in s.cards) && trackFilter(c.id) && !deleted.has(c.id))
       .filter(c => !ctx.modulesDef[c.module]?.excludeFromSession)
       .map(c => c.id);
     const sorted = sortByCurriculumOrder(candidates, ctx);
@@ -91,6 +92,8 @@ let plan = null;
 let cursor = 0;
 let results = { reviewsDone: 0, newDone: 0, missionDone: false, xp: 0, goodOrEasyCount: 0, hearCorrect: 0 };
 let sessionTimerHandle = null;
+let learningTimerHandle = null;
+let learningToken = 0;
 
 function qs(sel){ return document.querySelector(sel); }
 
@@ -152,7 +155,8 @@ export async function startFocusedSession(ids, { limit = 12 } = {}){
   const ctx = await loadAllChunks();
   const s = store.get();
   const now = new Date();
-  const valid = ids.filter(id => ctx.chunks.has(id));
+  const deleted = new Set(s.deleted || []);
+  const valid = ids.filter(id => ctx.chunks.has(id) && !deleted.has(id));
   const unseen = valid.filter(id => !(id in s.cards));
   const due = valid.filter(id => (id in s.cards) && srs.isDue(s.cards[id], now));
   const rest = shuffle(valid.filter(id => (id in s.cards) && !srs.isDue(s.cards[id], now)));
@@ -191,6 +195,7 @@ function saveCard(id, card){
 }
 
 function nextStep(){
+  clearLearningCycle();
   cursor++;
   if (cursor >= plan.queue.length){ endSession(false); return; }
   renderStep();
@@ -200,6 +205,7 @@ let lastOutcome = null;
 
 /** Przerwanie sesji w trakcie (przycisk ✕) — bez naliczania nagród. */
 function endSession(aborted){
+  clearLearningCycle();
   stopTimer();
   hideSessionScreen();
   if (aborted) lastOutcome = null;
@@ -221,6 +227,7 @@ function finalizeRewards(){
 }
 
 function renderStep(){
+  clearLearningCycle();
   updateProgress();
   const step = plan.queue[cursor];
   el.body.innerHTML = '';
@@ -241,6 +248,78 @@ function makeButton(label, cls, onClick){
 function playAudio(chunk, rate = 1.0){
   const lang = store.get().settings.variant === 'us' ? 'en-US' : 'en-GB';
   speech.speak(chunk.en, { lang, rate }).catch(() => {});
+}
+
+function clearLearningCycle(){
+  learningToken++;
+  if (learningTimerHandle) clearInterval(learningTimerHandle);
+  learningTimerHandle = null;
+  if (typeof window !== 'undefined' && window.speechSynthesis) window.speechSynthesis.cancel();
+}
+
+function waitForRepeat(seconds, token, onTick){
+  const testSeconds = typeof window !== 'undefined' ? window.__RIG_TEST_WAIT_SECONDS : undefined;
+  let left = Number.isFinite(testSeconds) ? testSeconds : seconds;
+  onTick(left);
+  if (left <= 0) return Promise.resolve(token === learningToken);
+  return new Promise(resolve => {
+    learningTimerHandle = setInterval(() => {
+      if (token !== learningToken){ clearInterval(learningTimerHandle); learningTimerHandle = null; resolve(false); return; }
+      left--;
+      onTick(left);
+      if (left <= 0){ clearInterval(learningTimerHandle); learningTimerHandle = null; resolve(true); }
+    }, 1000);
+  });
+}
+
+function renderGuidedPhrase(chunk, isNew){
+  const card = document.createElement('div');
+  card.className = 'card guided-learning';
+  const voice = speech.localVoiceStatus(store.get().settings.variant === 'us' ? 'en-US' : 'en-GB');
+  card.innerHTML = `<div class="eyebrow">TRENING 3 × 70%</div>
+    <div class="guided-en"></div><div class="guided-phonetic"></div><div class="guided-pl"></div>
+    <div class="guided-voice">${voice.ready ? `✓ GŁOS OFFLINE: ${voice.name}` : 'GŁOS URZĄDZENIA · zainstaluj angielski głos offline w systemie'}</div>
+    <div class="guided-rounds"><span></span><span></span><span></span></div>
+    <div class="guided-status">Przygotuj się…</div><div class="guided-countdown"></div>
+    <label class="guided-confirm" hidden><input type="checkbox"> <span>POWTÓRZYŁEM 3 RAZY</span></label>`;
+  card.querySelector('.guided-en').textContent = chunk.en;
+  card.querySelector('.guided-phonetic').textContent = `[ ${speech.toPolishPhonetic(chunk.en)} ]`;
+  card.querySelector('.guided-pl').textContent = chunk.pl;
+  el.body.appendChild(card);
+
+  const token = learningToken;
+  const dots = [...card.querySelectorAll('.guided-rounds span')];
+  const status = card.querySelector('.guided-status');
+  const countdown = card.querySelector('.guided-countdown');
+  const confirmRow = card.querySelector('.guided-confirm');
+  const confirm = confirmRow.querySelector('input');
+  confirm.addEventListener('change', () => {
+    if (!confirm.checked) return;
+    const now = new Date();
+    const base = isNew ? srs.newCard(now) : getCardFor(chunk.id);
+    saveCard(chunk.id, srs.reviewCard(base, srs.Rating.Good, now).card);
+    if (isNew) results.newDone++; else results.reviewsDone++;
+    results.goodOrEasyCount++;
+    nextStep();
+  });
+
+  (async () => {
+    for (let round = 0; round < 3; round++){
+      if (token !== learningToken) return;
+      dots[round].classList.add('active');
+      status.textContent = `ODSŁUCH ${round + 1}/3 · słuchaj`;
+      countdown.textContent = 'LEKTOR 70%';
+      try { await speech.speak(chunk.en, { lang: store.get().settings.variant === 'us' ? 'en-US' : 'en-GB', rate: 0.7 }); } catch (e) {}
+      if (token !== learningToken) return;
+      status.textContent = `TWOJA KOLEJ ${round + 1}/3 · powtórz na głos`;
+      const keepGoing = await waitForRepeat(10, token, left => { countdown.textContent = `${left} s`; });
+      if (!keepGoing) return;
+      dots[round].classList.add('done');
+    }
+    status.textContent = 'SEGMENT ZAKOŃCZONY';
+    countdown.textContent = 'Zaznacz checkbox, aby przejść dalej';
+    confirmRow.hidden = false;
+  })();
 }
 
 function appendRatingRow(container, onRate, suggested){
@@ -276,6 +355,7 @@ async function trySpeakAndScore(expectedEn, onScored){
 // ---------- REVIEW: SAY ----------
 function renderReviewCard(id){
   const chunk = plan.ctx.chunks.get(id);
+  return renderGuidedPhrase(chunk, false);
   if (chunk.type === 'HEAR') return renderReviewHear(chunk);
 
   const card = document.createElement('div');
@@ -409,6 +489,7 @@ function renderReviewHear(chunk){
 // ---------- NOWY ZWROT: SAY ----------
 function renderNewCard(id){
   const chunk = plan.ctx.chunks.get(id);
+  return renderGuidedPhrase(chunk, true);
   if (chunk.type === 'HEAR') return renderNewHear(chunk);
 
   const card = document.createElement('div');

@@ -1,0 +1,18 @@
+{
+  "id": "d4-scene-1",
+  "track": "D",
+  "module": "D4",
+  "title": "W kawiarni",
+  "lines": [
+    { "who": "other", "en": "Hi, what can I get you?", "pl": "Cześć, co podać?" },
+    { "who": "me", "en": "Can I get a coffee, please?", "pl": "Poproszę kawę." },
+    { "who": "other", "en": "Sure. For here or to go?", "pl": "Jasne. Na miejscu czy na wynos?" },
+    { "who": "me", "en": "For here, thanks.", "pl": "Na miejscu, dzięki." },
+    { "who": "other", "en": "Anything else?", "pl": "Coś jeszcze?" },
+    { "who": "me", "en": "Can I have some water too?", "pl": "Poproszę też wodę." },
+    { "who": "other", "en": "Still or sparkling?", "pl": "Niegazowana czy gazowana?" },
+    { "who": "me", "en": "Still, please.", "pl": "Niegazowana, proszę." },
+    { "who": "other", "en": "That's five euros.", "pl": "To pięć euro." },
+    { "who": "me", "en": "Can I pay by card?", "pl": "Mogę zapłacić kartą?" }
+  ]
+}

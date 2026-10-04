@@ -82,9 +82,44 @@ if (typeof window !== 'undefined' && window.speechSynthesis){
 
 function pickVoice(langPref){
   const voices = cachedVoices.length ? cachedVoices : loadVoices();
-  return voices.find(v => v.lang?.toLowerCase() === langPref.toLowerCase())
+  return voices.find(v => v.localService && v.lang?.toLowerCase() === langPref.toLowerCase())
+      || voices.find(v => v.localService && v.lang?.toLowerCase().startsWith(langPref.slice(0, 2)))
+      || voices.find(v => v.lang?.toLowerCase() === langPref.toLowerCase())
       || voices.find(v => v.lang?.toLowerCase().startsWith(langPref.slice(0, 2)))
       || null;
+}
+
+/** Uproszczony zapis wymowy dla Polaka. Działa offline i obejmuje każdy zwrot. */
+export function toPolishPhonetic(text){
+  if (!text) return '';
+  const special = new Map([
+    ['the','de'],['this','dys'],['that','dat'],['these','diiz'],['those','dołz'],
+    ['i','aj'],['my','maj'],['you','ju'],['your','jor'],['we','łi'],['our','ałer'],
+    ['is','yz'],['are','ar'],['was','łoz'],['were','łer'],['have','hew'],['has','hez'],
+    ['can','ken'],["can't",'kaant'],['do','du'],['does','daz'],['please','pliiz'],
+    ['where','łer'],['what','łot'],['when','łen'],['why','łaj'],['how','hał'],
+    ['one','łan'],['two','tu'],['three','fri'],['four','for'],['eight','ejt'],
+    ['screen','skriin'],['power','pałer'],['cable','kejbel'],['processor','prołseser'],
+    ['check','czek'],['need','niid'],['here','hir'],['there','der'],['now','nał'],
+  ]);
+  return text.toLowerCase().replace(/[“”„”.,!?;:()]/g, '').split(/\s+/).filter(Boolean).map(word => {
+    if (special.has(word)) return special.get(word);
+    return word
+      .replace(/^th/g, 'f').replace(/th/g, 'd').replace(/sh/g, 'sz').replace(/ch/g, 'cz')
+      .replace(/ph/g, 'f').replace(/tion/g, 'szyn').replace(/sion/g, 'żyn')
+      .replace(/ee/g, 'ii').replace(/ea/g, 'ii').replace(/oo/g, 'u')
+      .replace(/ou/g, 'ał').replace(/ow/g, 'ał').replace(/ai|ay/g, 'ej')
+      .replace(/igh/g, 'aj').replace(/qu/g, 'kł').replace(/w/g, 'ł')
+      .replace(/v/g, 'w').replace(/j/g, 'dż').replace(/c(?=[eiy])/g, 's')
+      .replace(/c/g, 'k').replace(/x/g, 'ks').replace(/y/g, 'i')
+      .replace(/e$/g, '').replace(/r$/g, 'r');
+  }).join(' · ');
+}
+
+export function localVoiceStatus(lang = 'en-GB'){
+  const voices = cachedVoices.length ? cachedVoices : loadVoices();
+  const local = voices.find(v => v.localService && v.lang?.toLowerCase().startsWith(lang.slice(0, 2).toLowerCase()));
+  return local ? { ready: true, name: local.name } : { ready: false, name: null };
 }
 
 export function isTtsSupported(){

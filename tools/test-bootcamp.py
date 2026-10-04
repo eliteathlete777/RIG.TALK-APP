@@ -6,6 +6,7 @@ with sync_playwright() as p:
     errors = []
     page.on("pageerror", lambda exc: errors.append(str(exc)))
     page.goto("http://127.0.0.1:5179", wait_until="networkidle")
+    page.locator('[data-mode-select="english"]').click()
     page.locator('[data-nav="kurs"]').click()
     page.wait_for_selector('.bootcamp-block')
     blocks = page.locator('.bootcamp-block').count()

@@ -1,0 +1,74 @@
+{
+  "title": "MX30 + TRANSPARENT LED",
+  "subtitle": "Field manual · Lynk & Co · Paris 2026",
+  "source_note": "Opracowano z rozmów MX30/COEX/VMP oraz paczki SQM39462. Instrukcja nie zastępuje identyfikacji elektroniki i właściwego pliku NCP.",
+  "facts": [
+    {"value":"8 × 4 m","label":"ekran z dokumentacji SQM","status":"confirmed"},
+    {"value":"64","label":"kabinety 1000 × 500 mm","status":"confirmed"},
+    {"value":"MX30","label":"NovaStar LED controller","status":"confirmed"},
+    {"value":"2048 × 512","label":"wynik tylko przy 256 × 64 px/cabinet","status":"verify"}
+  ],
+  "identity_warning": "Lista SQM nazywa kabinety INFiLED HL-3978, plik techniczny ma nazwę HOXLED, a akcesoria odnoszą się też do Dicolor UT-390. Nie wysyłaj NCP/RCFG ani firmware, dopóki model, receiving card i rewizja nie zostaną potwierdzone na sprzęcie.",
+  "sections": [
+    {
+      "id":"01", "title_pl":"Zatrzymaj się i zidentyfikuj sprzęt", "title_en":"Stop and identify the hardware", "status":"stop",
+      "steps_pl":["Zrób zdjęcie etykiety każdego typu cabinetu i control boxa.","W VMP zapisz model MX30, wersję firmware, wersję VMP oraz informacje o receiving card.","Poproś właściciela ekranu o właściwy plik NCP i potwierdź, do którego batchu paneli należy.","Nie aktualizuj firmware przed realizacją. Nie używaj pliku znalezionego w internecie."],
+      "checks":["Model cabinetu potwierdzony","Receiving card potwierdzona","VMP i firmware zapisane","Właściwy NCP dostępny","Plan powrotu/backup gotowy"]
+    },
+    {
+      "id":"02", "title_pl":"Policz ekran i podziel obciążenie", "title_en":"Calculate the canvas and port load", "status":"verify",
+      "steps_pl":["Potwierdź układ fizyczny: 8 cabinetów szeroko i 8 wysoko daje 8 × 4 m oraz 64 sztuki.","Odczytaj prawdziwą rozdzielczość jednego cabinetu w VMP/NCP. Nie wpisuj jej z pamięci.","Pomnóż: szerokość cabinetu w pikselach × 8; wysokość × 8.","Rozpisz każdą kolumnę i kolejność kabli na wydrukowanym planie.","Podziel cabinetów między porty MX30 tak, aby żaden port nie przekraczał limitu wynikającego z aktualnej dokumentacji i parametrów obrazu."],
+      "note_pl":"Jeżeli cabinet ma potwierdzone 256 × 64 px, cały ekran ma 2048 × 512 px. To obliczenie jest warunkowe, nie jest zgodą na wysłanie konfiguracji."
+    },
+    {
+      "id":"03", "title_pl":"Montaż, zasilanie i DATA", "title_en":"Rigging, power and data", "status":"safe",
+      "steps_pl":["Zawieś i zabezpiecz mechaniczną konstrukcję zgodnie z planem stoiska.","Prowadź POWER i DATA jako dwie osobne warstwy. Oznacz początek i koniec każdego łańcucha.","Podłącz EtherCON zgodnie z kierunkiem DATA IN → DATA OUT.","Doprowadź zasilanie PowerCON TRUE1 dopiero po sprawdzeniu obwodu i zabezpieczeń przez uprawnioną osobę.","MX30, komputer i pierwszy cabinet podłącz tak, aby można było przetestować pojedynczy łańcuch przed uruchomieniem całości."],
+      "note_pl":"Dokument SQM pokazuje trasę kabli od lewej strony konstrukcji i punkt zasilania przy stałej skrzyni 60 kW. Potwierdź trasę na miejscu z elektrykiem stoiska."
+    },
+    {
+      "id":"04", "title_pl":"Uruchom MX30 i połącz VMP", "title_en":"Start MX30 and connect VMP", "status":"safe",
+      "steps_pl":["Włącz komputer i MX30 bez wysyłania nowej konfiguracji do cabinetów.","Połącz komputer sterujący z portem zarządzania MX30 zgodnie z aktualnym manualem urządzenia.","Uruchom tę samą, zgodną wersję VMP, którą wcześniej zapisano w karcie sprzętu.","Poczekaj, aż VMP wykryje MX30. Zapisz zrzut ekranu stanu urządzenia.","Jeżeli MX30 nie jest widoczny: sprawdź kabel, kartę sieciową, adresację oraz czy inne połączenie nie przejęło interfejsu."],
+      "note_pl":"Samo wykrycie MX30 nie oznacza, że można bezpiecznie wysłać NCP lub firmware."
+    },
+    {
+      "id":"05", "title_pl":"Zrób backup przed zmianami", "title_en":"Back up before changing anything", "status":"stop",
+      "steps_pl":["Odczytaj istniejącą konfigurację z działającego cabinetu lub od właściciela systemu.","Zapisz kopię projektu VMP, ustawień ekranu i oryginalnego NCP w osobnym folderze z datą.","Zrób zdjęcia mapowania portów i kabli.","Sprawdź, czy potrafisz wskazać plik powrotu do stanu początkowego.","Dopiero wtedy przejdź do konfiguracji ekranu."],
+      "note_pl":"NCP może zawierać firmware receiving card. Błędny plik może zmienić zachowanie elektroniki cabinetu."
+    },
+    {
+      "id":"06", "title_pl":"Zbuduj ekran w VMP", "title_en":"Build the screen in VMP", "status":"verify",
+      "steps_pl":["Utwórz ekran i wpisz potwierdzoną liczbę cabinetów w poziomie i pionie.","Wybierz dokładnie potwierdzony typ cabinetu/NCP.","Przypisz porty MX30 do fizycznych łańcuchów.","Klikaj cabinet po cabinetcie w tej samej kolejności, w jakiej biegnie EtherCON.","Porównaj mapę na ekranie z oznaczeniami na kablach. Zapisz projekt pod nową nazwą, nie nadpisuj backupu."],
+      "note_pl":"Jeżeli obraz jest przesunięty lub powtarza się, najpierw sprawdź kolejność mapowania i rozdzielczość cabinetu, a nie firmware."
+    },
+    {
+      "id":"07", "title_pl":"Test pattern przed HDMI", "title_en":"Use test patterns before HDMI", "status":"safe",
+      "steps_pl":["Włącz test jednolitej czerwieni, zieleni, niebieskiego i bieli.","Sprawdź każdy cabinet: pełny obraz, poprawne kolory, brak migania i martwych sekcji.","Włącz siatkę lub numerację cabinetów i porównaj z fizycznym układem.","Jeżeli test VMP jest poprawny, a obraz z laptopa nie działa, szukaj problemu po stronie INPUT/EDID/GPU/HDMI.","Jeżeli test VMP jest błędny, zatrzymaj się na warstwie DATA/CONFIG/HARDWARE."],
+      "note_pl":"Diagnostyka zawsze: POWER → DATA → CONFIG → SIGNAL."
+    },
+    {
+      "id":"08", "title_pl":"HDMI, EDID i obraz z komputera", "title_en":"HDMI, EDID and computer output", "status":"safe",
+      "steps_pl":["Podłącz sprawdzony kabel HDMI do właściwego wejścia MX30.","Ustaw w Windows tryb Rozszerz, nie Duplikuj.","Wybierz rozdzielczość i odświeżanie zgodne z konfiguracją MX30 i materiałem klienta.","W Resolume ustaw ekran MX30 jako wyjście i dopasuj Advanced Output do właściwego canvasu.","Uruchom siatkę, pasy, biel/czerń oraz materiał testowy. Sprawdź krawędzie i proporcje."],
+      "note_pl":"Nie wymuszaj nietypowego EDID przed zapisaniem działającego ustawienia wejścia."
+    },
+    {
+      "id":"09", "title_pl":"Jasność, zapis i próba awarii", "title_en":"Brightness, save and recovery rehearsal", "status":"safe",
+      "steps_pl":["Ustaw jasność odpowiednią do wnętrza; zacznij nisko i zwiększaj po akceptacji klienta.","Zapisz konfigurację w projekcie i — tylko jeśli procedura producenta tego wymaga — do urządzenia.","Zrób drugą kopię pliku na komputerze.","Odłącz na próbę sygnał HDMI: ekran powinien zachować bezpieczne zachowanie ustalone z klientem.","Przeprowadź próbę: brak zasilania jednego cabinetu, przerwany DATA chain, brak HDMI, zła kolejność mapowania."],
+      "note_pl":"Nie testuj awarii w sposób, który może uszkodzić sprzęt lub naruszyć zasady elektryczne."
+    },
+    {
+      "id":"10", "title_pl":"Przekazanie klientowi", "title_en":"Client handover", "status":"safe",
+      "steps_pl":["Klient sam podłącza laptop, a Ty obserwujesz.","Klient wybiera Extend, właściwe wyjście i pełny ekran.","Pokaż, co może zmieniać: źródło materiału i odtwarzanie. Ustal, czego nie zmienia: mapowania, NCP, firmware i ustawień receiving cards.","Przekaż kolejność włączania i wyłączania oraz numer kontaktowy.","Zrób zdjęcie poprawnego obrazu, ekranu VMP i finalnego okablowania; podpisz odbiór."],
+      "note_pl":"Najważniejsze zdanie: Please don't change the processor settings."
+    }
+  ],
+  "phrases": [
+    {"en":"First, I need to identify the hardware.","pl":"Najpierw muszę zidentyfikować sprzęt."},
+    {"en":"Do you have the correct NCP file?","pl":"Czy masz właściwy plik NCP?"},
+    {"en":"Please don't update the firmware yet.","pl":"Proszę, jeszcze nie aktualizuj firmware'u."},
+    {"en":"Which cabinets are connected to port one?","pl":"Które cabinety są podłączone do portu pierwszego?"},
+    {"en":"The test pattern is correct.","pl":"Obraz testowy jest poprawny."},
+    {"en":"The problem is before the processor input.","pl":"Problem jest przed wejściem procesora."},
+    {"en":"I am saving a backup now.","pl":"Teraz zapisuję kopię zapasową."},
+    {"en":"Please don't change the processor settings.","pl":"Proszę nie zmieniać ustawień procesora."}
+  ]
+}

@@ -183,6 +183,10 @@ Identyfikator zwrotu jest kluczem łączącym treść, SRS, ulubione, plan 55H i
 
 Stan jest przechowywany w `localStorage` pod kluczem `rigtalk.v1`. Obejmuje karty SRS, XP, sesje, ustawienia, ulubione, checklisty stoiska, bossów i stan interfejsu.
 
+Od wersji v21 stan obejmuje też `deleted` (ID zwrotów usuniętych przez użytkownika na stałe) oraz `mx30.checks` (checklista identyfikacji i konfiguracji procesora). Usunięty zwrot znika z biblioteki, trybu hali, ulubionych i kolejek SRS; aktualizacja aplikacji nie przywraca go automatycznie. Własny zwrot można dodać globalnym przyciskiem `+ ZWROT` z każdego ekranu.
+
+Zakładka STOISKO ma dwa tryby: `MONTAŻ` i `MX30 + LED`. Drugi jest terenowym manualem PL/EN opartym na rozmowach o MX30/COEX/VMP i dokumentach SQM39462. Fakty są oznaczone jako potwierdzone, warunkowe lub wymagające zatrzymania i backupu. Manual nie pozwala wysłać NCP/firmware bez identyfikacji modelu cabinetu, receiving card i rewizji.
+
 Wynik ostatniej próby generalnej zapisuje się w `simulation`. Zwroty z sytuacji oznaczonych „Stanąłem” automatycznie trafiają do Ulubionych, dzięki czemu powstaje osobista talia braków bez tworzenia osobnego systemu kolejek.
 
 `deepMerge` scala wyłącznie zwykłe obiekty. Tablice, daty i obiekty klas są zastępowane w całości. Ta zasada chroni daty kart FSRS przed zamianą na puste obiekty.
