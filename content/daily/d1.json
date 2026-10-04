@@ -1,0 +1,278 @@
+[
+  {
+    "id": "d1u1-01",
+    "track": "D",
+    "module": "D1",
+    "unit": 1,
+    "type": "SAY",
+    "en": "Hi, how are you?",
+    "pl": "Cześć, jak się masz?",
+    "hint_pl": "Podstawowe powitanie z pytaniem o samopoczucie.",
+    "variants": {
+      "alt": [
+        "Hey! How's it going?"
+      ]
+    },
+    "register": "casual",
+    "red": false,
+    "tags": [
+      "greeting"
+    ]
+  },
+  {
+    "id": "d1u1-02",
+    "track": "D",
+    "module": "D1",
+    "unit": 1,
+    "type": "SAY",
+    "en": "Good, thanks. You?",
+    "pl": "Dobrze, dzięki. A Ty?",
+    "hint_pl": "Tak naprawdę odpowiada się na How are you, nie „I'm fine, thank you”.",
+    "variants": {
+      "alt": [
+        "Not bad, thanks. And you?"
+      ]
+    },
+    "register": "casual",
+    "red": true,
+    "tags": [
+      "greeting"
+    ]
+  },
+  {
+    "id": "d1u1-03",
+    "track": "D",
+    "module": "D1",
+    "unit": 1,
+    "type": "SAY",
+    "en": "Pretty good, thanks.",
+    "pl": "Całkiem nieźle, dzięki.",
+    "hint_pl": "Alternatywna, luźna odpowiedź.",
+    "variants": {
+      "alt": []
+    },
+    "register": "casual",
+    "red": false,
+    "tags": [
+      "greeting"
+    ]
+  },
+  {
+    "id": "d1u1-04",
+    "track": "D",
+    "module": "D1",
+    "unit": 1,
+    "type": "SAY",
+    "en": "Nice to meet you.",
+    "pl": "Miło Cię poznać.",
+    "hint_pl": "Przy pierwszym poznaniu kogoś.",
+    "variants": {
+      "alt": [
+        "You too."
+      ]
+    },
+    "register": "neutral",
+    "red": true,
+    "tags": [
+      "greeting"
+    ]
+  },
+  {
+    "id": "d1u1-05",
+    "track": "D",
+    "module": "D1",
+    "unit": 1,
+    "type": "SAY",
+    "en": "Sorry, what's your name again?",
+    "pl": "Przepraszam, jak masz na imię?",
+    "hint_pl": "Gdy zapomniałeś imienia — bez wstydu.",
+    "variants": {
+      "alt": []
+    },
+    "register": "polite",
+    "red": true,
+    "tags": [
+      "greeting"
+    ]
+  },
+  {
+    "id": "d1u1-06",
+    "track": "D",
+    "module": "D1",
+    "unit": 1,
+    "type": "HEAR",
+    "en": "How are you doing?",
+    "pl": "Jak leci?",
+    "reply": "Good, thanks. You?",
+    "hint_pl": "Odmiana How are you, bardzo częsta.",
+    "variants": {
+      "alt": []
+    },
+    "register": "casual",
+    "red": false,
+    "tags": [
+      "greeting"
+    ]
+  },
+  {
+    "id": "d1u1-07",
+    "track": "D",
+    "module": "D1",
+    "unit": 1,
+    "type": "HEAR",
+    "en": "Nice to meet you.",
+    "pl": "Miło Cię poznać.",
+    "reply": "You too.",
+    "hint_pl": "Krótka, naturalna odpowiedź.",
+    "variants": {
+      "alt": []
+    },
+    "register": "neutral",
+    "red": false,
+    "tags": [
+      "greeting"
+    ]
+  },
+  {
+    "id": "d1u2-01",
+    "track": "D",
+    "module": "D1",
+    "unit": 2,
+    "type": "HEAR",
+    "en": "Are you alright?",
+    "pl": "Cześć, co tam? (UK, nie pytanie o zdrowie)",
+    "reply": "Yeah, good, you?",
+    "hint_pl": "W UK to zwykłe powitanie, np. w sklepie.",
+    "variants": {
+      "uk": "Are you alright?",
+      "us": "How's it going?"
+    },
+    "register": "casual",
+    "red": false,
+    "tags": [
+      "greeting",
+      "uk"
+    ]
+  },
+  {
+    "id": "d1u2-02",
+    "track": "D",
+    "module": "D1",
+    "unit": 2,
+    "type": "HEAR",
+    "en": "Hiya!",
+    "pl": "Cześć! (UK, bardzo luźno)",
+    "reply": "Hiya! Good to see you.",
+    "hint_pl": "Luźne brytyjskie powitanie.",
+    "variants": {
+      "uk": "Hiya!"
+    },
+    "register": "casual",
+    "red": false,
+    "tags": [
+      "greeting",
+      "uk",
+      "short"
+    ]
+  },
+  {
+    "id": "d1u2-03",
+    "track": "D",
+    "module": "D1",
+    "unit": 2,
+    "type": "HEAR",
+    "en": "What's up?",
+    "pl": "Co słychać? (US, luźno)",
+    "reply": "Not much, you?",
+    "hint_pl": "Amerykańskie luźne powitanie.",
+    "variants": {
+      "us": "What's up?"
+    },
+    "register": "casual",
+    "red": false,
+    "tags": [
+      "greeting",
+      "us",
+      "short"
+    ]
+  },
+  {
+    "id": "d1u2-04",
+    "track": "D",
+    "module": "D1",
+    "unit": 2,
+    "type": "SAY",
+    "en": "See you later!",
+    "pl": "Do zobaczenia później!",
+    "hint_pl": "Pożegnanie, gdy spotkacie się jeszcze tego dnia.",
+    "variants": {
+      "alt": [
+        "See you tomorrow."
+      ]
+    },
+    "register": "casual",
+    "red": false,
+    "tags": [
+      "goodbye"
+    ]
+  },
+  {
+    "id": "d1u2-05",
+    "track": "D",
+    "module": "D1",
+    "unit": 2,
+    "type": "SAY",
+    "en": "Have a good one!",
+    "pl": "Miłego dnia!",
+    "hint_pl": "Krótkie, ciepłe pożegnanie.",
+    "variants": {
+      "alt": [
+        "Take care."
+      ]
+    },
+    "register": "casual",
+    "red": false,
+    "tags": [
+      "goodbye"
+    ]
+  },
+  {
+    "id": "d1u2-06",
+    "track": "D",
+    "module": "D1",
+    "unit": 2,
+    "type": "SAY",
+    "en": "Bye! Cheers!",
+    "pl": "Pa! Cześć! (UK)",
+    "hint_pl": "Cheers w UK może znaczyć też „dzięki, pa”.",
+    "variants": {
+      "uk": "Bye! Cheers!"
+    },
+    "register": "casual",
+    "red": false,
+    "tags": [
+      "goodbye",
+      "uk",
+      "short"
+    ]
+  },
+  {
+    "id": "d1u2-07",
+    "track": "D",
+    "module": "D1",
+    "unit": 2,
+    "type": "HEAR",
+    "en": "Have a nice day!",
+    "pl": "Miłego dnia!",
+    "reply": "Thanks, you too!",
+    "hint_pl": "Częste pożegnanie od obsługi lub znajomych.",
+    "variants": {
+      "alt": []
+    },
+    "register": "polite",
+    "red": false,
+    "tags": [
+      "goodbye"
+    ]
+  }
+]

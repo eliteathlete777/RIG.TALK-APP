@@ -1,0 +1,71 @@
+{
+  "title": "TRYB 55H",
+  "deadline": "2026-10-06T06:00:00+02:00",
+  "subtitle": "Angielski do pierwszego stoiska — tylko to, co powiesz i usłyszysz na miejscu.",
+  "rule": "Nie uczysz się angielskiego. Uczysz się przeprowadzić jedną konkretną realizację.",
+  "blocks": [
+    {
+      "id": "b1", "slot": "03.10 · 23:15", "title": "Koło ratunkowe", "duration": "25 min",
+      "goal": "Zatrzymać rozmowę, uprościć ją i odzyskać kontrolę, kiedy nie rozumiesz.",
+      "native_note": "Nie przepraszaj pięć razy. Krótkie „One moment” brzmi normalnie i zawodowo.",
+      "mission": "Powiedz wszystkie sześć zdań bez czytania. Każde ma wejść automatycznie.",
+      "ids": ["t0u2-01", "t0u2-02", "d10u1-04", "d10u1-09", "t9u1-02", "t9u1-05"]
+    },
+    {
+      "id": "b2", "slot": "04.10 · 08:30", "title": "Pierwsze 10 minut z klientem", "duration": "35 min",
+      "goal": "Przywitać się, znaleźć decydenta, obejść stoisko i wykryć zmiany.",
+      "native_note": "„Can we go through the plan?” jest naturalne. Nie potrzebujesz formalnego języka biznesowego.",
+      "mission": "Odegraj rozmowę od przedstawienia się do pytania o zmiany — jednym ciągiem.",
+      "ids": ["t7u2-01", "t7u2-03", "t7u2-05", "t7u2-06", "t7u2-08", "t7u2-09"]
+    },
+    {
+      "id": "b3", "slot": "04.10 · 11:30", "title": "Ekran, belki i liczby", "duration": "40 min",
+      "goal": "Ustalić pozycję, wysokość, ciężar, limit punktów i odpowiedzialność za rigging.",
+      "native_note": "Po każdej liczbie zrób closed loop: powtórz ją jako pytanie. „So, three metres?”",
+      "mission": "Narysuj ekran na kartce i przeprowadź całe ustalenie, wskazując miejsca palcem.",
+      "ids": ["t7u3-01", "t7u3-02", "t7u3-04", "t7u3-06", "t7u3-07", "t7u3-08", "t7u3-12"]
+    },
+    {
+      "id": "b4", "slot": "04.10 · 16:00", "title": "Stagehand: krótkie komendy", "duration": "45 min",
+      "goal": "Bezpiecznie poprowadzić pomocnika przez rozładunek i zawieszenie paneli.",
+      "native_note": "Jedna komenda, jeden ruch. Czasownik na początku: Hold, lift, lock, check, clear.",
+      "mission": "Ćwicz na sucho z dowolnym przedmiotem. Wydawaj komendy głosem, nie w myślach.",
+      "ids": ["t7u5-02", "t7u5-04", "t7u5-07", "t7u5-09", "t7u6-03", "t7u6-07", "t7u6-08", "t7u6-10", "t7u6-11", "t7u6-14"]
+    },
+    {
+      "id": "b5", "slot": "04.10 · 20:30", "title": "Prąd i sygnał", "duration": "35 min",
+      "goal": "Ustalić zasilanie, znaleźć elektryka i poprowadzić okablowanie bez ryzyka.",
+      "native_note": "W pracy krócej znaczy czytelniej. „Not yet” i „Follow the arrows” są lepsze niż długie tłumaczenie.",
+      "mission": "Weź kabel i pokaż fizycznie: power in, power out, data in, data out.",
+      "ids": ["t7u7-01", "t7u7-03", "t7u7-05", "t7u7-06", "t7u7-08", "t7u7-09", "t7u7-14"]
+    },
+    {
+      "id": "b6", "slot": "05.10 · 08:30", "title": "Wykończenie i test", "duration": "35 min",
+      "goal": "Dopilnować czystego tyłu, uruchomić ekran i spokojnie nazwać problem.",
+      "native_note": "Nie opisuj całej diagnozy. Najpierw status: „One panel is dark.” Potem działanie: „I'll check it.”",
+      "mission": "Zrób raport klientowi w trzech zdaniach: co działa, co sprawdzasz, kiedy pokażesz wynik.",
+      "ids": ["t7u8-02", "t7u8-05", "t7u8-09", "t7u9-05", "t7u9-06", "t7u9-09", "t7u9-10"]
+    },
+    {
+      "id": "b7", "slot": "05.10 · 14:00", "title": "Przekazanie klientowi", "duration": "40 min",
+      "goal": "Klient sam podłącza laptop, puszcza film i wie, czego nie dotykać.",
+      "native_note": "Prowadź klienta krokami. Nie rób tego za niego — każda linia kończy się jego działaniem.",
+      "mission": "Przeprowadź prawdziwy laptop przez HDMI, Extend i full screen, mówiąc tylko po angielsku.",
+      "ids": ["t7u10-01", "t7u10-02", "t7u10-04", "t7u10-05", "t7u10-07", "t7u10-08", "t7u10-11", "t7u10-13"]
+    },
+    {
+      "id": "b8", "slot": "05.10 · 20:00", "title": "Próba całej realizacji", "duration": "55 min",
+      "goal": "Rozpoznać trudne pytania i przejść misję od powitania do podpisu.",
+      "native_note": "Nie walcz o idealną gramatykę. Masz być zrozumiały, spokojny i zamknąć następną decyzję.",
+      "mission": "Nagraj telefonem pełną symulację. Odsłuchaj raz. Powtórz tylko miejsca, w których stanąłeś.",
+      "ids": ["t7u2-15", "t7u3-16", "t7u4-14", "t7u5-16", "t7u6-18", "t7u7-15", "t7u9-16", "t7u10-14"]
+    },
+    {
+      "id": "b9", "slot": "06.10 · 04:15", "title": "Ostatnie 15 minut", "duration": "15 min",
+      "goal": "Uruchomić w głowie zdania, które muszą wejść nawet po nieprzespanej nocy.",
+      "native_note": "Zero nowego materiału. Głośno, szybko, bez patrzenia w polski.",
+      "mission": "Jedna runda. Potem zamknij aplikację i jedź na lotnisko.",
+      "ids": ["t0u2-01", "t9u1-02", "t7u2-01", "t7u2-08", "t7u3-01", "t7u3-06", "t7u6-08", "t7u6-10", "t7u7-08", "t7u9-09", "t7u10-08", "t7u10-11"]
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "tracks": {
+    "T": {
+      "name": "TECH",
+      "modules": [
+        "T7",
+        "T0",
+        "T1",
+        "T2",
+        "T3",
+        "T4",
+        "T5",
+        "T6"
+      ]
+    },
+    "D": {
+      "name": "CODZIENNY",
+      "modules": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "D10"
+      ]
+    }
+  },
+  "modules": {
+    "T7": {
+      "track": "T",
+      "name": "PIERWSZE STOISKO",
+      "order": -1,
+      "unlockAfter": null,
+      "boss": null
+    },
+    "T0": {
+      "track": "T",
+      "name": "SURVIVAL KIT",
+      "order": 0,
+      "unlockAfter": null,
+      "boss": "boss-t0"
+    },
+    "T1": {
+      "track": "T",
+      "name": "THE STAND",
+      "order": 1,
+      "unlockAfter": "T0",
+      "boss": "boss-t1"
+    },
+    "T2": {
+      "track": "T",
+      "name": "TECH TALK",
+      "order": 2,
+      "unlockAfter": "T1",
+      "boss": "boss-t2"
+    },
+    "T3": {
+      "track": "T",
+      "name": "THE DEAL",
+      "order": 3,
+      "unlockAfter": "T2",
+      "boss": "boss-t3"
+    },
+    "T4": {
+      "track": "T",
+      "name": "SHOW DAY",
+      "order": 4,
+      "unlockAfter": "T3",
+      "boss": "boss-t4"
+    },
+    "T5": {
+      "track": "T",
+      "name": "CLIENT CONTROL",
+      "order": 5,
+      "unlockAfter": "T4",
+      "boss": "boss-t5"
+    },
+    "T6": {
+      "track": "T",
+      "name": "GET KNOWN",
+      "order": 6,
+      "unlockAfter": "T5",
+      "boss": "boss-t6"
+    },
+    "T9": {
+      "track": "T",
+      "name": "CZERWONE EXTRA",
+      "order": 99,
+      "unlockAfter": null,
+      "boss": null,
+      "excludeFromSession": true
+    },
+    "D1": {
+      "track": "D",
+      "name": "FIRST SECONDS",
+      "order": 0,
+      "unlockAfter": null,
+      "boss": "boss-d1"
+    },
+    "D2": {
+      "track": "D",
+      "name": "CONVERSATION GLUE",
+      "order": 1,
+      "unlockAfter": "D1",
+      "boss": "boss-d2"
+    },
+    "D3": {
+      "track": "D",
+      "name": "SHOP",
+      "order": 2,
+      "unlockAfter": "D2",
+      "boss": "boss-d3"
+    },
+    "D4": {
+      "track": "D",
+      "name": "FOOD & DRINKS",
+      "order": 3,
+      "unlockAfter": "D2",
+      "boss": "boss-d4"
+    },
+    "D5": {
+      "track": "D",
+      "name": "STREET",
+      "order": 4,
+      "unlockAfter": "D2",
+      "boss": "boss-d5"
+    },
+    "D6": {
+      "track": "D",
+      "name": "HOTEL & AIRPORT",
+      "order": 5,
+      "unlockAfter": "D2",
+      "boss": "boss-d6"
+    },
+    "D7": {
+      "track": "D",
+      "name": "SMALL TALK",
+      "order": 6,
+      "unlockAfter": "D3",
+      "boss": "boss-d7"
+    },
+    "D8": {
+      "track": "D",
+      "name": "CHARM",
+      "order": 7,
+      "unlockAfter": "D7",
+      "boss": "boss-d8"
+    },
+    "D9": {
+      "track": "D",
+      "name": "PHONE & PLANS",
+      "order": 8,
+      "unlockAfter": "D7",
+      "boss": null
+    },
+    "D10": {
+      "track": "D",
+      "name": "TROUBLE",
+      "order": 9,
+      "unlockAfter": null,
+      "boss": null
+    }
+  }
+}

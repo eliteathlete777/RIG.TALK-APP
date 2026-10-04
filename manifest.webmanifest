@@ -1,0 +1,15 @@
+{
+  "name": "RIG TALK",
+  "short_name": "RIG TALK",
+  "description": "Nauka angielskiego dla kierownika stoiska i realizacji.",
+  "start_url": "https://elite-athlete.shop/rig-talk/",
+  "scope": "https://elite-athlete.shop/rig-talk/",
+  "display": "standalone",
+  "background_color": "#0a0a0b",
+  "theme_color": "#0a0a0b",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "assets/rigtalk-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/rigtalk-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
