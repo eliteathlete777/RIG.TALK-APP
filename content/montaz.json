@@ -4,8 +4,16 @@
   "source_note": "Dane z paczki SQM39462: lista kompletacyjna, TECH WIZKA, EKRAN, plan zasilania. Przy każdej liczbie jest źródło. Czego nie ma w dokumentach, oznaczone jest BRAK DANYCH.",
   "chapters": [
     {
-      "id": "fakty",
+      "id": "az",
       "n": "1",
+      "title": "Od A do Z: uruchomienie ekranu",
+      "en": "Step by step",
+      "icon": "🧭",
+      "when": "Najpierw tu"
+    },
+    {
+      "id": "fakty",
+      "n": "2",
       "title": "Fakty z dokumentów",
       "en": "Job facts",
       "icon": "📋",
@@ -13,7 +21,7 @@
     },
     {
       "id": "komplet",
-      "n": "2",
+      "n": "3",
       "title": "Kompletacja sprzętu",
       "en": "Gear check",
       "icon": "📦",
@@ -21,7 +29,7 @@
     },
     {
       "id": "mechanika",
-      "n": "3",
+      "n": "4",
       "title": "Mechanika i zawieszenie",
       "en": "Rigging",
       "icon": "⛓",
@@ -29,7 +37,7 @@
     },
     {
       "id": "cabinety",
-      "n": "4",
+      "n": "5",
       "title": "Montaż cabinetów",
       "en": "Cabinet build",
       "icon": "▦",
@@ -37,7 +45,7 @@
     },
     {
       "id": "rj45",
-      "n": "5",
+      "n": "6",
       "title": "RJ45 · układ B",
       "en": "RJ45 · T568B",
       "icon": "🔌",
@@ -45,7 +53,7 @@
     },
     {
       "id": "zasilanie",
-      "n": "6",
+      "n": "7",
       "title": "Zasilanie",
       "en": "Power",
       "icon": "⚡",
@@ -53,7 +61,7 @@
     },
     {
       "id": "kalkulator",
-      "n": "7",
+      "n": "8",
       "title": "Kalkulator pikseli i linii",
       "en": "Pixel calculator",
       "icon": "🧮",
@@ -61,7 +69,7 @@
     },
     {
       "id": "mx30",
-      "n": "8",
+      "n": "9",
       "title": "MX30 · VMP · test · przekazanie",
       "en": "Processor and handover",
       "icon": "🖥",
@@ -69,7 +77,7 @@
     },
     {
       "id": "mx30panel",
-      "n": "9",
+      "n": "10",
       "title": "MX30: panel przedni (z manuala)",
       "en": "MX30 front panel menus",
       "icon": "🎛",
@@ -77,7 +85,7 @@
     },
     {
       "id": "vmp",
-      "n": "10",
+      "n": "11",
       "title": "VMP (COEX): połączenie i ekran",
       "en": "VMP: connect and configure",
       "icon": "🖥",
@@ -85,7 +93,7 @@
     },
     {
       "id": "resolume",
-      "n": "11",
+      "n": "12",
       "title": "Resolume: wyjście na ekran LED",
       "en": "Resolume output to the LED wall",
       "icon": "🎬",
@@ -93,7 +101,7 @@
     },
     {
       "id": "etapy",
-      "n": "12",
+      "n": "13",
       "title": "Etapy stoiska i zwroty",
       "en": "Stand stages",
       "icon": "🗣",
@@ -101,15 +109,23 @@
     },
     {
       "id": "plany",
-      "n": "13",
+      "n": "14",
       "title": "Plany i rysunki",
       "en": "Plans and drawings",
       "icon": "🗺",
       "when": "Zawsze pod ręką"
     },
     {
+      "id": "slowka",
+      "n": "15",
+      "title": "Słówka: szybka powtórka",
+      "en": "Word list",
+      "icon": "🔤",
+      "when": "Powtórka"
+    },
+    {
       "id": "niespodzianki",
-      "n": "14",
+      "n": "16",
       "title": "Co może zaskoczyć",
       "en": "Risks and unknowns",
       "icon": "⚠",
@@ -674,7 +690,7 @@
     "intro": "Wszystkie rysunki z PDF-ów SQM i zdjęcia trasy kabli. Dotknij miniaturę, aby powiększyć."
   },
   "mx30panel": {
-    "warning": "Wszystko poniżej jest z oficjalnej instrukcji MX30 V1.4.2 (Novastar), ze wskazaniem sekcji i strony. Zanim wyślesz cokolwiek do cabinetów, zrób backup (rozdział 8).",
+    "warning": "Wszystko poniżej jest z oficjalnej instrukcji MX30 V1.4.2 (Novastar), ze wskazaniem sekcji i strony. Zanim wyślesz cokolwiek do cabinetów, zrób backup (rozdział „MX30 · VMP · test · przekazanie”).",
     "blocks": [
       {
         "h": "The front panel · Panel przedni",
@@ -862,7 +878,7 @@
     ],
     "missing": [
       "Konkretny plik .rcfgx / NCP dla cabinetu INFILED HL-3978. Daje go właściciel sprzętu. Bez niego nie wysyłaj konfiguracji.",
-      "Typ karty odbiorczej w cabinetach (np. A10s Pro albo inna). Od niej zależy limit pikseli na port (rozdział 7)."
+      "Typ karty odbiorczej w cabinetach (np. A10s Pro albo inna). Od niej zależy limit pikseli na port (rozdział „Kalkulator pikseli i linii”)."
     ],
     "sources": [
       {
@@ -915,8 +931,8 @@
         "src": "MX30 Manual V1.4.2, sekcja 2.2, str. 3–4 i dane z kalkulatora",
         "steps": [
           {
-            "en": "The wall is 2048 × 512 px (chapter 7). That is wider than Full HD (1920 px).",
-            "pl": "Ekran ma 2048 × 512 px (rozdział 7). To szerzej niż Full HD (1920 px)."
+            "en": "The wall is 2048 × 512 px (pixel calculator). That is wider than Full HD (1920 px).",
+            "pl": "Ekran ma 2048 × 512 px (rozdział „Kalkulator pikseli i linii”). To szerzej niż Full HD (1920 px)."
           },
           {
             "en": "Per the MX30 manual: HDMI 2.0 input, maximum width 8192 px (8192×1080@60 Hz), minimum resolution 800×600@60 Hz, custom input resolutions are supported through EDID.",
@@ -1195,8 +1211,8 @@
             "pl": "W sekcji Canvas wybierz gotową rozdzielczość albo wpisz własną szerokość i wysokość (maksimum 16 384). X i Y przesuwają początek canvasu."
           },
           {
-            "en": "For our wall the canvas is 2048 × 512 (calculator, chapter 7). Confirm the cabinet resolution first.",
-            "pl": "Dla naszego ekranu canvas to 2048 × 512 (kalkulator, rozdział 7). Najpierw potwierdź rozdzielczość cabinetu."
+            "en": "For our wall the canvas is 2048 × 512 (pixel calculator). Confirm the cabinet resolution first.",
+            "pl": "Dla naszego ekranu canvas to 2048 × 512 (kalkulator pikseli). Najpierw potwierdź rozdzielczość cabinetu."
           }
         ]
       },
@@ -1350,6 +1366,12 @@
         "ph": "aj em sejwing de preset naw",
         "pl": "Zapisuję teraz preset."
       }
+    ]
+  },
+  "az": {
+    "plans": [
+      "tw-12",
+      "tw-17"
     ]
   }
 }

@@ -1,0 +1,784 @@
+{
+  "title": "OD A DO Z: URUCHOMIENIE EKRANU",
+  "intro": "Najkrótsza praktyczna droga od kabli do obrazu klienta. Kroki są ułożone w kolejności, w jakiej je robisz na hali. Przy każdym kroku: CO ustawić, GDZIE to kliknąć i JAK sprawdzić, że działa. Źródła: manual MX30 V1.4.2, manual VMP V1.5.0, strony Resolume i dokumenty SQM. Rzeczy wyliczone lub ogólne mają znacznik „potwierdź”.",
+  "ask": {
+    "title": "Zanim wyjedziesz: o co zapytać SQM i klienta",
+    "why": "W manualu MX30 i VMP nie ma żadnego hasła ani konta. VMP łączy się z MX30 po adresie IP, bez logowania. Hasła do komputerów (Windows, laptopy SQM albo klienta) zna tylko ich właściciel. Poproś o nie wprost. Nie zgaduj i nie omijaj zabezpieczeń.",
+    "list": [
+      "Login i hasło do komputera, z którego sterujesz ekranem (jeśli to komputer SQM albo klienta)",
+      "Plik konfiguracji cabinetu (.rcfgx albo NCP) dla INFILED HL-3978",
+      "Typ karty odbiorczej w cabinetach i wersja firmware",
+      "Model MX30: wersja firmware i adres IP ustawiony w magazynie",
+      "Która wersja VMP ma być użyta",
+      "Kolejność i trasa DATA (które cabinety do portu 1, które do portu 2)",
+      "Czy w Resolume klient puszcza obraz sam i na jakim laptopie (Windows czy Mac)"
+    ],
+    "message": "Dzień dobry,\nprzed montażem ekranu LED (Lynk & Co, Paris, hala 5.1, stoisko 51A32) proszę o:\n1) login i hasło do komputera sterującego (jeśli będzie używany komputer SQM/klienta),\n2) plik konfiguracji cabinetu (.rcfgx lub NCP) dla INFILED HL-3978,\n3) typ karty odbiorczej i wersję firmware cabinetów,\n4) wersję firmware i adres IP procesora MX30,\n5) wersję VMP, której mamy użyć,\n6) schemat połączeń DATA (które cabinety na który port).\nDziękuję,\nDamian\n\nHello,\nbefore we build the LED wall (Lynk & Co, Paris, hall 5.1, stand 51A32), could you please send me:\n1) the login and password for the control computer (if an SQM/client computer will be used),\n2) the cabinet configuration file (.rcfgx or NCP) for INFILED HL-3978,\n3) the receiving card type and cabinet firmware version,\n4) the MX30 firmware version and IP address,\n5) the VMP version we should use,\n6) the DATA wiring diagram (which cabinets go to which port).\nThank you,\nDamian"
+  },
+  "phases": [
+    {
+      "id": "p0",
+      "n": "0",
+      "title": "Przed wyjazdem (w hotelu)",
+      "time": "20 min",
+      "steps": [
+        {
+          "do": "Zainstaluj VMP na swoim laptopie.",
+          "where": "Instalator Novastar, Windows albo MacOS (manual VMP, sekcja 3).",
+          "check": "VMP się uruchamia."
+        },
+        {
+          "do": "Zrób projekt offline.",
+          "where": "VMP: pasek menu Tools → Offline Mode → Enter Offline Mode. Plus w lewym górnym rogu → Add Controller. Wpisz model MX30, nazwę i adres IP.",
+          "check": "Kontroler widać na liście projektów."
+        },
+        {
+          "do": "Ustaw canvas 2048 × 512 i dodaj cabinety.",
+          "where": "Wybierz ekran → Layout → Edit / Canvas. Cabinet wybierz własny (custom) i w Edit wpisz 256 × 64 px (potwierdź z kartą cabinetu). Układ 8 × 8.",
+          "check": "Topologia pokazuje 64 cabinety, canvas 2048 × 512."
+        },
+        {
+          "do": "Zapisz projekt.",
+          "where": "Project → Export. Plik .nprj skopiuj na pendrive i do chmury.",
+          "check": "Plik .nprj istnieje w dwóch miejscach."
+        },
+        {
+          "do": "Przygotuj Resolume bez ekranu.",
+          "where": "Output → Advanced. Przy braku drugiego ekranu otwiera się Virtual Screen: wpisz Width 2048 i Height 1080 (wariant A, patrz rozdział „Resolume”).",
+          "check": "Slice 2048 × 512 leży w pozycji 0, 0."
+        }
+      ],
+      "trivia": [
+        "Ekran 2048 × 512 ma dokładnie 1 048 576 pikseli, czyli 2 do potęgi 20.",
+        "VMP w trybie offline pozwala dodać do 100 kontrolerów, ale jednocześnie pracuje 25."
+      ]
+    },
+    {
+      "id": "p1",
+      "n": "1",
+      "title": "Kable: zanim cokolwiek włączysz",
+      "time": "30–60 min",
+      "steps": [
+        {
+          "do": "Zasilanie: dwie linie 16 A z racka do dwóch grup po 32 cabinety.",
+          "where": "POWERBOX RACK 32A → 2 × 16 A. Kable PowerCon TRUE1 z listy SQM. Wyłączniki w pozycji OFF.",
+          "check": "Podpisane: linia 1 = kolumny 1–4, linia 2 = kolumny 5–8. Pobór mocy cabinetu: BRAK DANYCH, więc zapytaj SQM."
+        },
+        {
+          "do": "DATA główne: z portu MX30 do pierwszego cabinetu łańcucha.",
+          "where": "Port Ethernet wyjściowy 1–10 z tyłu MX30. Zaplanuj: główne porty 1 i 3, zapasowe porty 2 i 4 (potwierdź z SQM). Podpisz taśmą papierową każdy koniec.",
+          "check": "Na planie masz rozpisane: port → kolumny cabinetów."
+        },
+        {
+          "do": "DATA zapasowe: kabel z portu zapasowego do drugiego końca łańcucha (pętla).",
+          "where": "Porty 2 i 4 MX30 do ostatnich cabinetów łańcuchów. Typowa pętla zapasowa Novastar. Potwierdź schemat u SQM.",
+          "check": "Każdy łańcuch ma dwa końce wpięte: początek do portu głównego, koniec do zapasowego."
+        },
+        {
+          "do": "Kabel sterujący komputera do MX30.",
+          "where": "Port ETHERNET (sterujący) z tyłu MX30. To NIE jest port wyjściowy 1–10. MX30 ma dwa takie porty.",
+          "check": "Kabel siedzi w porcie opisanym ETHERNET."
+        },
+        {
+          "do": "HDMI jeszcze nie podpinaj.",
+          "where": "Najpierw test z obrazu testowego.",
+          "check": "—"
+        }
+      ],
+      "trivia": [
+        "MX30 ma 10 portów Ethernet 1 Gb/s i 2 porty optyczne 10 Gb/s. OPT 2 jest kopią OPT 1.",
+        "Porty sterujące mają wbudowany switch. Do 20 MX30 można połączyć kaskadowo bez routera.",
+        "Pułapka: Swift Layout z panelu zakłada kolejne porty (1, 2, 3…). Jeśli port 2 jest zapasowym portu 1, ekran ustawiasz w VMP, nie z panelu (wniosek z manuala, potwierdź na miejscu)."
+      ]
+    },
+    {
+      "id": "p2",
+      "n": "2",
+      "title": "Włączenie w dobrej kolejności",
+      "time": "5 min",
+      "steps": [
+        {
+          "do": "Włącz MX30.",
+          "where": "Włącznik zasilania z tyłu, potem przycisk Standby z przodu.",
+          "check": "Dioda: czerwona (czuwanie) → niebieska (start) → zielona (praca normalna)."
+        },
+        {
+          "do": "Włącz zasilanie cabinetów po zgodzie elektryka.",
+          "where": "Dwie linie 16 A z racka.",
+          "check": "Cabinety się zapalają (autotest) lub mają sygnał zasilania."
+        },
+        {
+          "do": "Przeczytaj ekran główny MX30.",
+          "where": "TFT 3,5 cala na przodzie.",
+          "check": "Użyte porty Ethernet są niebieskie (podłączone). Pomarańczowy komunikat przy starcie: Continue (tryb ograniczony). Czerwony: stop, Export Log."
+        }
+      ],
+      "trivia": [
+        "Dioda migająca na czerwono oznacza nieprawidłową pracę urządzenia.",
+        "Przy włączeniu MX30 robi autotest sam i podaje komunikaty."
+      ]
+    },
+    {
+      "id": "p3",
+      "n": "3",
+      "title": "Procesor: ustawienia na panelu",
+      "time": "10 min",
+      "steps": [
+        {
+          "do": "Sprawdź tryb pracy: All-In-One Controller.",
+          "where": "Menu główne → System Settings → Working Mode. Pokrętło: naciśnij, wybierz, naciśnij.",
+          "check": "Ekran główny pokazuje „All-In-One Controller”. Tylko w tym trybie VMP pozwala dodać layery."
+        },
+        {
+          "do": "Odczytaj adres IP.",
+          "where": "Ekran główny MX30. Zmiana: Communication Settings → Network Settings → Mode Manual → IP Address / Subnet Mask / Default Gateway → Apply.",
+          "check": "Masz zapisany adres IP procesora."
+        },
+        {
+          "do": "Ustaw rozdzielczość wejścia HDMI.",
+          "where": "Input Settings → HDMI1 → EDID → Mode: Custom → 2048 × 1080 przy 60 Hz → Apply. Albo Mode Standard → 3840 × 2160 przy 60 Hz.",
+          "check": "Na ekranie głównym przy HDMI1 widać wybraną rozdzielczość."
+        },
+        {
+          "do": "Zablokuj wprowadzanie przypadkowych zmian dopiero na końcu.",
+          "where": "Pokrętło + BACK przez 5 s lub dłużej.",
+          "check": "Na ekranie głównym pojawia się ikona blokady."
+        }
+      ],
+      "trivia": [
+        "W trybie All-In-One opóźnienie na kontrolerze to 1 klatka, w trybie Send-Only 0 klatek (poniżej 1 ms).",
+        "W trybie All-In-One menu Select Input się nie pokazuje. Źródło wybierasz w VMP (warstwy)."
+      ]
+    },
+    {
+      "id": "p4",
+      "n": "4",
+      "title": "VMP: kiedy odpalić i co kliknąć",
+      "time": "20–30 min",
+      "steps": [
+        {
+          "do": "Odpal VMP dopiero, gdy MX30 jest zielony i kabel sterujący jest wpięty.",
+          "where": "Zasada: komputer i MX30 w tej samej podsieci.",
+          "check": "—"
+        },
+        {
+          "do": "Ustaw kartę sieciową komputera na stały adres w podsieci MX30.",
+          "where": "Windows: Ustawienia → Sieć → Ethernet → Edytuj IP. Pierwsze trzy liczby takie jak w MX30, ostatnia inna, maska zwykle 255.255.255.0 (potwierdź).",
+          "check": "Ping do MX30 działa albo VMP znajdzie kontroler."
+        },
+        {
+          "do": "Uruchom VMP i znajdź kontroler.",
+          "where": "Lista projektów po lewej: nowy kontroler jest w Default Project. Gdy go nie widać: wyszukaj po adresie IP (manual VMP, sekcja 4.3.2).",
+          "check": "MX30 jest na liście."
+        },
+        {
+          "do": "Wczytaj projekt albo stwórz ekran.",
+          "where": "Project → Import (plik .nprj tego samego modelu) albo plus → New Screen i przeciągnij kontroler na ekran.",
+          "check": "Ekran jest powiązany z MX30."
+        },
+        {
+          "do": "Ustaw tryb, canvas i topologię.",
+          "where": "Layout → Edit: Working Mode All-In-One. Canvas 2048 × 512, X 0, Y 0. Na dole wybierz port Ethernet i klikaj lub przeciągaj w obszarze topologii, aby dodać cabinety w kolejności kabla.",
+          "check": "Przy porcie widać np. 32/- i procent obciążenia portu."
+        },
+        {
+          "do": "Ustaw backup portów.",
+          "where": "Ekran → Backup → Ethernet Backup → Sequential Backup (1⇌2, 3⇌4) albo Custom. Potem Verify Primary i Verify Backup.",
+          "check": "Po odłączeniu zapasowego główny działa, i odwrotnie."
+        },
+        {
+          "do": "Wczytaj plik konfiguracji cabinetu tylko wtedy, gdy cabinety nie wyświetlają obrazu.",
+          "where": "Panel MX30: Screen Configuration → Send Cabinet Config File → plik → Yes, potem BACK → Save to RV Card → Yes.",
+          "check": "Komunikat o udanym zapisie. Nie wysyłaj pliku, jeśli nie masz pewności, że pasuje."
+        },
+        {
+          "do": "Włącz Mapping i obraz testowy.",
+          "where": "Prawy klik na ekranie → Mapping. Test Pattern z listy w obszarze ustawień cabinetów. Indicator włącz przełącznikiem.",
+          "check": "Cabinety pokazują numer portu i karty. Wskaźniki zielone."
+        }
+      ],
+      "trivia": [
+        "W VMP V1.5.0 nowy projekt offline pozwala na 512 cabinetów na port. Starsze projekty mają limit 32.",
+        "VMP ma 8 stron topologii. Źródło można zamrozić (Source Snapshot) i ustawiać bez patrzenia na ekran.",
+        "Mapping pokazuje trasę kabli: numery portu i karty odbiorczej na każdym cabinecie."
+      ]
+    },
+    {
+      "id": "p5",
+      "n": "5",
+      "title": "Źródło: HDMI i laptop",
+      "time": "15 min",
+      "steps": [
+        {
+          "do": "Dodaj warstwę z wejścia HDMI.",
+          "where": "VMP: wybierz kontroler → Source → dwuklik na miniaturze HDMI1. Ustaw rozmiar warstwy 2048 × 512, X 0, Y 0 (Properties).",
+          "check": "Wskaźnik źródła jest zielony."
+        },
+        {
+          "do": "Podłącz HDMI od laptopa do wejścia HDMI 2.0-1 IN w MX30.",
+          "where": "Tył MX30. To wejście przyjmuje do 4K przy 60 Hz.",
+          "check": "Na ekranie głównym MX30 przy HDMI1 kolor zielony."
+        },
+        {
+          "do": "Ustaw Windows w tryb Rozszerz.",
+          "where": "Win + P → Rozszerz. Ustawienia → Ekran → wybierz drugi monitor → rozdzielczość taka jak w EDID MX30, odświeżanie 60 Hz.",
+          "check": "Drugi ekran jest rozszerzeniem pulpitu, nie lustrem."
+        },
+        {
+          "do": "Ustaw Resolume.",
+          "where": "Output → Advanced → prawy klik na ekranie po lewej → wybierz wyjście do MX30. Slice 2048 × 512 w pozycji 0, 0.",
+          "check": "Siatka testowa zaczyna się w lewym górnym rogu ekranu i nie jest ucięta."
+        },
+        {
+          "do": "Jeśli na ekranie czarno, szukaj od źródła.",
+          "where": "HDMI1 szary lub czerwony: kabel, Rozszerz, rozdzielczość. HDMI1 zielony: warstwa, canvas, Display Control (Normal) i Blackout.",
+          "check": "Obraz widoczny."
+        }
+      ],
+      "trivia": [
+        "Resolume sam nie tworzy wyjść. Robi to komputer. Gdy zniknie interfejs po wyborze głównego monitora: CTRL + SHIFT + D wyłącza wszystkie wyjścia.",
+        "Ekran jest szerszy niż Full HD (2048 > 1920), więc zwykły obraz 1080p go nie obejmie."
+      ]
+    },
+    {
+      "id": "p6",
+      "n": "6",
+      "title": "Jasność i zapis",
+      "time": "10 min",
+      "steps": [
+        {
+          "do": "Ustaw jasność na wnętrze, zacznij nisko.",
+          "where": "Panel MX30: Screen Brightness → naciśnij pokrętło → obróć → naciśnij. Albo VMP: ekran → Screen Settings → Image Quality.",
+          "check": "Klient akceptuje jasność."
+        },
+        {
+          "do": "Zapisz jasność w kartach odbiorczych.",
+          "where": "Panel MX30: Screen Configuration → Save to RV Card → Yes.",
+          "check": "Komunikat o udanym zapisie."
+        },
+        {
+          "do": "Zapisz preset i projekt.",
+          "where": "VMP: Preset → kliknij miejsce → zaznacz dane → Save. Project → Export (.nprj).",
+          "check": "Dwie kopie pliku: komputer i pendrive."
+        },
+        {
+          "do": "Zrób zdjęcia dokumentacji.",
+          "where": "Ekran główny MX30, topologia w VMP, kable z opisami.",
+          "check": "Zdjęcia w telefonie."
+        }
+      ],
+      "trivia": [
+        "VMP przechowuje do 128 presetów. Preset zapamiętuje dane z ekranów Source, Layout, Processing i Screen Settings.",
+        "Funkcja Light up slowly przy włączeniu zapala ekran powoli od 0 do jasności docelowej."
+      ]
+    },
+    {
+      "id": "p7",
+      "n": "7",
+      "title": "Przekazanie klientowi",
+      "time": "10 min",
+      "steps": [
+        {
+          "do": "Klient sam podłącza swój laptop do HDMI.",
+          "where": "Ty obserwujesz. Klient: Rozszerz, właściwe wyjście, pełny ekran.",
+          "check": "Obraz klienta jest na ekranie."
+        },
+        {
+          "do": "Ustal zachowanie ekranu przy braku sygnału.",
+          "where": "VMP: ustawienia cabinetów → No data signal: Blackout albo Last Frame.",
+          "check": "Odłącz HDMI na próbę i sprawdź zachowanie."
+        },
+        {
+          "do": "Zablokuj przyciski MX30.",
+          "where": "Pokrętło + BACK przez 5 s lub dłużej.",
+          "check": "Ikona blokady na ekranie głównym."
+        },
+        {
+          "do": "Powiedz klientowi jedno zdanie: nie zmieniamy ustawień procesora.",
+          "where": "Po angielsku: Please don't change the processor settings.",
+          "check": "Podpisany odbiór."
+        }
+      ],
+      "trivia": [
+        "Freeze zatrzymuje obraz na ekranie, a źródło gra dalej. Blackout daje czarny ekran, źródło też gra dalej."
+      ]
+    },
+    {
+      "id": "p8",
+      "n": "8",
+      "title": "Awaria: szukaj od lewej",
+      "time": "—",
+      "table": [
+        [
+          "VMP nie widzi MX30",
+          "Kabel w porcie ETHERNET (nie 1–10), ta sama podsieć, wyszukaj po IP."
+        ],
+        [
+          "Czarny ekran, HDMI1 szary lub czerwony",
+          "Problem przed procesorem: kabel HDMI, tryb Rozszerz, rozdzielczość, EDID."
+        ],
+        [
+          "HDMI1 zielony, ekran czarny",
+          "Warstwa i canvas w VMP, Display Control = Normal, Blackout, wysłany plik konfiguracji."
+        ],
+        [
+          "Część ekranu ciemna",
+          "Zasilanie linii, kabel DATA przed pierwszym ciemnym cabinetem, Mapping, port zapasowy."
+        ],
+        [
+          "Obraz przesunięty albo ucięty",
+          "Rozdzielczość wejścia różni się od canvasu, pozycja warstwy, H Offset i V Offset, slice w Resolume."
+        ],
+        [
+          "Migotanie",
+          "Odświeżanie (60 Hz), głębia bitowa, kabel."
+        ]
+      ]
+    }
+  ],
+  "words": {
+    "az": [
+      [
+        "cabinet",
+        "moduł ekranu LED",
+        "kabinet"
+      ],
+      [
+        "receiving card",
+        "karta odbiorcza",
+        "ryseiwing kard"
+      ],
+      [
+        "controller",
+        "procesor, kontroler",
+        "kontroler"
+      ],
+      [
+        "canvas",
+        "obszar obrazu",
+        "kenwas"
+      ],
+      [
+        "layer",
+        "warstwa",
+        "lejer"
+      ],
+      [
+        "topology",
+        "topologia, schemat połączeń",
+        "topolodzi"
+      ],
+      [
+        "data flow",
+        "kierunek danych",
+        "dejta flou"
+      ],
+      [
+        "main port",
+        "port główny",
+        "mejn port"
+      ],
+      [
+        "backup port",
+        "port zapasowy",
+        "bekap port"
+      ],
+      [
+        "mapping",
+        "mapowanie (numery na cabinetach)",
+        "maping"
+      ],
+      [
+        "test pattern",
+        "obraz testowy",
+        "test patern"
+      ],
+      [
+        "resolution",
+        "rozdzielczość",
+        "rezolusz"
+      ],
+      [
+        "refresh rate",
+        "odświeżanie",
+        "ryfresz rejt"
+      ],
+      [
+        "brightness",
+        "jasność",
+        "brajtnes"
+      ],
+      [
+        "preset",
+        "zapisane ustawienie",
+        "preset"
+      ],
+      [
+        "freeze",
+        "zatrzymaj obraz",
+        "fryz"
+      ],
+      [
+        "blackout",
+        "czarny ekran",
+        "blekaut"
+      ],
+      [
+        "extend",
+        "rozszerz (ekran)",
+        "ykstend"
+      ],
+      [
+        "mirror",
+        "lustro (powielanie)",
+        "miror"
+      ],
+      [
+        "apply",
+        "zastosuj",
+        "aplaj"
+      ],
+      [
+        "save",
+        "zapisz",
+        "sejw"
+      ],
+      [
+        "firmware",
+        "oprogramowanie urządzenia",
+        "firmłer"
+      ],
+      [
+        "IP address",
+        "adres IP",
+        "aj pi adres"
+      ],
+      [
+        "subnet mask",
+        "maska podsieci",
+        "sabnet mask"
+      ],
+      [
+        "gateway",
+        "brama",
+        "gejtłej"
+      ],
+      [
+        "offset",
+        "przesunięcie",
+        "ofset"
+      ],
+      [
+        "slice",
+        "wycinek obrazu (Resolume)",
+        "slajs"
+      ],
+      [
+        "output",
+        "wyjście",
+        "autput"
+      ],
+      [
+        "input",
+        "wejście",
+        "input"
+      ],
+      [
+        "handover",
+        "przekazanie",
+        "hendower"
+      ],
+      [
+        "lock",
+        "zablokuj",
+        "lok"
+      ],
+      [
+        "power line",
+        "linia zasilania",
+        "pałer lajn"
+      ]
+    ],
+    "komplet": [
+      [
+        "cabinet",
+        "moduł ekranu LED",
+        "kabinet"
+      ],
+      [
+        "shackle",
+        "szekla",
+        "szakel"
+      ],
+      [
+        "steelflex",
+        "linka stalowa (steelflex)",
+        "stilfleks"
+      ],
+      [
+        "support beam",
+        "belka wsparcia",
+        "sepport bim"
+      ],
+      [
+        "spare",
+        "zapasowy",
+        "spe"
+      ],
+      [
+        "patch cable",
+        "patchcord",
+        "pecz kejbel"
+      ],
+      [
+        "extension cable",
+        "przedłużka",
+        "ykstenszyn kejbel"
+      ]
+    ],
+    "mechanika": [
+      [
+        "scaffold",
+        "rusztowanie",
+        "skefold"
+      ],
+      [
+        "bracket",
+        "wspornik",
+        "brakyt"
+      ],
+      [
+        "truss",
+        "kratownica",
+        "tras"
+      ],
+      [
+        "sling",
+        "linka zawieszenia",
+        "slyng"
+      ],
+      [
+        "load",
+        "obciążenie",
+        "lołd"
+      ],
+      [
+        "level",
+        "poziom (wypoziomuj)",
+        "lewel"
+      ],
+      [
+        "clear the area",
+        "opróżnij strefę",
+        "klir di erija"
+      ]
+    ],
+    "cabinety": [
+      [
+        "row",
+        "rząd",
+        "roł"
+      ],
+      [
+        "column",
+        "kolumna",
+        "kolem"
+      ],
+      [
+        "gap",
+        "szczelina",
+        "gep"
+      ],
+      [
+        "edge",
+        "krawędź",
+        "edż"
+      ],
+      [
+        "mounting angle",
+        "kątownik montażowy",
+        "maunting engel"
+      ],
+      [
+        "paper tape",
+        "taśma papierowa",
+        "pejper tejp"
+      ]
+    ],
+    "rj45": [
+      [
+        "pin",
+        "pin, styk",
+        "pin"
+      ],
+      [
+        "wire",
+        "żyła",
+        "łajer"
+      ],
+      [
+        "crimp",
+        "zaciskać",
+        "krymp"
+      ],
+      [
+        "crimping tool",
+        "zaciskarka",
+        "krymping tul"
+      ],
+      [
+        "cable tester",
+        "tester kabli",
+        "kejbel tester"
+      ],
+      [
+        "straight cable",
+        "kabel prosty",
+        "strejt kejbel"
+      ],
+      [
+        "strip",
+        "zdjąć izolację",
+        "strip"
+      ]
+    ],
+    "zasilanie": [
+      [
+        "circuit breaker",
+        "wyłącznik nadprądowy",
+        "serkyt brejker"
+      ],
+      [
+        "amp",
+        "amper",
+        "emp"
+      ],
+      [
+        "socket",
+        "gniazdo",
+        "sokyt"
+      ],
+      [
+        "power box",
+        "skrzynia zasilania",
+        "pałer boks"
+      ],
+      [
+        "switch on",
+        "włącz",
+        "słycz on"
+      ],
+      [
+        "switch off",
+        "wyłącz",
+        "słycz of"
+      ],
+      [
+        "electrician",
+        "elektryk",
+        "elektryszyn"
+      ]
+    ],
+    "mx30panel": [
+      [
+        "knob",
+        "pokrętło",
+        "nob"
+      ],
+      [
+        "menu",
+        "menu",
+        "meniu"
+      ],
+      [
+        "standby",
+        "czuwanie",
+        "stendbaj"
+      ],
+      [
+        "main menu",
+        "menu główne",
+        "mejn meniu"
+      ],
+      [
+        "home screen",
+        "ekran główny",
+        "hołm skrin"
+      ],
+      [
+        "factory reset",
+        "reset fabryczny",
+        "fektory risset"
+      ]
+    ],
+    "vmp": [
+      [
+        "project",
+        "projekt",
+        "projekt"
+      ],
+      [
+        "offline mode",
+        "tryb offline",
+        "oflajn mołd"
+      ],
+      [
+        "import",
+        "wczytaj (import)",
+        "import"
+      ],
+      [
+        "export",
+        "wyeksportuj",
+        "yksport"
+      ],
+      [
+        "topology",
+        "schemat połączeń",
+        "topolodzi"
+      ],
+      [
+        "source",
+        "źródło",
+        "sors"
+      ],
+      [
+        "crop",
+        "przytnij",
+        "krop"
+      ]
+    ],
+    "resolume": [
+      [
+        "advanced output",
+        "zaawansowane wyjście",
+        "edwansd autput"
+      ],
+      [
+        "virtual screen",
+        "ekran wirtualny",
+        "wyrczuel skrin"
+      ],
+      [
+        "slice",
+        "wycinek obrazu",
+        "slajs"
+      ],
+      [
+        "composition",
+        "kompozycja",
+        "kompozyszyn"
+      ],
+      [
+        "device",
+        "urządzenie",
+        "dewajs"
+      ],
+      [
+        "delay",
+        "opóźnienie",
+        "dylej"
+      ]
+    ]
+  }
+}

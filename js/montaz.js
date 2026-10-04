@@ -5,6 +5,7 @@
 import { store } from './state.js';
 import * as speech from './speech.js';
 import { planLinks, renderPlany } from './plany.js';
+import { renderAz, renderWordsChapter, wordList, loadAz } from './az.js';
 
 let cache = null;
 
@@ -61,7 +62,7 @@ function stepList(steps){
   steps.forEach(step => {
     const li = el('li');
     if (typeof step === 'string'){ li.textContent = step; }
-    else { li.appendChild(el('span', 'mz-en-line', step.en)); li.appendChild(el('small', 'mz-pl-line', step.pl)); }
+    else { li.appendChild(el('span', 'mz-pl-main', step.pl)); }
     list.appendChild(li);
   });
   return list;
@@ -81,7 +82,7 @@ function renderBlocks(root, section){
   section.blocks.forEach(block => {
     const wrap = el('section', 'mx-step ' + (block.status === 'manual' ? 'safe' : ''));
     wrap.appendChild(el('div', 'mx-status', BLOCK_STATUS[block.status] || ''));
-    wrap.appendChild(el('h3', 'mz-block-h', block.h));
+    wrap.appendChild(el('h3', 'mz-block-h', block.h.includes(' · ') ? block.h.split(' · ').pop() : block.h));
     wrap.appendChild(stepList(block.steps));
     if (block.src) wrap.appendChild(el('small', 'mz-srcline', 'Źródło: ' + block.src));
     root.appendChild(wrap);
@@ -322,7 +323,7 @@ export async function renderMontazHub(container, { openStages, openMx30 }){
     container.appendChild(hero);
     const grid = el('div', 'mz-grid');
     data.chapters.forEach(chapter => {
-      const tile = el('button', 'mz-tile' + (chapter.id === 'niespodzianki' ? ' alert' : ''));
+      const tile = el('button', 'mz-tile' + (chapter.id === 'niespodzianki' ? ' alert' : '') + (chapter.id === 'az' ? ' az' : ''));
       tile.dataset.chapter = chapter.id;
       tile.appendChild(el('span', 'mz-n', chapter.n));
       tile.appendChild(el('span', 'mz-icon', chapter.icon));
@@ -372,6 +373,8 @@ export async function renderMontazHub(container, { openStages, openMx30 }){
     case 'kalkulator': renderKalkulator(body, data); break;
     case 'niespodzianki': renderNiespodzianki(body, data); break;
     case 'plany': await renderPlany(body, data.plany?.intro); break;
+    case 'az': await renderAz(body); break;
+    case 'slowka': await renderWordsChapter(body); break;
     case 'mx30panel': renderBlocks(body, data.mx30panel); break;
     case 'vmp': renderBlocks(body, data.vmp); break;
     case 'resolume': renderBlocks(body, data.resolume); break;
@@ -379,8 +382,18 @@ export async function renderMontazHub(container, { openStages, openMx30 }){
   }
   const plans = await planLinks(data[chapter.id]?.plans);
   if (plans) container.appendChild(plans);
+  const azData = await loadAz();
+  if (chapter.id !== 'az' && chapter.id !== 'slowka'){
+    const words = wordList(azData.words[chapter.id]);
+    if (words) container.appendChild(words);
+  }
   const phrases = phraseBlock(data[chapter.id]?.phrases);
-  if (phrases) container.appendChild(phrases);
+  if (phrases){
+    const more = el('details', 'mz-more');
+    more.appendChild(el('summary', '', 'Zwroty do rozmowy (po angielsku)'));
+    more.appendChild(phrases);
+    container.appendChild(more);
+  }
 
   const idx = data.chapters.findIndex(c => c.id === current);
   const next = data.chapters[idx + 1];

@@ -17,7 +17,7 @@ await page.evaluate(() => localStorage.clear());
 await page.reload({ waitUntil: 'networkidle' });
 await page.locator('[data-mode-select="assembly"]').click();
 await page.waitForSelector('.mz-tile');
-ok(await page.locator('.mz-tile').count() === 14, '14 kafli rozdziałów');
+ok(await page.locator('.mz-tile').count() === 16, '16 kafli rozdziałów');
 ok(!(await page.locator('#bottomNav').isVisible()), 'montaż bez nawigacji angielskiego');
 
 // komplet
@@ -55,6 +55,22 @@ ok(text.includes('3 × 16 A'), 'kalkulator: linie 16 A');
 await page.locator('.mz-back').click();
 await page.locator('[data-chapter="niespodzianki"]').click();
 ok(await page.locator('.mz-risk').count() === 10, '10 ryzyk');
+await page.locator('.mz-back').click();
+
+// Od A do Z + słówka
+await page.locator('[data-chapter="az"]').click();
+await page.waitForSelector('.az-phase');
+ok(await page.locator('.az-phase').count() === 9, 'A do Z: 9 faz');
+ok((await page.locator('#az-msg').inputValue()).includes('login i hasło'), 'A do Z: wiadomość do SQM z prośbą o hasło');
+await page.locator('[data-phase="p4"] .stage-head').click();
+ok((await page.locator('[data-phase="p4"]').innerText()).includes('Enter Offline Mode') === false && (await page.locator('[data-phase="p4"]').innerText()).includes('Default Project'), 'A do Z: faza VMP otwarta');
+ok(await page.locator('.mz-word').count() >= 30, 'A do Z: lista słówek');
+await page.locator('.mz-hide').first().click();
+ok(await page.locator('.mz-words.hide-en').count() === 1, 'słówka: ukryj angielski');
+await page.locator('.mz-back').click();
+await page.locator('[data-chapter="slowka"]').click();
+await page.waitForSelector('.mz-words');
+ok(await page.locator('.mz-words').count() >= 8, 'Słówka: grupy list');
 await page.locator('.mz-back').click();
 
 // Plany
@@ -98,7 +114,7 @@ await page.locator('[data-chapter="etapy"]').click();
 await page.waitForSelector('.stage-card');
 ok(await page.locator('.stage-card').count() === 10, 'Etapy: 10 kart');
 await page.locator('.mz-back').click();
-ok(await page.locator('.mz-tile').count() === 14, 'powrót do wyboru rozdziału');
+ok(await page.locator('.mz-tile').count() === 16, 'powrót do wyboru rozdziału');
 
 ok(await page.evaluate(() => document.documentElement.scrollWidth === document.documentElement.clientWidth), 'brak poziomego scrolla (375 px)');
 await page.screenshot({ path: 'montaz-v24-preview.png', fullPage: true });

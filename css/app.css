@@ -637,3 +637,25 @@ body.plan-open{ overflow:hidden; }
 .mz-en-line{ display:block; font-weight:700; }
 .mz-pl-line{ display:block; color:var(--dim); margin-top:2px; }
 .mz-srcline{ display:block; color:var(--dim); margin-top:6px; font-size:11px; }
+
+/* ---------- Od A do Z, słówka ---------- */
+.mz-pl-main{ display:block; font-weight:700; }
+.mz-intro{ line-height:1.45; margin:6px 0 14px; }
+.mz-msg{ width:100%; margin:8px 0; padding:8px; font-size:13px; line-height:1.35; resize:vertical; min-width:0; }
+.az-phase .stage-body{ padding-top:6px; }
+.az-steps{ padding-left:20px; margin:6px 0; }.az-steps li{ margin:14px 0; line-height:1.4; }
+.az-do{ display:block; font-size:16px; }
+.az-where{ color:var(--white); opacity:.85; margin-top:3px; font-size:14px; }
+.az-check{ color:var(--ok); margin-top:3px; font-size:13px; }
+.az-trivia{ margin:14px 0 4px; padding:10px 12px; border:1px dashed #f2b705; border-radius:8px; }
+.az-trivia b{ color:#f2b705; }.az-trivia p{ margin:6px 0 0; line-height:1.4; }
+.az-fail{ display:grid; gap:2px; padding:9px 0; border-top:1px solid var(--line); }.az-fail b{ color:var(--red); }
+.mz-words{ margin:12px 0; }
+.mz-words-head{ display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; }
+.mz-hide{ min-height:36px; padding:0 12px; font-size:13px; }
+.mz-word{ display:grid; grid-template-columns:1fr 1fr auto; gap:8px; align-items:center; padding:8px 0; border-top:1px solid var(--line); }
+.mz-word-pl{ min-width:0; overflow-wrap:anywhere; }
+.mz-word-en{ min-width:0; color:var(--dim); }.mz-word-en span{ display:block; color:var(--white); }.mz-word-en small{ display:block; }
+.mz-words.hide-en .mz-word-en{ visibility:hidden; }
+.mz-more{ margin:12px 0; }.mz-more summary{ cursor:pointer; padding:10px 0; color:#f2b705; }
+.mz-tile.az{ grid-column:1 / -1; border-left-color:var(--red); background:#1d090b; }
