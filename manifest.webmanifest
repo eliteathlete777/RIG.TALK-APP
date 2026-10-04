@@ -1,9 +1,9 @@
 {
-  "name": "Nauka Angielskiego",
-  "short_name": "Nauka Ang.",
+  "name": "RIG TALK",
+  "short_name": "RIG TALK",
   "description": "Nauka angielskiego dla kierownika stoiska i realizacji.",
-  "start_url": ".",
-  "scope": ".",
+  "start_url": "https://elite-athlete.shop/rig-talk/",
+  "scope": "https://elite-athlete.shop/rig-talk/",
   "display": "standalone",
   "background_color": "#0a0a0b",
   "theme_color": "#0a0a0b",

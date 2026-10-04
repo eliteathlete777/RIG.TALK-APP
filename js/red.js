@@ -8,9 +8,11 @@ import * as i18n from './i18n.js';
 
 let ctxCache = null;
 let redDataCache = null;
-let viewMode = 'groups'; // 'groups' | 'stoisko' | 'sciaga' | 'karty'
+let viewMode = 'stoisko'; // tryb hali jest domyślny podczas realizacji
 let openGroupKey = null;
 let openStandKey = null;
+let searchQuery = '';
+let wakeLock = null;
 
 async function loadRedJson(){
   const res = await fetch('content/red.json', { cache: 'no-store' });
@@ -33,6 +35,30 @@ export async function renderRedScreen(container){
   const redData = redDataCache;
   container.innerHTML = '';
 
+  const onSiteStatus = document.createElement('div');
+  onSiteStatus.className = 'on-site-status';
+  const statusCopy = document.createElement('p');
+  statusCopy.textContent = 'TRYB HALI · duży tekst, odsłuch i szybkie wyszukiwanie';
+  const wakeBtn = document.createElement('button');
+  wakeBtn.className = 'btn btn-sm';
+  wakeBtn.textContent = wakeLock ? 'EKRAN: WŁ.' : 'NIE WYGASZAJ';
+  wakeBtn.addEventListener('click', async () => {
+    try {
+      if (wakeLock){ await wakeLock.release(); wakeLock = null; }
+      else if ('wakeLock' in navigator) wakeLock = await navigator.wakeLock.request('screen');
+      else alert('Ta przeglądarka nie obsługuje blokady wygaszania.');
+    } catch (e){ alert('Telefon nie pozwolił zablokować wygaszania ekranu.'); }
+    renderRedScreen(container);
+  });
+  onSiteStatus.append(statusCopy, wakeBtn);
+  container.appendChild(onSiteStatus);
+
+  const search = document.createElement('input');
+  search.className = 'field on-site-search';
+  search.placeholder = 'Co chcesz powiedzieć? Szukaj PL / EN…';
+  search.value = searchQuery;
+  container.appendChild(search);
+
   const tabs = document.createElement('div');
   tabs.className = 'track-switch';
   tabs.style.marginBottom = '14px';
@@ -47,6 +73,7 @@ export async function renderRedScreen(container){
 
   const body = document.createElement('div');
   container.appendChild(body);
+  search.addEventListener('input', () => { searchQuery = search.value; render(); });
 
   function chunkRow(chunk){
     const row = document.createElement('div');
@@ -193,6 +220,19 @@ export async function renderRedScreen(container){
 
   function render(){
     body.innerHTML = '';
+    const query = searchQuery.trim().toLowerCase();
+    if (query){
+      const custom = store.get().custom || [];
+      const results = [...ctx.chunks.values(), ...custom]
+        .filter(chunk => chunk.en.toLowerCase().includes(query) || chunk.pl.toLowerCase().includes(query));
+      if (!results.length){
+        const empty = document.createElement('div');
+        empty.className = 'card';
+        empty.textContent = 'Brak wyniku. Spróbuj krótszego słowa, np. „prąd”, „panel” albo „czekaj”.';
+        body.appendChild(empty);
+      } else results.slice(0, 30).forEach(chunk => body.appendChild(chunkRow(chunk)));
+      return;
+    }
     [...tabs.children].forEach(b => b.classList.toggle('active',
       (b.textContent === 'Grupy' && viewMode === 'groups') ||
       (b.textContent === 'Tryb stoiska' && viewMode === 'stoisko') ||

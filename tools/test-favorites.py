@@ -16,23 +16,23 @@ with sync_playwright() as p:
     list_rows_after_remove = page.locator('.favorite-list-row').count()
     page.get_by_role("button", name="FISZKI", exact=True).click()
     card = page.locator('.favorite-flashcard')
+    card_visible_initially = card.is_visible()
+    semantic_buttons_visible = page.get_by_role("button", name="JESZCZE NIE", exact=False).is_visible() and page.get_by_role("button", name="UMIEM →").is_visible()
+    remove_button_visible = page.get_by_role("button", name="★ USUŃ Z ULUBIONYCH").is_visible()
+    arrow_buttons_visible = page.get_by_role("button", name="Poprzedni zwrot").count() == 1 and page.get_by_role("button", name="Następny zwrot").count() == 1
     before = card.locator('.flashcard-text').inner_text()
     card.click()
     after = card.locator('.flashcard-text').inner_text()
-    card.click()
-    first_en = card.locator('.flashcard-text').inner_text()
-    prev_disabled_at_start = page.get_by_role("button", name="← POPRZEDNIA").is_enabled() is False
-    page.get_by_role("button", name="NASTĘPNA →").click()
-    second_en = card.locator('.flashcard-text').inner_text()
-    prev_enabled_after_next = page.get_by_role("button", name="← POPRZEDNIA").is_enabled()
-    page.get_by_role("button", name="← POPRZEDNIA").click()
-    returned_en = card.locator('.flashcard-text').inner_text()
+    first_front = before
+    page.get_by_role("button", name="UMIEM →").click()
+    second_front = card.locator('.flashcard-text').inner_text()
+    first_rating = page.evaluate("Object.values(JSON.parse(localStorage.getItem('rigtalk.v1')).cards)[0]?.reps")
     box = card.bounding_box()
     page.mouse.move(box["x"] + box["width"] * 0.7, box["y"] + box["height"] * 0.5)
     page.mouse.down()
     page.mouse.move(box["x"] + box["width"] * 0.2, box["y"] + box["height"] * 0.5, steps=6)
     page.mouse.up()
-    swiped_en = card.locator('.flashcard-text').inner_text()
+    swipe_rating_count = len(page.evaluate("Object.keys(JSON.parse(localStorage.getItem('rigtalk.v1')).cards)"))
     cards_mode_saved = page.evaluate("JSON.parse(localStorage.getItem('rigtalk.v1')).ui.favoritesMode") == "cards"
     page.screenshot(path="favorites-preview.png", full_page=True)
     print({
@@ -40,16 +40,15 @@ with sync_playwright() as p:
         "list_mode_has_three": list_rows_before == 3,
         "remove_from_list": list_rows_after_remove == 2,
         "cards_switch_active": page.get_by_role("button", name="FISZKI", exact=True).get_attribute("class") == "active",
-        "card_visible": card.is_visible(),
+        "card_visible": card_visible_initially,
         "flip_changes_text": before != after,
-        "next_changes_card": first_en != second_en,
-        "previous_returns_card": returned_en == first_en,
-        "previous_disabled_at_start": prev_disabled_at_start,
-        "previous_enabled_after_next": prev_enabled_after_next,
-        "swipe_left_changes_card": swiped_en != returned_en,
+        "good_changes_card": first_front != second_front,
+        "good_saved_to_srs": first_rating == 1,
+        "swipe_left_saved_to_srs": swipe_rating_count == 2,
         "cards_mode_saved": cards_mode_saved,
-        "next_button": page.get_by_role("button", name="NASTĘPNA →").is_visible(),
-        "remove_button": page.get_by_role("button", name="★ USUŃ Z ULUBIONYCH").is_visible(),
+        "semantic_buttons": semantic_buttons_visible,
+        "arrow_buttons": arrow_buttons_visible,
+        "remove_button": remove_button_visible,
         "horizontal_overflow": page.evaluate("document.documentElement.scrollWidth > document.documentElement.clientWidth"),
         "page_errors": errors,
     })

@@ -7,13 +7,15 @@ import * as session from './session.js';
 import * as scenes from './scenes.js';
 import * as boss from './boss.js';
 import { renderBootcampScreen } from './bootcamp.js';
+import { renderSimulation } from './simulation.js';
 
 export async function renderKursScreen(container){
-  const mode = store.get().ui?.kursMode === 'full' ? 'full' : 'bootcamp';
+  const requestedMode = store.get().ui?.kursMode;
+  const mode = ['bootcamp', 'simulation', 'full'].includes(requestedMode) ? requestedMode : 'bootcamp';
   container.innerHTML = '';
   const modeSwitch = document.createElement('div');
   modeSwitch.className = 'track-switch course-mode-switch';
-  [['bootcamp', 'PLAN 55H'], ['full', 'PEŁNY KURS']].forEach(([key, label]) => {
+  [['bootcamp', 'PLAN 55H'], ['simulation', 'PRÓBA'], ['full', 'PEŁNY KURS']].forEach(([key, label]) => {
     const b = document.createElement('button');
     b.textContent = label;
     b.classList.toggle('active', key === mode);
@@ -25,6 +27,12 @@ export async function renderKursScreen(container){
     const bootcampRoot = document.createElement('div');
     container.appendChild(bootcampRoot);
     await renderBootcampScreen(bootcampRoot);
+    return;
+  }
+  if (mode === 'simulation'){
+    const simulationRoot = document.createElement('div');
+    container.appendChild(simulationRoot);
+    await renderSimulation(simulationRoot);
     return;
   }
 
@@ -74,7 +82,7 @@ export async function renderKursScreen(container){
     const btn = document.createElement('button');
     btn.className = 'btn btn-sm';
     btn.textContent = learned < items.length ? 'Ćwicz moduł' : 'Powtórz moduł';
-    btn.addEventListener('click', () => session.startFocusedSession(items.map(c => c.id)));
+    btn.addEventListener('click', () => session.startFocusedSession(items.map(c => c.id), { limit: items.length }));
 
     card.append(head, bar, btn);
     container.appendChild(card);

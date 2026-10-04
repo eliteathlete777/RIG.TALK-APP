@@ -129,12 +129,19 @@ function startTimer(minutes){
   sessionTimerHandle = setInterval(() => {
     secondsLeft = Math.max(0, secondsLeft - 1);
     render();
+    if (secondsLeft === 0){
+      clearInterval(sessionTimerHandle);
+      sessionTimerHandle = null;
+      el.timer.textContent = 'CZAS · DOKOŃCZ KARTĘ';
+      el.timer.classList.add('time-up');
+    }
   }, 1000);
 }
 
 function stopTimer(){
   if (sessionTimerHandle) clearInterval(sessionTimerHandle);
   sessionTimerHandle = null;
+  el?.timer?.classList.remove('time-up');
 }
 
 /**
@@ -332,13 +339,19 @@ function getCardFor(id){
   return store.get().cards[id];
 }
 
-/** Karta HEAR: tekst EN do przeczytania + lektor na żądanie (głos systemowy bywa słaby, więc bez autoodtwarzania). */
+/** Karta HEAR: najpierw prawdziwy odsłuch bez transkrypcji; tekst pojawia się po odpowiedzi. */
 function appendHearPrompt(card, chunk){
   const en = document.createElement('div');
+  en.className = 'hear-transcript';
   en.style.cssText = 'font-family:var(--font-display); font-size:22px; margin-bottom:10px;';
   en.textContent = '„' + chunk.en + '”';
+  en.hidden = true;
   card.appendChild(en);
-  card.appendChild(makeButton('🔊 Posłuchaj', 'btn', () => playAudio(chunk)));
+  const audioRow = document.createElement('div');
+  audioRow.className = 'hear-audio-row';
+  audioRow.appendChild(makeButton('🔊 WOLNIEJ', 'btn', () => playAudio(chunk, 0.82)));
+  audioRow.appendChild(makeButton('🔊 REALNIE', 'btn btn-primary', () => playAudio(chunk, 1.08)));
+  card.appendChild(audioRow);
 }
 
 // ---------- REVIEW: HEAR ----------
@@ -366,6 +379,8 @@ function renderReviewHear(chunk){
     optsWrap.querySelectorAll('button').forEach(b => b.disabled = true);
     btnEl.style.borderColor = correct ? 'var(--ok)' : 'var(--red)';
     if (correct) results.hearCorrect++;
+    const transcript = card.querySelector('.hear-transcript');
+    if (transcript) transcript.hidden = false;
 
     const reveal = document.createElement('div');
     reveal.style.cssText = 'margin-top:14px;';
@@ -490,6 +505,8 @@ function renderNewHear(chunk){
     optsWrap.querySelectorAll('button').forEach(b => b.disabled = true);
     btnEl.style.borderColor = correct ? 'var(--ok)' : 'var(--red)';
     if (correct) results.hearCorrect++;
+    const transcript = card.querySelector('.hear-transcript');
+    if (transcript) transcript.hidden = false;
 
     const en = document.createElement('div');
     en.style.cssText = 'font-family:var(--font-display); font-size:18px; margin-top:14px;';

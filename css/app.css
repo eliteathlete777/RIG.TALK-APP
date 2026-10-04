@@ -26,6 +26,13 @@
 }
 
 .topbar .brand .accent{ color:var(--red); }
+.topbar-actions{ display:flex; align-items:center; gap:8px; }
+.offline-state{
+  display:inline-flex; align-items:center; min-height:30px; padding:0 8px;
+  border:1px solid var(--line); border-radius:7px; color:var(--dim);
+  font-size:9px; font-weight:700; letter-spacing:.7px;
+}
+.offline-state.ready{ border-color:var(--ok); color:var(--ok); }
 
 [data-screen]{ display:none; }
 [data-screen].active{ display:block; }
@@ -273,6 +280,11 @@
   display:flex; align-items:center; justify-content:space-between;
   color:var(--dim); font-size:13px; margin:2px 2px 12px;
 }
+.favorite-arrow-nav{ display:grid; grid-template-columns:48px 1fr 48px; align-items:center; gap:8px; margin-bottom:10px; }
+.favorite-arrow-nav span{ color:var(--dim); font-size:10px; font-weight:700; letter-spacing:.7px; text-align:center; }
+.favorite-arrow-nav .icon-box{ width:48px; height:48px; font-size:22px; }
+.favorite-arrow-nav .icon-box:disabled{ opacity:.28; cursor:not-allowed; }
+.favorites-empty .btn + .btn{ margin-top:10px; }
 .favorite-remove{
   min-height:40px; padding:0 10px; border:1px solid var(--line); border-radius:8px;
   color:var(--red); background:transparent; font:500 12px var(--font-body); cursor:pointer;
@@ -368,13 +380,42 @@
 .field{ width:100%; padding:10px 12px; font-size:15px; margin-bottom:10px; min-height:var(--tap-min); }
 .btn-sm{ min-height:38px; padding:6px 14px; font-size:13px; }
 
-.icon-box.sm{ width:40px; height:40px; border-color:var(--line); color:var(--white); background:var(--bg); font-size:16px; cursor:pointer; }
+.icon-box.sm{ width:48px; height:48px; border-color:var(--line); color:var(--white); background:var(--bg); font-size:16px; cursor:pointer; }
 .icon-box.sm.on{ border-color:var(--red); color:var(--red); }
 
 /* chipsy (zakładki przewijane poziomo) */
 .chips{ display:flex; gap:6px; overflow-x:auto; padding-bottom:6px; margin-bottom:10px; scrollbar-width:none; }
 .chips::-webkit-scrollbar{ display:none; }
-.chip{ flex:none; background:var(--bg); color:var(--dim); border:1px solid var(--line); border-radius:999px; padding:8px 12px; font-size:12px; font-weight:500; letter-spacing:.5px; text-transform:uppercase; cursor:pointer; min-height:36px; }
+.chip{ flex:none; background:var(--bg); color:var(--dim); border:1px solid var(--line); border-radius:999px; padding:8px 12px; font-size:12px; font-weight:500; letter-spacing:.5px; text-transform:uppercase; cursor:pointer; min-height:48px; }
+
+/* centrum dowodzenia: jeden następny ruch zamiast równorzędnych opcji */
+.next-action{ margin:0 0 18px; border-color:var(--red); background:#120b0c; }
+.next-action h2{ margin-top:5px; font-size:25px; }
+.next-action p{ color:var(--dim); font-size:14px; margin-bottom:12px; }
+.readiness-legend{ display:flex; flex-wrap:wrap; gap:8px 12px; margin:10px 0 14px; color:var(--dim); font-size:12px; }
+.ready-green{ color:var(--ok); }
+.ready-amber{ color:#e3a83b; }
+
+/* próba generalna */
+.simulation-intro{ margin:14px 0; }
+.simulation-intro p{ color:var(--dim); }
+.simulation-card{ margin-top:14px; min-height:390px; display:flex; flex-direction:column; justify-content:center; }
+.simulation-card h2{ color:var(--red); font-size:56px; }
+.simulation-card h3{ font-size:25px; line-height:1.2; text-transform:none; margin:10px 0; }
+.simulation-meta{ color:var(--red); font-size:12px; font-weight:700; letter-spacing:1px; }
+.simulation-answers{ display:flex; flex-direction:column; gap:8px; margin:18px 0; }
+.simulation-answer{ min-height:62px; padding:10px 12px; text-align:left; color:var(--white); background:var(--bg); border:1px solid var(--line); border-radius:9px; cursor:pointer; }
+.simulation-answer span,.simulation-answer small{ display:block; }
+.simulation-answer span{ font-size:17px; }
+.simulation-answer small{ color:var(--dim); margin-top:3px; }
+.simulation-grade{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.hear-audio-row{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:10px 0; }
+.session-timer.time-up{ font-size:14px; color:#e3a83b; }
+
+/* tryb hali */
+.field.on-site-search{ position:sticky; top:0; z-index:2; border-color:var(--red); min-height:56px; }
+.on-site-status{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:12px; }
+.on-site-status p{ color:var(--dim); font-size:12px; margin:0; }
 .chip.active{ background:var(--red); border-color:var(--red); color:var(--white); }
 
 /* mini pasek */

@@ -3,15 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Nauka Angielskiego</title>
+<title>RIG TALK</title>
 <meta name="description" content="Nauka angielskiego dla kierownika stoiska i realizacji: technika i codzienny język.">
 <meta name="theme-color" content="#0a0a0b">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="assets/rigtalk-icon-180.png">
 <link rel="icon" type="image/png" href="assets/rigtalk-icon-192.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/app.css">
 </head>
@@ -19,7 +16,7 @@
   <div class="app-shell">
     <header class="topbar">
       <div class="brand">RIG <span class="accent">TALK</span></div>
-      <button class="icon-box" data-nav-to="ustawienia" aria-label="Ustawienia" id="settingsBtn"></button>
+      <div class="topbar-actions"><span class="offline-state" id="offlineState">SPRAWDZAM OFFLINE</span><button class="icon-box" data-nav-to="ustawienia" aria-label="Ustawienia" id="settingsBtn"></button></div>
     </header>
 
     <main id="screens">
@@ -31,7 +28,7 @@
           <div class="brush-under">
             <div class="rank-name" id="rankName">GROUND HAND</div>
           </div>
-          <div class="rank-days">DNI DO STOISKA: <b id="daysLeft">108</b></div>
+          <div class="rank-days">DO WYLOTU: <b id="daysLeft">—</b></div>
         </div>
 
         <div class="xp-row">
@@ -45,6 +42,8 @@
           <span class="mission-hero-sub" id="stoiskoHeroSub">10 etapów montażu · zwroty do klienta i stagehanda</span>
           <span class="mini-bar"><span id="stoiskoHeroBar" style="width:0%"></span></span>
         </button>
+
+        <div id="nextActionRoot"></div>
 
         <div class="section-label">Codzienna sesja</div>
         <div class="track-switch" id="trackSwitch">
@@ -168,11 +167,13 @@
         <div class="card">
           <h3>Kopia zapasowa postępu</h3>
           <div style="display:flex; gap:8px; margin-bottom:10px;">
-            <button class="btn" id="exportBtn">Eksportuj JSON</button>
-            <button class="btn" id="importBtn">Importuj JSON</button>
+            <button class="btn" id="exportBtn">Pobierz kopię</button>
+            <button class="btn" id="importBtn">Wczytaj kopię</button>
+            <button class="btn btn-outline" id="installBtn">Zainstaluj apkę</button>
             <button class="btn btn-ghost" id="resetBtn">Reset</button>
           </div>
-          <textarea id="stateArea" rows="8" style="width:100%; background:var(--bg); color:var(--white); border:1px solid var(--line); border-radius:8px; padding:8px; font-family:monospace; font-size:11px;"></textarea>
+          <input id="stateFile" type="file" accept="application/json,.json" hidden>
+          <textarea id="stateArea" rows="5" placeholder="Awaryjny import: wklej tutaj kopię JSON" style="width:100%; background:var(--bg); color:var(--white); border:1px solid var(--line); border-radius:8px; padding:8px; font-family:monospace; font-size:11px;"></textarea>
         </div>
       </section>
 

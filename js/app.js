@@ -17,6 +17,8 @@ import * as i18n from './i18n.js';
 import * as stoisko from './stoisko.js';
 import * as kurs from './kurs.js';
 import * as glossary from './glossary.js';
+import { loadPlan, activeBlockIndex, countdown } from './bootcamp.js';
+import { readinessStats, weakestFirst } from './readiness.js';
 
 console.log('[RIG TALK] app.js loaded — v2 (PIERWSZE STOISKO)');
 
@@ -53,10 +55,12 @@ if ('serviceWorker' in navigator){
   });
 }
 
-const STOISKO_DATE = new Date('2027-01-10T00:00:00');
-function daysUntilStoisko(){
-  return Math.max(0, Math.ceil((STOISKO_DATE - new Date()) / 86400000));
-}
+let installPrompt = null;
+window.addEventListener('beforeinstallprompt', (event) => {
+  event.preventDefault();
+  installPrompt = event;
+  document.getElementById('installBtn')?.removeAttribute('disabled');
+});
 
 const NAV_ICONS = {
   baza: 'home',
@@ -200,10 +204,18 @@ function initSettingsScreen(){
 
 function initBackupUI(){
   const area = document.getElementById('stateArea');
+  const file = document.getElementById('stateFile');
   document.getElementById('exportBtn')?.addEventListener('click', () => {
-    area.value = exportState(store.get());
+    const blob = new Blob([exportState(store.get())], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `rig-talk-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
   });
   document.getElementById('importBtn')?.addEventListener('click', () => {
+    if (!area.value.trim()) { file?.click(); return; }
     try {
       const restored = importState(area.value);
       store.state = restored; // odśwież lokalną referencję store
@@ -212,6 +224,26 @@ function initBackupUI(){
     } catch (e){
       alert('Błąd importu: ' + e.message);
     }
+  });
+  file?.addEventListener('change', async () => {
+    const selected = file.files?.[0];
+    if (!selected) return;
+    try {
+      const restored = importState(await selected.text());
+      store.state = restored;
+      renderFromState();
+      alert('Kopia postępu została wczytana.');
+    } catch (e){ alert('Nieprawidłowy plik kopii: ' + e.message); }
+    file.value = '';
+  });
+  document.getElementById('installBtn')?.addEventListener('click', async () => {
+    if (installPrompt){
+      installPrompt.prompt();
+      await installPrompt.userChoice;
+      installPrompt = null;
+      return;
+    }
+    alert('iPhone: Safari → Udostępnij → Dodaj do ekranu początkowego. Android: Chrome → menu ⋮ → Zainstaluj aplikację.');
   });
   document.getElementById('resetBtn')?.addEventListener('click', () => {
     if (!confirm('Na pewno zresetować cały postęp?')) return;
@@ -229,7 +261,32 @@ async function renderBaza(){
 
   document.getElementById('levelBadge').textContent = `LEVEL ${info.level}`;
   document.getElementById('rankName').textContent = rank.name;
-  document.getElementById('daysLeft').textContent = String(daysUntilStoisko());
+  try {
+    const plan = await loadPlan();
+    document.getElementById('daysLeft').textContent = countdown(plan.deadline);
+    const ids = [...new Set(plan.blocks.flatMap(block => block.ids))];
+    const stats = readinessStats(ids, s.cards || {});
+    const blockIndex = activeBlockIndex(plan, s.cards || {});
+    const block = plan.blocks[blockIndex];
+    const root = document.getElementById('nextActionRoot');
+    root.innerHTML = '';
+    const card = document.createElement('div');
+    card.className = 'next-action frame';
+    const copy = document.createElement('div');
+    copy.innerHTML = `<div class="eyebrow">TERAZ · GOTOWOŚĆ ${stats.pct}%</div><h2>${block.title}</h2><p>${block.goal}</p><div class="readiness-legend"><span class="ready-green">${stats.mastered} umiem</span><span class="ready-amber">${stats.learning} uczę się</span><span>${stats.unseen} nowych</span></div>`;
+    const go = document.createElement('button');
+    go.className = 'btn btn-primary btn-lg';
+    go.textContent = `ĆWICZ TERAZ · ${block.duration}`;
+    go.addEventListener('click', async () => {
+      const ctx = ctxForProgress || await loadAllChunks();
+      const valid = weakestFirst(block.ids.filter(id => ctx.chunks.has(id)), store.get().cards || {});
+      session.startFocusedSession(valid, { limit: valid.length });
+    });
+    card.append(copy, go);
+    root.appendChild(card);
+  } catch (e){
+    document.getElementById('daysLeft').textContent = '06.10 · 06:00';
+  }
   document.getElementById('xpFill').style.width = Math.round((info.xpIntoLevel / info.xpForLevel) * 100) + '%';
   document.getElementById('xpLabel').textContent = `${info.xpIntoLevel}/${info.xpForLevel} XP`;
 
@@ -295,6 +352,14 @@ function init(){
   initBackupUI();
   initLibTabs();
   renderFromState();
+  if ('serviceWorker' in navigator && 'caches' in window){
+    navigator.serviceWorker.ready.then(async () => {
+      const names = await caches.keys();
+      const ready = names.some(name => name.startsWith('rigtalk-'));
+      const badge = document.getElementById('offlineState');
+      if (badge){ badge.textContent = ready ? 'OFFLINE GOTOWE' : 'OFFLINE ŁADUJE'; badge.classList.toggle('ready', ready); }
+    }).catch(() => {});
+  }
 }
 
 document.addEventListener('DOMContentLoaded', init);

@@ -26,7 +26,7 @@ PWA (Progressive Web App) do nauki angielskiego dla Damiana — kierownika stois
   - CODZIENNY: D1–D10 (229 zwrotów) — powitania, small talk, sklep, kawiarnia/restauracja/bar, ulica/transport, hotel/lotnisko, komplementy, telefon/plany, problemy.
   - TECH: T0–T6 + T9 (145 zwrotów) — survival kit, stoisko, LED/rigging/zasilanie, negocjacje/umowa, dzień eventu, trudny klient, networking, CZERWONE-extra.
   - Każdy zwrot waliduje się przez `node tools/validate.js` (0 błędów wymagane przed commitem).
-- **Wdrożone na żywo**: https://elite-athlete.shop/nauka-angielskiego/ (PWA instalowalna z Chrome, nazwa po instalacji: "Nauka Angielskiego").
+- **Aktualny adres produkcyjny**: https://elite-athlete.shop/rig-talk/ (PWA instalowalna jako „RIG TALK”). Stary folder `/nauka-angielskiego/` nie jest już celem nowych wdrożeń.
 - Zrobione etapy: E0–E11 + C-T0..C-T6 + C-D1..C-D10 (pełne, patrz PROGRESS.md po szczegóły i dowody weryfikacji każdego kroku).
 - **NIE zrobione / zostało**: E12 (ikony PWA — obecnie `"icons": []` w manifest.webmanifest, trzeba wygenerować realne ikony), E13 (Android APK przez PWABuilder/Bubblewrap — TWA, wymaga `.well-known/assetlinks.json` na Hostingerze).
 
@@ -34,7 +34,7 @@ PWA (Progressive Web App) do nauki angielskiego dla Damiana — kierownika stois
 1. **Hostinger ma CDN (`hcdn`) przed stroną z cache 7 dni** (`Cache-Control: public, max-age=604800`). Samo wgranie nowego pliku NIE wystarcza — trzeba ręcznie kliknąć **"Opróżnij pamięć podręczną"** w hPanel → Strony www → elite-athlete.shop → Wydajność → CDN. Bez tego zmiany bywają niewidoczne do 7 dni.
 2. **File Manager Hostingera czasem po cichu nie wykonuje "Replace"** mimo pokazania dialogu zgody. Zawsze weryfikuj znacznik czasu/rozmiar pliku w File Managerze PO uploadzie, PRZED czyszczeniem cache CDN.
 3. **ZIP tworzony przez Windows PowerShell (`Compress-Archive`) psuje strukturę folderów** przy rozpakowywaniu na serwerze Linux (literalne `\` w nazwach plików zamiast prawdziwych katalogów). Bezpieczna metoda wdrożenia: wgrywać pliki pojedynczo/w grupach bezpośrednio przez File Manager (z zachowaniem struktury folderów), NIE przez ZIP+rozpakuj.
-4. Domena produkcyjna to `elite-athlete.shop` (NIE "elite-atlete.shop" — łatwo się pomylić), a aplikacja mieszka w podfolderze `/nauka-angielskiego/`, bo główna domena hostuje inny, wcześniej istniejący sklep (e-booki). Nie nadpisywać `public_html` root.
+4. Domena produkcyjna to `elite-athlete.shop` (NIE "elite-atlete.shop" — łatwo się pomylić), a aktywna aplikacja mieszka w podfolderze `/rig-talk/`, bo główna domena hostuje inny, wcześniej istniejący sklep (e-booki). Nie nadpisywać `public_html` root ani starego `/nauka-angielskiego/`.
 5. Po każdej zmianie w `sw.js` trzeba podbić `CACHE_NAME` (np. `rigtalk-v11` → `v12`) i dopisać nowe pliki do `PRECACHE_URLS`, inaczej offline-cache nie złapie nowej treści.
 6. Deployment wymaga ręcznej pracy w przeglądarce (File Manager Hostingera) — nie ma automatycznego CI/CD. Jeśli nowy asystent ma dostęp do przeglądarki (np. Claude in Chrome), może to zrobić sam, logując się na już-zalogowaną sesję użytkownika (NIGDY nie wpisuj hasła Damiana za niego).
 

@@ -1,0 +1,14 @@
+{
+  "title": "PRÓBA GENERALNA",
+  "subtitle": "Jedna realizacja od wejścia na halę do przekazania ekranu. Najpierw mówisz, dopiero potem odsłaniasz odpowiedź.",
+  "steps": [
+    { "prompt": "Wchodzisz na stoisko. Przywitaj klienta i poproś o wspólne przejście przez plan.", "ids": ["t7u2-01", "t7u2-05"] },
+    { "prompt": "Ustal, kto podejmuje ostateczne decyzje i czy od wczoraj coś się zmieniło.", "ids": ["t7u2-06", "t7u2-08"] },
+    { "prompt": "Potwierdź dokładną pozycję, wysokość oraz ciężar ekranu.", "ids": ["t7u3-01", "t7u3-02", "t7u3-04"] },
+    { "prompt": "Stagehand trzyma panel za wysoko. Wydaj krótką komendę i zatrzymaj ruch.", "ids": ["t7u6-08", "t7u6-10"] },
+    { "prompt": "Nie można jeszcze włączyć zasilania. Zatrzymaj ekipę i wskaż kierunek połączeń.", "ids": ["t7u7-08", "t7u7-09"] },
+    { "prompt": "Jeden panel jest ciemny. Powiedz klientowi, jaki jest status i co teraz zrobisz.", "ids": ["t7u9-09", "t7u9-10"] },
+    { "prompt": "Poprowadź klienta przez podłączenie laptopa i ustawienie rozszerzonego pulpitu.", "ids": ["t7u10-01", "t7u10-04", "t7u10-05"] },
+    { "prompt": "Zakończ przekazanie: ekran działa, klient wie czego nie zmieniać i do kogo zadzwonić.", "ids": ["t7u10-08", "t7u10-11", "t7u10-13"] }
+  ]
+}

@@ -1,7 +1,7 @@
 // RIG TALK — service worker: cache-first dla aplikacji, treści i fontów (pełna wersja: etap E12)
 // E9 wymaga, żeby 🟥 CZERWONE działało offline — precache obejmuje więc już teraz cały shell + treść.
 
-const CACHE_NAME = 'rigtalk-v19';
+const CACHE_NAME = 'rigtalk-v20';
 
 const PRECACHE_URLS = [
   './',
@@ -23,7 +23,9 @@ const PRECACHE_URLS = [
   'js/icons.js',
   'js/library.js',
   'js/red.js',
+  'js/readiness.js',
   'js/scenes.js',
+  'js/simulation.js',
   'js/session.js',
   'js/speech.js',
   'js/srs.js',
@@ -66,6 +68,7 @@ const PRECACHE_URLS = [
   'content/bosses/boss-t1.json',
   'content/bosses/boss-d1.json',
   'content/bootcamp.json',
+  'content/mission-simulation.json',
 ];
 
 self.addEventListener('install', (event) => {
@@ -95,7 +98,7 @@ self.addEventListener('fetch', (event) => {
   // Tylko własne żądania GET; webhook AI (n8n, inne originy) zawsze idzie do sieci (network-only, PLAN.md §8.1).
   if (req.method !== 'GET' || url.origin !== self.location.origin) return;
 
-  // Google Fonts: cache-first, ale nie w PRECACHE_URLS (dociągane przy pierwszym uruchomieniu z siecią).
+  // Wszystkie zasoby interfejsu są lokalne; po pierwszym uruchomieniu aplikacja działa bez sieci.
   event.respondWith(
     caches.match(req).then((cached) => {
       if (cached) return cached;

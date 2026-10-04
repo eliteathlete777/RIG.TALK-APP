@@ -1,10 +1,12 @@
 import { store } from './state.js';
 import { loadAllChunks } from './content.js';
 import * as session from './session.js';
+import { readinessStats, weakestFirst } from './readiness.js';
 
 let planCache = null;
+let countdownTimer = null;
 
-async function loadPlan(){
+export async function loadPlan(){
   if (planCache) return planCache;
   const res = await fetch('content/bootcamp.json', { cache: 'no-store' });
   if (!res.ok) throw new Error('Nie udało się wczytać planu 55H.');
@@ -12,7 +14,7 @@ async function loadPlan(){
   return planCache;
 }
 
-function countdown(deadline){
+export function countdown(deadline){
   const ms = Math.max(0, new Date(deadline) - new Date());
   const totalHours = Math.floor(ms / 3600000);
   const minutes = Math.floor((ms % 3600000) / 60000);
@@ -20,8 +22,23 @@ function countdown(deadline){
 }
 
 function blockStatus(block, cards){
-  const learned = block.ids.filter(id => id in cards).length;
-  return { learned, total: block.ids.length, done: learned === block.ids.length };
+  const stats = readinessStats(block.ids, cards);
+  return { ...stats, learned: stats.learning + stats.mastered, done: stats.mastered === stats.total };
+}
+
+function slotDate(slot, deadline){
+  const match = String(slot).match(/(\d{2})\.(\d{2})\s*·\s*(\d{2}):(\d{2})/);
+  if (!match) return null;
+  const year = new Date(deadline).getFullYear();
+  return new Date(year, Number(match[2]) - 1, Number(match[1]), Number(match[3]), Number(match[4]));
+}
+
+export function activeBlockIndex(plan, cards, now = new Date()){
+  const pending = plan.blocks.map((block, i) => ({ i, status: blockStatus(block, cards), at: slotDate(block.slot, plan.deadline) }))
+    .filter(item => !item.status.done);
+  if (!pending.length) return plan.blocks.length - 1;
+  const overdue = pending.filter(item => !item.at || item.at <= now);
+  return (overdue[0] || pending[0]).i;
 }
 
 export async function renderBootcampScreen(container){
@@ -29,16 +46,18 @@ export async function renderBootcampScreen(container){
   const chunks = ctx.chunks;
   const cards = store.get().cards || {};
   const uniqueIds = [...new Set(plan.blocks.flatMap(b => b.ids))].filter(id => chunks.has(id));
-  const learnedTotal = uniqueIds.filter(id => id in cards).length;
-  const firstPending = plan.blocks.findIndex(b => !blockStatus(b, cards).done);
-  const activeIndex = firstPending === -1 ? plan.blocks.length - 1 : firstPending;
+  const overall = readinessStats(uniqueIds, cards);
+  const activeIndex = activeBlockIndex(plan, cards);
   container.innerHTML = '';
 
   const hero = document.createElement('div');
   hero.className = 'bootcamp-hero frame';
   const clock = document.createElement('div');
   clock.className = 'bootcamp-clock';
-  clock.textContent = countdown(plan.deadline);
+  const paintClock = () => { clock.textContent = countdown(plan.deadline); };
+  paintClock();
+  if (countdownTimer) clearInterval(countdownTimer);
+  countdownTimer = setInterval(paintClock, 30000);
   const title = document.createElement('h2');
   title.textContent = plan.title;
   const sub = document.createElement('p');
@@ -48,11 +67,11 @@ export async function renderBootcampScreen(container){
   rule.textContent = plan.rule;
   const progress = document.createElement('div');
   progress.className = 'bootcamp-progress';
-  progress.innerHTML = `<span><b>${learnedTotal}</b> / ${uniqueIds.length} zwrotów uruchomionych</span><span>${Math.round(learnedTotal / uniqueIds.length * 100)}%</span>`;
+  progress.innerHTML = `<span><b>${overall.mastered}</b> opanowanych · ${overall.learning} w nauce</span><span>${overall.pct}%</span>`;
   const bar = document.createElement('div');
   bar.className = 'mini-bar';
   const fill = document.createElement('div');
-  fill.style.width = `${Math.round(learnedTotal / uniqueIds.length * 100)}%`;
+  fill.style.width = `${overall.pct}%`;
   bar.appendChild(fill);
   hero.append(clock, title, sub, rule, progress, bar);
   container.appendChild(hero);
@@ -73,7 +92,9 @@ export async function renderBootcampScreen(container){
     body.className = 'bootcamp-body';
     const meta = document.createElement('div');
     meta.className = 'bootcamp-meta';
-    meta.textContent = `${block.slot}  ·  ${block.duration}`;
+    const scheduled = slotDate(block.slot, plan.deadline);
+    const timing = i === activeIndex && scheduled && scheduled < new Date() ? 'ZALEGŁE · ZRÓB TERAZ' : block.slot;
+    meta.textContent = `${timing}  ·  ${block.duration}`;
     const heading = document.createElement('h3');
     heading.textContent = block.title;
     const goal = document.createElement('p');
@@ -87,12 +108,12 @@ export async function renderBootcampScreen(container){
     mission.textContent = block.mission;
     const stat = document.createElement('div');
     stat.className = 'bootcamp-block-stat';
-    stat.textContent = `${status.learned}/${status.total} zwrotów`;
+    stat.textContent = `${status.mastered} umiem · ${status.learning} uczę się · ${status.unseen} nowych`;
     const btn = document.createElement('button');
     btn.className = i === activeIndex ? 'btn btn-primary btn-lg' : 'btn btn-outline';
     btn.textContent = status.done ? 'POWTÓRZ BLOK' : (i === activeIndex ? 'ĆWICZ TERAZ' : 'ĆWICZ BLOK');
     btn.addEventListener('click', () => {
-      const valid = block.ids.filter(id => chunks.has(id));
+      const valid = weakestFirst(block.ids.filter(id => chunks.has(id)), store.get().cards || {});
       session.startFocusedSession(valid, { limit: valid.length });
     });
     body.append(meta, heading, goal, native, mission, stat, btn);

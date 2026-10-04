@@ -2,8 +2,8 @@
   --bg:#0a0a0b; --bg-2:#141416; --line:#242426;
   --red:#e01e1e; --red-dark:#9e1111;
   --white:#f3f2ef; --dim:#9a9a9d; --ok:#3fb950;
-  --font-display:'Anton',Impact,sans-serif;
-  --font-body:'Oswald',Arial,sans-serif;
+  --font-display:Impact,'Arial Black',sans-serif;
+  --font-body:'Arial Narrow','Roboto Condensed','Segoe UI',Arial,sans-serif;
   --tap-min:48px; --tap-lg:56px; --tap-xl:64px;
 }
 

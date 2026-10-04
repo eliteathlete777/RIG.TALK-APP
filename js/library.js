@@ -4,6 +4,7 @@ import { store } from './state.js';
 import { loadAllChunks, allChunksArray, chunkTrack } from './content.js';
 import * as speech from './speech.js';
 import * as i18n from './i18n.js';
+import * as srs from './srs.js';
 
 let ctxCache = null;
 
@@ -239,6 +240,9 @@ export async function renderFavoritesScreen(container){
   let favorites = (store.get().starred || []).map(id => all.find(c => c.id === id)).filter(Boolean);
   let index = 0;
   let revealed = false;
+  let drillDone = false;
+  let lastFeedback = '';
+  let roundStats = { good: 0, again: 0 };
 
   container.innerHTML = '';
   const shell = document.createElement('div');
@@ -250,6 +254,25 @@ export async function renderFavoritesScreen(container){
     if (target < 0 || target >= favorites.length) return;
     index = target;
     revealed = false;
+    lastFeedback = '';
+    render();
+  }
+
+  function rateFavorite(id, rating){
+    const cards = { ...(store.get().cards || {}) };
+    const current = cards[id] || srs.newCard(new Date());
+    cards[id] = srs.reviewCard(current, rating, new Date()).card;
+    store.set({ cards });
+    if (rating === srs.Rating.Good || rating === srs.Rating.Easy){
+      roundStats.good++;
+      lastFeedback = 'ZAPISANO: UMIEM';
+    } else {
+      roundStats.again++;
+      lastFeedback = 'ZAPISANO: WRÓCI SZYBCIEJ';
+    }
+    revealed = false;
+    if (index < favorites.length - 1) index++;
+    else drillDone = true;
     render();
   }
 
@@ -285,6 +308,7 @@ export async function renderFavoritesScreen(container){
       button.addEventListener('click', () => {
         store.set({ ui: { favoritesMode: key } });
         revealed = false;
+        drillDone = false;
         render();
       });
       modeSwitch.appendChild(button);
@@ -327,6 +351,23 @@ export async function renderFavoritesScreen(container){
       return;
     }
 
+    if (drillDone){
+      const done = document.createElement('div');
+      done.className = 'favorites-empty frame';
+      done.innerHTML = `<h2>RUNDA ZROBIONA</h2><p>${roundStats.good} umiem · ${roundStats.again} wróci szybciej. Każda ocena została zapisana w planie powtórek.</p>`;
+      const back = document.createElement('button');
+      back.className = 'btn btn-ghost';
+      back.textContent = '← WRÓĆ DO OSTATNIEJ';
+      back.addEventListener('click', () => { drillDone = false; index = Math.max(0, favorites.length - 1); render(); });
+      const again = document.createElement('button');
+      again.className = 'btn btn-primary btn-lg';
+      again.textContent = 'JESZCZE JEDNA RUNDA';
+      again.addEventListener('click', () => { index = 0; drillDone = false; revealed = false; roundStats = { good: 0, again: 0 }; lastFeedback = ''; render(); });
+      done.append(back, again);
+      shell.appendChild(done);
+      return;
+    }
+
     index = Math.max(0, Math.min(index, favorites.length - 1));
     const chunk = favorites[index];
     const top = document.createElement('div');
@@ -344,6 +385,24 @@ export async function renderFavoritesScreen(container){
     });
     top.append(counter, remove);
 
+    const browse = document.createElement('div');
+    browse.className = 'favorite-arrow-nav';
+    const browsePrev = document.createElement('button');
+    browsePrev.className = 'icon-box';
+    browsePrev.textContent = '←';
+    browsePrev.setAttribute('aria-label', 'Poprzedni zwrot');
+    browsePrev.disabled = index === 0;
+    browsePrev.addEventListener('click', () => move(-1));
+    const feedback = document.createElement('span');
+    feedback.textContent = lastFeedback || 'PRZEWIJAJ LUB OCEŃ';
+    const browseNext = document.createElement('button');
+    browseNext.className = 'icon-box';
+    browseNext.textContent = '→';
+    browseNext.setAttribute('aria-label', 'Następny zwrot');
+    browseNext.disabled = index === favorites.length - 1;
+    browseNext.addEventListener('click', () => move(1));
+    browse.append(browsePrev, feedback, browseNext);
+
     const stage = document.createElement('div');
     stage.className = 'flashcard-stage';
     const card = document.createElement('button');
@@ -351,13 +410,13 @@ export async function renderFavoritesScreen(container){
     card.setAttribute('aria-label', 'Odwróć fiszkę');
     const side = document.createElement('span');
     side.className = 'flashcard-side';
-    side.textContent = revealed ? 'POLSKI' : (chunk.type === 'HEAR' ? 'USŁYSZYSZ' : 'POWIEDZ');
+    side.textContent = revealed ? 'MODEL PO ANGIELSKU' : (chunk.type === 'HEAR' ? 'CO TO ZNACZY?' : 'POWIEDZ PO ANGIELSKU');
     const text = document.createElement('span');
     text.className = 'flashcard-text';
-    text.textContent = revealed ? chunk.pl : chunk.en;
+    text.textContent = revealed ? chunk.en : chunk.pl;
     const hint = document.createElement('span');
     hint.className = 'flashcard-hint';
-    hint.textContent = revealed ? (chunk.hint_pl || 'Dotknij, aby wrócić') : 'Dotknij, żeby odwrócić';
+    hint.textContent = revealed ? (chunk.hint_pl || 'Oceń odpowiedź gestem') : 'Najpierw odpowiedz na głos, potem dotknij';
     card.append(side, text, hint);
     card.addEventListener('click', () => { revealed = !revealed; render(); });
     stage.appendChild(card);
@@ -378,7 +437,7 @@ export async function renderFavoritesScreen(container){
       card.style.transform = '';
       if (Math.abs(dx) < 55) return;
       e.preventDefault();
-      move(dx < 0 ? 1 : -1);
+      rateFavorite(chunk.id, dx < 0 ? srs.Rating.Again : srs.Rating.Good);
     });
     card.addEventListener('click', e => { if (dragged) e.preventDefault(); }, true);
 
@@ -389,22 +448,18 @@ export async function renderFavoritesScreen(container){
 
     const nav = document.createElement('div');
     nav.className = 'favorites-nav';
-    const prev = document.createElement('button');
-    prev.className = 'btn'; prev.textContent = '← POPRZEDNIA';
-    const next = document.createElement('button');
-    next.className = 'btn btn-primary'; next.textContent = 'NASTĘPNA →';
-    prev.disabled = index === 0;
-    next.disabled = index === favorites.length - 1;
-    prev.setAttribute('aria-disabled', String(prev.disabled));
-    next.setAttribute('aria-disabled', String(next.disabled));
-    prev.addEventListener('click', () => move(-1));
-    next.addEventListener('click', () => move(1));
-    nav.append(prev, next);
+    const again = document.createElement('button');
+    again.className = 'btn'; again.textContent = '← JESZCZE NIE';
+    const good = document.createElement('button');
+    good.className = 'btn btn-primary'; good.textContent = 'UMIEM →';
+    again.addEventListener('click', () => rateFavorite(chunk.id, srs.Rating.Again));
+    good.addEventListener('click', () => rateFavorite(chunk.id, srs.Rating.Good));
+    nav.append(again, good);
 
     const swipe = document.createElement('div');
     swipe.className = 'favorites-swipe-help';
-    swipe.textContent = 'PRZESUŃ ← DALEJ  ·  → WSTECZ';
-    shell.append(top, stage, audio, nav, swipe);
+    swipe.textContent = 'PRZESUŃ ← JESZCZE NIE  ·  UMIEM →';
+    shell.append(top, browse, stage, audio, nav, swipe);
   }
 
   render();

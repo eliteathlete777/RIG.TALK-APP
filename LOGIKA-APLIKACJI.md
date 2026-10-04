@@ -22,7 +22,7 @@ Z tego wynikają cztery zasady nadrzędne:
 - Zakres: przyjazd, rozpoznanie, ustalenia z klientem, koordynacja stagehanda, montaż, zasilanie i sygnał, opinanie, procesory, test na własnym komputerze oraz przekazanie klientowi.
 - Ograniczenie: bardzo mało czasu na naukę, dlatego domyślnym widokiem kursu jest obecnie `PLAN 55H`, a nie pełny program.
 
-Termin w planie 55H jest celowo zapisany w danych (`content/bootcamp.json`), a licznik w interfejsie oblicza pozostały czas. Dzięki temu presja czasu jest widoczna, ale harmonogram i materiał można zmienić bez przebudowy kodu.
+Termin w planie 55H jest jedynym źródłem prawdy dla odliczania na Bazie i w planie (`content/bootcamp.json`). Nie utrzymujemy drugiej daty w JavaScript, ponieważ wcześniej powodowało to sprzeczne komunikaty „98 dni” i „42 godziny”.
 
 ## 3. Model produktu: dwie warstwy
 
@@ -64,9 +64,11 @@ Plan 55H redukuje bazę 536 zwrotów do 59 unikalnych zwrotów o największej wa
 
 Kolejność wynika z ryzyka, nie z gramatyki. Najpierw użytkownik uczy się zatrzymać i uprościć rozmowę. Następnie zabezpiecza ustalenia, bezpieczeństwo oraz komendy. Dopiero później dochodzi programowanie i przekazanie.
 
-### Status bloku
+### Status bloku i gotowość
 
-Blok jest uznawany za uruchomiony, gdy wszystkie jego zwroty istnieją już w stanie kart SRS użytkownika. Pierwszy nieukończony blok jest automatycznie oznaczony jako aktywny. Nie przechowujemy drugiego, ręcznego systemu zaliczeń, ponieważ prowadziłby do sprzeczności między kursem i rzeczywistymi kartami.
+Samo istnienie karty SRS oznacza wyłącznie rozpoczęcie nauki. Zwrot jest opanowany dopiero po co najmniej dwóch kontaktach i wejściu karty w stan `Review`. Wspólna funkcja w `js/readiness.js` dzieli zwroty na `unseen`, `learning` oraz `mastered`; z tej samej miary korzystają Baza i plan 55H.
+
+Pierwszy nieopanowany blok, którego termin już nadszedł, jest oznaczony jako „ZALEGŁE · ZRÓB TERAZ”. Jeśli nie ma zaległości, aplikacja wskazuje najbliższy przyszły blok. Baza pokazuje ten blok jako jedną główną akcję wraz z gotowością całej misji.
 
 ### Trening bloku
 
@@ -152,14 +154,15 @@ Ulubione mają dwa zapamiętywane tryby:
 - **Lista** — szybki przegląd EN/PL, odsłuch oraz usuwanie pojedynczych zwrotów;
 - **Fiszki** — jedna duża karta do aktywnego przypominania i obsługi gestami.
 
-Tryb fiszek jest liniowy:
+Tryb fiszek jest liniowy i zaczyna od polskiego znaczenia lub sytuacji, ponieważ celem jest samodzielne wyprodukowanie angielskiej odpowiedzi:
 
-- dotknięcie karty przełącza angielski i polski;
-- przesunięcie w lewo albo „Następna” idzie dalej;
-- przesunięcie w prawo albo „Poprzednia” cofa;
-- na początku „Poprzednia” jest nieaktywna;
-- na końcu „Następna” jest nieaktywna;
-- talia nie zapętla się, ponieważ użytkownik musi widzieć, że doszedł do końca.
+- dotknięcie karty odsłania model po angielsku;
+- przesunięcie w lewo oznacza „jeszcze nie umiem” (`Again`);
+- przesunięcie w prawo oznacza „umiem” (`Good`);
+- te same oceny mają widoczne przyciski ze strzałkami;
+- osobne strzałki nad kartą służą do przeglądania poprzedniego i następnego zwrotu bez oceny;
+- każda ocena natychmiast aktualizuje kartę SRS i gotowość misji;
+- koniec talii pokazuje wynik rundy i możliwość powrotu lub rozpoczęcia nowej rundy.
 
 Usunięcie zwrotu w którymkolwiek trybie usuwa jego identyfikator z `state.starred`. Nie usuwa samego zwrotu z kursu ani historii SRS — znika tylko z ulubionych, ściągi i priorytetu gwiazdki.
 
@@ -180,6 +183,8 @@ Identyfikator zwrotu jest kluczem łączącym treść, SRS, ulubione, plan 55H i
 
 Stan jest przechowywany w `localStorage` pod kluczem `rigtalk.v1`. Obejmuje karty SRS, XP, sesje, ustawienia, ulubione, checklisty stoiska, bossów i stan interfejsu.
 
+Wynik ostatniej próby generalnej zapisuje się w `simulation`. Zwroty z sytuacji oznaczonych „Stanąłem” automatycznie trafiają do Ulubionych, dzięki czemu powstaje osobista talia braków bez tworzenia osobnego systemu kolejek.
+
 `deepMerge` scala wyłącznie zwykłe obiekty. Tablice, daty i obiekty klas są zastępowane w całości. Ta zasada chroni daty kart FSRS przed zamianą na puste obiekty.
 
 ### Migracje
@@ -199,6 +204,12 @@ FSRS planuje kolejne powtórki, a ulubione mają pierwszeństwo w kolejce. Gdy z
 
 Sesje planu 55H i etapów Stoiska są skupione. Mogą ominąć dzienny limit, ponieważ użytkownik świadomie wybiera konkretny materiał potrzebny do najbliższego zadania.
 
+Sesja skupiona dostaje jawny limit równy liczbie zwrotów wybranego bloku lub modułu. Przycisk nie może deklarować treningu całego modułu, jeśli kolejka miałaby zostać ucięta do domyślnych 12 kart.
+
+Tryb HEAR najpierw odtwarza wypowiedź bez transkrypcji. Użytkownik wybiera znaczenie, a angielski zapis pojawia się dopiero po odpowiedzi. Dostępne są prędkości „wolniej” i „realnie”.
+
+Próba generalna jest osobnym trybem w ekranie 55H. Prowadzi przez osiem kolejnych sytuacji od wejścia na stoisko do przekazania ekranu. Użytkownik najpierw odpowiada na głos, potem odsłania model i zaznacza „Poszło” albo „Stanąłem”.
+
 ## 10. Gamifikacja
 
 XP, poziomy, rangi riggerskie, misje i bossowie mają zwiększać regularność, ale nie mogą zasłaniać pracy. Nagrody są naliczane centralnie po zakończeniu sesji. Przerwanie sesji nie daje nagrody.
@@ -207,7 +218,7 @@ W trybie 55H najważniejszy jest postęp zwrotów i kolejne bloki. Gamifikacja p
 
 ## 11. Offline i service worker
 
-Aplikacja jest PWA i używa strategii cache-first dla własnych zasobów. Każda zmiana plików aplikacji lub treści wymaga:
+Aplikacja jest PWA i używa strategii cache-first dla własnych zasobów. Nie korzysta z zewnętrznych fontów: Impact/Arial Narrow/Segoe UI pochodzą z systemu, dzięki czemu pierwszy start bez internetu nie zależy od Google Fonts. Baza pokazuje status gotowości cache offline. Każda zmiana plików aplikacji lub treści wymaga:
 
 1. dodania nowego pliku do `PRECACHE_URLS`, jeśli jeszcze go tam nie ma;
 2. podbicia `CACHE_NAME` w `sw.js`;
@@ -220,7 +231,11 @@ Webhook AI jest na obcym originie i zawsze korzysta z sieci. Klucz API nigdy nie
 
 PWA korzysta z `manifest.webmanifest`, trybu `standalone` oraz ikon 192 i 512 px. Ikona ma czarne tło i dwie masywne linie tekstu: białe `RIG` oraz czerwone `TALK`. Celowo nie zawiera dodatkowego symbolu — nazwa ma pozostać jednoznaczna i czytelna w małym rozmiarze na ekranie telefonu. Wersja 180 px jest używana przez `apple-touch-icon` na iOS.
 
-Publiczny `start_url` i `scope` pozostają względne, dopóki nie zostanie potwierdzony docelowy adres domeny i podfolder. Dzięki temu lokalny podgląd działa bez dodatkowej konfiguracji, a aplikacja może zostać przeniesiona jako komplet do wybranego katalogu hostingu.
+Publiczny `start_url` i `scope` wskazują potwierdzony w Menedżerze plików adres produkcyjny `https://elite-athlete.shop/rig-talk/`. Dzięki temu zainstalowana ikona zawsze otwiera właściwą wersję produkcyjną, także jeśli instalacja została rozpoczęta z linku przekazanego e-mailem. Stary folder `/nauka-angielskiego/` pozostaje poza zakresem wdrożenia.
+
+### Tryb hali
+
+Ekran Czerwone domyślnie otwiera „Tryb stoiska”. Globalne wyszukiwanie przeszukuje czerwone zwroty, sytuacje stoiska i Ulubione po polsku oraz angielsku. Opcjonalna blokada wygaszania korzysta z Screen Wake Lock API i jest uruchamiana wyłącznie gestem użytkownika.
 
 ## 12. Zasady interfejsu
 
@@ -280,3 +295,19 @@ Ze względu na wylot 06.10 o 06:00 pełny kurs został ukryty za drugim trybem. 
 ### 2026-10-03 — własna ikona instalacyjna PWA
 
 Dodano komplet ikon 180/192/512/1024 px. Ostateczny znak to `RIG` nad `TALK` na czarnym tle: prosty, jednoznaczny i czytelny w małym rozmiarze. Manifest używa ikon 192 i 512 jako `any maskable`, a iOS osobnej ikony 180 px.
+
+### 2026-10-04 — gotowość zamiast „uruchomienia”
+
+Postęp misji nie jest już liczony przez samo istnienie karty. Opanowanie wymaga powtórzeń i stanu Review. Powód: użytkownik potrzebuje uczciwej odpowiedzi „czy potrafię to powiedzieć”, a nie statystyki oglądania materiału.
+
+### 2026-10-04 — gest fiszki jest oceną
+
+Swipe w Ulubionych zapisuje `Again` lub `Good` bezpośrednio w FSRS. Strzałki do przeglądania pozostają osobnym sterowaniem, żeby nawigacja nie fałszowała wyniku nauki.
+
+### 2026-10-04 — jedna następna czynność
+
+Baza pokazuje jeden aktualny blok zamiast zmuszać użytkownika do ręcznego porównywania harmonogramu, zaległości i gotowości. Plan zachowuje pełną mapę, ale główny ekran odpowiada wyłącznie na pytanie „co robię teraz?”.
+
+### 2026-10-04 — próba generalna buduje Ulubione
+
+Sytuacje, w których użytkownik zaznaczył „Stanąłem”, dodają powiązane zwroty do Ulubionych. Dzięki temu symulacja automatycznie tworzy osobistą talię braków.
