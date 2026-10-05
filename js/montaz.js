@@ -74,7 +74,10 @@ function phraseBlock(phrases, { title = 'ZWROTY · ENGLISH', compact = false } =
     const play = el('button', 'icon-box sm', '🔊');
     play.setAttribute('aria-label', 'Odsłuchaj: ' + phrase.en);
     play.addEventListener('click', () => {
-      speech.speak(phrase.en, { lang: store.get().settings.variant === 'us' ? 'en-US' : 'en-GB' }).catch(() => {});
+      speech.speak(phrase.en, {
+        lang: store.get().settings.variant === 'us' ? 'en-US' : 'en-GB',
+        audio: phrase.id ? `assets/audio/phrases/${phrase.id}.wav` : null,
+      }).catch(() => {});
     });
     const hide = hideButton('phrase', phrase.id || phrase.en, phrase.en, () => row.remove());
     row.append(copy, play, hide);

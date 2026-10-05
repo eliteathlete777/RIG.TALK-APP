@@ -1,7 +1,7 @@
 // RIG TALK — service worker: cache-first dla aplikacji, treści i fontów (pełna wersja: etap E12)
 // E9 wymaga, żeby 🟥 CZERWONE działało offline — precache obejmuje więc już teraz cały shell + treść.
 
-const CACHE_NAME = 'rigtalk-v35';
+const CACHE_NAME = 'rigtalk-v37';
 const PRECACHE_BATCH_SIZE = 8;
 
 const PRECACHE_URLS = [
@@ -163,10 +163,15 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(async (cache) => {
       try {
+        const phraseResponse = await fetch('content/phrases.json', { cache: 'reload' });
+        if (!phraseResponse.ok) throw new Error(`Precache phrases: HTTP ${phraseResponse.status}`);
+        const phraseData = await phraseResponse.clone().json();
+        const audioUrls = phraseData.stages.flatMap(stage => stage.items.map(item => `assets/audio/phrases/${item.id}.wav`));
+        const urls = [...PRECACHE_URLS, ...audioUrls];
         // Telefon nie dostaje już 148 równoległych żądań. Małe partie ograniczają
         // zużycie pamięci i ryzyko przerwania instalacji na słabszym połączeniu.
-        for (let i = 0; i < PRECACHE_URLS.length; i += PRECACHE_BATCH_SIZE){
-          const batch = PRECACHE_URLS.slice(i, i + PRECACHE_BATCH_SIZE);
+        for (let i = 0; i < urls.length; i += PRECACHE_BATCH_SIZE){
+          const batch = urls.slice(i, i + PRECACHE_BATCH_SIZE);
           await Promise.all(batch.map(async (url) => {
             const response = await fetch(url, { cache: 'reload' });
             if (!response.ok) throw new Error(`Precache ${url}: HTTP ${response.status}`);

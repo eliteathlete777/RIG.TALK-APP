@@ -70,6 +70,7 @@ export function gradeFromScore(score){
 
 // ---------- TTS ----------
 let cachedVoices = [];
+let activeAudio = null;
 function loadVoices(){
   if (typeof window === 'undefined' || !window.speechSynthesis) return [];
   cachedVoices = window.speechSynthesis.getVoices();
@@ -127,8 +128,24 @@ export function isTtsSupported(){
 }
 
 /** Przeczytaj zwrot. lang: 'en-GB' | 'en-US'. rate: 0.7 (żółw) / 0.85 (nowe) / 1.0 (powtórki). */
-export function speak(text, { lang = 'en-GB', rate = 0.85 } = {}){
+export function speak(text, { lang = 'en-GB', rate = 0.85, audio = null } = {}){
   return new Promise((resolve, reject) => {
+    if (activeAudio){ activeAudio.pause(); activeAudio = null; }
+    if (audio && typeof Audio !== 'undefined'){
+      const player = new Audio(audio);
+      activeAudio = player;
+      player.playbackRate = Math.max(0.65, Math.min(1.25, rate));
+      player.onended = () => { activeAudio = null; resolve(); };
+      player.onerror = () => {
+        activeAudio = null;
+        speak(text, { lang, rate }).then(resolve, reject);
+      };
+      player.play().catch(() => {
+        activeAudio = null;
+        speak(text, { lang, rate }).then(resolve, reject);
+      });
+      return;
+    }
     if (!isTtsSupported()){ reject(new Error('speechSynthesis niedostępny')); return; }
     window.speechSynthesis.cancel(); // przerwij ewentualną poprzednią wypowiedź
     const utter = new SpeechSynthesisUtterance(text);
@@ -140,6 +157,11 @@ export function speak(text, { lang = 'en-GB', rate = 0.85 } = {}){
     utter.onerror = (e) => reject(e.error || e);
     window.speechSynthesis.speak(utter);
   });
+}
+
+export function stopSpeaking(){
+  if (activeAudio){ activeAudio.pause(); activeAudio = null; }
+  if (typeof window !== 'undefined') window.speechSynthesis?.cancel();
 }
 
 // ---------- Rozpoznawanie mowy ----------

@@ -240,6 +240,9 @@ function initSessionButtons(){
     store.set({ settings: { sessionLength: 10 } });
     session.startSession(10);
   });
+  document.getElementById('startPlaylistBtn')?.addEventListener('click', () => {
+    session.startPhrasePlaylist(document.getElementById('playlistStage')?.value || 'all');
+  });
   window.addEventListener('rigtalk:session-ended', () => {
     // montaż wraca do instrukcji; angielski wraca do ostatniego ekranu nauki
     showScreen(activeMode === 'assembly' ? 'stoisko' : (store.get().ui?.lastScreen || 'baza'), false);
@@ -273,11 +276,41 @@ function initSettingsScreen(){
   initSettingsSwitch('settingTrackMix', 'trackMix');
   initSettingsSwitch('settingL1', 'l1');
   initSettingsSwitch('settingNewPerDay', 'newPerDay', 'number');
+  initSettingsSwitch('settingRepeatCount', 'repeatCount', 'number');
+  initSettingsSwitch('settingRepeatSeconds', 'repeatSeconds', 'number');
+}
+
+function encodeTransfer(value){
+  const bytes = new TextEncoder().encode(value);
+  let binary = '';
+  bytes.forEach(byte => { binary += String.fromCharCode(byte); });
+  return btoa(binary);
+}
+
+function decodeTransfer(value){
+  const binary = atob(value.replace(/\s+/g, ''));
+  const bytes = Uint8Array.from(binary, char => char.charCodeAt(0));
+  return new TextDecoder().decode(bytes);
 }
 
 function initBackupUI(){
   const area = document.getElementById('stateArea');
   const file = document.getElementById('stateFile');
+  const transfer = document.getElementById('transferCode');
+  document.getElementById('copyTransferBtn')?.addEventListener('click', async () => {
+    const code = encodeTransfer(exportState(store.get()));
+    transfer.value = code;
+    try { await navigator.clipboard.writeText(code); alert('Kod postępu skopiowany. Wklej go na drugim urządzeniu.'); }
+    catch (e) { transfer.focus(); transfer.select(); alert('Kod zaznaczony. Skopiuj go ręcznie.'); }
+  });
+  document.getElementById('applyTransferBtn')?.addEventListener('click', () => {
+    if (!transfer.value.trim()) return alert('Najpierw wklej kod z drugiego urządzenia.');
+    try {
+      store.state = importState(decodeTransfer(transfer.value.trim()));
+      alert('Postęp przeniesiony.');
+      renderFromState();
+    } catch (e){ alert('Kod jest nieprawidłowy albo niepełny.'); }
+  });
   document.getElementById('exportBtn')?.addEventListener('click', () => {
     const blob = new Blob([exportState(store.get())], { type: 'application/json' });
     const url = URL.createObjectURL(blob);

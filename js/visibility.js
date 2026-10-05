@@ -12,6 +12,11 @@ export function hideItem(kind, id){
   store.set({ hiddenItems: [...hidden] });
 }
 
+export function unhideItem(kind, id){
+  const key = visibilityKey(kind, id);
+  store.set({ hiddenItems: (store.get().hiddenItems || []).filter(item => item !== key) });
+}
+
 export function visibleItems(items, kind, identity){
   return (items || []).filter(item => !isHiddenItem(kind, identity(item)));
 }
@@ -26,6 +31,22 @@ export function hideButton(kind, id, label, onHide){
     event.stopPropagation();
     hideItem(kind, id);
     onHide?.();
+    const old = document.querySelector('.undo-toast');
+    old?.remove();
+    const toast = document.createElement('div');
+    toast.className = 'undo-toast';
+    const copy = document.createElement('span');
+    copy.textContent = `Ukryto: ${label}`;
+    const undo = document.createElement('button');
+    undo.type = 'button'; undo.textContent = 'Cofnij';
+    toast.append(copy, undo);
+    undo.addEventListener('click', () => {
+      unhideItem(kind, id);
+      toast.remove();
+      window.dispatchEvent(new CustomEvent('rigtalk:visibility-restored'));
+    });
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 5000);
   });
   return button;
 }

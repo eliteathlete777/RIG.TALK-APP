@@ -566,6 +566,17 @@ body[data-app-mode="english"]{ --red:#e01e1e; }
 .guided-confirm span{ font-family:var(--font-display); font-size:19px; }
 .guided-confirm[hidden]{ display:none; }
 .guided-help{ max-width:34ch; color:var(--dim); font-size:11px; line-height:1.45; }
+.guided-controls{ display:grid; grid-template-columns:1fr 1fr; gap:8px; width:100%; margin:0 0 12px; }
+.handsfree-panel{ position:relative; overflow:hidden; margin:14px 0; padding:18px; border:2px solid #ffd166; background:#17140d; box-shadow:inset 8px 0 0 #ffd166; }
+.handsfree-panel h3{ margin:12px 0 4px; font-size:24px; }
+.handsfree-panel p{ margin:0 0 12px; color:var(--dim); }
+.handsfree-panel .btn{ width:100%; }
+.handsfree-panel small{ display:block; margin-top:10px; color:#bdb6a5; line-height:1.35; }
+.handsfree-signal{ display:flex; align-items:center; gap:8px; color:#ffd166; font-size:12px; font-weight:800; letter-spacing:.08em; }
+.handsfree-signal i{ width:10px; height:10px; border-radius:50%; background:#ffd166; box-shadow:0 0 0 5px #ffd16622; }
+.undo-toast{ position:fixed; left:12px; right:12px; bottom:calc(84px + env(safe-area-inset-bottom)); z-index:150; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 14px; background:#fff; color:#111; border-left:6px solid var(--red); box-shadow:0 12px 30px #0009; }
+.undo-toast span{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.undo-toast button{ border:0; background:none; color:var(--red); font-weight:800; cursor:pointer; }
 
 /* ---------- MONTAŻ: wybór rozdziału (żółty tryb roboczy) ---------- */
 .mz-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:14px 0; }

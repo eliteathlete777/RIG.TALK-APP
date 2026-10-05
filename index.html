@@ -87,6 +87,24 @@
           </button>
         </div>
 
+        <div class="handsfree-panel">
+          <div class="handsfree-signal"><i></i><span>TRYB BEZ DOTYKANIA</span></div>
+          <h3>Zwroty z całego montażu</h3>
+          <p>Telefon czyta, daje czas na powtórzenie i sam przechodzi dalej.</p>
+          <select id="playlistStage" class="field" aria-label="Wybierz sytuację">
+            <option value="all">Cała lista · 66 zwrotów</option>
+            <option value="before">Wejście na halę i przygotowanie</option>
+            <option value="rigging">Cabinety i rigging</option>
+            <option value="cabling">DATA i zasilanie</option>
+            <option value="processor">MX30, VMP i Resolume</option>
+            <option value="handover">Test, multimedia i przekazanie</option>
+            <option value="commands">Komendy całego dnia</option>
+            <option value="loadout">Demontaż i zwrot sprzętu</option>
+          </select>
+          <button class="btn btn-primary btn-lg" id="startPlaylistBtn">▶ Uruchom playlistę</button>
+          <small>Audio najważniejszych zwrotów jest zapisane w aplikacji i działa offline.</small>
+        </div>
+
         <div class="mini-progress-row">
           <div class="mini-progress">
             <div class="label">Tech</div>
@@ -130,6 +148,7 @@
           <button data-value="ulubione">★ ULUBIONE</button>
           <button data-value="slownik">SŁOWNIK</button>
         </div>
+
         <div id="bibliotekaRoot"></div>
       </section>
 
@@ -189,6 +208,17 @@
         </div>
 
         <div class="card">
+          <h3>Tryb bez dotykania</h3>
+          <p class="muted-sm">Liczba odsłuchów i czas na Twoje powtórzenie.</p>
+          <div class="track-switch" id="settingRepeatCount">
+            <button data-value="1">1 ×</button><button data-value="2">2 ×</button><button data-value="3">3 ×</button>
+          </div>
+          <div class="track-switch" id="settingRepeatSeconds">
+            <button data-value="3">3 s</button><button data-value="6">6 s</button><button data-value="10">10 s</button>
+          </div>
+        </div>
+
+        <div class="card">
           <h3>Aktualizacja i kopia postępu</h3>
           <div style="display:flex; gap:8px; margin-bottom:10px; flex-wrap:wrap;">
             <button class="btn btn-primary" id="updateBtn">Aktualizuj bez utraty danych</button>
@@ -201,6 +231,13 @@
           <p id="updateStatus" role="status" aria-live="polite" style="margin:0 0 10px; color:var(--dim); font-size:13px;">Aktualizacja usuwa tylko stare pliki aplikacji. Postęp, ulubione i ustawienia zostają.</p>
           <input id="stateFile" type="file" accept="application/json,.json" hidden>
           <textarea id="stateArea" rows="5" placeholder="Awaryjny import: wklej tutaj kopię JSON" style="width:100%; background:var(--bg); color:var(--white); border:1px solid var(--line); border-radius:8px; padding:8px; font-family:monospace; font-size:11px;"></textarea>
+          <h3>Przenieś postęp między telefonem i komputerem</h3>
+          <p class="muted-sm">Skopiuj kod na jednym urządzeniu i wklej na drugim. Kod zawiera postęp, ustawienia i miejsce w sesji.</p>
+          <textarea id="transferCode" rows="4" placeholder="Tutaj pojawi się lub wklej kod transferowy" style="width:100%; background:var(--bg); color:var(--white); border:1px solid var(--line); border-radius:8px; padding:8px; font-family:monospace; font-size:11px;"></textarea>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+            <button class="btn" id="copyTransferBtn">Kopiuj kod z tego urządzenia</button>
+            <button class="btn btn-outline" id="applyTransferBtn">Wczytaj wklejony kod</button>
+          </div>
         </div>
       </section>
 

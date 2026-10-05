@@ -39,7 +39,7 @@ with sync_playwright() as p:
     card.wait_for()
     phonetic = card.locator(".guided-phonetic").inner_text()
     assert phonetic.startswith("[ ") and len(phonetic) > 5
-    assert "GŁOS OFFLINE" in card.locator(".guided-voice").inner_text()
+    assert "OFFLINE" in card.locator(".guided-voice").inner_text()
     first_phrase = card.locator(".guided-en").inner_text()
     assert page.evaluate("JSON.parse(localStorage.getItem('rigtalk.v1')).activeLearning.cursor") == 0
     page.reload(wait_until="networkidle")

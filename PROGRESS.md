@@ -93,3 +93,10 @@
 - Sterowanie: pojedyncze dotknięcie kończy bieżące 6 sekund, podwójne zatrzymuje/wznawia automat, swipe w bok zapisuje kartę i przechodzi dalej.
 - Podczas treningu włączany jest Screen Wake Lock. Aktywna kolejka, pozycja i wyniki są zapisywane lokalnie i wznawiane po ponownym otwarciu aplikacji na tym samym telefonie (schema v6, `activeLearning`).
 - Cache aplikacji: `rigtalk-v35`.
+
+## v37 — pełna playlista offline i transfer urządzeń
+- 66 zwrotów sytuacyjnych włączono do nauki jako moduł T8. Nowy panel „Tryb bez dotykania” uruchamia całą listę albo jedną z 7 sytuacji bez misji przerywających autoplay.
+- Dodano 66 lokalnych nagrań WAV Microsoft Zira (9,5 MB). Service worker buduje listę audio z `content/phrases.json` i zapisuje ją offline. Pozostałe materiały nadal korzystają z lokalnego głosu systemowego.
+- Ustawienia playlisty: 1/2/3 odsłuchy i 3/6/10 sekund. Karta ma widoczne przyciski Wróć, Jeszcze raz, Pauza/Wznów i Dalej; działają też dotknięcia, podwójne dotknięcie i swipe.
+- Wake Lock odzyskuje się po powrocie aplikacji na pierwszy plan. Dodano transfer pełnego stanu kodem między telefonem i komputerem oraz 5-sekundowe Cofnij po ukryciu elementu.
+- Cache `rigtalk-v37`. Test mobilny potwierdza playlistę rigging 10 zwrotów, audio offline w cache, zapis kursora, sterowanie, Wake Lock, transfer, brak overflow i błędów strony.

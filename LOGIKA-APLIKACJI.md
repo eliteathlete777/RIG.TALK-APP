@@ -60,6 +60,16 @@ Karta treningowa odtwarza zwrot trzy razy w tempie 70%, a między odsłuchami da
 
 Aktywna kolejka, numer karty i wyniki są zapisywane lokalnie w `activeLearning` (schema v6). Po ponownym otwarciu na tym samym telefonie niedokończona sesja wznawia się od ostatniej karty. Dane pozostają lokalne; nie jest to synchronizacja między różnymi urządzeniami.
 
+### 3.5 Playlista, audio offline i transfer postępu
+
+Zwroty sytuacyjne są również modułem treningowym `T8`. Panel **Tryb bez dotykania** pozwala uruchomić wszystkie 66 zwrotów albo jedną z siedmiu sytuacji. Kolejka skupiona nie zawiera misji ani pytań, dlatego nie zatrzymuje automatycznego odsłuchu. Użytkownik ustawia 1–3 odsłuchy i przerwę 3, 6 lub 10 sekund. Karta pokazuje też jawne sterowanie: wróć, odtwórz ponownie, pauza/wznów i dalej.
+
+Każdy z 66 zwrotów ma lokalny plik WAV nagrany głosem Microsoft Zira. Pliki są częścią precache service workera i mają pierwszeństwo przed `speechSynthesis`; głos systemowy pozostaje fallbackiem dla pozostałych materiałów. Dzięki temu najważniejsza playlista działa bez internetu i bez dodatkowego pakietu głosowego Xiaomi.
+
+Transfer między urządzeniami nie wymaga konta ani serwera. Ustawienia generują kod transferowy zawierający pełny eksport stanu. Wklejenie kodu na drugim urządzeniu odtwarza postępy, ukrycia, ustawienia i niedokończoną sesję. To transfer na żądanie, nie automatyczna synchronizacja w tle.
+
+Ukrycie zwrotu lub słowa pokazuje przez pięć sekund przycisk **Cofnij**. Pełne przywrócenie wszystkich ukrytych elementów nadal jest dostępne w Ustawieniach.
+
 ## 4. Logika planu 55H
 
 Plan 55H redukuje bazę 536 zwrotów do 59 unikalnych zwrotów o największej wartości operacyjnej. Materiał jest podzielony na dziewięć bloków:

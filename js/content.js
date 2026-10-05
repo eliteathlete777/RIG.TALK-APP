@@ -12,10 +12,14 @@ async function fetchJson(path){
 export async function loadAllChunks(){
   if (cache) return cache;
 
-  const [modulesDef, index] = await Promise.all([
+  const [moduleData, index, phraseData] = await Promise.all([
     fetchJson('content/modules.json'),
     fetchJson('content/index.json'),
+    fetchJson('content/phrases.json'),
   ]);
+  const modulesDef = JSON.parse(JSON.stringify(moduleData));
+  modulesDef.modules.T8 = { track: 'T', name: 'ZWROTY SYTUACYJNE', order: -2, unlockAfter: null, boss: null };
+  modulesDef.tracks.T.modules.unshift('T8');
 
   const chunks = new Map();
   const fileEntries = Object.entries(index.files || {});
@@ -30,6 +34,15 @@ export async function loadAllChunks(){
       chunks.set(chunk.id, chunk);
     });
   });
+  phraseData.stages.forEach((stage, unit) => stage.items.forEach((phrase, index) => {
+    const id = `t8-${phrase.id}`;
+    chunks.set(id, {
+      id, track: 'T', type: 'SAY', module: 'T8', unit,
+      order: index, en: phrase.en, pl: phrase.pl, role: phrase.role,
+      phraseId: phrase.id, stageId: stage.id,
+      audio: `assets/audio/phrases/${phrase.id}.wav`,
+    });
+  }));
 
   const order = Object.entries(modulesDef.modules)
     .sort((a, b) => (a[1].track === b[1].track ? a[1].order - b[1].order : a[1].track.localeCompare(b[1].track)))

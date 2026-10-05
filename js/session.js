@@ -112,6 +112,9 @@ export function initSessionDom(){
   el.exit.addEventListener('click', () => {
     if (confirm('Przerwać sesję? Postęp w tej karcie zostanie utracony.')) endSession(true);
   });
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && el.root.classList.contains('active')) keepScreenAwake();
+  });
   let tapTimer = null;
   let pointerStart = null;
   el.root.addEventListener('pointerdown', event => { pointerStart = [event.clientX, event.clientY]; });
@@ -130,10 +133,7 @@ export function initSessionDom(){
     if (tapTimer){
       clearTimeout(tapTimer);
       tapTimer = null;
-      learningPaused = !learningPaused;
-      if (learningPaused) window.speechSynthesis?.cancel();
-      const status = el.body.querySelector('.guided-status');
-      if (status) status.textContent = learningPaused ? 'PAUZA · kliknij dwa razy, aby wznowić' : 'WZNOWIONO';
+      toggleLearningPause();
       return;
     }
     tapTimer = setTimeout(() => { tapTimer = null; learningSkipWait?.(); }, 260);
@@ -148,6 +148,15 @@ async function keepScreenAwake(){
 function releaseScreenAwake(){
   try { learningWakeLock?.release(); } catch (e) {}
   learningWakeLock = null;
+}
+
+function toggleLearningPause(){
+  learningPaused = !learningPaused;
+  if (learningPaused) speech.stopSpeaking();
+  const status = el.body.querySelector('.guided-status');
+  const button = el.body.querySelector('[data-guided="pause"]');
+  if (status) status.textContent = learningPaused ? 'PAUZA · dotknij dwa razy, aby wznowić' : 'WZNOWIONO';
+  if (button) button.textContent = learningPaused ? '▶ Wznów' : 'Ⅱ Pauza';
 }
 
 function saveActiveLearning(){
@@ -221,6 +230,14 @@ export async function startFocusedSession(ids, { limit = 12 } = {}){
   startTimer(Math.max(3, Math.ceil(picked.length / 2)));
   saveActiveLearning();
   renderStep();
+}
+
+export async function startPhrasePlaylist(stageId = 'all'){
+  const ctx = await loadAllChunks();
+  const ids = [...ctx.chunks.values()]
+    .filter(chunk => chunk.module === 'T8' && (stageId === 'all' || chunk.stageId === stageId))
+    .map(chunk => chunk.id);
+  return startFocusedSession(ids, { limit: Number.POSITIVE_INFINITY });
 }
 
 export async function startSession(minutes){
@@ -323,7 +340,7 @@ function clearLearningCycle(){
   learningSkipWait = null;
   guidedComplete = null;
   learningPaused = false;
-  if (typeof window !== 'undefined' && window.speechSynthesis) window.speechSynthesis.cancel();
+  speech.stopSpeaking();
 }
 
 function waitForRepeat(seconds, token, onTick){
@@ -352,19 +369,25 @@ function renderGuidedPhrase(chunk, isNew){
   const card = document.createElement('div');
   card.className = 'card guided-learning';
   const voice = speech.localVoiceStatus(store.get().settings.variant === 'us' ? 'en-US' : 'en-GB');
-  card.innerHTML = `<div class="eyebrow">TRENING 3 × 70%</div>
+  const voiceLabel = chunk.audio ? '✓ AUDIO OFFLINE W APLIKACJI' : (voice.ready ? `✓ GŁOS OFFLINE: ${voice.name}` : 'GŁOS URZĄDZENIA · zainstaluj angielski głos offline w systemie');
+  const repeatCount = Math.max(1, Number(store.get().settings.repeatCount) || 3);
+  const repeatSeconds = Math.max(1, Number(store.get().settings.repeatSeconds) || 6);
+  card.innerHTML = `<div class="eyebrow">TRENING ${repeatCount} × 70%</div>
     <div class="guided-en"></div><div class="guided-phonetic"></div><div class="guided-pl"></div>
-    <div class="guided-voice">${voice.ready ? `✓ GŁOS OFFLINE: ${voice.name}` : 'GŁOS URZĄDZENIA · zainstaluj angielski głos offline w systemie'}</div>
-    <div class="guided-rounds"><span></span><span></span><span></span></div>
+    <div class="guided-voice">${voiceLabel}</div>
+    <div class="guided-rounds"></div>
     <div class="guided-status">Przygotuj się…</div><div class="guided-countdown"></div>
-    <div class="guided-help">Kliknij: zakończ przerwę · dwa kliknięcia: pauza · swipe: następny zwrot</div>`;
+    <div class="guided-controls"><button class="btn" data-guided="prev">← Wróć</button><button class="btn" data-guided="replay">↻ Jeszcze raz</button><button class="btn btn-primary" data-guided="pause">Ⅱ Pauza</button><button class="btn" data-guided="next">Dalej →</button></div>
+    <div class="guided-help">Kliknij tło: zakończ przerwę · dwa kliknięcia: pauza · swipe: następny zwrot</div>`;
   card.querySelector('.guided-en').textContent = chunk.en;
   card.querySelector('.guided-phonetic').textContent = `[ ${speech.toPolishPhonetic(chunk.en)} ]`;
   card.querySelector('.guided-pl').textContent = chunk.pl;
   el.body.appendChild(card);
 
   const token = learningToken;
-  const dots = [...card.querySelectorAll('.guided-rounds span')];
+  const rounds = card.querySelector('.guided-rounds');
+  for (let i = 0; i < repeatCount; i++) rounds.appendChild(document.createElement('span'));
+  const dots = [...rounds.querySelectorAll('span')];
   const status = card.querySelector('.guided-status');
   const countdown = card.querySelector('.guided-countdown');
   let completed = false;
@@ -379,17 +402,24 @@ function renderGuidedPhrase(chunk, isNew){
     nextStep();
   };
   guidedComplete = complete;
+  card.querySelector('[data-guided="prev"]').addEventListener('click', () => {
+    if (cursor <= 0) return;
+    clearLearningCycle(); cursor--; saveActiveLearning(); renderStep();
+  });
+  card.querySelector('[data-guided="replay"]').addEventListener('click', () => renderStep());
+  card.querySelector('[data-guided="pause"]').addEventListener('click', toggleLearningPause);
+  card.querySelector('[data-guided="next"]').addEventListener('click', complete);
 
   (async () => {
-    for (let round = 0; round < 3; round++){
+    for (let round = 0; round < repeatCount; round++){
       if (token !== learningToken) return;
       dots[round].classList.add('active');
-      status.textContent = `ODSŁUCH ${round + 1}/3 · słuchaj`;
+      status.textContent = `ODSŁUCH ${round + 1}/${repeatCount} · słuchaj`;
       countdown.textContent = 'LEKTOR 70%';
-      try { await speech.speak(chunk.en, { lang: store.get().settings.variant === 'us' ? 'en-US' : 'en-GB', rate: 0.7 }); } catch (e) {}
+      try { await speech.speak(chunk.en, { lang: store.get().settings.variant === 'us' ? 'en-US' : 'en-GB', rate: 0.7, audio: chunk.audio }); } catch (e) {}
       if (token !== learningToken) return;
-      status.textContent = `TWOJA KOLEJ ${round + 1}/3 · powtórz na głos`;
-      const keepGoing = await waitForRepeat(6, token, left => { countdown.textContent = `${left} s`; });
+      status.textContent = `TWOJA KOLEJ ${round + 1}/${repeatCount} · powtórz na głos`;
+      const keepGoing = await waitForRepeat(repeatSeconds, token, left => { countdown.textContent = `${left} s`; });
       if (!keepGoing) return;
       dots[round].classList.add('done');
     }

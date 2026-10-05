@@ -19,6 +19,8 @@ function defaultState(){
       sessionLength: 5,
       trackMix: 'T',
       variant: 'uk',
+      repeatCount: 3,
+      repeatSeconds: 6,
     },
     starred: [],
     redOrder: [],
