@@ -18,6 +18,12 @@ html, body{
   font-family:var(--font-body);
   min-height:100%;
   overscroll-behavior:none;
+  /* Czytelność na zdjęciach, czerwonych przyciskach i jasnym ekranie hali. */
+  text-shadow:
+    -1px -1px 0 #000, 1px -1px 0 #000,
+    -1px  1px 0 #000, 1px  1px 0 #000,
+     0   -1px 0 #000, 0    1px 0 #000,
+    -1px  0   0 #000, 1px  0   0 #000;
 }
 
 input, textarea, select{
@@ -27,6 +33,9 @@ input, textarea, select{
   border-radius:8px;
   font-family:var(--font-body);
   caret-color:var(--red);
+  text-shadow:
+    -1px -1px 0 #000, 1px -1px 0 #000,
+    -1px  1px 0 #000, 1px  1px 0 #000;
 }
 
 input::placeholder, textarea::placeholder{ color:var(--dim); opacity:1; }
