@@ -161,7 +161,7 @@ function toggleLearningPause(){
 
 function saveActiveLearning(){
   if (!plan) return;
-  store.set({ activeLearning: { queue: plan.queue, minutes: plan.minutes, focused: !!plan.focused, trackMix: plan.trackMix, cursor, results } });
+  store.set({ activeLearning: { queue: plan.queue, minutes: plan.minutes, focused: !!plan.focused, listeningOnly: !!plan.listeningOnly, playlistTitle: plan.playlistTitle, trackMix: plan.trackMix, cursor, results } });
 }
 
 function showSessionScreen(){
@@ -205,7 +205,7 @@ function stopTimer(){
  * Sesja skupiona na wybranych zwrotach (etap PIERWSZEGO STOISKA, moduł z KURSU).
  * Bez dziennego limitu nowych i bez misji: najpierw zaległe/nieznane, maks. `limit` kart.
  */
-export async function startFocusedSession(ids, { limit = 12 } = {}){
+export async function startFocusedSession(ids, { limit = 12, listeningOnly = false, playlistTitle = '' } = {}){
   const ctx = await loadAllChunks();
   const s = store.get();
   const now = new Date();
@@ -217,7 +217,7 @@ export async function startFocusedSession(ids, { limit = 12 } = {}){
   const picked = [...due, ...unseen, ...rest].slice(0, limit);
   if (!picked.length) return;
   plan = {
-    ctx, minutes: 5, trackMix: 'T', focused: true,
+    ctx, minutes: 5, trackMix: 'T', focused: true, listeningOnly, playlistTitle,
     queue: [
       ...picked.map(id => ({ kind: id in s.cards ? 'review' : 'new', id })),
       { kind: 'summary' },
@@ -237,7 +237,8 @@ export async function startPhrasePlaylist(stageId = 'all'){
   const ids = [...ctx.chunks.values()]
     .filter(chunk => chunk.module === 'T8' && (stageId === 'all' || chunk.stageId === stageId))
     .map(chunk => chunk.id);
-  return startFocusedSession(ids, { limit: Number.POSITIVE_INFINITY });
+  const stage = [...ctx.chunks.values()].find(chunk => chunk.module === 'T8' && chunk.stageId === stageId);
+  return startFocusedSession(ids, { limit: Number.POSITIVE_INFINITY, listeningOnly: true, playlistTitle: stageId === 'all' ? 'Wszystkie sytuacje' : (stage?.stageId || stageId) });
 }
 
 export async function startSession(minutes){
@@ -255,7 +256,7 @@ export async function resumeSavedSession(){
   const saved = store.get().activeLearning;
   if (!saved?.queue?.length || saved.cursor >= saved.queue.length) return false;
   const ctx = await loadAllChunks();
-  plan = { ctx, queue: saved.queue, minutes: saved.minutes || 5, focused: !!saved.focused, trackMix: saved.trackMix || 'T' };
+  plan = { ctx, queue: saved.queue, minutes: saved.minutes || 5, focused: !!saved.focused, listeningOnly: !!saved.listeningOnly, playlistTitle: saved.playlistTitle, trackMix: saved.trackMix || 'T' };
   cursor = saved.cursor || 0;
   results = { reviewsDone: 0, newDone: 0, missionDone: false, xp: 0, goodOrEasyCount: 0, hearCorrect: 0, ...(saved.results || {}) };
   showSessionScreen();
@@ -395,10 +396,16 @@ function renderGuidedPhrase(chunk, isNew){
     if (completed || token !== learningToken) return;
     completed = true;
     const now = new Date();
-    const base = isNew ? srs.newCard(now) : getCardFor(chunk.id);
-    saveCard(chunk.id, srs.reviewCard(base, srs.Rating.Good, now).card);
-    if (isNew) results.newDone++; else results.reviewsDone++;
-    results.goodOrEasyCount++;
+    if (plan.listeningOnly){
+      const listened = { ...(store.get().listened || {}) };
+      listened[chunk.id] = { count: (listened[chunk.id]?.count || 0) + 1, lastAt: now.toISOString() };
+      store.set({ listened });
+    } else {
+      const base = isNew ? srs.newCard(now) : getCardFor(chunk.id);
+      saveCard(chunk.id, srs.reviewCard(base, srs.Rating.Good, now).card);
+      if (isNew) results.newDone++; else results.reviewsDone++;
+      results.goodOrEasyCount++;
+    }
     nextStep();
   };
   guidedComplete = complete;

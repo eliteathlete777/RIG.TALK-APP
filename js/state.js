@@ -1,7 +1,7 @@
 // RIG TALK — state.js: load/save/migracje/eksport/import (localStorage, klucz rigtalk.v1)
 
 const STORAGE_KEY = 'rigtalk.v1';
-const SCHEMA_VERSION = 6;
+const SCHEMA_VERSION = 7;
 
 function defaultState(){
   return {
@@ -28,6 +28,7 @@ function defaultState(){
     deleted: [],
     hiddenItems: [],
     activeLearning: null,
+    listened: {},
     aiUsedToday: 0,
     aiUsedDate: null,
     stats: {
@@ -38,7 +39,7 @@ function defaultState(){
     bossesWon: [],
     simulation: { lastScore: null, total: 8, at: null },
     mx30: { checks: {} },
-    stoisko: { checks: {}, open: 1, tab: {} },
+    stoisko: { checks: {}, open: null, tab: {} },
     ui: {
       lastScreen: 'baza',
     },
@@ -64,6 +65,17 @@ const MIGRATIONS = {
   3: (s) => ({ ...s, schemaVersion: 4, deleted: s.deleted || [] }),
   4: (s) => ({ ...s, schemaVersion: 5, hiddenItems: s.hiddenItems || [] }),
   5: (s) => ({ ...s, schemaVersion: 6, activeLearning: s.activeLearning || null }),
+  6: (s) => ({
+    ...s,
+    schemaVersion: 7,
+    listened: s.listened || {},
+    stoisko: { ...(s.stoisko || {}), open: null },
+    ui: {
+      ...(s.ui || {}), azOpen: null,
+      lastScreen: s.ui?.lastScreen === 'czerwone' ? 'biblioteka' : (s.ui?.lastScreen || 'baza'),
+      libTab: ['zwroty', 'slowa', 'klient', 'rigger'].includes(s.ui?.libTab) ? s.ui.libTab : 'zwroty',
+    },
+  }),
 };
 
 function migrate(state){

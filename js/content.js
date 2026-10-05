@@ -41,6 +41,8 @@ export async function loadAllChunks(){
       order: index, en: phrase.en, pl: phrase.pl, role: phrase.role,
       phraseId: phrase.id, stageId: stage.id,
       audio: `assets/audio/phrases/${phrase.id}.wav`,
+      tags: phrase.role === 'klient' || phrase.role === 'organizator' || phrase.role === 'multimedia' || phrase.role === 'test'
+        ? ['client', 'mission'] : ['crew', 'mission'],
     });
   }));
 

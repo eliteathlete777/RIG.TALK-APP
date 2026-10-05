@@ -1,4 +1,4 @@
-// RIG TALK — stoisko.js: PIERWSZE STOISKO — przebieg montażu etapami, zwroty A (klient) / B (stagehand),
+// RIG TALK — stoisko.js: PIERWSZE STOISKO — przebieg montażu etapami, zwroty A (klient) / B (rigger),
 // co usłyszysz, checklista i słowa kluczowe. Zwroty żyją w content/tech/t7.json (moduł T7), więc wchodzą też do SRS.
 
 import { store } from './state.js';
@@ -18,7 +18,7 @@ async function loadMeta(){
   return metaCache;
 }
 
-const SIDE_LABEL = { client: 'A · KLIENT', crew: 'B · STAGEHAND', hall: 'HALA', solo: 'TY PRZY PROCESORZE' };
+const SIDE_LABEL = { client: 'A · KLIENT', crew: 'B · RIGGER', hall: 'HALA', solo: 'TY PRZY PROCESORZE' };
 const SIDE_ORDER = ['client', 'crew', 'hall', 'solo'];
 
 function sideOf(chunk){
@@ -35,7 +35,7 @@ function stageProgress(stage){
 
 function isStarred(id){ return (store.get().starred || []).includes(id); }
 
-/** Pełny ekran z dużym tekstem — do pokazania stagehandowi/klientowi. */
+/** Pełny ekran z dużym tekstem — do pokazania riggerowi/klientowi. */
 export function showBig(en, pl){
   const ov = document.createElement('div');
   ov.className = 'show-overlay';

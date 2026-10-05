@@ -104,7 +104,7 @@ export async function renderAz(root){
   ask.appendChild(copyButton(az.ask.message, 'Kopiuj wiadomość do SQM'));
   root.appendChild(askAcc.wrap);
 
-  const openId = store.get().ui?.azOpen ?? 'p0';
+  const openId = store.get().ui?.azOpen ?? null;
   az.phases.forEach(phase => {
     const open = openId === phase.id;
     const card = el('section', 'stage-card az-phase' + (open ? ' open' : ''));

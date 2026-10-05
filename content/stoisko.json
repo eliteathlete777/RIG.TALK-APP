@@ -1,6 +1,6 @@
 {
   "title": "PIERWSZE STOISKO",
-  "subtitle": "Paryż · transparentny LED na belkach · solo + stagehand",
+  "subtitle": "Paryż · transparentny LED na belkach · solo + anglojęzyczny rigger",
   "scope_pl": "Twój zakres: przyjechać, rozeznać się, zbudować ekran, opiąć, zaprogramować, przygotować procesory, sprawdzić na swoim PC i przekazać klientowi, żeby sam puszczał materiały ze swojego laptopa.",
   "stages": [
     {
@@ -32,11 +32,11 @@
       "terms": ["scaffold", "scaffold tower", "scissor lift", "cherry picker", "carpet", "on site", "schedule"]
     },
     {
-      "unit": 5, "key": "stagehand", "title": "Stagehand: briefing i rozładunek", "en": "Crew briefing",
-      "goal_pl": "Poznać stagehanda, przekazać zasady BHP i razem przygotować sprzęt.",
-      "checklist": ["Znam imię stagehanda i jego doświadczenie", "BHP: buty, rękawice, nikt pod ciężarem", "Skrzynie na stoisku", "Panele policzone", "Panele leżą bezpiecznie na kocach"],
-      "tip_pl": "Daj stagehandowi zawsze jedno konkretne zadanie naraz. Krótko: czasownik + rzecz + „please”. Chwal często: „Good job!”.",
-      "terms": ["stagehand", "safety shoes", "gloves", "fragile", "frame", "blanket", "van", "break"]
+      "unit": 5, "key": "rigger", "title": "Rigger: briefing i rozładunek", "en": "Rigger briefing",
+      "goal_pl": "Poznać riggiera, uzgodnić role, sygnały i zasady BHP, a potem przygotować sprzęt.",
+      "checklist": ["Znam imię riggiera i jego zakres odpowiedzialności", "Uzgodniliśmy sygnały i osobę kierującą podnoszeniem", "BHP: buty, rękawice, nikt pod ciężarem", "Skrzynie na stoisku", "Panele policzone", "Panele leżą bezpiecznie na kocach"],
+      "tip_pl": "Przed podnoszeniem ustal jedną osobę do sygnałów. Dawaj jedno konkretne zadanie naraz: czasownik + rzecz + „please”.",
+      "terms": ["rigger", "signal person", "safety shoes", "gloves", "working load limit", "shackle", "safety latch", "break"]
     },
     {
       "unit": 6, "key": "montaz", "title": "Montaż na belkach", "en": "Hanging the screen",

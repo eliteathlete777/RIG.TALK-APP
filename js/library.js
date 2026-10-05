@@ -10,7 +10,16 @@ let ctxCache = null;
 
 function playAudio(chunk){
   const lang = store.get().settings.variant === 'us' ? 'en-US' : 'en-GB';
-  speech.speak(chunk.en, { lang, rate: 1.0 }).catch(() => {});
+  speech.speak(chunk.en, { lang, rate: 1.0, audio: chunk.audio }).catch(() => {});
+}
+
+const CLIENT_ROLES = new Set(['klient', 'organizator', 'multimedia', 'test']);
+const RIGGER_ROLES = new Set(['rigger', 'stagehand', 'komenda', 'kontrola', 'bezpieczeństwo', 'rigging', 'logistyka']);
+function matchesAudience(chunk, audience){
+  if (audience === 'zwroty') return true;
+  if (audience === 'klient') return chunk.tags?.includes('client') || CLIENT_ROLES.has(chunk.role);
+  if (audience === 'rigger') return chunk.tags?.includes('crew') || RIGGER_ROLES.has(chunk.role);
+  return true;
 }
 
 function isStarred(id){
@@ -82,7 +91,7 @@ export function filterChunks(allChunks, filters){
 
 const state = { track: 'ALL', type: 'ALL', starredOnly: false, redOnly: false, query: '' };
 
-export async function renderLibraryScreen(container){
+export async function renderLibraryScreen(container, audience = 'zwroty'){
   ctxCache = ctxCache || await loadAllChunks();
   const ctx = ctxCache;
   container.innerHTML = '';
@@ -193,7 +202,7 @@ export async function renderLibraryScreen(container){
   }
 
   function renderList(){
-    const all = allSearchableChunks(ctx);
+    const all = allSearchableChunks(ctx).filter(chunk => matchesAudience(chunk, audience));
     const filtered = filterChunks(all, state);
     countLabel.textContent = `${filtered.length} / ${all.length} zwrotów`;
     listWrap.innerHTML = '';

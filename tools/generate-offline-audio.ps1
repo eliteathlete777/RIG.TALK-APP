@@ -26,7 +26,8 @@ foreach ($stage in $data.stages) {
 
 [System.Runtime.InteropServices.Marshal]::ReleaseComObject($voice) | Out-Null
 $files = Get-ChildItem -LiteralPath $audioDir -Filter '*.wav'
-if ($files.Count -ne 66 -or ($files | Where-Object Length -eq 0)) {
+$expected = @($data.stages | ForEach-Object { $_.items }).Count
+if ($files.Count -ne $expected -or ($files | Where-Object Length -eq 0)) {
   throw "Niepelny pakiet audio: $($files.Count) plikow."
 }
 

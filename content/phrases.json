@@ -33,7 +33,17 @@
         {"id":"p-rig-07","role":"bezpieczeństwo","en":"Keep your fingers away from the edge.","pl":"Trzymaj palce z dala od krawędzi."},
         {"id":"p-rig-08","role":"bezpieczeństwo","en":"Do not stand under the screen.","pl":"Nie stój pod ekranem."},
         {"id":"p-rig-09","role":"rigging","en":"Is every safety cable attached?","pl":"Czy każda linka bezpieczeństwa jest zamocowana?"},
-        {"id":"p-rig-10","role":"rigging","en":"What is the load limit per point?","pl":"Jaki jest limit obciążenia na punkt?"}
+        {"id":"p-rig-10","role":"rigging","en":"What is the load limit per point?","pl":"Jaki jest limit obciążenia na punkt?"},
+        {"id":"p-rig-11","role":"rigger","en":"Who is the designated signal person?","pl":"Kto jest wyznaczoną osobą do dawania sygnałów?"},
+        {"id":"p-rig-12","role":"rigger","en":"Let's agree on the hand signals before the lift.","pl":"Uzgodnijmy sygnały ręczne przed podnoszeniem."},
+        {"id":"p-rig-13","role":"bezpieczeństwo","en":"Stop the lift.","pl":"Zatrzymaj podnoszenie."},
+        {"id":"p-rig-14","role":"bezpieczeństwo","en":"Emergency stop!","pl":"Awaryjne zatrzymanie!"},
+        {"id":"p-rig-15","role":"komenda","en":"Hoist slowly.","pl":"Podnoś powoli."},
+        {"id":"p-rig-16","role":"komenda","en":"Hold the load.","pl":"Zatrzymaj i trzymaj ładunek."},
+        {"id":"p-rig-17","role":"bezpieczeństwo","en":"Nobody under the suspended load.","pl":"Nikt nie może być pod zawieszonym ładunkiem."},
+        {"id":"p-rig-18","role":"kontrola","en":"Check the shackle pins and safety latches.","pl":"Sprawdź sworznie szekli i zapadki bezpieczeństwa."},
+        {"id":"p-rig-19","role":"rigger","en":"Is this rigging point approved?","pl":"Czy ten punkt riggingowy jest zatwierdzony?"},
+        {"id":"p-rig-20","role":"rigger","en":"Let's do a pre-lift briefing.","pl":"Zróbmy odprawę przed podnoszeniem."}
       ]
     },
     {
@@ -71,7 +81,10 @@
         {"id":"p-proc-09","role":"Resolume","en":"The image is stretched vertically.","pl":"Obraz jest rozciągnięty w pionie."},
         {"id":"p-proc-10","role":"awaria","en":"The controller is not detected by VMP.","pl":"VMP nie wykrywa kontrolera."},
         {"id":"p-proc-11","role":"awaria","en":"We have signal, but the screen is black.","pl":"Mamy sygnał, ale ekran jest czarny."},
-        {"id":"p-proc-12","role":"ratunek","en":"Please wait. I am checking the settings.","pl":"Proszę poczekać. Sprawdzam ustawienia."}
+        {"id":"p-proc-12","role":"ratunek","en":"Please wait. I am checking the settings.","pl":"Proszę poczekać. Sprawdzam ustawienia."},
+        {"id":"p-proc-13","role":"multimedia","en":"Please set the display to Extend, not Duplicate.","pl":"Ustaw ekran na Rozszerz, nie Duplikuj."},
+        {"id":"p-proc-14","role":"multimedia","en":"The output refresh rate must match the content.","pl":"Odświeżanie wyjścia musi pasować do materiału."},
+        {"id":"p-proc-15","role":"VMP","en":"The primary port is working. Now verify the backup.","pl":"Port główny działa. Teraz sprawdź zapasowy."}
       ]
     },
     {
@@ -89,7 +102,9 @@
         {"id":"p-test-07","role":"klient","en":"You can control the content from your laptop.","pl":"Może Pan sterować materiałem ze swojego laptopa."},
         {"id":"p-test-08","role":"klient","en":"This is the correct power-on sequence.","pl":"To jest prawidłowa kolejność włączania."},
         {"id":"p-test-09","role":"klient","en":"Please confirm that the screen is accepted.","pl":"Proszę potwierdzić odbiór ekranu."},
-        {"id":"p-test-10","role":"ratunek","en":"If anything changes, call me first.","pl":"Jeśli coś się zmieni, proszę najpierw do mnie zadzwonić."}
+        {"id":"p-test-10","role":"ratunek","en":"If anything changes, call me first.","pl":"Jeśli coś się zmieni, proszę najpierw do mnie zadzwonić."},
+        {"id":"p-test-11","role":"multimedia","en":"I saved the Advanced Output preset.","pl":"Zapisałem preset Advanced Output."},
+        {"id":"p-test-12","role":"klient","en":"Use Control Shift D to disable all outputs in an emergency.","pl":"W awaryjnej sytuacji użyj Control Shift D, aby wyłączyć wszystkie wyjścia."}
       ]
     },
     {
@@ -101,8 +116,8 @@
         {"id":"p-day-01","role":"ratunek","en":"My English is simple, so please speak slowly.","pl":"Mój angielski jest prosty, proszę mówić wolno."},
         {"id":"p-day-02","role":"ratunek","en":"Can you show me what you mean?","pl":"Możesz mi pokazać, co masz na myśli?"},
         {"id":"p-day-03","role":"ratunek","en":"One moment. Let me translate that.","pl":"Chwileczkę. Przetłumaczę to."},
-        {"id":"p-day-04","role":"stagehand","en":"Please finish this line first.","pl":"Najpierw dokończ tę linię."},
-        {"id":"p-day-05","role":"stagehand","en":"Stop here and wait for me.","pl":"Zatrzymaj się tutaj i poczekaj na mnie."},
+        {"id":"p-day-04","role":"rigger","en":"Please finish this line first.","pl":"Najpierw dokończ tę linię."},
+        {"id":"p-day-05","role":"rigger","en":"Stop here and wait for me.","pl":"Zatrzymaj się tutaj i poczekaj na mnie."},
         {"id":"p-day-06","role":"klient","en":"We are on schedule.","pl":"Jesteśmy zgodnie z harmonogramem."},
         {"id":"p-day-07","role":"klient","en":"We need twenty more minutes.","pl":"Potrzebujemy jeszcze dwudziestu minut."},
         {"id":"p-day-08","role":"bezpieczeństwo","en":"Please keep this area clear.","pl":"Proszę nie zastawiać tej strefy."}

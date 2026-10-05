@@ -10,7 +10,7 @@ const el = (tag, className, text) => {
 /** Zwraca { wrap, body }. Wypełniasz body. badge: krótki napis po prawej (np. 3/5). */
 export function acc(title, { open = false, badge = '', color = '', tone = '', sub = '' } = {}){
   const wrap = el('details', 'mz-acc' + (tone ? ' ' + tone : ''));
-  if (open) wrap.open = true;
+  // Celowo ignorujemy `open`: wszystkie rozdziały startują zwinięte.
   if (color) wrap.style.setProperty('--ac', color);
   const sum = el('summary');
   const t = el('span', 'mz-acc-t');

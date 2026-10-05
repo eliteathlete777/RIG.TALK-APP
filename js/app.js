@@ -7,7 +7,6 @@ import * as speech from './speech.js';
 import * as session from './session.js';
 import { loadAllChunks } from './content.js';
 import * as library from './library.js';
-import * as red from './red.js';
 import * as game from './game.js';
 import { allChunksArray, chunkTrack } from './content.js';
 import * as scenes from './scenes.js';
@@ -30,7 +29,6 @@ window.RigSpeech = speech;
 window.RigSession = session;
 window.RigContent = { loadAllChunks };
 window.RigLibrary = library;
-window.RigRed = red;
 window.RigGame = game;
 window.RigScenes = scenes;
 window.RigBoss = boss;
@@ -67,7 +65,6 @@ const NAV_ICONS = {
   baza: 'home',
   stoisko: 'screen',
   kurs: 'layers',
-  czerwone: 'alert',
   biblioteka: 'book',
 };
 
@@ -111,7 +108,7 @@ function enterMode(mode){
     document.getElementById('quickAddPhrase').hidden = false;
     document.getElementById('settingsBtn').hidden = false;
     const remembered = store.get().ui?.lastScreen;
-    showScreen(['baza', 'kurs', 'czerwone', 'biblioteka', 'ustawienia'].includes(remembered) ? remembered : 'baza', false);
+    showScreen(['baza', 'kurs', 'biblioteka', 'ustawienia'].includes(remembered) ? remembered : 'baza', false);
   }
 }
 
@@ -142,7 +139,6 @@ function showScreen(name, persist = true){
     }
   }
   if (name === 'biblioteka') renderBiblioteka();
-  if (name === 'czerwone') red.renderRedScreen(document.getElementById('czerwoneRoot'));
   if (name === 'stoisko') stoisko.renderStoiskoScreen(document.getElementById('stoiskoRoot'));
   if (name === 'kurs') kurs.renderKursScreen(document.getElementById('kursRoot'));
   window.scrollTo(0, 0);
@@ -150,12 +146,11 @@ function showScreen(name, persist = true){
 
 function renderBiblioteka(){
   const requestedTab = store.get().ui?.libTab;
-  const tab = ['zwroty', 'ulubione', 'slownik'].includes(requestedTab) ? requestedTab : 'zwroty';
+  const tab = ['zwroty', 'slowa', 'klient', 'rigger'].includes(requestedTab) ? requestedTab : 'zwroty';
   document.querySelectorAll('#libTabs button').forEach(b => b.classList.toggle('active', b.dataset.value === tab));
   const root = document.getElementById('bibliotekaRoot');
-  if (tab === 'slownik') glossary.renderGlossaryScreen(root);
-  else if (tab === 'ulubione') library.renderFavoritesScreen(root);
-  else library.renderLibraryScreen(root);
+  if (tab === 'slowa') glossary.renderGlossaryScreen(root);
+  else library.renderLibraryScreen(root, tab);
 }
 
 function initLibTabs(){
@@ -297,6 +292,14 @@ function initBackupUI(){
   const area = document.getElementById('stateArea');
   const file = document.getElementById('stateFile');
   const transfer = document.getElementById('transferCode');
+  document.getElementById('shareBackupBtn')?.addEventListener('click', async () => {
+    const file = new File([exportState(store.get())], `rig-talk-postep-${new Date().toISOString().slice(0, 10)}.json`, { type: 'application/json' });
+    if (navigator.canShare?.({ files: [file] })) {
+      try { await navigator.share({ title: 'RIG TALK — postęp', files: [file] }); return; } catch (e) { if (e.name === 'AbortError') return; }
+    }
+    const url = URL.createObjectURL(file);
+    const a = document.createElement('a'); a.href = url; a.download = file.name; a.click(); URL.revokeObjectURL(url);
+  });
   document.getElementById('copyTransferBtn')?.addEventListener('click', async () => {
     const code = encodeTransfer(exportState(store.get()));
     transfer.value = code;
@@ -479,7 +482,7 @@ async function renderBaza(){
     });
     document.getElementById('stoiskoHeroBar').style.width = Math.round(done / total * 100) + '%';
     document.getElementById('stoiskoHeroSub').textContent =
-      `${stagesDone}/${meta.stages.length} etapów gotowych · zwroty do klienta i stagehanda`;
+      `${stagesDone}/${meta.stages.length} etapów gotowych · zwroty do klienta i riggiera`;
   } catch (e){ /* offline bez cache — zostaw domyślny opis */ }
 }
 
