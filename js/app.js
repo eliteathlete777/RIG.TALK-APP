@@ -19,6 +19,7 @@ import * as kurs from './kurs.js';
 import * as glossary from './glossary.js';
 import { loadPlan, activeBlockIndex, countdown } from './bootcamp.js';
 import { readinessStats, weakestFirst } from './readiness.js';
+import { restoreHiddenItems } from './visibility.js';
 
 console.log('[RIG TALK] app.js loaded — v2 (PIERWSZE STOISKO)');
 
@@ -357,6 +358,17 @@ function initBackupUI(){
   document.getElementById('resetBtn')?.addEventListener('click', () => {
     if (!confirm('Na pewno zresetować cały postęp?')) return;
     store.state = resetState();
+    renderFromState();
+  });
+  document.getElementById('restoreHiddenBtn')?.addEventListener('click', () => {
+    const state = store.get();
+    const hiddenCount = (state.hiddenItems || []).length + (state.deleted || []).length;
+    if (!hiddenCount){
+      alert('Nie ma ukrytych zwrotów ani słów.');
+      return;
+    }
+    restoreHiddenItems();
+    alert(`Przywrócono ukryte elementy: ${hiddenCount}.`);
     renderFromState();
   });
 }

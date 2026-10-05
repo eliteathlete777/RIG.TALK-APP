@@ -2,6 +2,7 @@
 
 import { store } from './state.js';
 import * as speech from './speech.js';
+import { hideButton, isHiddenItem } from './visibility.js';
 
 let dataCache = null;
 
@@ -46,7 +47,7 @@ export function termRow(term){
   btn.setAttribute('aria-label', 'Posłuchaj');
   btn.textContent = '🔊';
   btn.addEventListener('click', () => speakEn(term.en.replace(/!$/, '')));
-  row.append(txt, btn);
+  row.append(txt, btn, hideButton('word', term.en, term.en, () => row.remove()));
   return row;
 }
 
@@ -83,10 +84,11 @@ export async function renderGlossaryScreen(container){
 
   function paint(){
     const q = ui.query.trim().toLowerCase();
-    const items = data.terms.filter(t =>
+    const items = data.terms.filter(t => !isHiddenItem('word', t.en) &&
       (ui.cat === 'ALL' || t.cat === ui.cat) &&
       (!q || t.en.toLowerCase().includes(q) || t.pl.toLowerCase().includes(q)));
-    count.textContent = `${items.length} / ${data.terms.length} słów`;
+    const totalVisible = data.terms.filter(t => !isHiddenItem('word', t.en)).length;
+    count.textContent = `${items.length} / ${totalVisible} widocznych słów`;
     list.innerHTML = '';
     let lastCat = null;
     items.forEach(t => {

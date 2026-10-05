@@ -81,3 +81,9 @@
 - `sw.js`: `rigtalk-v33`.
 - Weryfikacja: `node tools/validate.js` — 536 zwrotów, 0 błędów; `tools/test-pwa-update-v33.py` — zachowany `localStorage`, świeży URL, 0 błędów i brak overflow; pełna regresja montażu — 64 kontrole OK, 0 błędów konsoli.
 - Produkcja: wgrano `index.html`, `js/app.js`, następnie `sw.js`; Hostinger potwierdził nowe rozmiary i czasy plików, CDN wyczyszczony. Publiczne HTTPS zwraca 200, `sw.js` zawiera `rigtalk-v33`, a test 375 × 812 pokazuje przycisk aktualizacji i status `OFFLINE GOTOWE`.
+
+## v34 — zwroty sytuacyjne i globalne ukrywanie
+- Dodano 66 zwrotów i komend w 7 sytuacjach roboczych: przygotowanie, rigging/cabinety, kable/zasilanie, MX30/VMP/Resolume, test/multimedia/przekazanie, komendy całego dnia i demontaż. Zwroty są osobnym rozdziałem, główną szybką powtórką oraz częścią każdego etapu linii czasu i właściwych rozdziałów.
+- Zwroty mają rolę rozmówcy, polskie tłumaczenie, automatyczny zapis wymowy i odsłuch. Słówka pozostają jako drugi poziom szybkiej powtórki.
+- Każdy zwrot i każde słowo na listach montażowych, w etapach stoiska, przewodniku MX30 i słowniku ma `×`. Ukrycie działa globalnie; w Ustawieniach dodano przywracanie wszystkich ukrytych elementów. Stan v5 (`hiddenItems`).
+- Offline: `js/visibility.js` i `content/phrases.json` dodane do precache; cache `rigtalk-v34`.

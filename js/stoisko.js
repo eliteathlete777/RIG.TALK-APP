@@ -3,7 +3,7 @@
 
 import { store } from './state.js';
 import { loadAllChunks, allChunksArray } from './content.js';
-import { toggleStar } from './library.js';
+import { toggleStar, deleteChunkForever } from './library.js';
 import { loadGlossary, termRow, speakEn } from './glossary.js';
 import * as session from './session.js';
 import { renderMx30Guide } from './mx30-guide.js';
@@ -104,7 +104,12 @@ function phraseRow(chunk, rerender){
   starBtn.textContent = isStarred(chunk.id) ? '★' : '☆';
   starBtn.setAttribute('aria-label', 'Do ściągi');
   starBtn.addEventListener('click', () => { toggleStar(chunk.id); rerender(); });
-  actions.append(speakBtn, bigBtn, starBtn);
+  const hideBtn = document.createElement('button');
+  hideBtn.className = 'icon-box sm item-hide';
+  hideBtn.textContent = '×';
+  hideBtn.setAttribute('aria-label', 'Ukryj globalnie: ' + chunk.en);
+  hideBtn.addEventListener('click', () => { deleteChunkForever(chunk.id); row.remove(); });
+  actions.append(speakBtn, bigBtn, starBtn, hideBtn);
 
   row.append(txt, actions);
   return row;

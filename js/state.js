@@ -1,7 +1,7 @@
 // RIG TALK — state.js: load/save/migracje/eksport/import (localStorage, klucz rigtalk.v1)
 
 const STORAGE_KEY = 'rigtalk.v1';
-const SCHEMA_VERSION = 4;
+const SCHEMA_VERSION = 5;
 
 function defaultState(){
   return {
@@ -24,6 +24,7 @@ function defaultState(){
     redOrder: [],
     custom: [],
     deleted: [],
+    hiddenItems: [],
     aiUsedToday: 0,
     aiUsedDate: null,
     stats: {
@@ -58,6 +59,7 @@ const MIGRATIONS = {
     simulation: s.simulation || { lastScore: null, total: 8, at: null },
   }),
   3: (s) => ({ ...s, schemaVersion: 4, deleted: s.deleted || [] }),
+  4: (s) => ({ ...s, schemaVersion: 5, hiddenItems: s.hiddenItems || [] }),
 };
 
 function migrate(state){

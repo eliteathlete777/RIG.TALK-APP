@@ -48,6 +48,12 @@ Ekran **55H / KURS** odpowiada na pytanie: „Czego mam się nauczyć teraz?”.
 
 Rozdzielenie tych warstw jest celowe. Przebieg pracy na stoisku jest stały, ale plan nauki zmienia się zależnie od czasu i najbliższej misji.
 
+### 3.3 Zwroty sytuacyjne w trybie Montaż
+
+W trybie Montaż pierwszeństwo mają pełne zwroty i krótkie komendy, a dopiero później pojedyncze słowa. Osobny rozdział **Zwroty i komendy** grupuje materiał według siedmiu etapów dnia: przygotowanie, rigging i cabinety, kable i zasilanie, MX30/VMP/Resolume, test i multimedia, komendy całego dnia oraz demontaż. Te same adekwatne zwroty są wpięte w linię czasu i odpowiednie rozdziały techniczne, aby użytkownik nie musiał odrywać się od aktualnego zadania.
+
+Każdy zwrot i każde słowo w listach operacyjnych ma przycisk `×`. Ukrycie jest globalne i trwałe na danym urządzeniu: pozycja znika ze wszystkich miejsc korzystających z tego samego identyfikatora. Ustawienia zawierają przycisk **Przywróć ukryte zwroty i słowa**, który cofa zarówno nowe ukrycia, jak i wcześniejsze trwałe usunięcia zwrotów. Stan jest zapisany w `hiddenItems` (schema v5), a źródłem zwrotów montażowych jest `content/phrases.json`.
+
 ## 4. Logika planu 55H
 
 Plan 55H redukuje bazę 536 zwrotów do 59 unikalnych zwrotów o największej wartości operacyjnej. Materiał jest podzielony na dziewięć bloków:

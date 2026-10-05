@@ -1,6 +1,7 @@
 import { store } from './state.js';
 import * as speech from './speech.js';
 import { acc, expandBar } from './acc.js';
+import { hideButton, visibleItems } from './visibility.js';
 
 let cache = null;
 
@@ -60,13 +61,13 @@ export async function renderMx30Guide(container){
   const phrases = document.createElement('div');
   phrases.className = 'card';
   const heading = document.createElement('h2'); heading.textContent = 'ZWROTY PRZY PROCESORZE'; phrases.appendChild(heading);
-  guide.phrases.forEach(phrase => {
+  visibleItems(guide.phrases, 'phrase', phrase => phrase.id || phrase.en).forEach(phrase => {
     const row = document.createElement('div'); row.className = 'mx-phrase';
     const copy = document.createElement('div'); copy.textContent = phrase.en;
     const pl = document.createElement('small'); pl.textContent = phrase.pl; copy.appendChild(pl);
     const play = document.createElement('button'); play.className = 'icon-box sm'; play.textContent = '🔊';
     play.addEventListener('click', () => speech.speak(phrase.en, { lang: store.get().settings.variant === 'us' ? 'en-US' : 'en-GB' }).catch(() => {}));
-    row.append(copy, play); phrases.appendChild(row);
+    row.append(copy, play, hideButton('phrase', phrase.id || phrase.en, phrase.en, () => row.remove())); phrases.appendChild(row);
   });
   container.appendChild(phrases);
 }

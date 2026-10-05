@@ -3,8 +3,9 @@
 import { store } from './state.js';
 import { loadAllChunks } from './content.js';
 import * as speech from './speech.js';
-import { toggleStar } from './library.js';
+import { toggleStar, deleteChunkForever } from './library.js';
 import * as i18n from './i18n.js';
+import { hideButton, isHiddenItem } from './visibility.js';
 
 let ctxCache = null;
 let redDataCache = null;
@@ -103,6 +104,10 @@ export async function renderRedScreen(container){
     starBtn.style.borderColor = isStarred(chunk.id) ? 'var(--red)' : 'var(--line)';
     starBtn.addEventListener('click', () => { toggleStar(chunk.id); render(); });
     row.appendChild(starBtn);
+    row.appendChild(hideButton('phrase', chunk.id, chunk.en, () => {
+      deleteChunkForever(chunk.id);
+      render();
+    }));
 
     return row;
   }
@@ -207,7 +212,9 @@ export async function renderRedScreen(container){
   }
 
   function renderKarty(){
-    (redData.showClientCards || []).forEach(card => {
+    (redData.showClientCards || []).filter(card => !isHiddenItem('phrase', card.id || card.en)).forEach(card => {
+      const wrap = document.createElement('div');
+      wrap.className = 'client-card-wrap';
       const tile = document.createElement('button');
       tile.className = 'card';
       tile.style.cssText = 'width:100%; text-align:center; background:var(--red); border-color:var(--red); padding:20px;';
@@ -216,7 +223,8 @@ export async function renderRedScreen(container){
       en.textContent = card.en;
       tile.appendChild(en);
       tile.addEventListener('click', () => openFullscreenCard(card));
-      body.appendChild(tile);
+      wrap.append(tile, hideButton('phrase', card.id || card.en, card.en, () => render()));
+      body.appendChild(wrap);
     });
   }
 

@@ -4,6 +4,7 @@
 import { store } from './state.js';
 import * as speech from './speech.js';
 import { acc, expandBar } from './acc.js';
+import { hideButton, visibleItems } from './visibility.js';
 
 let cache = null;
 
@@ -40,7 +41,8 @@ function copyButton(text, label){
 
 /** Lista słówek: polski wyraz główny, angielski + fonetyka + lektor. */
 export function wordList(words, { title = 'SŁÓWKA · POWTÓRKA', quiz = true } = {}){
-  if (!words?.length) return null;
+  const shown = visibleItems(words, 'word', word => word[0]);
+  if (!shown.length) return null;
   const card = el('div', 'card mz-words');
   const head = el('div', 'mz-words-head');
   head.appendChild(el('h3', 'mz-h', title));
@@ -53,7 +55,7 @@ export function wordList(words, { title = 'SŁÓWKA · POWTÓRKA', quiz = true }
     head.appendChild(hide);
   }
   card.appendChild(head);
-  words.forEach(([en, pl, ph]) => {
+  shown.forEach(([en, pl, ph]) => {
     const row = el('div', 'mz-word');
     row.appendChild(el('b', 'mz-word-pl', pl));
     const right = el('div', 'mz-word-en');
@@ -66,6 +68,7 @@ export function wordList(words, { title = 'SŁÓWKA · POWTÓRKA', quiz = true }
       speech.speak(en, { lang: store.get().settings.variant === 'us' ? 'en-US' : 'en-GB' }).catch(() => {});
     });
     row.appendChild(play);
+    row.appendChild(hideButton('word', en, en, () => row.remove()));
     card.appendChild(row);
   });
   return card;

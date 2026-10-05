@@ -1,0 +1,128 @@
+{
+  "title": "Zwroty sytuacyjne — montaż LED i multimedia",
+  "subtitle": "Najpierw komendy i całe zdania. Słówka są dodatkiem.",
+  "stages": [
+    {
+      "id": "before",
+      "stage": 0,
+      "title": "Przed wyjazdem i wejście na halę",
+      "chapters": ["fakty", "przed", "plany", "wideo", "niespodzianki"],
+      "items": [
+        {"id":"p-before-01","role":"organizator","en":"Where is stand fifty-one A thirty-two?","pl":"Gdzie jest stoisko 51A32?"},
+        {"id":"p-before-02","role":"organizator","en":"Where can we unload the equipment?","pl":"Gdzie możemy rozładować sprzęt?"},
+        {"id":"p-before-03","role":"klient","en":"Who is my contact person on site?","pl":"Kto jest moją osobą kontaktową na miejscu?"},
+        {"id":"p-before-04","role":"klient","en":"Please send me the final screen layout.","pl":"Proszę wysłać mi finalny układ ekranu."},
+        {"id":"p-before-05","role":"technika","en":"I need the cabinet configuration file.","pl":"Potrzebuję pliku konfiguracji cabinetu."},
+        {"id":"p-before-06","role":"technika","en":"Which firmware version are we using?","pl":"Której wersji firmware używamy?"},
+        {"id":"p-before-07","role":"ratunek","en":"Please show me on the drawing.","pl":"Proszę pokazać mi to na rysunku."},
+        {"id":"p-before-08","role":"ratunek","en":"Let me confirm the plan before we start.","pl":"Potwierdzę plan, zanim zaczniemy."}
+      ]
+    },
+    {
+      "id": "rigging",
+      "stage": 1,
+      "title": "Mechanika i składanie cabinetów",
+      "chapters": ["mechanika", "cabinety"],
+      "items": [
+        {"id":"p-rig-01","role":"komenda","en":"Hold the cabinet level, please.","pl":"Trzymaj cabinet równo, proszę."},
+        {"id":"p-rig-02","role":"komenda","en":"Lift your side a little.","pl":"Podnieś trochę swoją stronę."},
+        {"id":"p-rig-03","role":"komenda","en":"Lower it slowly.","pl":"Opuszczaj powoli."},
+        {"id":"p-rig-04","role":"komenda","en":"Lock the top and side latches.","pl":"Zamknij górne i boczne zamki."},
+        {"id":"p-rig-05","role":"kontrola","en":"Check the gap between the cabinets.","pl":"Sprawdź szczelinę między cabinetami."},
+        {"id":"p-rig-06","role":"kontrola","en":"This cabinet is facing the wrong way.","pl":"Ten cabinet jest odwrócony w złą stronę."},
+        {"id":"p-rig-07","role":"bezpieczeństwo","en":"Keep your fingers away from the edge.","pl":"Trzymaj palce z dala od krawędzi."},
+        {"id":"p-rig-08","role":"bezpieczeństwo","en":"Do not stand under the screen.","pl":"Nie stój pod ekranem."},
+        {"id":"p-rig-09","role":"rigging","en":"Is every safety cable attached?","pl":"Czy każda linka bezpieczeństwa jest zamocowana?"},
+        {"id":"p-rig-10","role":"rigging","en":"What is the load limit per point?","pl":"Jaki jest limit obciążenia na punkt?"}
+      ]
+    },
+    {
+      "id": "cabling",
+      "stage": 2,
+      "title": "DATA, zasilanie i opięcie",
+      "chapters": ["uklad", "zasilanie", "rj45"],
+      "items": [
+        {"id":"p-cable-01","role":"komenda","en":"Start the data cable from the top.","pl":"Zacznij kabel DATA od góry."},
+        {"id":"p-cable-02","role":"komenda","en":"Follow the snake pattern down the column.","pl":"Prowadź wężyk w dół kolumny."},
+        {"id":"p-cable-03","role":"komenda","en":"Connect this line to port one.","pl":"Podłącz tę linię do portu pierwszego."},
+        {"id":"p-cable-04","role":"kontrola","en":"Check the data flow arrows.","pl":"Sprawdź strzałki kierunku DATA."},
+        {"id":"p-cable-05","role":"kontrola","en":"This cable is connected to the wrong port.","pl":"Ten kabel jest podłączony do złego portu."},
+        {"id":"p-cable-06","role":"zasilanie","en":"Do not switch the power on yet.","pl":"Jeszcze nie włączaj zasilania."},
+        {"id":"p-cable-07","role":"zasilanie","en":"Power up one line at a time.","pl":"Włączaj zasilanie po jednej linii."},
+        {"id":"p-cable-08","role":"zasilanie","en":"Which circuit is this line on?","pl":"Na którym obwodzie jest ta linia?"},
+        {"id":"p-cable-09","role":"awaria","en":"The cable tester shows a fault.","pl":"Tester kabla pokazuje błąd."},
+        {"id":"p-cable-10","role":"awaria","en":"Bring me a spare network cable.","pl":"Przynieś mi zapasowy kabel sieciowy."}
+      ]
+    },
+    {
+      "id": "processor",
+      "stage": 3,
+      "title": "MX30, VMP i Resolume",
+      "chapters": ["az", "param", "mx30panel", "vmp", "resolume"],
+      "items": [
+        {"id":"p-proc-01","role":"MX30","en":"Select HDMI one as the input.","pl":"Wybierz HDMI 1 jako wejście."},
+        {"id":"p-proc-02","role":"MX30","en":"Set the output to two thousand forty-eight by five twelve.","pl":"Ustaw wyjście na 2048 na 512."},
+        {"id":"p-proc-03","role":"VMP","en":"Turn mapping on for a moment.","pl":"Włącz mapping na chwilę."},
+        {"id":"p-proc-04","role":"VMP","en":"Cabinet number five is in the wrong position.","pl":"Cabinet numer pięć jest w złym miejscu."},
+        {"id":"p-proc-05","role":"VMP","en":"Send the configuration to the hardware.","pl":"Wyślij konfigurację do urządzenia."},
+        {"id":"p-proc-06","role":"VMP","en":"Save a backup before changing anything.","pl":"Zapisz kopię przed każdą zmianą."},
+        {"id":"p-proc-07","role":"Resolume","en":"Open Advanced Output in Resolume.","pl":"Otwórz Advanced Output w Resolume."},
+        {"id":"p-proc-08","role":"Resolume","en":"Move the slice to the top-left corner.","pl":"Przesuń slice do lewego górnego rogu."},
+        {"id":"p-proc-09","role":"Resolume","en":"The image is stretched vertically.","pl":"Obraz jest rozciągnięty w pionie."},
+        {"id":"p-proc-10","role":"awaria","en":"The controller is not detected by VMP.","pl":"VMP nie wykrywa kontrolera."},
+        {"id":"p-proc-11","role":"awaria","en":"We have signal, but the screen is black.","pl":"Mamy sygnał, ale ekran jest czarny."},
+        {"id":"p-proc-12","role":"ratunek","en":"Please wait. I am checking the settings.","pl":"Proszę poczekać. Sprawdzam ustawienia."}
+      ]
+    },
+    {
+      "id": "handover",
+      "stage": 4,
+      "title": "Test, multimedia i przekazanie klientowi",
+      "chapters": ["mx30"],
+      "items": [
+        {"id":"p-test-01","role":"test","en":"Please play the test video now.","pl":"Proszę teraz odtworzyć wideo testowe."},
+        {"id":"p-test-02","role":"test","en":"Check every corner of the screen.","pl":"Sprawdź każdy róg ekranu."},
+        {"id":"p-test-03","role":"test","en":"I am testing the main and backup data lines.","pl":"Testuję główną i zapasową linię DATA."},
+        {"id":"p-test-04","role":"multimedia","en":"Your laptop should be in extended mode.","pl":"Laptop powinien działać w trybie rozszerzonym."},
+        {"id":"p-test-05","role":"multimedia","en":"Move the player to the second screen.","pl":"Przenieś odtwarzacz na drugi ekran."},
+        {"id":"p-test-06","role":"multimedia","en":"Please do not change the processor settings.","pl":"Proszę nie zmieniać ustawień procesora."},
+        {"id":"p-test-07","role":"klient","en":"You can control the content from your laptop.","pl":"Może Pan sterować materiałem ze swojego laptopa."},
+        {"id":"p-test-08","role":"klient","en":"This is the correct power-on sequence.","pl":"To jest prawidłowa kolejność włączania."},
+        {"id":"p-test-09","role":"klient","en":"Please confirm that the screen is accepted.","pl":"Proszę potwierdzić odbiór ekranu."},
+        {"id":"p-test-10","role":"ratunek","en":"If anything changes, call me first.","pl":"Jeśli coś się zmieni, proszę najpierw do mnie zadzwonić."}
+      ]
+    },
+    {
+      "id": "workday",
+      "stage": 5,
+      "title": "Komunikacja przez cały dzień",
+      "chapters": ["etapy", "zwroty", "slowka"],
+      "items": [
+        {"id":"p-day-01","role":"ratunek","en":"My English is simple, so please speak slowly.","pl":"Mój angielski jest prosty, proszę mówić wolno."},
+        {"id":"p-day-02","role":"ratunek","en":"Can you show me what you mean?","pl":"Możesz mi pokazać, co masz na myśli?"},
+        {"id":"p-day-03","role":"ratunek","en":"One moment. Let me translate that.","pl":"Chwileczkę. Przetłumaczę to."},
+        {"id":"p-day-04","role":"stagehand","en":"Please finish this line first.","pl":"Najpierw dokończ tę linię."},
+        {"id":"p-day-05","role":"stagehand","en":"Stop here and wait for me.","pl":"Zatrzymaj się tutaj i poczekaj na mnie."},
+        {"id":"p-day-06","role":"klient","en":"We are on schedule.","pl":"Jesteśmy zgodnie z harmonogramem."},
+        {"id":"p-day-07","role":"klient","en":"We need twenty more minutes.","pl":"Potrzebujemy jeszcze dwudziestu minut."},
+        {"id":"p-day-08","role":"bezpieczeństwo","en":"Please keep this area clear.","pl":"Proszę nie zastawiać tej strefy."}
+      ]
+    },
+    {
+      "id": "loadout",
+      "stage": 6,
+      "title": "Demontaż, pakowanie i zwrot",
+      "chapters": ["komplet"],
+      "items": [
+        {"id":"p-out-01","role":"komenda","en":"Disconnect the power before the data cables.","pl":"Odłącz zasilanie przed kablami DATA."},
+        {"id":"p-out-02","role":"komenda","en":"Remove the cabinets one row at a time.","pl":"Zdejmuj cabinety po jednym rzędzie."},
+        {"id":"p-out-03","role":"komenda","en":"Put every cable in the correct case.","pl":"Włóż każdy kabel do właściwej skrzyni."},
+        {"id":"p-out-04","role":"kontrola","en":"Count the cabinets before closing the cases.","pl":"Policz cabinety przed zamknięciem skrzyń."},
+        {"id":"p-out-05","role":"kontrola","en":"One power cable is missing.","pl":"Brakuje jednego kabla zasilającego."},
+        {"id":"p-out-06","role":"kontrola","en":"This cabinet is damaged. Take a photo.","pl":"Ten cabinet jest uszkodzony. Zrób zdjęcie."},
+        {"id":"p-out-07","role":"logistyka","en":"Which truck does this case go to?","pl":"Do której ciężarówki jedzie ta skrzynia?"},
+        {"id":"p-out-08","role":"logistyka","en":"Please sign the return list.","pl":"Proszę podpisać listę zwrotu."}
+      ]
+    }
+  ]
+}

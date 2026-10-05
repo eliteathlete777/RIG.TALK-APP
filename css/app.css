@@ -741,6 +741,18 @@ body.plan-open .mz-dock{ display:none !important; }
 .mz-words.plain{ border:0; background:none; padding:0; margin:0; }.mz-words.plain .mz-words-head h3{ display:none; }
 .mz-group.mz-acc > summary{ font:18px var(--font-display); letter-spacing:.05em; color:var(--gc); }
 
+/* Zwroty i słowa: globalne ukrywanie oraz zwarte listy mobilne */
+.item-hide{ color:var(--dim); border-color:#4a4a4d; font-size:22px; line-height:1; flex:0 0 auto; }
+.item-hide:hover,.item-hide:focus{ color:#fff; border-color:var(--red); background:var(--red); }
+.phrase-role{ display:inline-block; width:max-content; margin-top:4px; padding:2px 6px; border:1px solid var(--line); border-radius:10px; color:#8fd19e!important; font-size:10px!important; text-transform:uppercase; letter-spacing:.07em; }
+.phrase-compact{ margin:0; padding:8px; border:0; background:transparent; }
+.phrase-compact .mx-phrase{ padding:8px 0; }
+.timeline-phrases{ --ac:#3fb950; margin:8px 0 2px; }
+.timeline-phrases .mz-acc-body{ padding:0 8px 8px; }
+.mz-word{ grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto auto; }
+.term-row{ display:grid; grid-template-columns:minmax(0,1fr) auto auto; }
+.client-card-wrap{ display:grid; grid-template-columns:minmax(0,1fr) auto; gap:8px; align-items:center; }
+
 .uk-row.uk-l{ grid-template-columns:2.2fr 1fr 1.2fr 1.2fr; min-width:0; }
 .pr-row{ display:grid; grid-template-columns:1fr; gap:2px; padding:9px 0; border-top:1px solid var(--line); }
 .pr-row:first-child{ border-top:0; }

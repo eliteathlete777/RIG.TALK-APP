@@ -8,15 +8,33 @@ import { planLinks, renderPlany } from './plany.js';
 import { renderAz, renderWordsChapter, wordList, loadAz } from './az.js';
 import { renderUklad } from './uklad.js';
 import { acc, expandBar, bulletsToText, outline } from './acc.js';
+import { hideButton, visibleItems } from './visibility.js';
 
 let cache = null;
+let phrasesCache = null;
 
 async function loadMontaz(){
   if (cache) return cache;
   const response = await fetch('content/montaz.json', { cache: 'no-store' });
   if (!response.ok) throw new Error(`montaz.json: HTTP ${response.status}`);
   cache = await response.json();
+  if (!cache.chapters.some(chapter => chapter.id === 'zwroty')){
+    const slowkaIndex = cache.chapters.findIndex(chapter => chapter.id === 'slowka');
+    cache.chapters.splice(Math.max(0, slowkaIndex), 0, {
+      id: 'zwroty', icon: '💬', title: 'Zwroty i komendy', en: 'Situational phrases',
+      when: 'Na każdym etapie montażu', stage: 5, group: 'dock'
+    });
+    cache.summary = { ...(cache.summary || {}), zwroty: 'Komendy i pełne zdania dobrane do siedmiu etapów pracy: od wejścia na halę po zwrot sprzętu.' };
+  }
   return cache;
+}
+
+async function loadPhrases(){
+  if (phrasesCache) return phrasesCache;
+  const response = await fetch('content/phrases.json', { cache: 'no-store' });
+  if (!response.ok) throw new Error(`phrases.json: HTTP ${response.status}`);
+  phrasesCache = await response.json();
+  return phrasesCache;
 }
 
 const trunc = (t, n = 90) => (String(t).length > n ? String(t).slice(0, n - 1).trimEnd() + '…' : String(t));
@@ -39,25 +57,47 @@ function chapterProgress(data, chapter){
   return `${done}/${items.length}`;
 }
 
-function phraseBlock(phrases){
-  if (!phrases?.length) return null;
+function phraseBlock(phrases, { title = 'ZWROTY · ENGLISH', compact = false } = {}){
+  const shown = visibleItems(phrases, 'phrase', phrase => phrase.id || phrase.en);
+  if (!shown.length) return null;
   const card = el('div', 'card');
-  card.appendChild(el('h3', 'mz-h', 'ZWROTY · ENGLISH'));
-  phrases.forEach(phrase => {
+  card.classList.toggle('phrase-compact', compact);
+  card.appendChild(el('h3', 'mz-h', title));
+  shown.forEach(phrase => {
     const row = el('div', 'mx-phrase');
     const copy = el('div');
     copy.appendChild(el('span', 'mz-en', phrase.en));
-    if (phrase.ph) copy.appendChild(el('small', 'mz-ph', '[' + phrase.ph + ']'));
+    const phonetic = phrase.ph || speech.toPolishPhonetic(phrase.en);
+    if (phonetic) copy.appendChild(el('small', 'mz-ph', '[' + phonetic + ']'));
     copy.appendChild(el('small', '', phrase.pl));
+    if (phrase.role) copy.appendChild(el('small', 'phrase-role', phrase.role));
     const play = el('button', 'icon-box sm', '🔊');
     play.setAttribute('aria-label', 'Odsłuchaj: ' + phrase.en);
     play.addEventListener('click', () => {
       speech.speak(phrase.en, { lang: store.get().settings.variant === 'us' ? 'en-US' : 'en-GB' }).catch(() => {});
     });
-    row.append(copy, play);
+    const hide = hideButton('phrase', phrase.id || phrase.en, phrase.en, () => row.remove());
+    row.append(copy, play, hide);
     card.appendChild(row);
   });
   return card;
+}
+
+function phrasesForChapter(data, chapterId){
+  return data.stages.filter(stage => stage.chapters.includes(chapterId)).flatMap(stage => stage.items);
+}
+
+function renderPhraseChapter(root, data){
+  root.appendChild(el('p', 'mz-intro', data.subtitle));
+  root.appendChild(expandBar(root));
+  data.stages.forEach((stage, index) => {
+    const visible = visibleItems(stage.items, 'phrase', phrase => phrase.id);
+    const { wrap, body } = acc(stage.title, { open: index === 0, badge: `${visible.length} zwrotów`, sub: visible.slice(0, 2).map(p => p.en).join(' · ') });
+    const block = phraseBlock(stage.items, { title: 'KOMENDY I ZDANIA' });
+    if (block) body.appendChild(block);
+    else body.appendChild(el('p', 'muted-sm', 'Wszystkie zwroty z tej sytuacji są ukryte. Możesz je przywrócić w Ustawieniach.'));
+    root.appendChild(wrap);
+  });
 }
 
 function warning(text){ return el('div', 'mx-warning', text); }
@@ -643,7 +683,7 @@ function viewTematy(data, groups){
   return wrap;
 }
 
-function viewKolejnosc(data, groups){
+function viewKolejnosc(data, groups, phraseData){
   const wrap = el('div', 'mz-view mz-timeline');
   data.stages.forEach((title, stage) => {
     const items = data.chapters.filter(c => c.stage === stage);
@@ -660,6 +700,15 @@ function viewKolejnosc(data, groups){
       row.addEventListener('click', () => openChapter(c.id));
       block.appendChild(row);
     });
+    const situational = phraseData.stages.find(item => item.stage === stage);
+    if (situational){
+      const visible = visibleItems(situational.items, 'phrase', phrase => phrase.id);
+      const { wrap: phraseWrap, body: phraseBody } = acc('Zwroty do tego etapu', { badge: `${visible.length}`, sub: visible.slice(0, 2).map(p => p.en).join(' · '), color: '#3fb950' });
+      const phrases = phraseBlock(situational.items, { title: 'SZYBKIE KOMENDY', compact: true });
+      if (phrases) phraseBody.appendChild(phrases);
+      phraseWrap.classList.add('timeline-phrases');
+      block.appendChild(phraseWrap);
+    }
     wrap.appendChild(block);
   });
   return wrap;
@@ -700,16 +749,16 @@ function orderedChapters(data){
 
 export async function renderMontazHub(container, ctx){
   registerHub({ rerender: ctx.rerender || (() => renderMontazHub(container, ctx)), ...ctx });
-  const data = await loadMontaz();
+  const [data, phraseData] = await Promise.all([loadMontaz(), loadPhrases()]);
   const groups = groupMap(data);
   const current = store.get().ui?.montazChapter || null;
   container.innerHTML = '';
 
   // pasek szybkiej powtórki u góry
   const quick = el('button', 'mz-quick');
-  quick.dataset.quick = 'slowka';
-  quick.append(el('span', 'mz-icon', '🔤'), el('b', '', 'SZYBKA POWTÓRKA'), el('small', '', 'słówka PL → EN'));
-  quick.addEventListener('click', () => openChapter('slowka'));
+  quick.dataset.quick = 'zwroty';
+  quick.append(el('span', 'mz-icon', '💬'), el('b', '', 'SZYBKA POWTÓRKA'), el('small', '', 'zwroty i komendy · słówka dalej'));
+  quick.addEventListener('click', () => openChapter('zwroty'));
 
   if (!current){
     const hero = el('div', 'mz-hero');
@@ -729,7 +778,7 @@ export async function renderMontazHub(container, ctx){
       bar.appendChild(b);
     });
     container.appendChild(bar);
-    container.appendChild(view === 'kolejnosc' ? viewKolejnosc(data, groups) : view === 'tematy' ? viewTematy(data, groups) : viewMapa(data, groups));
+    container.appendChild(view === 'kolejnosc' ? viewKolejnosc(data, groups, phraseData) : view === 'tematy' ? viewTematy(data, groups) : viewMapa(data, groups));
     container.appendChild(el('p', 'muted-sm', data.source_note));
     return;
   }
@@ -776,6 +825,7 @@ export async function renderMontazHub(container, ctx){
     case 'wideo': renderWideo(body, data); break;
     case 'plany': await renderPlany(body, data.plany?.intro); break;
     case 'az': await renderAz(body); break;
+    case 'zwroty': renderPhraseChapter(body, phraseData); break;
     case 'slowka': await renderWordsChapter(body); break;
     case 'mx30panel': renderBlocks(body, data.mx30panel); break;
     case 'vmp': renderBlocks(body, data.vmp); break;
@@ -787,11 +837,11 @@ export async function renderMontazHub(container, ctx){
   const plans = await planLinks(data[chapter.id]?.plans);
   if (plans) container.appendChild(plans);
   const azData = await loadAz();
-  if (chapter.id !== 'az' && chapter.id !== 'slowka'){
+  if (chapter.id !== 'az' && chapter.id !== 'slowka' && chapter.id !== 'zwroty'){
     const words = wordList(azData.words[chapter.id]);
     if (words) container.appendChild(words);
   }
-  const phrases = phraseBlock(data[chapter.id]?.phrases);
+  const phrases = phraseBlock([...(data[chapter.id]?.phrases || []), ...phrasesForChapter(phraseData, chapter.id)]);
   if (phrases){
     const more = el('details', 'mz-more');
     more.appendChild(el('summary', '', 'Zwroty do rozmowy (po angielsku)'));

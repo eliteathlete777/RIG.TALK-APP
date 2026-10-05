@@ -1,7 +1,7 @@
 // RIG TALK — service worker: cache-first dla aplikacji, treści i fontów (pełna wersja: etap E12)
 // E9 wymaga, żeby 🟥 CZERWONE działało offline — precache obejmuje więc już teraz cały shell + treść.
 
-const CACHE_NAME = 'rigtalk-v33';
+const CACHE_NAME = 'rigtalk-v34';
 const PRECACHE_BATCH_SIZE = 8;
 
 const PRECACHE_URLS = [
@@ -42,6 +42,7 @@ const PRECACHE_URLS = [
   'js/kurs.js',
   'js/glossary.js',
   'js/state.js',
+  'js/visibility.js',
   'vendor/ts-fsrs.umd.js',
   'content/index.json',
   'content/modules.json',
@@ -49,6 +50,7 @@ const PRECACHE_URLS = [
   'content/stoisko.json',
   'content/mx30-guide.json',
   'content/montaz.json',
+  'content/phrases.json',
   'content/glossary.json',
   'content/tech/t7.json',
   'content/tech/t0.json',
