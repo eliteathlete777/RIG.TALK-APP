@@ -317,6 +317,43 @@ function initBackupUI(){
     }
     alert('iPhone: Safari → Udostępnij → Dodaj do ekranu początkowego. Android: Chrome → menu ⋮ → Zainstaluj aplikację.');
   });
+  document.getElementById('updateBtn')?.addEventListener('click', async (event) => {
+    const button = event.currentTarget;
+    const status = document.getElementById('updateStatus');
+    if (!navigator.onLine){
+      if (status) status.textContent = 'Brak internetu. Połącz telefon z Wi-Fi i spróbuj ponownie.';
+      return;
+    }
+    if (!confirm('Pobrać najnowszą wersję? Postęp, ulubione i ustawienia zostaną zachowane.')) return;
+
+    button.disabled = true;
+    button.textContent = 'AKTUALIZUJĘ…';
+    if (status) status.textContent = 'Usuwam stare pliki aplikacji. Dane użytkownika pozostają bez zmian…';
+
+    try {
+      if ('serviceWorker' in navigator){
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(registrations
+          .filter((registration) => registration.scope.includes('/rig-talk/'))
+          .map((registration) => registration.unregister()));
+      }
+      if ('caches' in window){
+        const names = await caches.keys();
+        await Promise.all(names
+          .filter((name) => name.startsWith('rigtalk-'))
+          .map((name) => caches.delete(name)));
+      }
+      if (status) status.textContent = 'Pobieram świeżą wersję…';
+      const freshUrl = new URL('./', window.location.href);
+      freshUrl.searchParams.set('update', Date.now().toString());
+      window.location.replace(freshUrl.href);
+    } catch (error){
+      console.error('[UPDATE] nieudana aktualizacja', error);
+      button.disabled = false;
+      button.textContent = 'AKTUALIZUJ BEZ UTRATY DANYCH';
+      if (status) status.textContent = 'Aktualizacja nie powiodła się. Dane nie zostały usunięte. Sprawdź internet i spróbuj ponownie.';
+    }
+  });
   document.getElementById('resetBtn')?.addEventListener('click', () => {
     if (!confirm('Na pewno zresetować cały postęp?')) return;
     store.state = resetState();

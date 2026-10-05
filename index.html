@@ -189,13 +189,15 @@
         </div>
 
         <div class="card">
-          <h3>Kopia zapasowa postępu</h3>
-          <div style="display:flex; gap:8px; margin-bottom:10px;">
+          <h3>Aktualizacja i kopia postępu</h3>
+          <div style="display:flex; gap:8px; margin-bottom:10px; flex-wrap:wrap;">
+            <button class="btn btn-primary" id="updateBtn">Aktualizuj bez utraty danych</button>
             <button class="btn" id="exportBtn">Pobierz kopię</button>
             <button class="btn" id="importBtn">Wczytaj kopię</button>
             <button class="btn btn-outline" id="installBtn">Zainstaluj apkę</button>
             <button class="btn btn-ghost" id="resetBtn">Reset</button>
           </div>
+          <p id="updateStatus" role="status" aria-live="polite" style="margin:0 0 10px; color:var(--dim); font-size:13px;">Aktualizacja usuwa tylko stare pliki aplikacji. Postęp, ulubione i ustawienia zostają.</p>
           <input id="stateFile" type="file" accept="application/json,.json" hidden>
           <textarea id="stateArea" rows="5" placeholder="Awaryjny import: wklej tutaj kopię JSON" style="width:100%; background:var(--bg); color:var(--white); border:1px solid var(--line); border-radius:8px; padding:8px; font-family:monospace; font-size:11px;"></textarea>
         </div>

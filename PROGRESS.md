@@ -74,3 +74,8 @@
 - Szukajka w menu Montażu (bez polskich znaków, końcówki): rozdziały, parametry, kroki MX30/VMP/Resolume, listy przygotowań.
 - Pola bez pewności oznaczone BRAK DANYCH / potwierdź (m.in. panel Intel, EDID Custom pola, topologia VMP, cabinet 16.2, Resolume Input Selection/Output Transformation, Composition → Settings).
 - sw.js: rigtalk-v32. validate 0 błędów; test Playwright 64 ok. Instrukcja wdrożenia: DEPLOY-COWORK.md.
+
+## v33 — bezpieczna aktualizacja PWA
+- Ustawienia: przycisk „Aktualizuj bez utraty danych” wyrejestrowuje wyłącznie PWA RIG TALK i usuwa cache `rigtalk-*`, bez czyszczenia `localStorage`.
+- Service worker pobiera 148 zasobów partiami po 8 zamiast równocześnie. Nieudana instalacja usuwa częściowy cache; aktywowana jest wyłącznie kompletna wersja.
+- `sw.js`: `rigtalk-v33`.

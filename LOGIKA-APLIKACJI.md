@@ -229,6 +229,10 @@ Aplikacja jest PWA i używa strategii cache-first dla własnych zasobów. Nie ko
 3. sprawdzenia, że service worker przejął nową wersję;
 4. przy wdrożeniu na Hostingerze — wyczyszczenia cache CDN.
 
+Instalacja offline pobiera pliki małymi partiami, a nowy cache staje się aktywny dopiero po zapisaniu całego pakietu. Jeśli pobranie któregokolwiek pliku zawiedzie, częściowy cache jest usuwany i użytkownik pozostaje na poprzedniej kompletnej wersji.
+
+Przycisk „Aktualizuj bez utraty danych” w Ustawieniach wyrejestrowuje wyłącznie service workery zakresu `/rig-talk/`, usuwa wyłącznie cache o nazwie `rigtalk-*` i otwiera świeży adres sieciowy. Nie czyści `localStorage`, dlatego postęp, ulubione, własne zwroty i ustawienia pozostają zachowane.
+
 Webhook AI jest na obcym originie i zawsze korzysta z sieci. Klucz API nigdy nie trafia do frontendu.
 
 ### Instalacja na telefonie

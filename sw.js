@@ -1,7 +1,8 @@
 // RIG TALK — service worker: cache-first dla aplikacji, treści i fontów (pełna wersja: etap E12)
 // E9 wymaga, żeby 🟥 CZERWONE działało offline — precache obejmuje więc już teraz cały shell + treść.
 
-const CACHE_NAME = 'rigtalk-v32';
+const CACHE_NAME = 'rigtalk-v33';
+const PRECACHE_BATCH_SIZE = 8;
 
 const PRECACHE_URLS = [
   './',
@@ -158,11 +159,25 @@ self.addEventListener('install', (event) => {
   // cache:'reload' pomija dyskowy cache HTTP przeglądarki — inaczej precache mógłby
   // złapać starą, zbuforowaną odpowiedź (np. content/index.json) i zamrozić ją na stałe.
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => Promise.all(
-        PRECACHE_URLS.map((url) => fetch(url, { cache: 'reload' }).then((res) => cache.put(url, res)))
-      ))
-      .then(() => self.skipWaiting())
+    caches.open(CACHE_NAME).then(async (cache) => {
+      try {
+        // Telefon nie dostaje już 148 równoległych żądań. Małe partie ograniczają
+        // zużycie pamięci i ryzyko przerwania instalacji na słabszym połączeniu.
+        for (let i = 0; i < PRECACHE_URLS.length; i += PRECACHE_BATCH_SIZE){
+          const batch = PRECACHE_URLS.slice(i, i + PRECACHE_BATCH_SIZE);
+          await Promise.all(batch.map(async (url) => {
+            const response = await fetch(url, { cache: 'reload' });
+            if (!response.ok) throw new Error(`Precache ${url}: HTTP ${response.status}`);
+            await cache.put(url, response);
+          }));
+        }
+        await self.skipWaiting();
+      } catch (error){
+        // Nie zostawiaj częściowej wersji, którą interfejs mógłby uznać za gotową offline.
+        await caches.delete(CACHE_NAME);
+        throw error;
+      }
+    })
   );
 });
 
