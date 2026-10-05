@@ -1,0 +1,475 @@
+﻿{
+    "title":  "Audio techniczne offline",
+    "generated":  "2026-10-05",
+    "tracks":  [
+                   {
+                       "id":  "audio-summary",
+                       "chapter":  "audio",
+                       "title":  "Audio techniczne offline - skrot",
+                       "text":  "Audio techniczne offline. Nagrania wszystkich technicznych rozdziałów i szczegółów, działające offline oraz przy zablokowanym ekranie.",
+                       "audio":  "assets/audio/tech/audio-summary.wav"
+                   },
+                   {
+                       "id":  "az-summary",
+                       "chapter":  "az",
+                       "title":  "Od A do Z: uruchomienie ekranu - skrot",
+                       "text":  "Od A do Z: uruchomienie ekranu. 9 faz od kabli do przekazania. Najpierw lista pytań i projekt offline w VMP, potem kable, włączenie MX30, ustawienia na panelu, VMP, HDMI i Resolume, jasność 70% i zapis. Na końcu tabela awarii.",
+                       "audio":  "assets/audio/tech/az-summary.wav"
+                   },
+                   {
+                       "id":  "az-detail-1",
+                       "chapter":  "az",
+                       "title":  "Od A do Z: uruchomienie ekranu - szczegoly 1 z 1",
+                       "text":  "Od A do Z: uruchomienie ekranu. tw-12. tw-17",
+                       "audio":  "assets/audio/tech/az-detail-1.wav"
+                   },
+                   {
+                       "id":  "param-summary",
+                       "chapter":  "param",
+                       "title":  "Parametry: gotowce do wpisania - skrot",
+                       "text":  "Parametry: gotowce do wpisania. Gotowe wartości do wpisania dla laptopa, MX30, VMP, Resolume i pliku wideo. Dwa warianty wejścia: Custom 2048 × 1080 albo Standard 3840 × 2160, oba 60 Hz, 8 bit.",
+                       "audio":  "assets/audio/tech/param-summary.wav"
+                   },
+                   {
+                       "id":  "param-detail-1",
+                       "chapter":  "param",
+                       "title":  "Parametry: gotowce do wpisania - szczegoly 1 z 15",
+                       "text":  "Parametry: gotowce do wpisania. Gotowe wartości do wpisania. Wybierz wariant wejścia: A (własna rozdzielczość 2048 × 1080) albo B (standardowe 4K). Wartość „—” znaczy: tak samo w obu wariantach. Pola z napisem „potwierdź” zależą od wersji programu lub sprzętu.. A: Custom 2048 × 1080 @ 60 Hz. B: Standard 3840 × 2160 @ 60 Hz. Laptop (Windows). Win + P. Tryb wyświetlania. Rozszerz. Naciśnij klawisz Windows + P.. Na liście po prawej kliknij „Rozszerz”.. Drugi sposób: Ustawienia → System → Ekran → Wiele ekranów → „Rozszerz te ekrany”.. Przesuń okno myszką za prawą krawędź pulpitu: ma wejść na ekran LED.. Nie wybieraj „Duplikuj”. Resolume ma dostać osobny ekran.. Ustawienia → Ekran → drugi monitor. Rozdzielczość. 2048 × 1080. 3840 × 2160. Musi być taka jak EDID w MX30. Jeśli Windows jej nie pokazuje, najpierw ustaw EDID w MX30.. Prawy klik na pulpicie → „Ustawienia ekranu” (albo Start → Ustawienia → System → Ekran).. U góry kliknij miniaturę ekranu LED. Nie wiesz który? Kliknij „Identyfikuj” (numer pojawi się na ekranie).. Przewiń do „Skala i układ” → lista „Rozdzielczość ekranu” → wybierz 2048 × 1080 (wariant A) albo 3840 × 2160 (wariant B).. Kliknij „Zachowaj zmiany”.. Ustawienia → System → Ekran → Zaawansowane ustawienia ekranu: rozdzielczość aktywnego sygnału ma pokazać tę samą wartość.",
+                       "audio":  "assets/audio/tech/param-detail-1.wav"
+                   },
+                   {
+                       "id":  "param-detail-2",
+                       "chapter":  "param",
+                       "title":  "Parametry: gotowce do wpisania - szczegoly 2 z 15",
+                       "text":  "Parametry: gotowce do wpisania. Windows pokaże 2048 × 1080 tylko, gdy MX30 ma EDID ustawiony i zatwierdzony (Apply). Brak na liście: najpierw MX30 → Input Settings → HDMI1 → EDID, potem odłącz i podłącz HDMI. Ta wartość jest też w MX30, Resolume i VMP: zobacz „Gdzie ustawiasz to samo w kilku miejscach”.. Ustawienia → Ekran → Zaawansowane. Odświeżanie. 60 Hz. Ustawienia → System → Ekran → kliknij miniaturę ekranu LED.. Przewiń w dół → „Zaawansowane ustawienia ekranu”.. Na górze wybierz ekran LED z listy (jeśli jest kilka).. „Wybierz częstotliwość odświeżania” → 60 Hz.. W tym samym oknie widać aktualną częstotliwość odświeżania.. Lista zawiera tylko to, co MX30 poda w EDID. Brak 60 Hz = popraw EDID w MX30.. Ustawienia → Ekran. Skalowanie. 100%. Ustawienia → System → Ekran → kliknij miniaturę ekranu LED (nie głównego ekranu laptopa).. Przewiń do „Skala i układ” → „Skala” → 100%.. Pole „Skala” pokazuje 100%.. Skala jest ustawiana osobno dla każdego ekranu. Tylko tu (Windows). W MX30, VMP i Resolume nie ma skalowania Windows.. Panel karty graficznej (potwierdź). Format i zakres. RGB, 8 bit, pełny zakres (Full). Najpierw sprawdź jaką kartę ma laptop klienta: Ctrl + Shift + Esc → Wydajność → GPU (nazwa u dołu), albo Win + R → dxdiag → zakładka Ekran.",
+                       "audio":  "assets/audio/tech/param-detail-2.wav"
+                   },
+                   {
+                       "id":  "param-detail-3",
+                       "chapter":  "param",
+                       "title":  "Parametry: gotowce do wpisania - szczegoly 3 z 15",
+                       "text":  "Parametry: gotowce do wpisania. NVIDIA: prawy klik na pulpicie → „NVIDIA Control Panel” → Wyświetlacz → „Zmień rozdzielczość” → wybierz ekran LED → „Użyj ustawień kolorów NVIDIA”: głębia 32 bit, format kolorów wyjściowych RGB, głębia wyjściowa 8 bpc, zakres dynamiki wyjściowej Pełny.. AMD: AMD Software Adrenalin → Ustawienia (zębatka) → Wyświetlacz → ekran LED → Pixel Format: RGB 4:4:4 PC Standard (Full RGB); Color Depth: 8 bpc.. Intel: Intel Graphics Command Center → Wyświetlacz → wybierz ekran LED → opcje kolorów. Dokładna nazwa pozycji BRAK DANYCH, potwierdź na sprzęcie.. Czarny ma być czarny (nie szary). Na ekranie LED sprawdź obraz testowy czarny i biały.. BRAK DANYCH: karta laptopa klienta nieznana. Nazwy w panelach zależą od wersji sterownika. Bez dostępu do panelu: zostaw domyślne i sprawdź czerń.. Zasilanie. Plan zasilania i uśpienie. Wysoka wydajność, uśpienie: nigdy, wygaszacz wyłączony. Plan: Wysoka wydajność. Najlepsza wydajność / Wysoka wydajność. Ustawienia → System → Zasilanie i bateria → „Tryb zasilania” → „Najlepsza wydajność” (dla zasilania z sieci).. Klasyczny plan „Wysoka wydajność”: Win + R → wpisz powercfg.cpl → Enter → zaznacz „Wysoka wydajność”. Nie widać? Kliknij „Pokaż dodatkowe plany”.. W oknie Opcje zasilania jest zaznaczony właściwy plan.. Uśpienie: Nigdy. Nigdy (przy zasilaniu z sieci)",
+                       "audio":  "assets/audio/tech/param-detail-3.wav"
+                   },
+                   {
+                       "id":  "param-detail-4",
+                       "chapter":  "param",
+                       "title":  "Parametry: gotowce do wpisania - szczegoly 4 z 15",
+                       "text":  "Parametry: gotowce do wpisania. Ustawienia → System → Zasilanie i bateria → „Ekran, uśpienie i hibernacja” (w niektórych wersjach: „Ekran i uśpienie”).. Wiersz „Po tym czasie przełącz urządzenie w stan uśpienia” → „Podłączone do zasilania” → Nigdy.. W wierszu widać „Nigdy”.. Wyłączanie ekranu: Nigdy. Ta sama sekcja: Ustawienia → System → Zasilanie i bateria → „Ekran, uśpienie i hibernacja”.. Wiersz „Po tym czasie wyłącz ekran” → „Podłączone do zasilania” → Nigdy.. Wygaszacz ekranu: Brak. (Brak). Ustawienia → Personalizacja → Ekran blokady → „Wygaszacz ekranu”.. W oknie z listy „Wygaszacz ekranu” wybierz „(Brak)” → OK.. Lista pokazuje „(Brak)”.. Wygaszanie ekranu i wygaszacz to dwie różne rzeczy. Podczas pokazu obie mają być wyłączone, żeby ekran LED nie zgasł.. Zamknięcie pokrywy: nic nie rób. Nie rób nic (jeśli laptop ma stać zamknięty). Win + R → powercfg.cpl → Enter.. Po lewej „Wybierz działanie zamykania pokrywy” → „Po zamknięciu pokrywy” → przy zasilaniu z sieci: Nie rób nic → Zapisz zmiany.. W oknie widać „Nie rób nic”.. Kabel. Wejście w MX30. HDMI 2.0-1 IN (jedyne wejście 4K przy 60 Hz). Kabel HDMI: z gniazda HDMI laptopa do gniazda wejściowego HDMI 2.0-1 w MX30.. W MX30 źródłem jest Input Settings → HDMI1.. Na ekranie głównym MX30 pole „Screen” pokazuje rozdzielczość i odświeżanie wejścia.",
+                       "audio":  "assets/audio/tech/param-detail-4.wav"
+                   },
+                   {
+                       "id":  "param-detail-5",
+                       "chapter":  "param",
+                       "title":  "Parametry: gotowce do wpisania - szczegoly 5 z 15",
+                       "text":  "Parametry: gotowce do wpisania. Którego fizycznie gniazda użyć: opis na tylnym panelu MX30. Potwierdź na sprzęcie.. MX30: panel przedni. System Settings → Working Mode. Tryb pracy. All-In-One Controller. Na ekranie głównym naciśnij pokrętło (wejście do menu).. Obróć do „System Settings” → naciśnij.. „Working Mode” → obróć do „All-In-One Controller” → naciśnij, żeby zatwierdzić.. Warstwy (layers) w VMP działają tylko w tym trybie.. Send-Only skraca opóźnienie o jedną klatkę, ale wyłącza warstwy w VMP.. Input Settings → HDMI1 → EDID → Mode. Tryb EDID. Custom. Standard. Pokrętło → „Input Settings” → „HDMI1” → „EDID”.. Pole „Mode” → „Custom” (wariant A) albo „Standard” (wariant B).. Po Apply ekran główny zmienia rozdzielczość wejścia.. Input Settings → HDMI1 → EDID. Rozdzielczość i odświeżanie. 2048 × 1080 @ 60 Hz. 3840 × 2160 @ 60 Hz. Potem Apply.. Wariant A (Custom): w „EDID” wpisz rozdzielczość 2048 × 1080 i odświeżanie 60 Hz.. Wariant B (Standard): z listy wybierz 3840 × 2160 @ 60 Hz.. Przewiń na dół i wybierz „Apply”.. Ekran główny: pole „Screen” pokazuje nową rozdzielczość i odświeżanie. W Windows pojawia się nowa wartość (odłącz i podłącz HDMI, jeśli nie).. Dokładne nazwy pól do wpisania liczb w EDID Custom: BRAK DANYCH (manual opisuje: wpisujesz rozdzielczość). Potwierdź na ekranie.. Advanced Functions → Output Settings → Bit Depth. Głębia wyjścia. 8 bit",
+                       "audio":  "assets/audio/tech/param-detail-5.wav"
+                   },
+                   {
+                       "id":  "param-detail-6",
+                       "chapter":  "param",
+                       "title":  "Parametry: gotowce do wpisania - szczegoly 6 z 15",
+                       "text":  "Parametry: gotowce do wpisania. Daje limit 659 722 px na port.. Pokrętło → „Advanced Functions” → „Output Settings”.. Pozycja „Bit Depth” → 8 bit → naciśnij.. Wartość widoczna w tym samym menu.. Limit portów w kalkulatorze jest dla 8 bit (659 722 px na port). Przy 10/12 bit limit spada.. Advanced Functions → Output Settings. Low Latency. Wyłączony. Pozycja „Low Latency” → Off.. Pozycja zależy od wersji firmware. Brak jej tu = poszukaj w VMP: Layout → Edit.. Screen Brightness. Jasność startowa. 70%. Potem Screen Configuration → Save to RV Card → Yes.. Pokrętło → „Screen Brightness”.. Naciśnij pokrętło, żeby wartość była edytowalna → obróć do 70% → naciśnij.. Wróć BACK → „Screen Configuration” → „Save to RV Card” → „Yes”.. Ekran główny pokazuje jasność. Bez Save to RV Card wartość znika po restarcie.. Gamma i temperatura barwowa: Advanced Functions → LED Screen Color, potem też Save to RV Card.. Display Control. Stan wyświetlania. Normal. Pokrętło → „Display Control”.. Wybierz „Normal” (Freeze trzyma klatkę, Blackout daje czarny ekran).. Obraz gra normalnie.. Screen Configuration → Mapping. Mapping. Włączony tylko na czas testu. Pokrętło → „Screen Configuration” → „Mapping” → włącz.. Każdy cabinet pokaże numer portu Ethernet i numer karty odbiorczej.. Po teście wyłącz Mapping tą samą drogą.",
+                       "audio":  "assets/audio/tech/param-detail-6.wav"
+                   },
+                   {
+                       "id":  "param-detail-7",
+                       "chapter":  "param",
+                       "title":  "Parametry: gotowce do wpisania - szczegoly 7 z 15",
+                       "text":  "Parametry: gotowce do wpisania. Wszystkie 64 cabinety pokazują numery. Brak numeru = brak sygnału do cabinetu.. Communication Settings → Network Settings. Adres IP. Zapisz ten z ekranu głównego. Komputer ustaw w tej samej podsieci, maska zwykle 255.255.255.0 (potwierdź).. Pokrętło → „Communication Settings” → „Network Settings”.. Mode: Manual → wpisz IP Address, Subnet Mask, Default Gateway → Apply.. Komputer: Ustawienia → Sieć i Internet → Ethernet → „Przypisanie adresu IP” → Edytuj → Ręczne → IPv4 → ten sam początek adresu co MX30, inny ostatni numer, maska 255.255.255.0 → Zapisz.. W VMP kontroler pojawia się na liście. Albo w wierszu poleceń: ping adresu MX30.. Maska 255.255.255.0: potwierdź z odczytem z MX30.. Pokrętło + BACK, 5 s. Blokada przycisków. Włącz po zakończeniu pracy. Przytrzymaj pokrętło i BACK razem 5 sekund lub dłużej.. Przyciski nie reagują (zablokowane). Powtórz ruch, żeby odblokować.. VMP (COEX). Layout → Edit. Nazwa i tryb ekranu. LYNK_8x4 · All-In-One Controller. Połącz VMP z MX30 (adres IP: patrz MX30 → Network Settings).. Wybierz ekran na liście → „Layout” → „Edit” w obszarze właściwości.. Wpisz nazwę LYNK_8x4 i wybierz Working Mode: All-In-One Controller.. Nazwa widoczna na liście ekranów.. Layout → Edit (to samo okno co nazwa ekranu).. Low Latency → wyłączony.. Pole pokazuje wyłączony.",
+                       "audio":  "assets/audio/tech/param-detail-7.wav"
+                   },
+                   {
+                       "id":  "param-detail-8",
+                       "chapter":  "param",
+                       "title":  "Parametry: gotowce do wpisania - szczegoly 8 z 15",
+                       "text":  "Parametry: gotowce do wpisania. Dokładne miejsce pola w tej wersji VMP: potwierdź na ekranie.. Layout → Canvas. Rozmiar canvasu. 2048 × 512. Layout → Edit → sekcja „Canvas”.. Wpisz własną szerokość 2048 i wysokość 512 (maksimum 16 384) albo wybierz gotową rozdzielczość.. Obszar roboczy pokazuje canvas 2048 × 512. Nie myl z 2048 × 1080 (wejście) i 2048 × 1024 (kompozycja).. Pozycja canvasu X, Y. 0, 0. Layout → Edit → Canvas → pola X i Y → 0, 0.. Canvas zaczyna się w lewym górnym rogu ekranu LED.. Layout → cabinet (custom → Edit). Rozdzielczość cabinetu. 256 × 64 px. Potwierdź z kartą cabinetu lub NCP.. Layout → kliknij cabinet w układzie → „custom” → „Edit”.. Wpisz szerokość 256 i wysokość 64 pikseli.. Siatka cabinetów daje łącznie 2048 × 512.. BRAK DANYCH: sekcja 16.2 (Cabinet Library) nie była czytana. Potwierdź z kartą cabinetu HL-3978 lub NCP.. Layout → port Ethernet na dole. Linia D1. Port 1: kolumny 1–2, 16 cabinetów, start u góry kolumny 1. Layout → zaznacz port Ethernet na dole ekranu.. Przypisz cabinety zgodnie z zakładką „Układ opięcia” w tej aplikacji (numer portu, kolumny, liczba, kierunek).. Start u góry pierwszej kolumny, linia idzie w dół, potem w górę w drugiej kolumnie (jak w schemacie).. Mapping (prawy klik na ekranie → Mapping) pokazuje trasę tak, jak fizycznie zrobiłeś kable.",
+                       "audio":  "assets/audio/tech/param-detail-8.wav"
+                   },
+                   {
+                       "id":  "param-detail-9",
+                       "chapter":  "param",
+                       "title":  "Parametry: gotowce do wpisania - szczegoly 9 z 15",
+                       "text":  "Parametry: gotowce do wpisania. Dokładne gesty przypisania portów w VMP: potwierdź na ekranie (sekcja topologii).. Linia D2. Port 3: kolumny 3–4, 16 cabinetów. Linia D3. Port 5: kolumny 5–6, 16 cabinetów. Linia D4. Port 7: kolumny 7–8, 16 cabinetów. Ekran → Backup → Ethernet Backup. Backup portów. Sequential Backup: 1⇌2, 3⇌4, 5⇌6, 7⇌8. Potem Verify Primary i Verify Backup.. Wybierz ekran → „Backup” → „Ethernet Backup” → „Sequential Backup”.. Zatwierdź parami portów: 1⇌2, 3⇌4, 5⇌6, 7⇌8.. Kliknij „Verify Primary” i „Verify Backup”.. Obie weryfikacje przechodzą bez błędu. Backup działa tylko, gdy fizycznie są kable na porty zapasowe.. Source → HDMI1 → Resolution i Refresh Rate. Źródło. Apply.. Wybierz kontroler → „Source”.. W polach „Resolution” i „Refresh Rate” wybierz wartość taką samą jak EDID w MX30 (A: 2048 × 1080 @ 60 Hz).. Kliknij „Apply”.. Wskaźnik źródła HDMI1 jest zielony (połączone).. Source → warstwa HDMI1 (Properties). Rozmiar i pozycja warstwy. 2048 × 512, X 0, Y 0. Source → kliknij dwukrotnie miniaturę HDMI1 albo przeciągnij ją na obszar roboczy (tworzy się warstwa).. W obszarze właściwości: Width 2048, Height 512, X 0, Y 0.. Warstwa w obszarze roboczym pokrywa cały canvas.. Warstwy tylko w trybie All-In-One Controller (maksimum 3).. Source → warstwa HDMI1 → Crop. Kadrowanie. Włączone, Same as Layer Size włączone, początek 0, 0",
+                       "audio":  "assets/audio/tech/param-detail-9.wav"
+                   },
+                   {
+                       "id":  "param-detail-10",
+                       "chapter":  "param",
+                       "title":  "Parametry: gotowce do wpisania - szczegoly 10 z 15",
+                       "text":  "Parametry: gotowce do wpisania. Zaznacz warstwę HDMI1 → właściwości → „Crop”.. Włącz Crop, zaznacz „Same as Layer Size”, początek 0, 0.. Widoczny fragment źródła zaczyna się w lewym górnym rogu.. Zachowanie crop przy źródle 2048 × 1080 → warstwa 2048 × 512: potwierdź na próbce.. Screen Settings → Image Quality. Jasność. Wybierz ekran → „Screen Settings” → „Image Quality”.. Brightness → 70%. „Brightness Limit” ustawia maksimum.. Zmiana widoczna na ekranie LED. Pamiętaj o spójności z MX30 (70%).. Ustawienia cabinetów. No data signal. Blackout (albo Last Frame, jeśli klient woli). Prawy klik na ekranie lub kontrolerze → opcja sygnału: brak sygnału → Blackout albo Last Frame.. Odłącz HDMI na chwilę: ekran ma zgasnąć albo zatrzymać klatkę.. Dokładna nazwa pozycji menu: potwierdź na ekranie.. Light up slowly. Włączone. Ustawienia cabinetów w VMP → „Light up slowly” → włącz.. Pozycja zaznaczona.. Dokładne miejsce: potwierdź na ekranie (w manualu nie czytano całej sekcji).. Indicator. Włączony. Włącz „Indicator” przy ekranie (prawy klik na ekranie lub kontrolerze).. Zielony = cabinet cały w canvasie, temperatura i napięcie w normie. Żółty = częściowo poza canvasem lub ostrzeżenie. Czerwony = poza canvasem lub awaria. Szary = offline.. Wszystkie 64 cabinety zielone.. Preset → zapisz. Nazwa presetu. LYNK_FINAL_70. Prawy klik → „Preset” → kliknij wolne miejsce presetu.",
+                       "audio":  "assets/audio/tech/param-detail-10.wav"
+                   },
+                   {
+                       "id":  "param-detail-11",
+                       "chapter":  "param",
+                       "title":  "Parametry: gotowce do wpisania - szczegoly 11 z 15",
+                       "text":  "Parametry: gotowce do wpisania. Zaznacz dane: Source, Layout, Processing, Screen Settings → „Save”.. Nazwa: LYNK_FINAL_70. Wczytanie: dwuklik na presecie. Do 128 presetów.. Aktywny preset ma znacznik w prawym górnym rogu.. Nazwa presetu: pole przy zapisie. Potwierdź na ekranie.. Resolume. Composition → Settings (potwierdź w swojej wersji). Rozmiar kompozycji. 2048 × 1024. Kreacja w proporcji 2:1.. Menu Composition → Settings (w Resolume 7). Wpisz szerokość 2048, wysokość 1024.. Siatka kompozycji ma proporcję 2:1.. BRAK DANYCH w dostarczonych PDF-ach. Nazwa menu zależy od wersji, potwierdź.. Output → Advanced → Screen. Wyjście. To podłączone do MX30. Menu „Output” → „Advanced”.. W oknie Advanced Output po lewej kliknij „+” i dodaj ekran, przypisz go do ekranu LED (ten podłączony do MX30).. Obraz pojawia się na ekranie LED.. Pomyłka na głównym monitorze: wyjście go wypełni. Naciśnij CTRL + SHIFT + D, żeby wyłączyć wszystkie wyjścia.. Output → Advanced → Screen → Width, Height. Rozmiar ekranu wirtualnego. Output → Advanced → wybierz Screen → pola Width i Height.. Wpisz 2048 i 1080 (wariant A) albo 3840 i 2160 (wariant B).. Wartość taka jak w Windows i EDID MX30.. Bez drugiego ekranu otworzy się jeden Virtual Screen. Więcej dodasz z menu Plus +.. Slice → Input Selection. Wejście slice. X 0, Y 0, 2048 × 1024 (cała kompozycja)",
+                       "audio":  "assets/audio/tech/param-detail-11.wav"
+                   },
+                   {
+                       "id":  "param-detail-12",
+                       "chapter":  "param",
+                       "title":  "Parametry: gotowce do wpisania - szczegoly 12 z 15",
+                       "text":  "Parametry: gotowce do wpisania. Output → Advanced → Slice → zakładka „Input Selection”.. X 0, Y 0, szerokość 2048, wysokość 1024 (cała kompozycja).. Cała kompozycja widoczna w slice.. BRAK DANYCH: rozdział Input Selection nie został wgrany. Potwierdź w programie.. Slice → Output Transformation. Wyjście slice. X 0, Y 0, 2048 × 512. Skaluje 2:1 do pikseli ekranu.. Output → Advanced → Slice → zakładka „Output Transformation”.. X 0, Y 0, szerokość 2048, wysokość 512.. Slice na wyjściu zajmuje pas 2048 × 512 w lewym górnym rogu.. BRAK DANYCH: rozdział Output Transformation nie został wgrany. Potwierdź w programie.. Screen. Brightness, Contrast. 100%, 100%. Jasność ekranu ustawiasz w MX30 i VMP.. Output → Advanced → zaznacz Screen → suwaki Brightness i Contrast (oraz osobno Red, Green, Blue).. Ustaw Brightness 100%, Contrast 100%.. Jasność ekranu ustawiasz w MX30 i VMP, nie tutaj.. Delay. 0 ms. Output → Advanced → zaznacz Screen → suwak „Delay” (0–100 ms) → 0 ms.. Pole pokazuje 0.. Zapis. Preset ustawień wyjścia. Zapisz pod nazwą LYNK_2048x512. Advanced Output → lista w lewym górnym rogu → zapisz konfigurację → nazwa LYNK_2048x512.. Plik .xml ląduje w Documents → Resolume (folder presets → screensetup).. Preset widać na liście.. Dokładna nazwa folderu zależy od wersji Resolume. Wg manuala: Documents\\Resolume Avenue-Arena 5\\presets\\screensetup.. Plik wideo. Format",
+                       "audio":  "assets/audio/tech/param-detail-12.wav"
+                   },
+                   {
+                       "id":  "param-detail-13",
+                       "chapter":  "param",
+                       "title":  "Parametry: gotowce do wpisania - szczegoly 13 z 15",
+                       "text":  "Parametry: gotowce do wpisania. Kontener i kodek. MP4, H.264 (albo HAP / DXV). Ustawia się w programie eksportującym (kodek, kontener).. Sprawdzenie: prawy klik na pliku → Właściwości → zakładka Szczegóły.. Widoczny typ pliku i kodek.. BRAK DANYCH: program montażowy klienta nieznany. Nazwy opcji eksportu zależą od programu.. Rozmiar. 2048 × 1024 (2:1). Wersja 2048 × 512 tylko, gdy slice ma być 1:1.. W programie eksportującym ustaw rozmiar klatki 2048 × 1024.. Sprawdzenie: Właściwości → Szczegóły → „Szerokość klatki” i „Wysokość klatki”.. 2048 i 1024.. Klatki na sekundę. 30 (albo 60). Przy wyjściu 60 Hz dobieraj 30 lub 60. 25 i 50 tylko gdy cały łańcuch pracuje na 50 Hz.. Eksport: klatki na sekundę 30 (lub 60).. Sprawdzenie: Właściwości → Szczegóły → „Szybkość klatek”.. Wartość 30 lub 60 klatek na sekundę.. Dźwięk. Brak. Eksport: wyłącz ścieżkę dźwiękową.. Sprawdzenie: Właściwości → Szczegóły → brak pola „Szybkość transmisji bitowej audio”.. Brak audio.. Bitrate. co najmniej 40 Mb/s. Eksport: bitrate co najmniej 40 Mb/s.. Sprawdzenie: Właściwości → Szczegóły → „Szybkość transmisji danych”.. Wartość nie niższa niż 40 Mb/s.. Treść. Tło. Czarne, bez pełnej bieli całego kadru. Przygotuj czarne tło w projekcie wideo. Nie rób pełnej bieli całego kadru.. Podgląd: czerń wokół treści.",
+                       "audio":  "assets/audio/tech/param-detail-13.wav"
+                   },
+                   {
+                       "id":  "param-detail-14",
+                       "chapter":  "param",
+                       "title":  "Parametry: gotowce do wpisania - szczegoly 14 z 15",
+                       "text":  "Parametry: gotowce do wpisania. Powód: ekran jest transparentny, czerń daje przezroczystość, pełna biel to maksymalny pobór mocy.. Gdzie ustawiasz to samo w kilku miejscach. Te wartości występują w kilku programach. Zacznij od MX30 (źródło prawdy), potem Windows, potem Resolume i VMP. Wartość ma być wszędzie taka sama.. Rozdzielczość wejścia. 1. MX30. Input Settings → HDMI1 → EDID → Mode i rozdzielczość → Apply. 2. Windows. Ustawienia → System → Ekran → ekran LED → Rozdzielczość ekranu. 3. Resolume. 4. VMP. Kontroler → Source → Resolution → Apply. Input Settings → HDMI1 → EDID → odświeżanie → Apply. Ustawienia → System → Ekran → Zaawansowane ustawienia ekranu → Wybierz częstotliwość odświeżania. 3. VMP. Kontroler → Source → Refresh Rate → Apply. 4. Resolume. BRAK DANYCH w dostarczonych PDF-ach: osobnego pola nie opisano. Skalowanie 100%. Windows (jedyne miejsce). Ustawienia → System → Ekran → ekran LED → Skala → 100%. Trzy rozdzielczości, nie mylić. 1080 / 1024 / 512. 2160 / 1024 / 512. Wejście (EDID, Windows, Resolume Screen, VMP Source). 2048 × 1080 (A) albo 3840 × 2160 (B). Kompozycja Resolume i plik wideo. Ściana LED: canvas VMP, warstwa, Output Transformation. MX30: EDID → Apply. Podłącz HDMI (odłącz i podłącz, jeśli Windows nie widzi wartości). Windows: Win + P → Rozszerz. Windows: rozdzielczość, odświeżanie, skala 100%",
+                       "audio":  "assets/audio/tech/param-detail-14.wav"
+                   },
+                   {
+                       "id":  "param-detail-15",
+                       "chapter":  "param",
+                       "title":  "Parametry: gotowce do wpisania - szczegoly 15 z 15",
+                       "text":  "Parametry: gotowce do wpisania. Windows: zasilanie (Najlepsza wydajność, Nigdy, wygaszacz Brak). Resolume: Output → Advanced → Screen i slice. VMP: Source, Layout, Canvas, warstwa. MX30: jasność 70% → Save to RV Card. VMP: preset LYNK_FINAL_70",
+                       "audio":  "assets/audio/tech/param-detail-15.wav"
+                   },
+                   {
+                       "id":  "mx30panel-summary",
+                       "chapter":  "mx30panel",
+                       "title":  "MX30: panel przedni - skrot",
+                       "text":  "MX30: panel przedni. Obsługa panelu MX30: pokrętło, ekran główny, EDID wejścia, Swift Layout, plik .rcfgx, jasność, mapping, adres IP, diagnostyka. Reset All kasuje wszystko.",
+                       "audio":  "assets/audio/tech/mx30panel-summary.wav"
+                   },
+                   {
+                       "id":  "mx30panel-detail-1",
+                       "chapter":  "mx30panel",
+                       "title":  "MX30: panel przedni - szczegoly 1 z 4",
+                       "text":  "MX30: panel przedni. Wszystko poniżej jest z oficjalnej instrukcji MX30 V1.4.2 (Novastar), ze wskazaniem sekcji i strony. Zanim wyślesz cokolwiek do cabinetów, zrób backup (rozdział „MX30 · VMP · test · przekazanie”).. The front panel · Panel przedni. Na ekranie głównym naciśnij pokrętło, aby wejść do menu.. W menu kręć pokrętłem, aby wybrać pozycję lub zmienić wartość. Naciśnij, aby zatwierdzić. BACK cofa o poziom albo anuluje.. Przytrzymaj pokrętło i BACK razem przez 5 s lub dłużej, aby zablokować lub odblokować przyciski.. Dioda: czerwona ciągła = czuwanie, niebieska = uruchamianie, zielona = praca normalna, czerwona migająca = nieprawidłowa praca. Przycisk Standby włącza i wyłącza; 5 s = restart.. Home screen · Ekran główny. Ekran główny pokazuje adres IP, tryb pracy (All-In-One albo Send-Only), blokadę i stan portów Ethernet (niebieski = podłączony, szary = brak).. Wejścia: zielony = sygnał OK i używany, niebieski = OK, nieużywany, czerwony = błąd, szary = błąd i nieużywany.. Screen pokazuje rozdzielczość, odświeżanie i jasność ekranu. Sync pokazuje używany sygnał (Active Input, Genlock lub Internal).. Set the input resolution (EDID) · Rozdzielczość wejścia. Menu → Input Settings → [źródło: HDMI1, HDMI2 lub DP] → EDID.",
+                       "audio":  "assets/audio/tech/mx30panel-detail-1.wav"
+                   },
+                   {
+                       "id":  "mx30panel-detail-2",
+                       "chapter":  "mx30panel",
+                       "title":  "MX30: panel przedni - szczegoly 2 z 4",
+                       "text":  "MX30: panel przedni. Ustaw Mode na Custom (wpisujesz rozdzielczość) albo Standard (wybierasz z listy). Ustaw rozdzielczość i odświeżanie i kliknij Apply.. Jeśli rozdzielczość wejścia i ekranu jest taka sama, obraz idzie piksel do piksela. Niższe odświeżanie może migać, wyższe stabilizuje obraz.. W trybie All-In-One menu Select Input się nie pokazuje. W trybie Send-Only użyj Input Settings → Select Input.. Maksymalna rozdzielczość HDMI/DP musi być włączona w ustawieniach karty graficznej komputera.. Swift Layout: quick screen setup · Szybki układ ekranu. Działa tylko gdy: ekran jest regularny; cabinety jednakowe i sprawne; dane idą tak samo na wszystkich portach, od pierwszego cabinetu portu 1.. Gdy użyto n portów, każdy z pierwszych n−1 portów ładuje tyle samo cabinetów, będących wielokrotnością liczby rzędów lub kolumn, i nie mniej niż ostatni port.. Menu → Screen Configuration → Swift Layout. Wybierz Yes.. Ustaw: Cabinet Row Qty (rzędy), Cabinet Column Qty (kolumny), Port 1 Cabinet Qty (ile cabinetów na porcie 1), Data Flow (Front View) (kierunek danych od frontu), H Offset i V Offset (przesunięcie obrazu).. Jeśli warunki nie są spełnione, skonfiguruj ekran w VMP (dowolne prowadzenie kabli).. Load the cabinet config file · Plik konfiguracji cabinetu. Używaj, gdy cabinet nie wyświetla obrazu poprawnie. Plik ma rozszerzenie .rcfgx.",
+                       "audio":  "assets/audio/tech/mx30panel-detail-2.wav"
+                   },
+                   {
+                       "id":  "mx30panel-detail-3",
+                       "chapter":  "mx30panel",
+                       "title":  "MX30: panel przedni - szczegoly 3 z 4",
+                       "text":  "MX30: panel przedni. Najpierw zaimportuj plik w VMP albo skopiuj go do głównego folderu pendrive i włóż do USB na przednim panelu.. Menu → Screen Configuration → Send Cabinet Config File. Wybierz plik i Yes.. Po komunikacie o wysłaniu naciśnij BACK i wybierz Save to RV Card. Potwierdź Yes.. Brightness, gamma, colour temperature · Jasność i gamma. Menu → Screen Brightness. Naciśnij pokrętło, aby wartość była edytowalna, obróć do celu i naciśnij.. Potem Screen Configuration → Save to RV Card → Yes, aby zapisać jasność.. Gamma i temperatura barwowa: Advanced Functions → LED Screen Color. Wybierz wartość, naciśnij, obróć, naciśnij. Potem Screen Configuration → Save to RV Card.. Mapping, freeze and blackout · Mapping, zatrzymanie, czarny ekran. Menu → Screen Configuration → Mapping i włącz. Cabinety pokażą numer portu Ethernet i numer karty odbiorczej, więc zobaczysz położenie i trasę kabli.. Menu → Display Control: Normal, Freeze (ekran trzyma bieżącą klatkę, źródło gra dalej) albo Blackout (czarny ekran).. IP address and diagnostics · Adres IP i diagnostyka. Menu → Communication Settings → Network Settings. Mode: Manual (wpisz IP Address, Subnet Mask, Default Gateway, potem Apply) albo Auto (urządzenie dostaje adres samo). Reset przywraca domyślne.",
+                       "audio":  "assets/audio/tech/mx30panel-detail-3.wav"
+                   },
+                   {
+                       "id":  "mx30panel-detail-4",
+                       "chapter":  "mx30panel",
+                       "title":  "MX30: panel przedni - szczegoly 4 z 4",
+                       "text":  "MX30: panel przedni. Menu → System Settings → Diagnostics. Wybierz Yes, potem View Results albo Export to USB Drive (NTFS lub FAT32).. Przy włączeniu urządzenie robi autotest. Pomarańczowe komunikaty to ostrzeżenia (Continue = tryb ograniczony). Czerwone to błędy i nie wolno kontynuować.. Do not press · Czego nie naciskać. System Settings → Factory Reset → Reset All kasuje wszystko i nie da się cofnąć. Keep User Data zachowuje zaimportowane pliki, ustawienia sieci, język i nazwę urządzenia.. Konkretny plik .rcfgx / NCP dla cabinetu INFILED HL-3978. Daje go właściciel sprzętu. Bez niego nie wysyłaj konfiguracji.. Typ karty odbiorczej w cabinetach (np. A10s Pro albo inna). Od niej zależy limit pikseli na port (rozdział „Układ ekranu”).. łycz input a ły juzing. Z jakiego wejścia korzystamy?. set de rezolusz tu kastem. Ustaw rozdzielczość na własną.. hał meny kabinets a on port łan. Ile cabinetów jest na porcie pierwszym?. czek de dejta flou dyrekszyn. Sprawdź kierunek łańcucha danych.. plyz tern on maping. Włącz mapping, proszę.",
+                       "audio":  "assets/audio/tech/mx30panel-detail-4.wav"
+                   },
+                   {
+                       "id":  "vmp-summary",
+                       "chapter":  "vmp",
+                       "title":  "VMP (COEX): ekran i porty - skrot",
+                       "text":  "VMP (COEX): ekran i porty. VMP (COEX): połączenie po IP, projekt offline, canvas 2048 × 512, topologia portów, warstwa HDMI1, test pattern, mapping, presety, jasność.",
+                       "audio":  "assets/audio/tech/vmp-summary.wav"
+                   },
+                   {
+                       "id":  "vmp-detail-1",
+                       "chapter":  "vmp",
+                       "title":  "VMP (COEX): ekran i porty - szczegoly 1 z 5",
+                       "text":  "VMP (COEX): ekran i porty. VMP (Vision Management Platform) to program COEX na komputerze do MX30. Poniżej kroki z oficjalnej instrukcji VMP V1.5.0 (sekcje 4–6, 9, 11). Nie wysyłaj plików NCP, jeśli nie masz pewności, że pasują do cabinetu.. Connect VMP to the MX30 · Połącz VMP z MX30. Połącz kontroler z komputerem kablem Ethernet. Ustaw na kontrolerze stały adres IP w tym samym segmencie sieci co komputer.. Na kontrolerze: pokrętło → Communication Settings → Network Settings → Mode: Manual → IP Address, Subnet Mask, Default Gateway → Apply.. Wariant: oba urządzenia do jednej sieci przez router, kontroler w Mode: Auto, potem Apply.. Jeśli kontroler jest w innej podsieci, może nie pojawić się na liście projektów. Wyszukaj go po adresie IP i dodaj (sekcja 4.3.2).. Nowe kontrolery pojawiają się w Default Project. Projekty, grupy ekranów i ekrany są na liście po lewej.. Prepare the project in advance (offline mode) · Przygotuj projekt wcześniej. Zanim ekran stanie na hali, możesz go przygotować: pasek menu → Tools → Offline Mode → Enter Offline Mode.. Kliknij plus w lewym górnym rogu → Add Controller. Wpisz model (MX30), nazwę i adres IP, potem OK.. Eksport projektu: Project → Export (plik .nprj). Na hali: Project → Import i wybierz urządzenie. Projekt można wczytać tylko do kontrolera tego samego modelu.",
+                       "audio":  "assets/audio/tech/vmp-detail-1.wav"
+                   },
+                   {
+                       "id":  "vmp-detail-2",
+                       "chapter":  "vmp",
+                       "title":  "VMP (COEX): ekran i porty - szczegoly 2 z 5",
+                       "text":  "VMP (COEX): ekran i porty. Import nadpisuje dotychczasowe nazwy ekranu i kontrolera.. Create the screen and canvas · Ekran i canvas. Kliknij plus na liście projektów → New Screen. Przeciągnij kontroler na ekran.. Wybierz ekran → Layout → Edit w obszarze właściwości. Wpisz nazwę i wybierz Working Mode. Send-Only skraca opóźnienie o 1 klatkę.. W sekcji Canvas wybierz gotową rozdzielczość albo wpisz własną szerokość i wysokość (maksimum 16 384). X i Y przesuwają początek canvasu.. Dla naszego ekranu canvas to 2048 × 512 (Układ ekranu). Najpierw potwierdź rozdzielczość cabinetu.. Wire the cabinets (topology) · Okablowanie w topologii. Wybierz kontroler → Layout. Wybierz widok topologii: tylko cabinety, tylko podgląd źródła albo oba.. Wybierz port Ethernet na dole, potem przeciągnij lub klikaj w obszarze topologii, aby dodać cabinety. Łączą się automatycznie w kolejności dodawania.. Pojemność portu jest pokazana, np. 16/- oznacza 16 cabinetów na porcie, wraz z procentem wykorzystania portu.. Swift Layout działa tylko gdy wszystkie porty mają ten sam model cabinetu, rozdzielczość, liczbę i topologię, a żaden cabinet nie leży całkiem poza canvasem.. Topologia ręczna: lewy klik na cabinecie łączy lub rozłącza; prawy klik przypisuje port Ethernet (tylko nieużywane porty).",
+                       "audio":  "assets/audio/tech/vmp-detail-2.wav"
+                   },
+                   {
+                       "id":  "vmp-detail-3",
+                       "chapter":  "vmp",
+                       "title":  "VMP (COEX): ekran i porty - szczegoly 3 z 5",
+                       "text":  "VMP (COEX): ekran i porty. Prawy klik na cabinecie: Select String zaznacza całą linię połączenia; Swap zamienia dwa cabinety.. W VMP V1.5.0 nowy projekt offline pozwala na 512 cabinetów na port. Projekty ze starszych wersji zostają przy 32.. Add the video layer · Warstwa wideo (layer). Layery są tylko w trybie All-In-One Controller. MX30 obsługuje do 3 layerów.. Wybierz kontroler → Source. Kliknij dwukrotnie miniaturę źródła albo przeciągnij ją na miejsce, aby dodać layer. Wskaźnik: zielony = połączone, czerwony = używane przez ekran, ale niepołączone, szary = niepołączone.. Ustaw rozmiar i współrzędne layera w obszarze właściwości. Opcjonalnie: Crop, Border, Lock layer.. Rozdzielczość i odświeżanie źródła: wybierz z list Resolution i Refresh Rate i kliknij Apply.. Test the screen · Test ekranu. W obszarze ustawień cabinetów wybierz Test Pattern z listy, aby szukać problemów.. Prawy klik na ekranie lub kontrolerze → Mapping pokazuje położenie i trasę kabli kart odbiorczych. Canvas Mapping pokazuje, gdzie leży canvas. Controller Identify podświetla LCD kontrolera kolorem.. Włącz Indicator: zielony = cabinet całkiem w canvasie, temperatura i napięcie w normie; żółty = częściowo poza canvasem lub ostrzeżenie; czerwony = całkiem poza canvasem lub awaria; szary = offline.",
+                       "audio":  "assets/audio/tech/vmp-detail-3.wav"
+                   },
+                   {
+                       "id":  "vmp-detail-4",
+                       "chapter":  "vmp",
+                       "title":  "VMP (COEX): ekran i porty - szczegoly 4 z 5",
+                       "text":  "VMP (COEX): ekran i porty. Prawy klik → Blackout lub Freeze. Brak sygnału można ustawić na Blackout albo Last Frame.. Source Snapshot zamraża podgląd źródła w VMP, więc możesz ustawiać bez patrzenia na ekran LED.. Brightness and presets · Jasność i presety. Wybierz ekran → Screen Settings → Image Quality. Ustaw jasność i gamma. Brightness Limit ustawia maksimum.. Niektóre funkcje wymagają wgranego pliku NCP, a NCP karty odbiorczej i kontrolera muszą się zgadzać (sekcja 16.2).. Zapis presetu: Preset → kliknij miejsce presetu → wybierz dane (Source, Layout, Processing, Screen Settings) → Save. Do 128 presetów.. Wczytanie presetu: Preset → kliknij dwukrotnie i poczekaj na załadowanie. Aktywny preset ma znacznik w prawym górnym rogu.. Sekcja 16.2 „Manage Cabinet Library” (wgrywanie plików NCP, str. 104). Odczyt PDF z Dysku urwał się przy str. 76. Jeśli chcesz tę sekcję, wrzuć osobno same strony 100–106 jako PDF.. Rozdziały 7–8 (korekcja szwów, kolory) nie są potrzebne do uruchomienia ekranu, więc ich tu nie opisuję.. Rysunki z manuala (zrzuty okien VMP) są w PDF na Dysku. Aplikacja ich nie kopiuje.. ken ju gyw mi di aj pi adres. Podasz mi adres IP?. de kontroler yz not szołing ap. Kontroler się nie pokazuje.. aj em ading de kabinets tu port łan. Dodaję cabinety do portu pierwszego.. plyz send mi de projekt fajl. Prześlij mi plik projektu.",
+                       "audio":  "assets/audio/tech/vmp-detail-4.wav"
+                   },
+                   {
+                       "id":  "vmp-detail-5",
+                       "chapter":  "vmp",
+                       "title":  "VMP (COEX): ekran i porty - szczegoly 5 z 5",
+                       "text":  "VMP (COEX): ekran i porty. aj em sejwing de preset naw. Zapisuję teraz preset.",
+                       "audio":  "assets/audio/tech/vmp-detail-5.wav"
+                   },
+                   {
+                       "id":  "resolume-summary",
+                       "chapter":  "resolume",
+                       "title":  "Resolume: wyjście na ekran - skrot",
+                       "text":  "Resolume: wyjście na ekran. Resolume: Output → Advanced, ekran na wyjściu do MX30, slice 2048 × 1024 → 2048 × 512, preset ustawień. Ekran szerszy niż Full HD, więc wejście 2048 × 1080 albo 4K.",
+                       "audio":  "assets/audio/tech/resolume-summary.wav"
+                   },
+                   {
+                       "id":  "resolume-detail-1",
+                       "chapter":  "resolume",
+                       "title":  "Resolume: wyjście na ekran - szczegoly 1 z 4",
+                       "text":  "Resolume: wyjście na ekran. Resolume wysyła obraz z komputera przez HDMI do MX30. MX30 tnie obraz na cabinety. Rozdzielczość wyjścia z Resolume musi się zgadzać z wejściem MX30. Kroki poniżej pochodzą z oficjalnych stron wsparcia Resolume (PDF-y wgrane na Dysk).. Calculation: does the wall fit the picture? · Czy ekran mieści się w obrazie. Ekran ma 2048 × 512 px (rozdział „Układ ekranu”). To szerzej niż Full HD (1920 px).. Wg manuala MX30: wejście HDMI 2.0, maksymalna szerokość 8192 px (8192×1080@60 Hz), minimum 800×600@60 Hz, własne rozdzielczości wejściowe przez EDID.. Wariant A: ustaw w MX30 wejście Custom 2048 × 1080@60 Hz (Input Settings → HDMI → EDID → Custom). Wyjście Resolume = 2048 × 1080. Ekran używa lewego górnego rogu 2048 × 512.. Wariant B: standardowe wejście 3840 × 2160@60 Hz. Ekran to lewy górny róg 2048 × 512.. Karta graficzna komputera musi dopuszczać wybraną rozdzielczość. Sprawdź to na miejscu na laptopie klienta.. Open Advanced Output · Otwórz Advanced Output. Wybierz z menu Output \u003e Advanced (Wyjście \u003e Zaawansowane).. Po lewej widzisz listę aktywnych ekranów. Każdy ekran to jedno wyjście z Resolume.. Kliknij prawym przyciskiem ekran po lewej. Lista pokaże wszystkie wyjścia podłączone do komputera. Wybierz to, które idzie do MX30.",
+                       "audio":  "assets/audio/tech/resolume-detail-1.wav"
+                   },
+                   {
+                       "id":  "resolume-detail-2",
+                       "chapter":  "resolume",
+                       "title":  "Resolume: wyjście na ekran - szczegoly 2 z 4",
+                       "text":  "Resolume: wyjście na ekran. Ekran pokazuje nazwę urządzenia pod swoją nazwą i na liście Device po prawej. Dwukrotne kliknięcie nazwy zmienia nazwę ekranu.. If the MX30 output does not appear · Gdy nie widać wyjścia do MX30. Resolume nie tworzy wyjść. Robi to komputer. Jeśli ekran jest podłączony, a nie widać go tu, najpierw sprawdź, czy komputer go rozpoznaje.. Na PC ekran musi być w trybie rozszerzonego pulpitu (Windows: Win+P → Extend). Na Macu nie może być lustra (mirror).. Każde wyjście może mieć tylko jeden ekran. Jeśli wybierzesz zajęte wyjście, tamten ekran wraca do Virtual.. Tip: jeśli przez pomyłkę wybierzesz główny monitor, wyjście go wypełni i stracisz interfejs. Naciśnij CTRL-SHIFT-D, aby wyłączyć wszystkie wyjścia.. Prepare before the show · Przygotuj przed wyjazdem na halę. Otwórz Advanced Output bez podłączonego drugiego ekranu. Otworzy się jeden Virtual Screen.. Ustaw Width i Height po prawej na rozdzielczość, jaką wyjście będzie miało na hali (z rachunku wyżej: 2048 × 1080 albo 3840 × 2160).. Na hali kliknij ekran prawym przyciskiem i wybierz prawdziwe wyjście z listy.. Więcej Virtual Screenów dodasz z menu Plus+.. Adjust the screen · Korekty ekranu. Każdy ekran ma Opacity, Brightness i Contrast oraz osobne Red, Green i Blue. Użyj ich do korekty niedopasowanego wyjścia, np. przyciemnienia ekranu LED.",
+                       "audio":  "assets/audio/tech/resolume-detail-2.wav"
+                   },
+                   {
+                       "id":  "resolume-detail-3",
+                       "chapter":  "resolume",
+                       "title":  "Resolume: wyjście na ekran - szczegoly 3 z 4",
+                       "text":  "Resolume: wyjście na ekran. Każdy ekran ma Delay od 0 do 100 ms, aby wyrównać opóźnienia po wyjściu z Resolume.. Przełącznik przed ekranem włącza lub wyłącza całe wyjście na ten ekran. Przydaje się do ustalenia, który ekran jest który.. Strzałka pod ekranem zwija go: wyjście dalej działa, a slice’y są ukryte.. Save and share the setup · Zapisz ustawienie. W Advanced Output użyj listy w lewym górnym rogu, aby zapisywać i wybierać konfiguracje (presety).. Zapisany preset to plik .xml w folderze dokumentów Resolume. Windows (wg manuala): C:\\Users\\[użytkownik]\\Documents\\Resolume Avenue-Arena 5\\presets\\screensetup\\. W nowszych wersjach nazwa folderu może być inna.. Wybierz Reveal w Eksploratorze z listy, aby przejść do pliku.. Skopiuj plik do tego samego folderu na drugim komputerze i wczytaj z listy.. Slices and LED processors · Slice i procesor LED. Przy procesorach LED skalujesz i dopasowujesz wyjście do procesora. Advanced Output jest w Avenue i Arenie. Wszystkie funkcje wymagają Areny.. Slice’y ustawia się w dwóch zakładkach: Input Selection (który fragment kompozycji) i Output Transformation (gdzie ląduje na wyjściu). Slice 2048 × 512 połóż w pozycji 0, 0 wyjścia.. Szczegóły tych zakładek są w rozdziałach Input Selection i Output Transformation. Nie ma ich jeszcze we wgranych PDF-ach.",
+                       "audio":  "assets/audio/tech/resolume-detail-3.wav"
+                   },
+                   {
+                       "id":  "resolume-detail-4",
+                       "chapter":  "resolume",
+                       "title":  "Resolume: wyjście na ekran - szczegoly 4 z 4",
+                       "text":  "Resolume: wyjście na ekran. Rozdziały Input Selection, Output Transformation i Input Maps. Zapisz je jako PDF (Ctrl+P) z https://www.resolume.com/support/en/input-selection , /output-transformation i /input-maps i wrzuć do folderu INSTRUKCJE.. Czy karta graficzna laptopa klienta przyjmie wybraną rozdzielczość. To sprawdzasz na miejscu.. Ścieżka folderu presetów dotyczy Resolume 5. W Twojej wersji (Arena 7/8) użyj Reveal in Explorer z listy presetów.. tw-12. set de skrin tu ykstend. Ustaw ekran na rozszerzony.. di autpyt yz tu tauzend forty ejt baj fajw tłelw. Wyjście ma 2048 na 512.. di ymydż yz kat of on de rajt. Obraz jest ucięty z prawej.. muw de slajs tu de top left. Przesuń slice w lewy górny róg.",
+                       "audio":  "assets/audio/tech/resolume-detail-4.wav"
+                   },
+                   {
+                       "id":  "mx30-summary",
+                       "chapter":  "mx30",
+                       "title":  "Test i przekazanie klientowi - skrot",
+                       "text":  "Test i przekazanie klientowi. Test i przekazanie: 10 etapów od identyfikacji sprzętu przez backup, konfigurację, test pattern i HDMI po przekazanie klientowi.",
+                       "audio":  "assets/audio/tech/mx30-summary.wav"
+                   },
+                   {
+                       "id":  "uklad-summary",
+                       "chapter":  "uklad",
+                       "title":  "Układ ekranu: sygnał, prąd, piksele - skrot",
+                       "text":  "Układ ekranu: sygnał, prąd, piksele. Układ 8 × 8, wężyk góra–dół, 4 linie po 16 cabinetów: porty główne 1, 3, 5, 7, zapasowe 2, 4, 6, 8. Przy 70%: 3,9 kW średnio, 11,8 kW max. Schematy, linie i fazy rozwijasz po kliknięciu.",
+                       "audio":  "assets/audio/tech/uklad-summary.wav"
+                   },
+                   {
+                       "id":  "uklad-detail-1",
+                       "chapter":  "uklad",
+                       "title":  "Układ ekranu: sygnał, prąd, piksele - szczegoly 1 z 2",
+                       "text":  "Układ ekranu: sygnał, prąd, piksele. Ekran ma 8 kolumn × 8 rzędów (cabinet 1000 × 500 mm). Linie DATA i zasilania biegną wężykiem góra–dół: pierwsza kolumna w dół, druga w górę. Wybierz, ile kolumn ma jedna linia, a generator pokaże porty, grafiki i wytyczne.. Jasność 70% to wartość startowa. Pobór przy mniejszej jasności jest szacunkiem liniowym (moc × jasność). Prawdziwy pobór zmierz miernikiem na linii zasilania podczas testu.. Moc i waga cabinetu INFiLED HL-3978 pochodzą ze strony producenta (wynik wyszukiwania): max 263 W, średnio 88 W, 7,5 kg. W dokumentach SQM ich nie ma. Potwierdź na etykiecie cabinetu i w karcie technicznej od SQM.. Liczba kolumn 2 na linię daje 16 cabinetów na linię, 4 linie, 8 portów (4 główne i 4 zapasowe) z 10 dostępnych w MX30.. Wężyk po 3 kolumny kończy się na dole ekranu, a po 2 i 4 kolumny kończy się u góry, obok początku.. Moc maksymalna występuje tylko przy pełnej bieli na całym ekranie. Zwykły materiał zbliża się do średniej.. Fazy: przy trzech fazach linie rozkładane są równo na L1, L2, L3. Prąd na fazę porównaj z wejściem racka (domyślnie 32 A, potwierdź).. uklad-sygnal-2. uklad-zasilanie-2. tw-12. Skrzynia zasilania hali. 60 kW, stała (coffret permanent). Przy 400 V trójfazowo to około 87 A na fazę przy równym obciążeniu (wyliczenie).. Legenda planu elektrycznego",
+                       "audio":  "assets/audio/tech/uklad-detail-1.wav"
+                   },
+                   {
+                       "id":  "uklad-detail-2",
+                       "chapter":  "uklad",
+                       "title":  "Układ ekranu: sygnał, prąd, piksele - szczegoly 2 z 2",
+                       "text":  "Układ ekranu: sygnał, prąd, piksele. PRISE ECRAN × 6, PRISE alim × 11, TRIPLETTE × 7, arrivée électrique aérienne × 1, Écran LED Transparent × 1. Rack SQM. POWERBOX RACK 32A → 2 × 16A / 6 × 230V (Riedconn STV32/002-6/2k). Czy wejście 32 A jest jedno- czy trójfazowe, sprawdź na urządzeniu.. Kable zasilające z listy. 2 × 230 V → PowerCon TRUE1 16 A, 10 m. To wskazuje na 2 linie zasilania w planie SQM.. Napięcie i fazy na hali. Dokumenty SQM tego nie podają. W Europie sieć to 230 V między fazą a neutralnym i 400 V między fazami, 50 Hz. Zapytaj Viparis o typ przyłącza i wtyk.",
+                       "audio":  "assets/audio/tech/uklad-detail-2.wav"
+                   },
+                   {
+                       "id":  "zasilanie-summary",
+                       "chapter":  "zasilanie",
+                       "title":  "Zasilanie: kable i zasady - skrot",
+                       "text":  "Zasilanie: kable i zasady. Zasilanie: skrzynia hali 60 kW, rack SQM 32 A z wyjściami 2 × 16 A i 6 × 230 V. Standard faz nie jest w dokumentach. Przy 4 liniach potrzebujesz więcej obwodów niż daje lista SQM.",
+                       "audio":  "assets/audio/tech/zasilanie-summary.wav"
+                   },
+                   {
+                       "id":  "zasilanie-detail-1",
+                       "chapter":  "zasilanie",
+                       "title":  "Zasilanie: kable i zasady - szczegoly 1 z 2",
+                       "text":  "Zasilanie: kable i zasady. Zasilanie podłącza uprawniona osoba. Nigdy nie podłączaj pod napięciem ani przy mokrej podłodze.. Na hali jest stała skrzynia 60 kW (plan zasilania). Na wycinku planu leży w prawym górnym rogu, z opisem „permanent”.. Rack: POWERBOX RACK 32A → 2 × 16A i 6 × 230V (Riedconn STV32/002-6/2k). Czyli dwa obwody 16 A dla ekranu.. Kable: 2 × 230V → PowerCon TRUE1 16A, 10 m. Do tego extendery PowerCon TRUE1: 2 × 0,8 m F–F i 2 × 1,2 m M–M.. DATA: 2 × Ethercon M–M 1,4 m i 2 × Ethercon F–F 0,8 m (INFILED / Dicolor UT-390). Tyle jest na liście.. Plan elektryczny SQM: skrzynia hali 60 kW (stała), 6 gniazd „PRISE ECRAN”, 11 gniazd „PRISE alim”, 7 triplet. Napięcia i liczby faz dokumenty nie podają.. Rack SQM ma wejście 32 A i wyjścia 2 × 16 A oraz 6 × 230 V. Kable zasilające z listy: 2 × 230 V → PowerCon 16 A 10 m. Tyle wystarczy na 2 linie, a Twój plan to 4 linie, więc dopytaj SQM o dodatkowe obwody i kable.. Rozłóż kable zasilania i DATA oddzielnie. Nie krzyżuj ich bez potrzeby.. Ustal z elektrykiem stoiska, do którego gniazda w skrzyni 60 kW się podpinamy.. Sprawdź kable wzrokowo: wtyki, osłony, zamknięcia PowerCon.. Podłącz rack do 32 A dopiero po zgodzie elektryka. Wyłączniki w pozycji wyłączonej.. Podłącz dwie linie 16 A do dwóch grup cabinetów. Zapisz, która linia zasila które kolumny.",
+                       "audio":  "assets/audio/tech/zasilanie-detail-1.wav"
+                   },
+                   {
+                       "id":  "zasilanie-detail-2",
+                       "chapter":  "zasilanie",
+                       "title":  "Zasilanie: kable i zasady - szczegoly 2 z 2",
+                       "text":  "Zasilanie: kable i zasady. Włącz zasilanie. Sprawdź każdy cabinet: czy się zapala (autotest) lub czy ma sygnał zasilania.. Nie przekraczaj 16 A na linię. Policz w kalkulatorze po wpisaniu mocy cabinetu z karty technicznej.. ken ju konekt de pałer. Możesz podłączyć zasilanie?. yz de serkyt brejker on. Czy wyłącznik jest włączony?. du not słycz yt on jet. Jeszcze nie włączaj.. hał meny emps per lajn. Ile amperów na linię?. tw-17. power. tw-18. tw-21. tw-22",
+                       "audio":  "assets/audio/tech/zasilanie-detail-2.wav"
+                   },
+                   {
+                       "id":  "rj45-summary",
+                       "chapter":  "rj45",
+                       "title":  "RJ45: ściąga układ B - skrot",
+                       "text":  "RJ45: ściąga układ B. Ściąga RJ45 w układzie B (T568B): kolejność żył, zaciskanie, test kablem. Oba końce w tym samym układzie.",
+                       "audio":  "assets/audio/tech/rj45-summary.wav"
+                   },
+                   {
+                       "id":  "rj45-detail-1",
+                       "chapter":  "rj45",
+                       "title":  "RJ45: ściąga układ B - szczegoly 1 z 2",
+                       "text":  "RJ45: ściąga układ B. RJ45 · układ B (T568B). biało-pomarańczowy. #f4d9b0. #ee7a1a. pomarańczowy. biało-zielony. #cfe7c4. #2c9a3d. niebieski. #2f6fd1. biało-niebieski. #cfdcf4. zielony. biało-brązowy. #e3d3c4. #7a4a22. brązowy. Wtyk trzymaj stykami do siebie i klipsem od siebie, kabel wchodzi od dołu. Wtedy pin 1 jest po lewej.. Zdejmij osłonę kabla na około 25–30 mm. Nie nacinaj żył.. Rozpleć pary i wyprostuj żyły palcami.. Ułóż od lewej: biało-pomarańczowy, pomarańczowy, biało-zielony, niebieski, biało-niebieski, zielony, biało-brązowy, brązowy.. Dociśnij żyły do siebie, jedna przy drugiej, bez zakładek.. Przytnij równo, tak aby po wsunięciu w wtyk żyły sięgały do końca, a osłona kabla weszła pod zacisk (około 12–14 mm odsłoniętych żył).. Wsuń do oporu. Zajrzyj od strony styków: osiem żył dotyka przedniej ścianki.. Zaciśnij zaciskarką. Nie ciągnij kabla przed zaciskiem.. Sprawdź testerem kabli: osiem świateł po kolei, bez przeskoków. Jeśli nie, utnij wtyk i zrób od nowa.. Oba końce kabla zaciskasz w tym samym układzie B. Wtedy to jest kabel prosty (straight).. Kable INFILED/Dicolor z listy SQM są fabryczne z Ethercon. Nie zaciskasz ich. Ściąga służy do patchcordu RJ45 i awaryjnych kabli.. Gigabit wymaga wszystkich ośmiu żył. Dwa przesunięte kolory mogą dać obraz z błędami lub brak połączenia.. aj nid e kejbel tester. Potrzebuję testera kabli.",
+                       "audio":  "assets/audio/tech/rj45-detail-1.wav"
+                   },
+                   {
+                       "id":  "rj45-detail-2",
+                       "chapter":  "rj45",
+                       "title":  "RJ45: ściąga układ B - szczegoly 2 z 2",
+                       "text":  "RJ45: ściąga układ B. dys kejbel yz łajerd strejt. Ten kabel jest zaciśnięty prosto.. de tester szołz e folt. Tester pokazuje błąd.. du ju hew e spe pecz kejbel. Masz zapasowy patchcord?",
+                       "audio":  "assets/audio/tech/rj45-detail-2.wav"
+                   },
+                   {
+                       "id":  "fakty-summary",
+                       "chapter":  "fakty",
+                       "title":  "Fakty z dokumentów - skrot",
+                       "text":  "Fakty z dokumentów. Fakty ze zlecenia: stoisko 51A32, hala 5.1, ekran 8 × 4 m z 64 cabinetów, MX30, skrzynia 60 kW. Brakuje wagi, mocy z SQM i standardu faz.",
+                       "audio":  "assets/audio/tech/fakty-summary.wav"
+                   },
+                   {
+                       "id":  "fakty-detail-1",
+                       "chapter":  "fakty",
+                       "title":  "Fakty z dokumentów - szczegoly 1 z 2",
+                       "text":  "Fakty z dokumentów. Klient / projekt. Lynk \u0026 Co · Mondial de l\u0027Automobile Paris 2026. Zlecenie. Hala / stoisko. Porte de Versailles, Hala 5.1, stoisko 51A32, 368 m². Wystawa. 12–18 października 2026. Wynajem sprzętu. 28.09.2026 09:00 – 28.10.2026 17:00. Umowa. SQM/39462 · Loc\u0027Event. Ekran LED. 8 m długości × 4 m wysokości, przezroczysty. Cabinet. P3.9 · INFILED HL-3978 · 1000 × 500 mm · transparent. Liczba cabinetów. 64 w ekranie + 8 zapasowych (backup). Welon przy ekranie. szary, półprzezroczysty (voilage gris semi-transparent). Konstrukcja (truss). wysokość konstrukcji 7000 mm. Konstrukcja, zasilanie, procesor. Mocowanie ekranu LED. na wspornikach (pattes) przymocowanych do rusztowania. Wymiary ekranu na planie. 8000 mm w osi, po 1124 mm z boku w sekcji 10248 mm; welon 15592 mm szer. × 4700 mm wys.. Zawieszenie truss. 8 punktów, 56,25 kg (≈57 kg) na punkt, linki 1250 mm, wysokość 7000 mm. Dotyczy konstrukcji z reflektorami i logo klienta, nie ekranu.. Zasilanie na hali. skrzynia 60 kW, stała (coffret permanent). Procesor. NovaStar MX30 × 1. Trasa kabli. zaznaczona na żółto po lewej stronie bryły stoiska. Waga cabinetu. BRAK DANYCH. Brakuje w dokumentach. Pobór mocy cabinetu. Nośność punktów dla ekranu LED. BRAK DANYCH. Plan podaje obciążenie tylko dla truss.. Legenda planu elektrycznego",
+                       "audio":  "assets/audio/tech/fakty-detail-1.wav"
+                   },
+                   {
+                       "id":  "fakty-detail-2",
+                       "chapter":  "fakty",
+                       "title":  "Fakty z dokumentów - szczegoly 2 z 2",
+                       "text":  "Fakty z dokumentów. PRISE ECRAN × 6, PRISE alim × 11, TRIPLETTE × 7, zasilanie napowietrzne × 1. Standard napięcia i faz na hali. BRAK DANYCH w dokumentach SQM. Zapytaj Viparis (typ przyłącza, wtyk, liczba faz).. łot yz de stend namber. Jaki jest numer stoiska?. ler yz de pałer boks. Gdzie jest skrzynia zasilania?. de skrin yz ejt mitez łajd. Ekran ma osiem metrów szerokości.. tw-03. tw-12. tw-16",
+                       "audio":  "assets/audio/tech/fakty-detail-2.wav"
+                   },
+                   {
+                       "id":  "niespodzianki-summary",
+                       "chapter":  "niespodzianki",
+                       "title":  "Co może zaskoczyć - skrot",
+                       "text":  "Co może zaskoczyć. Ryzyka w kategoriach: sprzęt, hala i mechanika, prąd i sygnał, laptop klienta. Najważniejsze: piksel 2× wyższy niż szeroki i za mało kabli na 4 linie.",
+                       "audio":  "assets/audio/tech/niespodzianki-summary.wav"
+                   },
+                   {
+                       "id":  "niespodzianki-detail-1",
+                       "chapter":  "niespodzianki",
+                       "title":  "Co może zaskoczyć - szczegoly 1 z 4",
+                       "text":  "Co może zaskoczyć. Ekran wisi na rusztowaniu. Elewacja A: wspornik przykręcony do rusztowania, nie punkty hali. Rusztowanie musi być gotowe, zanim zaczniesz cabinety.. Hala i mechanika. Trzy nazwy tego samego sprzętu. Lista SQM: INFILED HL-3978. Plik techniczny: HOXLED P3.9/7.8. Akcesoria: Dicolor UT-390. Zrób zdjęcie etykiety cabinetu i control boxa, zanim wyślesz jakikolwiek plik do procesora.. Sprzęt. Tylko 2+2 kable Ethercon na liście. Na liście są 2 × Ethercon M–M 1,4 m i 2 × F–F 0,8 m. Cabinety zapewne łączą się własnymi złączami. Potwierdź przed wyjazdem, jak idzie łańcuch DATA.. Prąd i sygnał. Waga i moc są spoza SQM. Paczka SQM nie ma wagi ani mocy cabinetu. Dane producenta INFiLED HL-3978: 263 W max, 88 W średnio, 7,5 kg (do potwierdzenia na etykiecie). Rack 2 × 16 A nie pokryje pełnej bieli całego ekranu.. Zasady hali. Zawieszenie z dachu na Porte de Versailles bywa zastrzeżone dla obsługi hali. Plan wymienia 8 punktów po 56,25 kg dla truss. Ekran idzie na rusztowanie, więc zapytaj, kto je stawia i do kiedy.. Welon przy ekranie. Szary półprzezroczysty welon jest na planie obok ekranu. Sprawdź, czy nie zasłania wentylacji ani kabli.. Trasa kabli po lewej. Obraz „Tu idą kable” pokazuje trasę po lewej stronie bryły. Skrzynia 60 kW jest na wycinku planu w prawym górnym rogu. Zmierz trasę na miejscu i porównaj z kablami 10 m.",
+                       "audio":  "assets/audio/tech/niespodzianki-detail-1.wav"
+                   },
+                   {
+                       "id":  "niespodzianki-detail-2",
+                       "chapter":  "niespodzianki",
+                       "title":  "Co może zaskoczyć - szczegoly 2 z 4",
+                       "text":  "Co może zaskoczyć. Zapasowe cabinety. 8 zapasowych cabinetów i 1 zapasowy kątownik jedzie ze sprzętem. Zapisz, gdzie leżą.. Termin zwrotu. Wynajem kończy się 28.10.2026 17:00. Demontaż po 18.10 zaplanuj z wyprzedzeniem.. Klient puszcza obraz z własnego laptopa. Zanim klient podłączy laptop, ustaw w MX30 działający obraz testowy. Połączenie: laptop → kabel HDMI → wejście HDMI 2.0-1 MX30. Klient wybiera tylko Extend i pełny ekran.. Laptop klienta. Piksel nie jest kwadratowy. Pitch 3,9 mm w poziomie i 7,8 mm w pionie: piksel jest dwa razy wyższy niż szeroki. Siatka 2048 × 512 px to fizycznie 8 × 4 m (2:1). Materiał o kwadratowych pikselach 2048 × 512 rozciągnie obraz w pionie. Kreację rób w 2:1 (2048 × 1024) i skaluj w pionie do 512 (rozdział „Wideo testowe”).. Laptop klienta: Windows czy Mac. Zapytaj wcześniej. Mac: Ustawienia → Ekrany → wyłącz mirroring (powielanie), ustaw rozszerzony pulpit. Windows: Win + P → Rozszerz. Różne systemy mają różne ścieżki, więc przygotuj obie instrukcje.. Inny program niż Resolume. Klient może używać PowerPointa, Keynote, VLC, ProPresentera, Millumina, Watchouta albo TouchDesignera. Każdy ma własne ustawienie wyjścia na drugi ekran. Poproś o nazwę i wersję programu, i o godzinę próby.. Wersja i licencja Resolume",
+                       "audio":  "assets/audio/tech/niespodzianki-detail-2.wav"
+                   },
+                   {
+                       "id":  "niespodzianki-detail-3",
+                       "chapter":  "niespodzianki",
+                       "title":  "Co może zaskoczyć - szczegoly 3 z 4",
+                       "text":  "Co może zaskoczyć. Advanced Output jest w Avenue i Arenie, ale wszystkie funkcje wymagają Areny. Zapytaj o wersję i licencję. Bez licencji program pracuje w trybie demo (potwierdź zachowanie na ich wersji).. Przejściówka i kabel HDMI. Laptop może mieć tylko USB-C albo DisplayPort. Zabierz przejściówki (USB-C → HDMI, mini DP → HDMI) i zapasowy kabel HDMI 4K. Lista SQM ma jeden HDMI 3 m i jeden DisplayPort 3 m. MX30 ma wejście DP 1.1 (do 4096 × 1080).. Rozdzielczość i odświeżanie z laptopa. Karta graficzna musi dopuszczać rozdzielczość z EDID MX30. Manual MX30: maksymalna rozdzielczość i szerokość wejścia HDMI/DP zależy od ustawień karty graficznej. Zgraj częstotliwość: 50 albo 60 Hz w całym łańcuchu.. Oszczędzanie energii i powiadomienia. Wyłącz uśpienie, wygaszacz, blokadę ekranu, powiadomienia i aktualizacje na czas pokazu. Skalowanie ekranu w Windows ustaw na 100%. Zapytaj o hasło do odblokowania laptopa na czas testu.. Hasło i konto na laptopie. Poproś, żeby klient był przy teście i sam odblokował laptop. Nie zapisuj ich haseł. W manualu MX30 i VMP nie ma żadnego hasła ani konta.. Za mało kabli na 4 linie",
+                       "audio":  "assets/audio/tech/niespodzianki-detail-3.wav"
+                   },
+                   {
+                       "id":  "niespodzianki-detail-4",
+                       "chapter":  "niespodzianki",
+                       "title":  "Co może zaskoczyć - szczegoly 4 z 4",
+                       "text":  "Co może zaskoczyć. Lista SQM: 1 patchcord RJ45, 2 + 2 krótkie Ethercon, 2 + 2 PowerCon i 2 kable zasilające 10 m. Plan 4 linii DATA z backupem to 8 przebiegów Ethernet i 4 linie zasilania. Zapytaj SQM o dodatkowe kable i o to, jak cabinety łączą się między sobą.. kable. tw-11. tw-17",
+                       "audio":  "assets/audio/tech/niespodzianki-detail-4.wav"
+                   },
+                   {
+                       "id":  "mechanika-summary",
+                       "chapter":  "mechanika",
+                       "title":  "Mechanika i zawieszenie - skrot",
+                       "text":  "Mechanika i zawieszenie. Ekran wisi na wspornikach przykręconych do rusztowania. Truss ma 8 punktów po 56,25 kg. Aplikacja nie zastępuje planu rigging.",
+                       "audio":  "assets/audio/tech/mechanika-summary.wav"
+                   },
+                   {
+                       "id":  "mechanika-detail-1",
+                       "chapter":  "mechanika",
+                       "title":  "Mechanika i zawieszenie - szczegoly 1 z 2",
+                       "text":  "Mechanika i zawieszenie. Na planie (elewacja A) ekran LED 8 m × 4 m jest mocowany na wspornikach do rusztowania. Zawieszenie truss to osobna sprawa: 8 punktów po 56,25 kg. Aplikacja nie zastępuje planu ani nadzoru. Dokumenty nie podają wagi cabinetu.. Otwórz plan „Elewacja A” (przycisk poniżej). Ekran ma 8000 mm szerokości i 4000 mm wysokości, w sekcji 10248 mm z marginesem 1124 mm po bokach.. Ekran mocuje się na wspornikach (pattes) przykręconych do rusztowania. Zapytaj ekipę rusztowania, gdzie dokładnie są wsporniki i kto je przykręca.. Sprawdź komplet: 8 belek wsparcia 1 m, 7 kątowników, 20 szekli 2T, 20 steelflexów 1T 1,5 m. Plan nie opisuje, gdzie idą szekle i steelflexy. Zapytaj szefa ekipy.. Oznacz na rusztowaniu linię dolnej krawędzi ekranu i oś 8000 mm. Wymiary bierz z elewacji A.. Zamontuj belki wsparcia na wspornikach. Sprawdź poziom przed założeniem pierwszego cabinetu.. Zawieszenie truss (7000 mm, 8 punktów, 56,25 kg na punkt, linki 1250 mm) jest osobne i należy do ekipy hali. Nie dotykaj punktów bez ich zgody.. Po każdym rzędzie cabinetów sprawdź prostą krawędź i dokręć mocowania.. Nie przykręcaj ekranu do konstrukcji, której nie zatwierdził klient albo ekipa rusztowania.. Nie wchodź pod zawieszone elementy.. Nie zakładaj, że obciążenie truss dotyczy ekranu.. hu yz alałd turyg hir. Kto może tu wieszać?. łot yz de lołd lymyt per pojnt",
+                       "audio":  "assets/audio/tech/mechanika-detail-1.wav"
+                   },
+                   {
+                       "id":  "mechanika-detail-2",
+                       "chapter":  "mechanika",
+                       "title":  "Mechanika i zawieszenie - szczegoly 2 z 2",
+                       "text":  "Mechanika i zawieszenie. Jaki jest limit obciążenia na punkt?. klir di erija plyz. Proszę opróżnić strefę.. czek de szakel. Sprawdź szeklę.. tw-12. tw-16. tw-09. tw-10. tw-15",
+                       "audio":  "assets/audio/tech/mechanika-detail-2.wav"
+                   },
+                   {
+                       "id":  "cabinety-summary",
+                       "chapter":  "cabinety",
+                       "title":  "Montaż cabinetów - skrot",
+                       "text":  "Montaż cabinetów. Montaż 8 × 8 cabinetów (1000 × 500 mm). Numeruj kolumny i rzędy przed kablami, sprawdzaj krawędź po każdym rzędzie.",
+                       "audio":  "assets/audio/tech/cabinety-summary.wav"
+                   },
+                   {
+                       "id":  "cabinety-detail-1",
+                       "chapter":  "cabinety",
+                       "title":  "Montaż cabinetów - szczegoly 1 z 1",
+                       "text":  "Montaż cabinetów. Instrukcja montażu cabinetu INFILED HL-3978 nie jest w paczce SQM. Poniżej jest ogólna kolejność. Szczegóły łączeń weź od właściciela sprzętu.. Rozpakuj cabinety i sprawdź ilość: 64 plus 8 zapasowych.. Przygotuj kątowniki (7 szt. na liście), taśmę papierową i folię malarską 4×5 m. Do czego służą w tej realizacji, potwierdź z szefem ekipy.. Układ ekranu: 8 cabinetów w poziomie (8 m) i 8 w pionie (4 m), bo cabinet ma 1000×500 mm.. Montuj w tej samej kolejności, w jakiej planujesz DATA. Zapisz kierunek na planie.. Po każdym rzędzie sprawdź prostą krawędź i szczelinę między cabinetami.. Oznacz numerami (taśma papierowa) kolumnę i rząd każdego cabinetu przed podłączeniem kabli.. Zostaw zapasowe cabinety w skrzyni, opisane i zabezpieczone.. hold yt lewel plyz. Trzymaj równo, proszę.. namber ycz kabinet. Ponumeruj każdy cabinet.. majnd de gep. Uważaj na szczelinę.. tw-12. tw-11. wizka",
+                       "audio":  "assets/audio/tech/cabinety-detail-1.wav"
+                   },
+                   {
+                       "id":  "komplet-summary",
+                       "chapter":  "komplet",
+                       "title":  "Kompletacja sprzętu - skrot",
+                       "text":  "Kompletacja sprzętu. 17 pozycji z listy SQM w 3 grupach. Odhaczaj przy rozładunku i zwrocie.",
+                       "audio":  "assets/audio/tech/komplet-summary.wav"
+                   },
+                   {
+                       "id":  "komplet-detail-1",
+                       "chapter":  "komplet",
+                       "title":  "Kompletacja sprzętu - szczegoly 1 z 1",
+                       "text":  "Kompletacja sprzętu. Odhaczaj przy rozładunku. Liczby z listy kompletacyjnej SQM39462 (daty 06/08/2026).. P3.9 LED CABINET INFILED HL-3978 1000×500 transparent. 64 + 8 backup. strona 1–4 listy. Ekran i mocowanie. LED SUPPORT BEAM INFILED transparent 1 m. STREFA LED/DODATKI. SHACKLE 2T black. 20. D4 SKRZYNIA. STEELFLEX 1T 1,5 m (red mark). D0 / kosz-paleta. Kątownik do P3,9 HOXLED. 7 + 1 backup. sprzedaż (Sale). Taśma papierowa. 2 + 1 backup. Folia malarska 4×5 m. LED CONTROLLER NovaStar MX30. C03 lub zielona skrzynia na kółkach. Procesor i sygnał. HDMI–HDMI 4K 3 m. DisplayPort–DisplayPort 1,2 4K 3 m. regał A, półka 1. Patchcord RJ45. POWERBOX RACK 32A → 2×16A / 6×230V Riedconn STV32/002-6/2k. Zasilanie. Ethercon extender F–F 0,8 m INFILED / Dicolor UT-390 transparent. Ethercon M–M 1,4 m INFILED / Dicolor UT-390 transparent. PowerCon TRUE1 16A F–F extender 0,8 m INFILED. PowerCon TRUE1 16A M–M extender 1,2 m INFILED. PAL 5. 230V → PowerCon TRUE1 16A 10 m INFILED. PAL 9. lets czek de list. Sprawdźmy listę.. łan kabinet yz mysing. Brakuje jednego cabinetu.. du ły hew de spe kabinets. Mamy zapasowe cabinety?",
+                       "audio":  "assets/audio/tech/komplet-detail-1.wav"
+                   },
+                   {
+                       "id":  "przed-summary",
+                       "chapter":  "przed",
+                       "title":  "Przygotuj wcześniej: lista do skopiowania - skrot",
+                       "text":  "Przygotuj wcześniej: lista do skopiowania. Lista do skopiowania: o co poprosić SQM, klienta i organizatora, i co przygotować w hotelu (projekt offline, pliki testowe, przejściówki).",
+                       "audio":  "assets/audio/tech/przed-summary.wav"
+                   },
+                   {
+                       "id":  "przed-detail-1",
+                       "chapter":  "przed",
+                       "title":  "Przygotuj wcześniej: lista do skopiowania - szczegoly 1 z 3",
+                       "text":  "Przygotuj wcześniej: lista do skopiowania. Oficjalna instrukcja VMP pozwala przygotować połączenia wcześniej: w trybie offline dodajesz kontroler MX30, układasz topologię cabinetów i zapisujesz projekt .nprj. Na hali tylko go wczytujesz. Poniżej lista do skopiowania do notatek, o co poprosić i co przygotować.. Od SQM i właściciela sprzętu. Plik .rcfgx (konfiguracja cabinetu / karty odbiorczej) dla INFiLED HL-3978. Potwierdzenie, że pasuje do tego batcha cabinetów.. Plik NCP i informacja, czy NCP karty odbiorczej i kontrolera są zgodne (wymaga tego VMP przy jasności i Overdrive).. Typ karty odbiorczej w cabinetach (np. A10s Pro) i wersja jej firmware.. MX30: wersja firmware, adres IP i tryb pracy (All-In-One albo Send-Only) ustawione w magazynie.. Wersja VMP, którą mamy użyć, plus instalator. Informacja, czy jest gotowy projekt .nprj.. Schemat DATA: które cabinety na który port, kierunek łańcucha (Data Flow) i które porty są zapasowe.. Karta techniczna cabinetu: moc max i średnia, waga, maksymalna liczba cabinetów na linię zasilania.. Login i hasło do komputera sterującego, jeśli będzie to komputer SQM. W manualach MX30 i VMP nie ma żadnego hasła.. Licencja lub dongle Resolume, jeśli SQM dostarcza komputer z Resolume.. Lista kontaktowa: kto odbiera telefon w razie awarii.. Od klienta (Lynk \u0026 Co, agencja)",
+                       "audio":  "assets/audio/tech/przed-detail-1.wav"
+                   },
+                   {
+                       "id":  "przed-detail-2",
+                       "chapter":  "przed",
+                       "title":  "Przygotuj wcześniej: lista do skopiowania - szczegoly 2 z 3",
+                       "text":  "Przygotuj wcześniej: lista do skopiowania. Jaki laptop: Windows czy Mac. Jakie wyjścia (HDMI, USB-C, DisplayPort) i czy mają przejściówkę.. Jaki program odtwarza materiał: Resolume (wersja, Avenue czy Arena, licencja) czy inny (nazwa i wersja).. Rozdzielczość, odświeżanie (50 czy 60 Hz) i format plików (MP4 H.264, HAP, DXV, ProRes).. Czy kreacja jest zrobiona w proporcji 2:1 dla ekranu 8 × 4 m (pitch 3,9 × 7,8 mm, piksele nie są kwadratowe).. Pliki wideo z wyprzedzeniem, najlepiej na dzień przed testem.. Godzina próby z laptopem klienta i kto zatwierdza jasność.. Kto odblokuje laptop na czas testu i wyłączy uśpienie, powiadomienia i aktualizacje.. Czy klient przyniesie własny kabel HDMI.. Od organizatora hali (Viparis). Zasady wieszania: kto może wieszać z dachu i jakie są limity punktów.. Punkt przyłączenia skrzyni 60 kW i wymagania elektryka.. Godziny montażu, rozładunku i demontażu. Termin zwrotu sprzętu 28.10.2026 17:00.. Czy hala ma Wi-Fi albo przewodowy internet dla laptopa (przyda się do pobrania plików).. Do przygotowania w hotelu. Zainstaluj VMP. Tools → Offline Mode → Enter Offline Mode → Add Controller (MX30, nazwa, IP).. Ekran: canvas 2048 × 512, cabinet 256 × 64 px (custom), układ 8 × 8, porty główne 1, 3, 5, 7 i zapasowe 2, 4, 6, 8 (zakładka Układ ekranu).. Zapisz projekt: Project → Export (.nprj). Kopia na pendrive i w chmurze.",
+                       "audio":  "assets/audio/tech/przed-detail-2.wav"
+                   },
+                   {
+                       "id":  "przed-detail-3",
+                       "chapter":  "przed",
+                       "title":  "Przygotuj wcześniej: lista do skopiowania - szczegoly 3 z 3",
+                       "text":  "Przygotuj wcześniej: lista do skopiowania. Resolume: Output → Advanced → Virtual Screen o rozdzielczości z wariantu A (2048 × 1080) albo B (3840 × 2160), slice 2048 × 512 w pozycji 0, 0.. Pliki testowe (siatka, koło, byk) na pendrive i w laptopie.. Przejściówki USB-C → HDMI, mini DP → HDMI, zapasowy kabel HDMI 4K, kabel Ethernet do portu sterującego, tester kabli RJ45.. Wydrukuj albo zapisz offline: tabelę portów, plan zasilania, listę kompletacji.",
+                       "audio":  "assets/audio/tech/przed-detail-3.wav"
+                   },
+                   {
+                       "id":  "wideo-summary",
+                       "chapter":  "wideo",
+                       "title":  "Wideo testowe: byk, rozmiary, warianty - skrot",
+                       "text":  "Wideo testowe: byk, rozmiary, warianty. Wideo testowe: kreacja w 2:1 (2048 × 1024), skalowana do 2048 × 512. Warianty plików, prompty do generatora i 3 pliki testowe.",
+                       "audio":  "assets/audio/tech/wideo-summary.wav"
+                   },
+                   {
+                       "id":  "wideo-detail-1",
+                       "chapter":  "wideo",
+                       "title":  "Wideo testowe: byk, rozmiary, warianty - szczegoly 1 z 2",
+                       "text":  "Wideo testowe: byk, rozmiary, warianty. Wideo testowe ma sprawdzić ekran, proporcje i płynność. Najważniejsze: ekran ma 2048 × 512 pikseli, ale fizycznie 8 × 4 m (2:1), bo piksel jest dwa razy wyższy niż szeroki (pitch 3,9 × 7,8 mm).. Kreację rób w proporcji 2:1, czyli 2048 × 1024. W Resolume slice wejściowy 2048 × 1024 skaluj do wyjścia 2048 × 512. Wtedy koło na ekranie jest kołem.. Czarne tło oznacza wyłączone diody, czyli przezroczystość. Nie rób jasnego tła całej klatki: pobór mocy rośnie do maksimum (do 263 W na cabinet).. Jedna komórka cabinetu to tylko 256 × 64 piksele. Detale mniejsze niż około 8 pikseli znikną. Linie rób grube (co najmniej 6 px w pliku 2048 × 1024).. Kolory nasycone i jasne, kontur (outline) grubszy niż wypełnienie drobne. Bez tekstu mniejszego niż 80 px wysokości w pliku 2:1.. Pętla bez cięcia, bez migania całego ekranu bielą.. W1: autoryzacja 2:1 (zalecane). 2048 × 1024 px, MP4 H.264, 30 albo 60 klatek/s (przy wyjściu 60 Hz), 20–30 s, bez dźwięku, sRGB, bitrate co najmniej 40 Mb/s. Resolume: kompozycja 2048 × 1024, slice wejściowy 2048 × 1024 → wyjściowy 2048 × 512.. W2: gotowy pod piksele. 2048 × 512 px, MP4 H.264, ta sama liczba klatek. Obraz „ściśnięty” w pionie: na podglądzie komputera wygląda na rozciągnięty, na ekranie jest poprawny. Slice 1:1, bez skalowania.. W3: ekran w rogu kanwy 4K",
+                       "audio":  "assets/audio/tech/wideo-detail-1.wav"
+                   },
+                   {
+                       "id":  "wideo-detail-2",
+                       "chapter":  "wideo",
+                       "title":  "Wideo testowe: byk, rozmiary, warianty - szczegoly 2 z 2",
+                       "text":  "Wideo testowe: byk, rozmiary, warianty. 3840 × 2160 px, ekran 2048 × 512 w lewym górnym rogu, reszta czarna. Wariant B z rozdziału Resolume (wejście 3840 × 2160).. W4: wariant do Resolume (HAP lub DXV). 2048 × 1024 px, kodek HAP albo DXV, 30 klatek/s. Lżejsze dla procesora laptopa w Resolume. Konwersja programem Alley (Resolume).. W5: test siatki i proporcji. PNG 2048 × 512 oraz 2048 × 1024 z siatką 8 × 8, narożnikami kolorów i kołem. Pierwszy obraz po uruchomieniu: sprawdza lewy górny róg, ucięcia i proporcję.. Wgraj siatkę 2048 × 512 do Resolume jako klip. Slice 2048 × 512 w pozycji 0, 0. Sprawdź, że czerwony narożnik jest w lewym górnym rogu ekranu i nie ma ucięć.. Wgraj test proporcji 2048 × 1024. Slice wejściowy 2048 × 1024, wyjściowy 2048 × 512. Koło ma być kołem. Jeśli jest elipsą, zamieniłeś wariant W1 z W2.. Puść animację byka (W1). Sprawdź płynność, krawędzie, kolory i temperaturę cabinetów.. Przy pełnej bieli nie trzymaj ekranu dłużej niż to konieczne. Pobór mocy rośnie do 16,8 kW.",
+                       "audio":  "assets/audio/tech/wideo-detail-2.wav"
+                   }
+               ]
+}

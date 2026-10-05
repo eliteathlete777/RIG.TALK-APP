@@ -4,6 +4,15 @@
   "source_note": "Dane z paczki SQM39462: lista kompletacyjna, TECH WIZKA, EKRAN, plan zasilania. Przy każdej liczbie jest źródło. Czego nie ma w dokumentach, oznaczone jest BRAK DANYCH.",
   "chapters": [
     {
+      "id": "audio",
+      "group": "proc",
+      "stage": 0,
+      "title": "Audio techniczne offline",
+      "en": "Offline technical audio",
+      "icon": "🎧",
+      "when": "Droga i lotnisko"
+    },
+    {
       "id": "az",
       "group": "proc",
       "stage": 3,
@@ -2672,6 +2681,7 @@
     }
   },
   "summary": {
+    "audio": "Nagrania wszystkich technicznych rozdziałów i szczegółów, działające offline oraz przy zablokowanym ekranie.",
     "az": "9 faz od kabli do przekazania. Najpierw lista pytań i projekt offline w VMP, potem kable, włączenie MX30, ustawienia na panelu, VMP, HDMI i Resolume, jasność 70% i zapis. Na końcu tabela awarii.",
     "param": "Gotowe wartości do wpisania dla laptopa, MX30, VMP, Resolume i pliku wideo. Dwa warianty wejścia: Custom 2048 × 1080 albo Standard 3840 × 2160, oba 60 Hz, 8 bit.",
     "mx30panel": "Obsługa panelu MX30: pokrętło, ekran główny, EDID wejścia, Swift Layout, plik .rcfgx, jasność, mapping, adres IP, diagnostyka. Reset All kasuje wszystko.",

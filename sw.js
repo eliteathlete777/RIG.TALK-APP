@@ -1,7 +1,7 @@
 // RIG TALK — service worker: cache-first dla aplikacji, treści i fontów (pełna wersja: etap E12)
 // E9 wymaga, żeby 🟥 CZERWONE działało offline — precache obejmuje więc już teraz cały shell + treść.
 
-const CACHE_NAME = 'rigtalk-v40';
+const CACHE_NAME = 'rigtalk-v41';
 const PRECACHE_BATCH_SIZE = 8;
 
 const PRECACHE_URLS = [
@@ -42,6 +42,7 @@ const PRECACHE_URLS = [
   'js/glossary.js',
   'js/state.js',
   'js/visibility.js',
+  'js/tech-audio.js',
   'vendor/ts-fsrs.umd.js',
   'content/index.json',
   'content/modules.json',
@@ -49,6 +50,7 @@ const PRECACHE_URLS = [
   'content/mx30-guide.json',
   'content/montaz.json',
   'content/phrases.json',
+  'content/tech-audio.json',
   'content/glossary.json',
   'content/tech/t7.json',
   'content/tech/t0.json',
@@ -165,7 +167,11 @@ self.addEventListener('install', (event) => {
         if (!phraseResponse.ok) throw new Error(`Precache phrases: HTTP ${phraseResponse.status}`);
         const phraseData = await phraseResponse.clone().json();
         const audioUrls = phraseData.stages.flatMap(stage => stage.items.map(item => `assets/audio/phrases/${item.id}.wav`));
-        const urls = [...PRECACHE_URLS, ...audioUrls];
+        const techResponse = await fetch('content/tech-audio.json', { cache: 'reload' });
+        if (!techResponse.ok) throw new Error(`Precache tech audio: HTTP ${techResponse.status}`);
+        const techData = await techResponse.clone().json();
+        const techAudioUrls = techData.tracks.map(track => track.audio);
+        const urls = [...PRECACHE_URLS, ...audioUrls, ...techAudioUrls];
         // Telefon nie dostaje już 148 równoległych żądań. Małe partie ograniczają
         // zużycie pamięci i ryzyko przerwania instalacji na słabszym połączeniu.
         for (let i = 0; i < urls.length; i += PRECACHE_BATCH_SIZE){

@@ -7,6 +7,7 @@ import * as speech from './speech.js';
 import { planLinks, renderPlany } from './plany.js';
 import { renderAz, renderWordsChapter, wordList, loadAz } from './az.js';
 import { renderUklad } from './uklad.js';
+import { renderTechAudio } from './tech-audio.js';
 import { acc, expandBar, bulletsToText, outline } from './acc.js';
 import { hideButton, visibleItems } from './visibility.js';
 
@@ -826,6 +827,7 @@ export async function renderMontazHub(container, ctx){
     case 'przed': renderPrzed(body, data); break;
     case 'param': renderParam(body, data); break;
     case 'wideo': renderWideo(body, data); break;
+    case 'audio': await renderTechAudio(body); break;
     case 'plany': await renderPlany(body, data.plany?.intro); break;
     case 'az': await renderAz(body); break;
     case 'zwroty': renderPhraseChapter(body, phraseData); break;
