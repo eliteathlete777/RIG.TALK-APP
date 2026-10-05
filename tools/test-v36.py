@@ -28,7 +28,7 @@ with sync_playwright() as p:
     page.locator("#startPlaylistBtn").click()
     page.locator(".guided-learning").wait_for()
     state = page.evaluate("JSON.parse(localStorage.getItem('rigtalk.v1'))")
-    assert len(state["activeLearning"]["queue"]) == 21
+    assert len(state["activeLearning"]["queue"]) == 31
     assert state["activeLearning"]["listeningOnly"] is True
     assert page.locator(".guided-controls button").count() == 4
     assert page.evaluate("navigator.wakeLock.requests") >= 1
@@ -47,6 +47,8 @@ with sync_playwright() as p:
 
     page.on("dialog", lambda dialog: dialog.accept())
     page.locator("#sessionExit").click()
+    if not page.locator("#settingsBtn").is_visible():
+        page.locator('[data-mode-select="english"]').click()
     page.locator("#settingsBtn").click()
     assert page.locator("#settingRepeatCount").is_visible()
     assert page.locator("#transferCode").is_visible()
@@ -55,5 +57,5 @@ with sync_playwright() as p:
 
     assert page.evaluate("document.documentElement.scrollWidth === document.documentElement.clientWidth")
     assert not errors, errors
-    print("v38 OK: playlista, 20 zwrotow rigging, audio offline, odsluch != opanowanie, Wake Lock, transfer i mobile")
+    print("v40 OK: 151 zwrotow, 30 rigging, audio offline, odsluch != opanowanie, Wake Lock, transfer i mobile")
     browser.close()
