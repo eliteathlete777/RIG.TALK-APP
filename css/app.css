@@ -550,7 +550,7 @@ body[data-app-mode="english"]{ --red:#e01e1e; }
 .mx-phrase{ display:grid; grid-template-columns:1fr auto; gap:8px; padding:9px 0; border-top:1px solid var(--line); }
 .mx-phrase small{ display:block; color:var(--dim); margin-top:2px; }
 
-/* Sesja nauki: 3 odsłuchy po 70% + 10 sekund na odpowiedź */
+/* Sesja nauki: 3 odsłuchy po 70% + 6 sekund na odpowiedź, bezobsługowy autoplay */
 .guided-learning{ min-height:520px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; border-color:var(--red); }
 .guided-en{ max-width:18ch; font-family:var(--font-display); font-size:clamp(28px,9vw,44px); line-height:1.12; margin:14px 0 8px; }
 .guided-phonetic{ color:#ffd166; font-size:17px; line-height:1.35; margin-bottom:10px; }
@@ -565,6 +565,7 @@ body[data-app-mode="english"]{ --red:#e01e1e; }
 .guided-confirm input{ width:24px; height:24px; accent-color:var(--white); }
 .guided-confirm span{ font-family:var(--font-display); font-size:19px; }
 .guided-confirm[hidden]{ display:none; }
+.guided-help{ max-width:34ch; color:var(--dim); font-size:11px; line-height:1.45; }
 
 /* ---------- MONTAŻ: wybór rozdziału (żółty tryb roboczy) ---------- */
 .mz-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:14px 0; }

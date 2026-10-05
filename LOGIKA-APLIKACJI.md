@@ -54,6 +54,12 @@ W trybie Montaż pierwszeństwo mają pełne zwroty i krótkie komendy, a dopier
 
 Każdy zwrot i każde słowo w listach operacyjnych ma przycisk `×`. Ukrycie jest globalne i trwałe na danym urządzeniu: pozycja znika ze wszystkich miejsc korzystających z tego samego identyfikatora. Ustawienia zawierają przycisk **Przywróć ukryte zwroty i słowa**, który cofa zarówno nowe ukrycia, jak i wcześniejsze trwałe usunięcia zwrotów. Stan jest zapisany w `hiddenItems` (schema v5), a źródłem zwrotów montażowych jest `content/phrases.json`.
 
+### 3.4 Bezobsługowe powtarzanie
+
+Karta treningowa odtwarza zwrot trzy razy w tempie 70%, a między odsłuchami daje 6 sekund na powtórzenie. Po trzeciej rundzie sama zapisuje kartę jako wykonaną i przechodzi dalej, więc całą listę można przejść bez dotykania telefonu. Pojedyncze dotknięcie kończy bieżącą przerwę, podwójne dotknięcie zatrzymuje lub wznawia automat, a swipe w bok zapisuje bieżący zwrot i przechodzi do następnego. Podczas sesji aplikacja żąda blokady wygaszania ekranu.
+
+Aktywna kolejka, numer karty i wyniki są zapisywane lokalnie w `activeLearning` (schema v6). Po ponownym otwarciu na tym samym telefonie niedokończona sesja wznawia się od ostatniej karty. Dane pozostają lokalne; nie jest to synchronizacja między różnymi urządzeniami.
+
 ## 4. Logika planu 55H
 
 Plan 55H redukuje bazę 536 zwrotów do 59 unikalnych zwrotów o największej wartości operacyjnej. Materiał jest podzielony na dziewięć bloków:

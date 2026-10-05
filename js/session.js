@@ -94,6 +94,10 @@ let results = { reviewsDone: 0, newDone: 0, missionDone: false, xp: 0, goodOrEas
 let sessionTimerHandle = null;
 let learningTimerHandle = null;
 let learningToken = 0;
+let learningSkipWait = null;
+let guidedComplete = null;
+let learningPaused = false;
+let learningWakeLock = null;
 
 function qs(sel){ return document.querySelector(sel); }
 
@@ -108,6 +112,47 @@ export function initSessionDom(){
   el.exit.addEventListener('click', () => {
     if (confirm('Przerwać sesję? Postęp w tej karcie zostanie utracony.')) endSession(true);
   });
+  let tapTimer = null;
+  let pointerStart = null;
+  el.root.addEventListener('pointerdown', event => { pointerStart = [event.clientX, event.clientY]; });
+  el.root.addEventListener('pointerup', event => {
+    if (!pointerStart || !el.root.classList.contains('active')) return;
+    const dx = event.clientX - pointerStart[0];
+    const dy = event.clientY - pointerStart[1];
+    pointerStart = null;
+    if (Math.abs(dx) > 65 && Math.abs(dx) > Math.abs(dy)){
+      clearTimeout(tapTimer);
+      tapTimer = null;
+      guidedComplete?.();
+      return;
+    }
+    if (event.target.closest('button, input, textarea, label')) return;
+    if (tapTimer){
+      clearTimeout(tapTimer);
+      tapTimer = null;
+      learningPaused = !learningPaused;
+      if (learningPaused) window.speechSynthesis?.cancel();
+      const status = el.body.querySelector('.guided-status');
+      if (status) status.textContent = learningPaused ? 'PAUZA · kliknij dwa razy, aby wznowić' : 'WZNOWIONO';
+      return;
+    }
+    tapTimer = setTimeout(() => { tapTimer = null; learningSkipWait?.(); }, 260);
+  });
+}
+
+async function keepScreenAwake(){
+  if (!('wakeLock' in navigator) || learningWakeLock) return;
+  try { learningWakeLock = await navigator.wakeLock.request('screen'); } catch (e) {}
+}
+
+function releaseScreenAwake(){
+  try { learningWakeLock?.release(); } catch (e) {}
+  learningWakeLock = null;
+}
+
+function saveActiveLearning(){
+  if (!plan) return;
+  store.set({ activeLearning: { queue: plan.queue, minutes: plan.minutes, focused: !!plan.focused, trackMix: plan.trackMix, cursor, results } });
 }
 
 function showSessionScreen(){
@@ -172,7 +217,9 @@ export async function startFocusedSession(ids, { limit = 12 } = {}){
   cursor = 0;
   results = { reviewsDone: 0, newDone: 0, missionDone: false, xp: 0, goodOrEasyCount: 0, hearCorrect: 0 };
   showSessionScreen();
+  keepScreenAwake();
   startTimer(Math.max(3, Math.ceil(picked.length / 2)));
+  saveActiveLearning();
   renderStep();
 }
 
@@ -181,8 +228,24 @@ export async function startSession(minutes){
   cursor = 0;
   results = { reviewsDone: 0, newDone: 0, missionDone: false, xp: 0, goodOrEasyCount: 0, hearCorrect: 0 };
   showSessionScreen();
+  keepScreenAwake();
   startTimer(minutes);
+  saveActiveLearning();
   renderStep();
+}
+
+export async function resumeSavedSession(){
+  const saved = store.get().activeLearning;
+  if (!saved?.queue?.length || saved.cursor >= saved.queue.length) return false;
+  const ctx = await loadAllChunks();
+  plan = { ctx, queue: saved.queue, minutes: saved.minutes || 5, focused: !!saved.focused, trackMix: saved.trackMix || 'T' };
+  cursor = saved.cursor || 0;
+  results = { reviewsDone: 0, newDone: 0, missionDone: false, xp: 0, goodOrEasyCount: 0, hearCorrect: 0, ...(saved.results || {}) };
+  showSessionScreen();
+  keepScreenAwake();
+  startTimer(plan.minutes);
+  renderStep();
+  return true;
 }
 
 function updateProgress(){
@@ -198,6 +261,7 @@ function nextStep(){
   clearLearningCycle();
   cursor++;
   if (cursor >= plan.queue.length){ endSession(false); return; }
+  saveActiveLearning();
   renderStep();
 }
 
@@ -207,6 +271,8 @@ let lastOutcome = null;
 function endSession(aborted){
   clearLearningCycle();
   stopTimer();
+  releaseScreenAwake();
+  store.set({ activeLearning: null });
   hideSessionScreen();
   if (aborted) lastOutcome = null;
   window.dispatchEvent(new CustomEvent('rigtalk:session-ended', { detail: { aborted, results, outcome: lastOutcome } }));
@@ -254,6 +320,9 @@ function clearLearningCycle(){
   learningToken++;
   if (learningTimerHandle) clearInterval(learningTimerHandle);
   learningTimerHandle = null;
+  learningSkipWait = null;
+  guidedComplete = null;
+  learningPaused = false;
   if (typeof window !== 'undefined' && window.speechSynthesis) window.speechSynthesis.cancel();
 }
 
@@ -263,8 +332,15 @@ function waitForRepeat(seconds, token, onTick){
   onTick(left);
   if (left <= 0) return Promise.resolve(token === learningToken);
   return new Promise(resolve => {
+    learningSkipWait = () => {
+      if (learningTimerHandle) clearInterval(learningTimerHandle);
+      learningTimerHandle = null;
+      learningSkipWait = null;
+      resolve(token === learningToken);
+    };
     learningTimerHandle = setInterval(() => {
       if (token !== learningToken){ clearInterval(learningTimerHandle); learningTimerHandle = null; resolve(false); return; }
+      if (learningPaused) return;
       left--;
       onTick(left);
       if (left <= 0){ clearInterval(learningTimerHandle); learningTimerHandle = null; resolve(true); }
@@ -281,7 +357,7 @@ function renderGuidedPhrase(chunk, isNew){
     <div class="guided-voice">${voice.ready ? `✓ GŁOS OFFLINE: ${voice.name}` : 'GŁOS URZĄDZENIA · zainstaluj angielski głos offline w systemie'}</div>
     <div class="guided-rounds"><span></span><span></span><span></span></div>
     <div class="guided-status">Przygotuj się…</div><div class="guided-countdown"></div>
-    <label class="guided-confirm" hidden><input type="checkbox"> <span>POWTÓRZYŁEM 3 RAZY</span></label>`;
+    <div class="guided-help">Kliknij: zakończ przerwę · dwa kliknięcia: pauza · swipe: następny zwrot</div>`;
   card.querySelector('.guided-en').textContent = chunk.en;
   card.querySelector('.guided-phonetic').textContent = `[ ${speech.toPolishPhonetic(chunk.en)} ]`;
   card.querySelector('.guided-pl').textContent = chunk.pl;
@@ -291,17 +367,18 @@ function renderGuidedPhrase(chunk, isNew){
   const dots = [...card.querySelectorAll('.guided-rounds span')];
   const status = card.querySelector('.guided-status');
   const countdown = card.querySelector('.guided-countdown');
-  const confirmRow = card.querySelector('.guided-confirm');
-  const confirm = confirmRow.querySelector('input');
-  confirm.addEventListener('change', () => {
-    if (!confirm.checked) return;
+  let completed = false;
+  const complete = () => {
+    if (completed || token !== learningToken) return;
+    completed = true;
     const now = new Date();
     const base = isNew ? srs.newCard(now) : getCardFor(chunk.id);
     saveCard(chunk.id, srs.reviewCard(base, srs.Rating.Good, now).card);
     if (isNew) results.newDone++; else results.reviewsDone++;
     results.goodOrEasyCount++;
     nextStep();
-  });
+  };
+  guidedComplete = complete;
 
   (async () => {
     for (let round = 0; round < 3; round++){
@@ -312,13 +389,13 @@ function renderGuidedPhrase(chunk, isNew){
       try { await speech.speak(chunk.en, { lang: store.get().settings.variant === 'us' ? 'en-US' : 'en-GB', rate: 0.7 }); } catch (e) {}
       if (token !== learningToken) return;
       status.textContent = `TWOJA KOLEJ ${round + 1}/3 · powtórz na głos`;
-      const keepGoing = await waitForRepeat(10, token, left => { countdown.textContent = `${left} s`; });
+      const keepGoing = await waitForRepeat(6, token, left => { countdown.textContent = `${left} s`; });
       if (!keepGoing) return;
       dots[round].classList.add('done');
     }
     status.textContent = 'SEGMENT ZAKOŃCZONY';
-    countdown.textContent = 'Zaznacz checkbox, aby przejść dalej';
-    confirmRow.hidden = false;
+    countdown.textContent = 'Następny zwrot…';
+    complete();
   })();
 }
 

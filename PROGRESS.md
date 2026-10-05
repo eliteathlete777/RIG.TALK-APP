@@ -87,3 +87,9 @@
 - Zwroty mają rolę rozmówcy, polskie tłumaczenie, automatyczny zapis wymowy i odsłuch. Słówka pozostają jako drugi poziom szybkiej powtórki.
 - Każdy zwrot i każde słowo na listach montażowych, w etapach stoiska, przewodniku MX30 i słowniku ma `×`. Ukrycie działa globalnie; w Ustawieniach dodano przywracanie wszystkich ukrytych elementów. Stan v5 (`hiddenItems`).
 - Offline: `js/visibility.js` i `content/phrases.json` dodane do precache; cache `rigtalk-v34`.
+
+## v35 — bezobsługowy trening na telefonie
+- Przerwa na powtórzenie skrócona z 10 do 6 sekund. Po trzech odsłuchach karta zapisuje się automatycznie i uruchamia kolejny zwrot — bez checkboxa i bez dotykania telefonu.
+- Sterowanie: pojedyncze dotknięcie kończy bieżące 6 sekund, podwójne zatrzymuje/wznawia automat, swipe w bok zapisuje kartę i przechodzi dalej.
+- Podczas treningu włączany jest Screen Wake Lock. Aktywna kolejka, pozycja i wyniki są zapisywane lokalnie i wznawiane po ponownym otwarciu aplikacji na tym samym telefonie (schema v6, `activeLearning`).
+- Cache aplikacji: `rigtalk-v35`.

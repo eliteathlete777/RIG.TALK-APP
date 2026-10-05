@@ -476,6 +476,7 @@ function init(){
   initLibTabs();
   renderBaza();
   showModeGate();
+  session.resumeSavedSession().catch(() => {});
   if ('serviceWorker' in navigator && 'caches' in window){
     navigator.serviceWorker.ready.then(async () => {
       const names = await caches.keys();

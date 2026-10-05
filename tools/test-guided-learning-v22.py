@@ -6,7 +6,7 @@ ROOT = "http://127.0.0.1:5179"
 SCREENSHOT = Path("guided-learning-v22-preview.png")
 
 VOICE_STUB = """
-window.__RIG_TEST_WAIT_SECONDS = 0;
+window.__RIG_TEST_WAIT_SECONDS = 6;
 class TestUtterance {
   constructor(text) { this.text = text; this.rate = 1; this.lang = ''; }
 }
@@ -16,6 +16,9 @@ Object.defineProperty(window, 'speechSynthesis', { value: {
   cancel() {},
   getVoices() { return [{ name: 'Offline English Test', lang: 'en-GB', localService: true }]; },
   speak(utterance) { setTimeout(() => utterance.onend && utterance.onend(), 0); }
+}, configurable: true });
+Object.defineProperty(navigator, 'wakeLock', { value: {
+  request: async () => ({ release: async () => {} })
 }, configurable: true });
 """
 
@@ -37,13 +40,20 @@ with sync_playwright() as p:
     phonetic = card.locator(".guided-phonetic").inner_text()
     assert phonetic.startswith("[ ") and len(phonetic) > 5
     assert "GŁOS OFFLINE" in card.locator(".guided-voice").inner_text()
-    page.wait_for_function("document.querySelectorAll('.guided-rounds span.done').length === 3")
-    confirm = card.locator(".guided-confirm input")
-    assert confirm.is_visible()
     first_phrase = card.locator(".guided-en").inner_text()
-    page.screenshot(path=str(SCREENSHOT), full_page=True)
-    confirm.evaluate("el => { el.checked = true; el.dispatchEvent(new Event('change', { bubbles: true })); }")
+    assert page.evaluate("JSON.parse(localStorage.getItem('rigtalk.v1')).activeLearning.cursor") == 0
+    page.reload(wait_until="networkidle")
     page.locator(".guided-learning").wait_for()
+    assert page.locator(".guided-en").inner_text() == first_phrase
+    page.locator(".guided-learning").dblclick(position={"x": 30, "y": 30})
+    assert "PAUZA" in page.locator(".guided-status").inner_text()
+    page.locator(".guided-learning").dblclick(position={"x": 30, "y": 30})
+    for _ in range(3):
+        page.locator(".guided-learning").click(position={"x": 30, "y": 30})
+        page.wait_for_timeout(400)
+    page.screenshot(path=str(SCREENSHOT), full_page=True)
+    page.locator(".guided-learning").wait_for()
+    page.wait_for_function("first => document.querySelector('.guided-en')?.textContent !== first", arg=first_phrase)
     second_phrase = page.locator(".guided-learning .guided-en").inner_text()
     assert second_phrase != first_phrase
     assert page.evaluate("document.documentElement.scrollWidth === document.documentElement.clientWidth")
@@ -53,6 +63,7 @@ with sync_playwright() as p:
         "rate_label": page.locator(".guided-learning .eyebrow").inner_text(),
         "phonetic": phonetic,
         "auto_advance": True,
+        "resume_after_reload": True,
         "page_errors": errors,
     })
     browser.close()
