@@ -79,3 +79,5 @@
 - Ustawienia: przycisk „Aktualizuj bez utraty danych” wyrejestrowuje wyłącznie PWA RIG TALK i usuwa cache `rigtalk-*`, bez czyszczenia `localStorage`.
 - Service worker pobiera 148 zasobów partiami po 8 zamiast równocześnie. Nieudana instalacja usuwa częściowy cache; aktywowana jest wyłącznie kompletna wersja.
 - `sw.js`: `rigtalk-v33`.
+- Weryfikacja: `node tools/validate.js` — 536 zwrotów, 0 błędów; `tools/test-pwa-update-v33.py` — zachowany `localStorage`, świeży URL, 0 błędów i brak overflow; pełna regresja montażu — 64 kontrole OK, 0 błędów konsoli.
+- Produkcja: wgrano `index.html`, `js/app.js`, następnie `sw.js`; Hostinger potwierdził nowe rozmiary i czasy plików, CDN wyczyszczony. Publiczne HTTPS zwraca 200, `sw.js` zawiera `rigtalk-v33`, a test 375 × 812 pokazuje przycisk aktualizacji i status `OFFLINE GOTOWE`.
